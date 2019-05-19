@@ -1,0 +1,14 @@
+{
+	"dnase.bams": 		["/Users/bek/stampipes/test_data/dnase/aggregation/in_1.bam",
+				   	 	 "/Users/bek/stampipes/test_data/dnase/aggregation/in_2.bam",
+				   	 	 "/Users/bek/stampipes/test_data/dnase/aggregation/in_3.bam"],
+	"dnase.mappable":		"/Users/bek/stampipes/data/annotations/chr22.K36.mappable_only.bed",
+	"dnase.chrom_info":		"/Users/bek/stampipes/data/annotations/chr22.chromInfo.bed",
+	"dnase.reference":		"/Users/bek/stampipes/test_data/ref/chr22.fa.fai",
+	"dnase.nuclear_chroms":	"/Users/bek/stampipes/test_data/ref/chr22.fa.nuclear.txt",
+	"dnase.chrom_bucket":	"/Users/bek/stampipes/data/densities/chrom-buckets.chr22.75_20.bed.starch",
+	"dnase.read_length":	36,
+	"dnase.hotspot2.chrom_sizes":	"/Users/bek/stampipes/data/hotspot2/chr22.chrom_sizes.bed",
+	"dnase.hotspot2.centers":		"/Users/bek/stampipes/data/hotspot2/chr22.K36.center_sites.n100.starch",
+	"dnase.UMI":	 	false
+}
