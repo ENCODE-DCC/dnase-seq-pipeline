@@ -2,16 +2,20 @@ workflow dnase {
 	
 	Array[File] bams
 	Boolean UMI
+	Boolean dofeatures
+	Boolean domotifs
 	File? hotspot_index
+	File? bias
 	File mappable
 	File chrom_info
 	File chrom_bucket
 	File nuclear_chroms
+	File reference_index
 	File reference
 	Int read_length
 
 
-	call merge {input:
+	call merge { input:
 		bams = bams
 	}
 
@@ -19,56 +23,87 @@ workflow dnase {
 							   else 'MarkDuplicatesWithMateCigar'
 	String dups_extra = if UMI then 'UMI_TAG_NAME=XD'
 					           else '' 
-	call dups {input:
+	call dups { input:
 		merged_bam = merge.merged_bam,
 		cmd = dups_cmd,
 		extra = dups_extra
 	}
 
 	Int flag = if UMI then 1536 else 512
-	call filter {input:
+	call filter { input:
 		marked_bam = dups.marked_bam,
 		flag = flag
 	}
 
-	call bam_counts {input:
+	call bam_counts { input:
 		marked_bam = dups.marked_bam
 	}
 
-	call count_adaptors {input:
+	call count_adaptors { input:
 		marked_bam = dups.marked_bam
 	}
 
-	call hotspot2 {input:
+	call hotspot2 { input:
 		filtered_bam = filter.filtered_bam,
 		mappable = mappable
 	}
 
-	if ( defined(hotspot_index) ) {
-		call differential_hotspots {input:
+	call make_intervals { input:
+		hotspot_calls = hotspot2.hotspot_calls
+	}
+
+	if ( dofeatures ) {
+		call closest_features { input:
+			hotspot_calls = hotspot2.hotspot_calls,
+
+		}
+	}
+
+	if ( defined( hotspot_index ) ) {
+		call differential_hotspots { input:
 			marked_bam = dups.marked_bam,
 			onepercent_peaks = hotspot2.onepercent_peaks,
 			index = hotspot_index
 		}
 	}
 
-	call spot_score {input:
+	call spot_score { input:
 		filtered_bam = filter.filtered_bam,
 		mappable = mappable,
 		chrom_info = chrom_info,
 		read_length = read_length
 	}
 
-	call cutcounts {input:
+	call cutcounts { input:
 		filtered_bam = filter.filtered_bam,
-		reference = reference
+		reference_index = reference_index
 	}
 
-	call density {input:
+	call density { input:
 		filtered_bam = filter.filtered_bam,
 		chrom_bucket = chrom_bucket,
-		reference = reference
+		reference_index = reference_index
 	}
+
+	call insert_sizes { input:
+		filtered_bam = filter.filtered_bam,
+		nuclear_chroms = nuclear_chroms
+	}
+
+	call filter_nuclear { input:
+		filtered_bam = filter.filtered_bam,
+		nuclear_chroms = nuclear_chroms
+	}
+
+	if ( defined( bias )) {
+		call learn_dispersion { input:
+			filtered_bam = filter.filtered_bam,
+			spots = hotspot2.hotspot_calls,
+			reference = reference,
+			bias = bias
+		}
+	}
+
 
 	output {
 
@@ -203,6 +238,73 @@ task hotspot2 {
 }
 
 
+task make_intervals {
+	File hotspot_calls
+	Int chunksize
+
+	command {
+		unstarch ${hotspot_calls} \
+			| grep -v "_random" \
+			| grep -v "chrUn" \
+			| grep -v "chrM" \
+			| split -l ${chunksize} -a 4 -d - chunk_
+	}
+
+	output {
+		Array[File] intervals = glob('chunk_*')
+	}
+
+}
+
+task closest_features {
+	File hotspot_calls
+	File transcript_starts
+	String thresholds
+
+	command <<<
+		closest-features \
+			--dist \
+			--delim '\t' \
+			--closest \
+			${hotspot_calls} \
+			${transcript_starts} \
+			> closest.txt
+		
+		cat closest.txt \
+			| grep -v "NA$" \
+			| awk -F"\t" '{print $NF}' \
+			| sed -e 's/-//g' \
+			> closest.clean.txt
+
+		for t in $thresholds ; do
+			awk \
+		  	-v t=$t \
+		  	'$1 > t {sum+=1} END {print "percent-proximal-" t "bp " sum/NR}' \
+		  	closest.clean.txt \
+			>> prox_dist.info
+		done
+	>>>
+
+	output {
+		File prox_dist_info = glob('prox_dist.info')[0]
+	}
+}
+
+task motif_matrix {
+	File hotspot_calls
+	File fimo_transfac
+	File fimo_names
+
+	command {
+		bedmap --echo --echo-map-id --fraction-map 1 --delim '\t' ${hotspot_calls} ${fimo_transfac} > temp.bedmap.txt
+		python $STAMPIPES/scripts/bwa/aggregate/basic/sparse_motifs.py ${fimo_names} temp.bedmap.txt
+	}
+
+	output {
+		Array[File] hs_motifs = glob('hs_motifs*.txt')
+	}
+}
+
 
 task differential_hotspots {
 	File marked_bam
@@ -261,7 +363,7 @@ task spot_score {
 
 task cutcounts {
 	File filtered_bam
-	File reference
+	File reference_index
 
 	command <<<
 		bam2bed --do-not-sort \
@@ -286,7 +388,7 @@ task cutcounts {
 		$STAMPIPES/scripts/bwa/starch_to_bigwig.bash \
 			cutcounts.starch \
 			cutcounts.bw \
-			${reference}
+			${reference_index}
 
 		# tabix
 		unstarch cutcounts.starch | bgzip > cutcounts.bed.bgz
@@ -304,7 +406,7 @@ task cutcounts {
 
 task density {
 	File filtered_bam
-	File reference
+	File reference_index
 	File chrom_bucket
 
 	Int window_size = 75
@@ -333,7 +435,7 @@ task density {
 		$STAMPIPES/scripts/bwa/starch_to_bigwig.bash \
 			density.starch \
 			density.bw \
-			${reference} \
+			${reference_index} \
 			${bin_size}
 
 		# Tabix
@@ -349,7 +451,7 @@ task density {
 	}
 
 	runtime {
-		cpu: 2
+		cpu: 8
 		memory: "32000 MB"
 	}
 
@@ -379,3 +481,61 @@ task insert_sizes {
 		Array[File] collect_insert_size_metrics = glob('CollectInsertSizeMetrics.picard*')
 	}
 }
+
+task filter_nuclear {
+	File filtered_bam
+	File nuclear_chroms
+
+	command {
+		samtools index ${filtered_bam}
+		cat ${nuclear_chroms} \
+			| xargs samtools view -b ${filtered_bam} \
+			> nuclear.bam
+	}
+
+	output {
+		File nuclear_bam = glob('nuclear.bam')[0]
+	}
+}
+
+task learn_dispersion {
+	File filtered_bam
+	File reference
+	File spots
+	File bias
+
+	command {
+		samtools index ${filtered_bam}
+
+		# TODO: Use nuclear file
+		unstarch ${spots} \
+			| grep -v "_random" \
+			| grep -v "chrUn" \
+			| grep -v "chrM" \
+			> intervals.bed
+
+		ftd-learn-dispersion-model \
+			--bm ${bias} \
+			--half-win-width 5 \
+			--processors 8 \
+			${filtered_bam} \
+			${reference} \
+			intervals.bed \
+			> dm.json
+	}
+
+	output {
+		File to_plot = glob('dm.json')[0]
+		File filtered_bam_indexed = glob('filtered.bam.bai')[0]
+	}
+
+
+	runtime {
+		cpu: 8
+		memory: "8000 MB"
+	}
+}
+
+
+
+
