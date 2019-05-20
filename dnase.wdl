@@ -85,6 +85,12 @@ workflow dnase {
 		reference_index = reference_index
 	}
 
+	call normalize_density { input:
+		filtered_bam = filter.filtered_bam,
+		density = density.density_starch,
+		reference_index = reference_index
+	}
+
 	call insert_sizes { input:
 		filtered_bam = filter.filtered_bam,
 		nuclear_chroms = nuclear_chroms
@@ -455,6 +461,45 @@ task density {
 		memory: "32000 MB"
 	}
 
+}
+
+task normalize_density {
+	File filtered_bam
+	File density
+	File reference_index
+
+	Int bin_size = 20
+	String scale = '1_000_000'
+
+
+	command <<<
+		unstarch density.starch \
+			| awk -v allcounts=$(samtools view -c ${filtered_bam}) \
+			-v extranuclear_counts=$(samtools view -c ${filtered_bam} chrM chrC) \
+		    -v scale=${scale} \
+		    'BEGIN{ tagcount=allcounts-extranuclear_counts }
+		    { z=$5;
+		    n=(z/tagcount)*scale;
+		    print $1 "\t" $2 "\t" $3 "\t" $4 "\t" n }' \
+			| starch - > normalized.density.starch
+
+		$STAMPIPES/scripts/bwa/starch_to_bigwig.bash \
+			normalized.density.starch \
+			normalized.density.bw \
+			${reference_index} \
+			${bin_size}
+
+		unstarch normalized.density.starch | bgzip > normalized.density.bgz
+		tabix -p bed normalized.density.bgz
+	>>>
+
+
+	output {
+		File normalized_density_starch = glob('normalized.density.starch')[0]
+		File normalized_density_bw = glob('normalized.density.bw')[0]
+		File normalized_density_bgz = glob('normalized.density.bgz')[0]
+		File normalized_density_bgz_tbi = glob('normalized.density.bgz.tbi')[0]
+	}
 }
 
 task insert_sizes {
