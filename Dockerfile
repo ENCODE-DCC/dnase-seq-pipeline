@@ -208,4 +208,9 @@ RUN echo -e '#!/bin/bash\njava -jar /usr/local/lib/picard.jar $@' \
       > /usr/local/bin/picard \
       && chmod +x /usr/local/bin/picard
 
+RUN pip install cython && pip3 install cython
+RUN pip install numpy>=1.10 scipy>=0.17 pysam>=0.8.2 pyfaidx>=0.4.2 statsmodels \
+    multiprocessing matplotlib git+https://github.com/jvierstra/genome-tools@5e3cc51 \
+    git+https://github.com/jvierstra/footprint-tools@914923e
+
 ENTRYPOINT ["/bin/bash","-c"]
