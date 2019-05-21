@@ -3,9 +3,11 @@
 - dups step needs maximum_distance=300 when picard is upgraded
 - dups needs to run with UMI true so that 'UMI_TAG_NAME=XD' argument is tested, example is false
 - add python scripts to PATH so that WDL is cleaner
-- hotspot2 process filtered.* and by marked.* is used interchangeably, is this correct?
 - what other hotspot2 outputs need to be globbed?
 - differential_hotspots is not running now (not implemented), what do we need to run it?
 - hotspot2 and spot_score 'mappable' are the same. Will they be different in the future? Will there be one big 'mappable' for all chromosomes
 - ftd-learn-dispersion-model in learn_dispersion is not found, installed into docker
 - closest_features and motif_matrix is not running, when should it be run?
+- what are parameters to learn_dispersion such that we don't get 
+
+- trim_adapters are more threads better?
