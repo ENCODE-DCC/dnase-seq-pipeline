@@ -1,11 +1,13 @@
 workflow dnase {
-	
+	Array[Array[File]] fastqs
 	Array[File] bams
 	Boolean UMI
 	Boolean dofeatures
 	Boolean domotifs
+	Boolean fastqs_only # temporary flag to run alignment only
 	File? hotspot_index
 	File? bias
+	File adapters
 	File mappable
 	File chrom_info
 	File chrom_bucket
@@ -14,6 +16,9 @@ workflow dnase {
 	File reference
 	Int read_length
 
+
+
+    if (!fastqs_only) {
 
 	call merge { input:
 		bams = bams
@@ -110,9 +115,28 @@ workflow dnase {
 		}
 	}
 
+	}
+
 
 	output {
 
+	}
+}
+
+task split_fastq {
+	File fastq
+	Int fastq_line_chunks
+	Int read_number
+
+
+	command {
+		zcat ${fastq} \
+			| split -l ${chunksize} \
+			--filter='gzip -1 > $FILE.gz' - 'split_r${read_number}'
+	}
+
+	output {
+		Array[File] splits = glob('split_*gz')
 	}
 }
 
@@ -473,7 +497,7 @@ task normalize_density {
 
 
 	command <<<
-		unstarch density.starch \
+		unstarch ${density} \
 			| awk -v allcounts=$(samtools view -c ${filtered_bam}) \
 			-v extranuclear_counts=$(samtools view -c ${filtered_bam} chrM chrC) \
 		    -v scale=${scale} \
