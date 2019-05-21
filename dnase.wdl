@@ -2,6 +2,7 @@ workflow dnase {
 	Array[File] fastqs
 	Array[File] bams
 	Boolean UMI
+	String? UMI_value
 	Boolean dofeatures
 	Boolean domotifs
 	Boolean fastqs_only = true# temporary flag to run alignment only
@@ -16,6 +17,8 @@ workflow dnase {
 	File reference
 	Int read_length
 	Int split_fastq_chunksize
+	Int trim_to = 0
+	Int threads = 2
 
 	scatter (i in range(length(fastqs))) {
 		call split_fastq { input:
@@ -25,7 +28,56 @@ workflow dnase {
 		}
 	}
 
+	Array[Pair[File, File]] chunked_pairs = zip(split_fastq.splits[0], split_fastq.splits[1])
 
+	scatter (pair in chunked_pairs) {
+		call trim_adapters { input:
+			read_one = pair.left,
+			read_two = pair.right,
+			adapters = adapters,
+			threads = threads
+		}
+
+		if (trim_to > 0) {
+			call trim_to_length { input:
+				read_one = trim_adapters.trimmed_fastqs[0],
+				read_two = trim_adapters.trimmed_fastqs[1],
+				trim_to = trim_to
+			}
+		}
+
+		Array[File] trimmed_fastqs = select_first([trim_to_length.trimmed_fastqs, trim_adapters.trimmed_fastqs])
+		#Array[File] trimmed_fastqs = if trim_to==0 then trim_adapters.trimmed_fastqs 
+		#							 else trim_to_length.trimmed_fastqs
+		if (UMI) {
+			call add_umi_info { input:
+				read_one = trimmed_fastqs[0],
+				read_two = trimmed_fastqs[1],
+				UMI_value = UMI_value
+			}
+		}
+
+		Array[File] fastqs_for_alignment = select_first([add_umi_info.with_umi, trimmed_fastqs])
+		#Array[File]? fastqs_for_alignment = if UMI then add_umi_info.with_umi else trimmed_fastqs
+
+		call align { input:
+			read_one = fastqs_for_alignment[0],
+			read_two = fastqs_for_alignment[1],
+			reference = reference,
+			reference_index = reference_index,
+			threads = threads
+		}
+
+		call filter_bam { input:
+			unfiltered_bam = align.unfiltered_bam,
+			nuclear_chroms = nuclear_chroms
+		}
+
+		call sort_bam { input:
+			filtered_bam = filter_bam.filtered_bam,
+			threads = threads
+		}
+	}
 
     if (!fastqs_only) {
 
@@ -148,6 +200,154 @@ task split_fastq {
 		Array[File] splits = glob('split_*gz')
 	}
 }
+
+task trim_adapters {
+	File read_one
+	File read_two
+	File adapters
+	Int threads
+
+	command <<<
+		trim-adapters-illumina \
+			-f ${adapters} \
+			-1 P5 -2 P7 \
+			--threads=${threads} \
+			${read_one} \
+			${read_two}  \
+			"trim.R1.fastq.gz" \
+			"trim.R2.fastq.gz" \
+			&> trimstats.txt
+
+		awk '{print "adapter-trimmed\t" $NF * 2}' \
+			< trimstats.txt \
+			> trim.counts.txt
+	>>>
+
+	output {
+		Array[File] trimmed_fastqs = glob('trim*fastq.gz')
+		File trim_counts = glob('trim.counts.txt')[0]
+	}
+}
+
+task trim_to_length {
+	File read_one
+	File read_two
+	Int trim_to
+
+	command <<<
+		zcat ${read_one} | awk 'NR%2==0 {print substr($0, 1, ${trim_to})} NR%2!=0' | gzip -c -1 > r1.trim.fastq.gz
+		zcat ${read_two} | awk 'NR%2==0 {print substr($0, 1, ${trim_to})} NR%2!=0' | gzip -c -1 > r2.trim.fastq.gz
+
+	>>>
+
+	output {
+		Array[File] trimmed_fastqs = glob('*trim.fastq.gz')
+	}
+
+}
+
+task add_umi_info {
+	File read_one
+	File read_two
+	String UMI_value
+
+	command {
+		UMI=${UMI_value}
+		if [ UMI -eq 'thruplex' ]
+		then 
+			python3 $STAMPIPES/scripts/umi/extract_umt.py \
+				<(zcat ${read_one}) \
+				<(zcat ${read_two}) \
+				>(gzip -c -1 > r1.fastq.umi.gz) \
+				>(gzip -c -1 > r2.fastq.umi.gz)
+		elif [UMI -eq 'True']
+		then
+			python3 $STAMPIPES/scripts/umi/fastq_umi_add.py ${read_one} r1.fastq.umi.gz
+    		python3 $STAMPIPES/scripts/umi/fastq_umi_add.py ${read_two} r2.fastq.umi.gz
+    	fi
+	}
+
+	output {
+		Array[File] with_umi = glob('*.fastq.umi.gz')
+	}
+}
+
+task align {
+	File read_one
+	File read_two
+	File reference
+	File reference_index
+
+	File amb
+	File ann
+	File bwt
+	File pac
+	File sa 
+
+	Int threads
+
+	command {
+		ln ${amb} . && ln ${ann} . && ln ${bwt} . && ln ${pac} . && ln ${sa} .
+		bwa aln \
+			-Y -l 32 -n 0.04 \
+			-t ${threads} \
+			${reference} \
+			${read_one} \
+			> out1.sai
+
+		bwa aln \
+			-Y -l 32 -n 0.04 \
+			-t ${threads} \
+			${reference} \
+			${read_two} \
+			> out2.sai
+
+		bwa sampe \
+			-n 10 -a 750 \
+			${reference} \
+			out1.sai out2.sai \
+			${read_one} ${read_two} \
+			| samtools view -b -t ${reference_index} - \
+			> out.bam
+	}
+
+	output {
+		File unfiltered_bam = glob('out.bam')[0]
+	}
+}
+
+task filter_bam {
+	File unfiltered_bam
+	File nuclear_chroms
+
+	command {
+		python3 \$STAMPIPES/scripts/bwa/filter_reads.py \
+			${unfiltered_bam} \
+			filtered.bam \
+			${nuclear_chroms}
+	}
+
+	output {
+		File filtered_bam = glob('filtered.bam')[0]
+	}
+}
+
+task sort_bam {
+	File filtered_bam
+	Int threads
+
+	command {
+  		samtools sort \
+    		-l 0 -m 1G -@ ${threads} ${filtered_bam} \
+    		> sorted.bam
+	}
+
+	output {
+		File sorted_bam = glob('sorted.bam')[0]
+	}
+}
+
+
 
 task merge {
 	Array[File] bams
