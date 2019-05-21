@@ -1,10 +1,10 @@
 workflow dnase {
-	Array[Array[File]] fastqs
+	Array[File] fastqs
 	Array[File] bams
 	Boolean UMI
 	Boolean dofeatures
 	Boolean domotifs
-	Boolean fastqs_only # temporary flag to run alignment only
+	Boolean fastqs_only = true# temporary flag to run alignment only
 	File? hotspot_index
 	File? bias
 	File adapters
@@ -15,6 +15,15 @@ workflow dnase {
 	File reference_index
 	File reference
 	Int read_length
+	Int split_fastq_chunksize
+
+	scatter (i in range(length(fastqs))) {
+		call split_fastq { input:
+			fastq = fastqs[i],
+			fastq_line_chunks = 4 * split_fastq_chunksize,
+			read_number = i + 1
+		}
+	}
 
 
 
@@ -131,7 +140,7 @@ task split_fastq {
 
 	command {
 		zcat ${fastq} \
-			| split -l ${chunksize} \
+			| split -l ${fastq_line_chunks} \
 			--filter='gzip -1 > $FILE.gz' - 'split_r${read_number}'
 	}
 

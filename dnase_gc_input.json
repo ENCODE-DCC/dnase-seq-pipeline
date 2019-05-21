@@ -1,6 +1,6 @@
 {
-	"dnase.fastqs":		[["gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/fastqs/r1.fastq.gz",
-						  "gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/fastqs/r2.fastq.gz"]],
+	"dnase.fastqs":		["gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/fastqs/r1.fastq.gz",
+						  "gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/fastqs/r2.fastq.gz"],
 	"dnase.bams": 		["gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/bams/in_1.bam",
 				   	 	 "gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/bams/in_2.bam",
 				   	 	 "gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/bams/in_3.bam"],
