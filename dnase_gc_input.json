@@ -1,7 +1,10 @@
 {
+	"dnase.fastqs":		[["gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/fastqs/r1.fastq.gz",
+						  "gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/fastqs/r2.fastq.gz"]],
 	"dnase.bams": 		["gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/bams/in_1.bam",
 				   	 	 "gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/bams/in_2.bam",
 				   	 	 "gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/bams/in_3.bam"],
+	"dnase.adapters":				"gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/alignment/adapters.txt",
 	"dnase.mappable":				"gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/annotations/chr22.K36.mappable_only.bed",
 	"dnase.chrom_info":				"gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/annotations/chr22.chromInfo.bed",
 	"dnase.reference_index":		"gs://encode-pipeline-test-samples/encode-dnase-seq-pipeline/ref/chr22.fa.fai",
@@ -19,5 +22,6 @@
 	"dnase.dofeatures":				false,
 	"dnase.domotifs":				false,
 	"dnase.UMI":	 				false,
-	"dnase.make_intervals.chunksize":	5000
+	"dnase.make_intervals.chunksize":	5000,
+	"dnase.split_fastq_chunksize":		16000000
 }
