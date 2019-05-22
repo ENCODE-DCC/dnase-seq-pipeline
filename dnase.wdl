@@ -79,10 +79,8 @@ workflow dnase {
 		}
 	}
 
-    if (!fastqs_only) {
-
 	call merge { input:
-		bams = bams
+		bams = sort_bam.sorted_bam
 	}
 
 	String dups_cmd = 	if UMI then 'UmiAwareMarkDuplicatesWithMateCigar' 
@@ -175,9 +173,6 @@ workflow dnase {
 			bias = bias
 		}
 	}
-
-	}
-
 
 	output {
 
@@ -321,7 +316,7 @@ task filter_bam {
 	File nuclear_chroms
 
 	command {
-		python3 \$STAMPIPES/scripts/bwa/filter_reads.py \
+		python3 $STAMPIPES/scripts/bwa/filter_reads.py \
 			${unfiltered_bam} \
 			filtered.bam \
 			${nuclear_chroms}
