@@ -134,6 +134,7 @@ RUN apt-get install -y \
 RUN wget --quiet https://github.com/ENCODE-DCC/kentUtils/archive/v302.0.0.tar.gz \
       && tar xf v302.0.0.tar.gz \
       && cd kentUtils-302.0.0 \
+      && export GIT_SSL_NO_VERIFY=1 \
       && make
 
 ##########
@@ -179,16 +180,17 @@ RUN apt-get install -y \
       python3-pip \
       tabix \
       wget \
-      zlib1g-dev
+      zlib1g-dev \
+      git
 
-COPY ./requirements.pip.txt /stampipes/
+RUN git clone https://github.com/StamLab/stampipes.git
 RUN pip install -r /stampipes/requirements.pip.txt
 RUN pip3 install -r /stampipes/requirements.pip.txt
 
-COPY ./scripts /stampipes/scripts
-COPY ./processes /stampipes/processes
-COPY ./makefiles /stampipes/makefiles
-COPY ./awk /stampipes/awk
+COPY stampipes/scripts /stampipes/scripts
+COPY stampipes/processes /stampipes/processes
+COPY stampipes/makefiles /stampipes/makefiles
+COPY stampipes/awk /stampipes/awk
 ENV STAMPIPES=/stampipes
 
 # Copy in dependencies
