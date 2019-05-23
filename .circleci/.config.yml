@@ -29,7 +29,6 @@ install_singularity: &install_singularity
   command: |
     sudo apt-get update
     sudo apt-get install \
-    python \
     dh-autoreconf \
     build-essential \
     libarchive-dev \
