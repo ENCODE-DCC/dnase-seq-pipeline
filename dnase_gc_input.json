@@ -29,5 +29,5 @@
 	"dnase.UMI":	 				false,
 	"dnase.trim_to":				0,
 	"dnase.make_intervals.chunksize":	5000,
-	"dnase.split_fastq_chunksize":		16000000
+	"dnase.split_fastq_chunksize":		50000
 }
