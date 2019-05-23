@@ -187,10 +187,6 @@ RUN git clone https://github.com/StamLab/stampipes.git
 RUN pip install -r /stampipes/requirements.pip.txt
 RUN pip3 install -r /stampipes/requirements.pip.txt
 
-COPY stampipes/scripts /stampipes/scripts
-COPY stampipes/processes /stampipes/processes
-COPY stampipes/makefiles /stampipes/makefiles
-COPY stampipes/awk /stampipes/awk
 ENV STAMPIPES=/stampipes
 
 # Copy in dependencies
