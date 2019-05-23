@@ -18,7 +18,7 @@ workflow dnase {
 	Int read_length
 	Int split_fastq_chunksize
 	Int trim_to = 0
-	Int threads = 2
+	Int threads = 1
 
 	scatter (i in range(length(fastqs))) {
 		call split_fastq { input:
@@ -47,8 +47,7 @@ workflow dnase {
 		}
 
 		Array[File] trimmed_fastqs = select_first([trim_to_length.trimmed_fastqs, trim_adapters.trimmed_fastqs])
-		#Array[File] trimmed_fastqs = if trim_to==0 then trim_adapters.trimmed_fastqs 
-		#							 else trim_to_length.trimmed_fastqs
+
 		if (UMI) {
 			call add_umi_info { input:
 				read_one = trimmed_fastqs[0],
@@ -58,7 +57,6 @@ workflow dnase {
 		}
 
 		Array[File] fastqs_for_alignment = select_first([add_umi_info.with_umi, trimmed_fastqs])
-		#Array[File]? fastqs_for_alignment = if UMI then add_umi_info.with_umi else trimmed_fastqs
 
 		call align { input:
 			read_one = fastqs_for_alignment[0],
@@ -94,6 +92,7 @@ workflow dnase {
 	}
 
 	Int flag = if UMI then 1536 else 512
+
 	call filter { input:
 		marked_bam = dups.marked_bam,
 		flag = flag
@@ -163,6 +162,10 @@ workflow dnase {
 	call filter_nuclear { input:
 		filtered_bam = filter.filtered_bam,
 		nuclear_chroms = nuclear_chroms
+	}
+
+	call preseq { input:
+		nuclear_bam = filter_nuclear.nuclear_bam
 	}
 
 	if ( defined( bias )) {
@@ -771,6 +774,25 @@ task filter_nuclear {
 	}
 }
 
+task preseq {
+	File nuclear_bam
+
+	command {
+		python3 $STAMPIPES/scripts/bam/mark_dups.py -i ${nuclear_bam} -o /dev/null --hist dups.hist
+		preseq lc_extrap -hist dups.hist -extrap 1.001e9 -s 1e6 -v > preseq.txt \
+		|| preseq lc_extrap -defects -hist dups.hist -extrap 1.001e9 -s 1e6 -v > preseq.txt
+
+		# write out preseq targets
+		bash $STAMPIPES/scripts/utility/preseq_targets.sh preseq.txt preseq_targets.txt
+	}
+
+	output {
+		File preseq_txt = glob('preseq.txt')[0]
+		File preseq_targets = glob('preseq_targets.txt')[0]
+		File dups_hist = glob('dups.hist')[0]
+	}
+}
+
 task learn_dispersion {
 	File filtered_bam
 	File reference
@@ -801,7 +823,6 @@ task learn_dispersion {
 		File to_plot = glob('dm.json')[0]
 		File filtered_bam_indexed = glob('filtered.bam.bai')[0]
 	}
-
 
 	runtime {
 		cpu: 8
