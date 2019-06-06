@@ -1,6 +1,5 @@
 workflow dnase {
 	Array[File] fastqs
-	Array[File] bams
 	Boolean UMI
 	String? UMI_value
 	Boolean dofeatures
