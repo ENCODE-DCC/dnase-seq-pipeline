@@ -19,8 +19,10 @@ RUN apt-get update && apt-get install -y \
     ncurses-dev \
 # above are for samtools
     tabix \
-    libboost-dev
+    libboost-dev \
 # libboost-dev is trim-adapters-illumina dependency
+    libgsl-dev
+# libgsl-dev is preseq dependency
 
 
 RUN mkdir /software
@@ -62,3 +64,9 @@ RUN git clone https://bitbucket.org/jvierstra/bio-tools.git \
       && make
 
 ENV PATH="/software/bio-tools/apps/trim-adapters-illumina:${PATH}"
+
+# Install preseq 
+RUN git clone --recurse-submodules https://github.com/smithlabcode/preseq.git \
+   && cd preseq \
+   && git checkout v2.0.1 \
+   && make all SAMTOOLS_DIR=/software/samtools-1.7/
