@@ -1,10 +1,12 @@
 {
-	"dnase.fastqs":		["test_data/dnase/alignment/fastqs/r1.fastq.gz",
-						  "test_data/dnase/alignment/fastqs/r2.fastq.gz"],
-	"dnase.adapters":				"test_data/dnase/alignment/adapters.txt",
-	"dnase.reference_index":		"test_data/ref/chr22.fa.fai",
-	"dnase.reference":				"test_data/ref/chr22.fa",
-	"dnase.UMI":	 				false,
-	"dnase.trim_to":				0,
-	"dnase.split_fastq_chunksize":		50000
+  "dnase.fastqs": [
+    "test_data/dnase/alignment/fastqs/r1.fastq.gz",
+    "test_data/dnase/alignment/fastqs/r2.fastq.gz"
+  ],
+  "dnase.adapters": "test_data/dnase/alignment/adapters.txt",
+  "dnase.reference_index": "test_data/ref/chr22.fa.fai",
+  "dnase.reference": "test_data/ref/chr22.fa",
+  "dnase.UMI": false,
+  "dnase.trim_to": 0,
+  "dnase.split_fastq_chunksize": 50000
 }
