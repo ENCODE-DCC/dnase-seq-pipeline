@@ -18,7 +18,10 @@ RUN apt-get update && apt-get install -y \
     liblzma-dev \
     ncurses-dev \
 # above are for samtools
-    tabix
+    tabix \
+    libboost-dev
+# libboost-dev is trim-adapters-illumina dependency
+
 
 RUN mkdir /software
 WORKDIR /software
@@ -36,7 +39,8 @@ ENV PATH="/software/bwa:${PATH}"
 RUN wget --quiet https://github.com/samtools/samtools/releases/download/1.7/samtools-1.7.tar.bz2 \
       && tar xf samtools-1.7.tar.bz2 \
       && cd samtools-1.7 \
-      && make install
+      && make install 
+RUN rm samtools-1.7.tar.bz2
 
 # Get picard and make alias
 RUN wget --quiet https://github.com/broadinstitute/picard/releases/download/2.8.1/picard.jar
@@ -50,3 +54,11 @@ RUN git clone https://github.com/bedops/bedops.git \
       && make install
 
 ENV PATH="/software/bedops/bin:${PATH}"
+
+# Install trim-adapters-illumina
+RUN git clone https://bitbucket.org/jvierstra/bio-tools.git \
+      && cd bio-tools \
+      && git checkout 6fe54fa5a3 \
+      && make
+
+ENV PATH="/software/bio-tools/apps/trim-adapters-illumina:${PATH}"
