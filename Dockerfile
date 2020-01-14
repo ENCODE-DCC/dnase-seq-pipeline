@@ -16,8 +16,9 @@ RUN apt-get update && apt-get install -y \
     autoconf \
     libbz2-dev \
     liblzma-dev \
-    ncurses-dev
+    ncurses-dev \
 # above are for samtools
+    tabix
 
 RUN mkdir /software
 WORKDIR /software
@@ -29,10 +30,14 @@ RUN git clone https://github.com/lh3/bwa.git \
     && git checkout 0.7.12 \
     && make
 
+ENV PATH="/software/bwa:${PATH}"
+
 # Install Samtools 1.7
 RUN wget --quiet https://github.com/samtools/samtools/releases/download/1.7/samtools-1.7.tar.bz2 \
       && tar xf samtools-1.7.tar.bz2 \
       && cd samtools-1.7 \
       && make install
 
-ENV PATH="/software/bwa:${PATH}"
+# Get picard and make alias
+RUN wget --quiet https://github.com/broadinstitute/picard/releases/download/2.8.1/picard.jar
+RUN echo 'alias picard="java -jar /software/picard.jar"' >> ~/.bashrc
