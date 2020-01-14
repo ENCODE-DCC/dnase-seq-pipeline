@@ -41,3 +41,12 @@ RUN wget --quiet https://github.com/samtools/samtools/releases/download/1.7/samt
 # Get picard and make alias
 RUN wget --quiet https://github.com/broadinstitute/picard/releases/download/2.8.1/picard.jar
 RUN echo 'alias picard="java -jar /software/picard.jar"' >> ~/.bashrc
+
+# Install bedops
+RUN git clone https://github.com/bedops/bedops.git \
+      && cd bedops \
+      && git checkout v2.4.35 \
+      && make \
+      && make install
+
+ENV PATH="/software/bedops/bin:${PATH}"
