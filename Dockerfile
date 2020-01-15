@@ -21,8 +21,10 @@ RUN apt-get update && apt-get install -y \
     tabix \
     libboost-dev \
 # libboost-dev is trim-adapters-illumina dependency
-    libgsl-dev
+    libgsl-dev \
 # libgsl-dev is preseq dependency
+    libcurl4-openssl-dev
+# htslib dependency
 
 
 RUN mkdir /software
@@ -66,7 +68,15 @@ RUN git clone https://bitbucket.org/jvierstra/bio-tools.git \
 ENV PATH="/software/bio-tools/apps/trim-adapters-illumina:${PATH}"
 
 # Install preseq 
+# get htslib first
+RUN wget --quiet https://github.com/samtools/htslib/releases/download/1.10.2/htslib-1.10.2.tar.bz2 \
+    && tar xf htslib-1.10.2.tar.bz2 \
+    && cd htslib-1.10.2 \
+    && ./configure \
+    && make \
+    && make install
+
 RUN git clone --recurse-submodules https://github.com/smithlabcode/preseq.git \
-   && cd preseq \
-   && git checkout v2.0.1 \
-   && make all SAMTOOLS_DIR=/software/samtools-1.7/
+    && cd preseq \
+    && git checkout v2.0.3 \
+    && make HAVE_HTSLIB=1 all
