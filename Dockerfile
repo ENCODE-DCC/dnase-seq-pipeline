@@ -1,36 +1,52 @@
-# base on ubuntu 18.04
 FROM ubuntu@sha256:2695d3e10e69cc500a16eae6d6629c803c43ab075fa5ce60813a0fc49c47e859
 MAINTAINER Otto Jolanki
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    git \
-    wget \
-    g++ \
-    gcc \
-    openjdk-8-jre \
-    perl \
-    python \
-    zlib1g-dev \
-# above are for bwa
-    autoconf \
-    libbz2-dev \
-    liblzma-dev \
-    ncurses-dev \
-# above are for samtools
-    tabix \
-    libboost-dev \
-# libboost-dev is trim-adapters-illumina dependency
-    libgsl-dev \
-# libgsl-dev is preseq dependency
-    libcurl4-openssl-dev
-# htslib dependency
-
+RUN apt-get update && apt-get install -y \ 
+	gcc \
+	g++ \
+	zlib1g-dev \
+	libbz2-dev \
+	liblzma-dev \
+	libcurl4-openssl-dev \
+	libcrypto++-dev \
+	libgsl-dev \
+	wget \
+	make \
+	autoconf \
+	ncurses-dev \
+	build-essential \
+	git \
+	openjdk-8-jre \
+	perl \
+        python \
+	tabix \
+	libboost-dev 
 
 RUN mkdir /software
 WORKDIR /software
 ENV PATH="/software:${PATH}"
 
+RUN wget --quiet https://github.com/samtools/htslib/releases/download/1.10.2/htslib-1.10.2.tar.bz2 \
+    && tar xf htslib-1.10.2.tar.bz2 \
+    && cd htslib-1.10.2 \
+    && ./configure \
+    && make \
+    && make install
+
+RUN wget --quiet https://github.com/smithlabcode/preseq/releases/download/v2.0.3/preseq_v2.0.3.tar.bz2 \
+	&& tar xf preseq_v2.0.3.tar.bz2 \
+	&& cd preseq \
+	&& make HAVE_HTSLIB=1 all
+
+ENV PATH="/software/preseq:${PATH}"
+
+RUN wget --quiet https://github.com/samtools/samtools/releases/download/1.10/samtools-1.10.tar.bz2 \
+	&& tar xf samtools-1.10.tar.bz2 \
+	&& cd samtools-1.10 \
+	&& ./configure --with-htslib=../htslib-1.10.2 \
+	&& make \
+	&& make install
+ 
 # Install BWA - do some magicks so it compiles with musl.c
 RUN git clone https://github.com/lh3/bwa.git \
     && cd bwa \
@@ -38,13 +54,6 @@ RUN git clone https://github.com/lh3/bwa.git \
     && make
 
 ENV PATH="/software/bwa:${PATH}"
-
-# Install Samtools 1.7
-RUN wget --quiet https://github.com/samtools/samtools/releases/download/1.7/samtools-1.7.tar.bz2 \
-      && tar xf samtools-1.7.tar.bz2 \
-      && cd samtools-1.7 \
-      && make install 
-RUN rm samtools-1.7.tar.bz2
 
 # Get picard and make alias
 RUN wget --quiet https://github.com/broadinstitute/picard/releases/download/2.8.1/picard.jar
@@ -67,16 +76,3 @@ RUN git clone https://bitbucket.org/jvierstra/bio-tools.git \
 
 ENV PATH="/software/bio-tools/apps/trim-adapters-illumina:${PATH}"
 
-# Install preseq 
-# get htslib first
-RUN wget --quiet https://github.com/samtools/htslib/releases/download/1.10.2/htslib-1.10.2.tar.bz2 \
-    && tar xf htslib-1.10.2.tar.bz2 \
-    && cd htslib-1.10.2 \
-    && ./configure \
-    && make \
-    && make install
-
-RUN git clone --recurse-submodules https://github.com/smithlabcode/preseq.git \
-    && cd preseq \
-    && git checkout v2.0.3 \
-    && make HAVE_HTSLIB=1 all
