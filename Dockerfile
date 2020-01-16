@@ -60,10 +60,10 @@ RUN echo 'alias picard="java -jar /software/picard.jar"' >> ~/.bashrc
 
 # Install bedops
 RUN git clone https://github.com/bedops/bedops.git \
-      && cd bedops \
-      && git checkout v2.4.35 \
-      && make \
-      && make install
+    && cd bedops \
+    && git checkout v2.4.35 \
+    && make \
+    && make install
 
 ENV PATH="/software/bedops/bin:${PATH}"
 
@@ -77,20 +77,26 @@ ENV PATH="/software/bio-tools/apps/trim-adapters-illumina:${PATH}"
 
 # Install Hotspot1
 RUN git clone https://github.com/StamLab/hotspot.git \
-      && cd hotspot \
-      && git checkout v4.1.1 \
-      && cd hotspot-distr/hotspot-deploy \
-      && make
+    && cd hotspot \
+    && git checkout v4.1.1 \
+    && cd hotspot-distr/hotspot-deploy \
+    && make
 
 # Get BedGraphToBigWig v385 for hotspots2
 RUN git clone https://github.com/ENCODE-DCC/kentutils_v385_bin_bulkrna.git \
-	&& rm kentutils_v385_bin_bulkrna/bedSort 
+    && rm kentutils_v385_bin_bulkrna/bedSort 
 
 ENV PATH="/software/kentutils_v385_bin_bulkrna:${PATH}"
 
 # Install modwt for hotspot2
 RUN git clone https://github.com/StamLab/modwt.git \
-      && cd modwt \
-      && git checkout 28e9f479c737836ffc870199f2468e30659ab38d \
-      && make
+    && cd modwt \
+    && git checkout 28e9f479c737836ffc870199f2468e30659ab38d \
+    && make
 
+# Install hotspots2 v2.1
+RUN git clone -b 'v2.1' --single-branch --depth 1 https://github.com/Altius/hotspot2.git \
+     && cd hotspot2 \
+     && make
+
+ENV PATH="/software/hotspot2/bin:${PATH}"
