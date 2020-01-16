@@ -1,0 +1,44 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: osx-64
+attrs=19.3.0=py_0
+ca-certificates=2019.11.28=hecc5488_0
+caper=0.6.3=pypi_0
+certifi=2019.11.28=py38_0
+cffi=1.13.2=pypi_0
+chardet=3.0.4=pypi_0
+cryptography=2.8=pypi_0
+idna=2.8=pypi_0
+importlib_metadata=1.4.0=py38_0
+jsonschema=3.2.0=py38_0
+libcxx=9.0.1=1
+libffi=3.2.1=h6de7cb9_1006
+more-itertools=8.1.0=py_0
+ncurses=6.1=h0a44026_1002
+openssl=1.1.1d=h0b31af3_0
+packaging=20.0=py_0
+pip=19.3.1=py38_0
+pluggy=0.13.1=py38_0
+py=1.8.1=py_0
+pycparser=2.19=pypi_0
+pyhocon=0.3.54=pypi_0
+pyopenssl=19.1.0=pypi_0
+pyparsing=2.4.6=py_0
+pyrsistent=0.15.7=py38h0b31af3_0
+pytest=5.3.2=py38_0
+pytest-workflow=1.2.2=py_0
+python=3.8.1=h5c2c468_1
+pyyaml=5.3=py38h0b31af3_0
+readline=8.0=hcfe32e1_0
+requests=2.22.0=pypi_0
+setuptools=45.0.0=py38_1
+six=1.13.0=pypi_0
+sqlite=3.30.1=h93121df_0
+tk=8.6.10=hbbe82c9_0
+urllib3=1.25.7=pypi_0
+wcwidth=0.1.8=py_0
+wheel=0.33.6=py38_0
+xz=5.2.4=h1de35cc_1001
+yaml=0.2.2=h0b31af3_1
+zipp=1.0.0=py_0
+zlib=1.2.11=h0b31af3_1006
