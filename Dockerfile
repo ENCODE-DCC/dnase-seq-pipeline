@@ -88,3 +88,9 @@ RUN git clone https://github.com/ENCODE-DCC/kentutils_v385_bin_bulkrna.git \
 
 ENV PATH="/software/kentutils_v385_bin_bulkrna:${PATH}"
 
+# Install modwt for hotspot2
+RUN git clone https://github.com/StamLab/modwt.git \
+      && cd modwt \
+      && git checkout 28e9f479c737836ffc870199f2468e30659ab38d \
+      && make
+
