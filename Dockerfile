@@ -17,7 +17,6 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     git \
     openjdk-8-jre \
-    perl \
     python \
     tabix \
     libboost-dev 
@@ -82,4 +81,10 @@ RUN git clone https://github.com/StamLab/hotspot.git \
       && git checkout v4.1.1 \
       && cd hotspot-distr/hotspot-deploy \
       && make
+
+# Get BedGraphToBigWig v385 for hotspots2
+RUN git clone https://github.com/ENCODE-DCC/kentutils_v385_bin_bulkrna.git \
+	&& rm kentutils_v385_bin_bulkrna/bedSort 
+
+ENV PATH="/software/kentutils_v385_bin_bulkrna:${PATH}"
 
