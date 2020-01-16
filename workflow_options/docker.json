@@ -1,7 +1,0 @@
-{
-    "default_runtime_attributes" : {
-    	"docker": "quay.io/encode-dcc/stampipes_single_docker:docker_with_footprints",
-        "cpu": "2",
-        "memory": "7 GB"
-    }
-}
