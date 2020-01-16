@@ -1,6 +1,6 @@
 - name: test_bwa_aln
   command: >-
-    caper run tests/test_bwa_aln.wdl --cromwell cromwell-48.jar
+    caper run tests/unit/test_bwa_aln.wdl --cromwell ~/cromwell/cromwell-48.jar
     --options tests/cromwell_options.json
   stdout:
     contains:
