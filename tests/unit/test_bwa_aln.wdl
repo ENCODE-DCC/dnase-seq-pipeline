@@ -5,5 +5,5 @@ import "../../tasks/bwa.wdl"
 
 
 workflow test_bwa_aln {
-    call bwa.Aln
+    call bwa.aln
 }

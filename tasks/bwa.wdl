@@ -1,7 +1,7 @@
 version 1.0
 
 
-task Aln {
+task aln {
     command {
         bwa aln
     }
