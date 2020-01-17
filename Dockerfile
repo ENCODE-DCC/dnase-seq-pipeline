@@ -20,7 +20,9 @@ RUN apt-get update && apt-get install -y \
     python \
     python3 \
     tabix \
-    libboost-dev 
+    libboost-dev \
+    python-pip \
+    python3-pip 
 
 RUN mkdir /software
 WORKDIR /software
@@ -104,4 +106,9 @@ ENV PATH="/software/hotspot2/bin:${PATH}"
 
 # Pull bwa_2.6.0-rc tag of stampipes
 RUN git clone -b 'bwa_2.6.0-rc' --single-branch --depth 1 https://github.com/StamLab/stampipes.git
+
+# Install stampipes requirements
+RUN pip3 install biopython==1.76
+
+# Add required stampipe locations to PATH to enable locating scripts with which
 
