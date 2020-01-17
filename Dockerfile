@@ -108,7 +108,10 @@ ENV PATH="/software/hotspot2/bin:${PATH}"
 RUN git clone -b 'bwa_2.6.0-rc' --single-branch --depth 1 https://github.com/StamLab/stampipes.git
 
 # Install stampipes requirements
-RUN pip3 install biopython==1.76
+RUN pip3 install biopython==1.76 pysam==0.15.0 numpy==1.18.1 scipy==1.4.1 scikit-learn==0.22.1
+
+RUN pip install biopython pysam numpy scipy scikit-learn
 
 # Add required stampipe locations to PATH to enable locating scripts with which
-
+ENV PATH="/software/stampipes/scripts/umi:${PATH}"
+ENV PATH="/software/stampipes/scripts/bwa:${PATH}"
