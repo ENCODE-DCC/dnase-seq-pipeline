@@ -1,7 +1,6 @@
 - name: test_bwa_aln
   command: >-
-    caper run tests/unit/test_bwa_aln.wdl --cromwell ~/cromwell/cromwell-48.jar
-    --options tests/cromwell_options.json
+      tests/caper_run.sh tests/unit/test_bwa_aln.wdl 
   stdout:
     contains:
       - "bwa aln"
