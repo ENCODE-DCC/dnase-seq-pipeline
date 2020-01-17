@@ -1,214 +1,135 @@
-############
-# Build base
-from ubuntu:18.04 as build-base
-RUN apt-get update
-RUN apt-get install -y \
-      build-essential \
-      git \
-      wget \
-      zlib1g-dev
+FROM ubuntu@sha256:2695d3e10e69cc500a16eae6d6629c803c43ab075fa5ce60813a0fc49c47e859
+MAINTAINER Otto Jolanki
 
-
-###########
-# Build BWA
-from build-base as build-bwa
-RUN apt-get install -y \
-      build-essential \
-      git \
-      g++ \
-      gcc \
-      git \
-      openjdk-8-jre \
-      perl \
-      python \
-      zlib1g-dev
-# Install BWA - do some magicks so it compiles with musl.c
-RUN   git clone https://github.com/lh3/bwa.git \
-      && cd bwa \
-      && git checkout 0.7.12 \
-      && make
-
-# ################
-# # Build Kallisto
-# from alpine:3.7 as build-kallisto
-# RUN apk add --no-cache build-base
-#
-# RUN apk add --no-cache \
-#   build-base \
-#   curl
-#
-# RUN curl https://support.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.10.1.tar.bz2 --output hdf5-1.10.1.tar.bz2 \
-#       && tar xf hdf5-1.10.1.tar.bz2 \
-#       && cd  hdf5-1.10.1 \
-#       && ./configure --prefix / \
-#       && make install
-#
-# RUN apk add --no-cache \
-#   cmake \
-#   zlib-dev
-#
-# RUN wget --quiet https://github.com/pachterlab/kallisto/archive/v0.44.0.tar.gz \
-#       && tar xf v0.44.0.tar.gz \
-#       && cd kallisto-0.44.0 \
-#       && mkdir build \
-#       && cd build \
-#       && cmake .. \
-#       && make install
-#
-
-################
-# Build samtools
-FROM build-base as build-samtools
-RUN apt-get install -y \
-    build-essential \
-    autoconf \
+RUN apt-get update && apt-get install -y \ 
+    gcc \
     g++ \
-    git \
+    zlib1g-dev \
     libbz2-dev \
     liblzma-dev \
-    make \
-    ncurses-dev \
+    libcurl4-openssl-dev \
+    libcrypto++-dev \
+    libgsl-dev \
     wget \
-    zlib1g-dev
-RUN wget --quiet https://github.com/samtools/samtools/releases/download/1.7/samtools-1.7.tar.bz2 \
-      && tar xf samtools-1.7.tar.bz2 \
-      && cd samtools-1.7 \
-      && make install
+    make \
+    autoconf \
+    ncurses-dev \
+    build-essential \
+    git \
+    openjdk-8-jre \
+    python \
+    python3 \
+    tabix \
+    libboost-dev \
+    python-pip \
+    python3-pip 
 
-#####################
-# Build trim-adapters
-FROM build-base as build-trim-adapters
-RUN apt-get install -y \
-      build-essential \
-      libboost-dev \
-      git \
-      zlib1g-dev
+RUN mkdir /software
+WORKDIR /software
+ENV PATH="/software:${PATH}"
+
+RUN wget --quiet https://github.com/samtools/htslib/releases/download/1.10.2/htslib-1.10.2.tar.bz2 \
+    && tar xf htslib-1.10.2.tar.bz2 \
+    && cd htslib-1.10.2 \
+    && ./configure \
+    && make \
+    && make install
+
+RUN wget --quiet https://github.com/smithlabcode/preseq/releases/download/v2.0.3/preseq_v2.0.3.tar.bz2 \
+    && tar xf preseq_v2.0.3.tar.bz2 \
+    && cd preseq \
+    && make HAVE_HTSLIB=1 all
+
+ENV PATH="/software/preseq:${PATH}"
+
+RUN wget --quiet https://github.com/samtools/samtools/releases/download/1.10/samtools-1.10.tar.bz2 \
+    && tar xf samtools-1.10.tar.bz2 \
+    && cd samtools-1.10 \
+    && ./configure --with-htslib=../htslib-1.10.2 \
+    && make \
+    && make install
+ 
+# Install BWA - do some magicks so it compiles with musl.c
+RUN git clone https://github.com/lh3/bwa.git \
+    && cd bwa \
+    && git checkout 0.7.12 \
+    && make
+
+ENV PATH="/software/bwa:${PATH}"
+
+# Get picard and make alias
+RUN wget --quiet https://github.com/broadinstitute/picard/releases/download/2.8.1/picard.jar
+RUN echo 'alias picard="java -jar /software/picard.jar"' >> ~/.bashrc
+
+# Install bedops
+RUN git clone https://github.com/bedops/bedops.git \
+    && cd bedops \
+    && git checkout v2.4.35 \
+    && make \
+    && make install
+
+ENV PATH="/software/bedops/bin:${PATH}"
+
+# Install trim-adapters-illumina
 RUN git clone https://bitbucket.org/jvierstra/bio-tools.git \
       && cd bio-tools \
       && git checkout 6fe54fa5a3 \
       && make
 
-########
-# Picard
-from build-base as get-picard
-RUN wget --quiet https://github.com/broadinstitute/picard/releases/download/2.8.1/picard.jar
+ENV PATH="/software/bio-tools/apps/trim-adapters-illumina:${PATH}"
 
-########
-# Bedops
-from build-base as build-bedops
-RUN apt-get install -y \
-      build-essential \
-      git \
-      libbz2-dev
-RUN git clone https://github.com/bedops/bedops.git \
-      && cd bedops \
-      && git checkout v2.4.35 \
-      && make \
-      && make install
-
-##########
-# Hotspot1
-from build-base as build-hotspot1
-RUN apt-get install -y \
-      build-essential \
-      git \
-      libgsl-dev \
-      wget
+# Install Hotspot1
 RUN git clone https://github.com/StamLab/hotspot.git \
-      && cd hotspot \
-      && git checkout v4.1.1 \
-      && cd hotspot-distr/hotspot-deploy \
-      && make
+    && cd hotspot \
+    && git checkout v4.1.1 \
+    && cd hotspot-distr/hotspot-deploy \
+    && make
 
-###########
-# Kentutils
-from build-base as build-kentutils
-RUN apt-get install -y \
-      build-essential \
-      git \
-      libmysqlclient-dev \
-      libpng-dev \
-      libssh-dev \
-      wget \
-      zlib1g-dev
-RUN wget --quiet https://github.com/ENCODE-DCC/kentUtils/archive/v302.0.0.tar.gz \
-      && tar xf v302.0.0.tar.gz \
-      && cd kentUtils-302.0.0 \
-      && export GIT_SSL_NO_VERIFY=1 \
-      && make
+ENV PATH="/software/hotspot/hotspot-distr/ScriptTokenizer/src:${PATH}"
 
-##########
-# Bedtools
-from build-base as build-bedtools
-RUN apt-get install -y \
-      python
-RUN wget --quiet https://github.com/arq5x/bedtools2/releases/download/v2.25.0/bedtools-2.25.0.tar.gz \
-      && tar xf bedtools-2.25.0.tar.gz \
-      && cd bedtools2 \
-      && make
+# Get BedGraphToBigWig v385 for hotspots2
+RUN git clone https://github.com/ENCODE-DCC/kentutils_v385_bin_bulkrna.git \
+    && rm kentutils_v385_bin_bulkrna/bedSort 
 
-########
-# Preseq
-from build-base as build-preseq
-RUN apt-get install -y \
-      libgsl-dev
-RUN git clone --recurse-submodules https://github.com/smithlabcode/preseq.git \
-   && cd preseq \
-   && git checkout v2.0.1 \
-   && make
+ENV PATH="/software/kentutils_v385_bin_bulkrna:${PATH}"
+
+# Install modwt for hotspot2
+RUN git clone https://github.com/StamLab/modwt.git \
+    && cd modwt \
+    && git checkout 28e9f479c737836ffc870199f2468e30659ab38d \
+    && make
+
+# Install hotspots2 v2.1
+RUN git clone -b 'v2.1' --single-branch --depth 1 https://github.com/Altius/hotspot2.git \
+     && cd hotspot2 \
+     && make
+
+ENV PATH="/software/hotspot2/bin:${PATH}"
+ENV PATH="/software/hotspot2/scripts:${PATH}"
+
+# Pull bwa_2.6.0-rc tag of stampipes
+RUN git clone -b 'bwa_2.6.0-rc' --single-branch --depth 1 https://github.com/StamLab/stampipes.git
+
+# Install stampipes requirements
+RUN pip install cython numpy 
+RUN pip3 install biopython==1.76 pysam==0.15.0 numpy==1.18.1 scipy==1.4.1 scikit-learn==0.22.1
+
+RUN pip install biopython pysam scipy scikit-learn statsmodels multiprocessing matplotlib git+https://github.com/jvierstra/genome-tools@5e3cc51 git+https://github.com/jvierstra/footprint-tools@914923e
+
+#make scripts findable by which
+RUN chmod 755 /software/stampipes/scripts/bwa/bamcounts.py
+RUN chmod 755 /software/stampipes/scripts/bwa/aggregate/basic/sparse_motifs.py 
+RUN chmod 755 /software/stampipes/scripts/bam/random_sample.sh
+RUN chmod 755 /software/stampipes/scripts/SPOT/runhotspot.bash
+RUN chmod 755 /software/stampipes/scripts/utility/picard_inserts_process.py
+RUN chmod 755 /software/stampipes/scripts/utility/preseq_targets.sh
+
+# Add required stampipe locations to PATH to enable locating scripts with which
+ENV PATH="/software/stampipes/scripts/umi:${PATH}"
+ENV PATH="/software/stampipes/scripts/bwa:${PATH}"
+ENV PATH="/software/stampipes/scripts/bam:${PATH}"
+ENV PATH="/software/stampipes/scripts/SPOT:${PATH}"
+ENV PATH="/software/stampipes/scripts/bwa/aggregate/basic:${PATH}"
+ENV PATH="/software/stampipes/scripts/utility:${PATH}"
 
 
-#############
-# Final image
-from ubuntu:18.04 as stampipes
-
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update
-RUN apt-get install -y \
-      bash \
-      bc \
-      bowtie \
-      build-essential \
-      libboost-dev \
-      coreutils \
-      libgsl-dev \
-      littler \
-      openjdk-8-jre \
-      python-dev \
-      python-pip \
-      python3 \
-      python3-pip \
-      tabix \
-      wget \
-      zlib1g-dev \
-      git
-
-RUN git clone https://github.com/StamLab/stampipes.git
-RUN pip install -r /stampipes/requirements.pip.txt
-RUN pip3 install -r /stampipes/requirements.pip.txt
-
-ENV STAMPIPES=/stampipes
-
-# Copy in dependencies
-COPY --from=build-bwa /bwa/bwa /usr/local/bin/
-COPY --from=build-trim-adapters /bio-tools/apps/trim-adapters-illumina/trim-adapters-illumina /usr/local/bin/
-COPY --from=build-samtools /usr/local/bin/samtools /usr/local/bin
-COPY --from=build-bedops /bedops/bin /usr/local/bin
-ENV HOTSPOT_DIR /hotspot
-COPY --from=build-hotspot1 /hotspot/hotspot-distr/ $HOTSPOT_DIR
-COPY --from=build-kentutils /kentUtils-302.0.0/bin/ /usr/local/bin/
-COPY --from=build-bedtools /bedtools2/bin/ /usr/local/bin/
-COPY --from=build-preseq /preseq/preseq /usr/local/bin/
-COPY --from=get-picard /picard.jar /usr/local/lib/picard.jar
-
-# Make alias for picard
-RUN echo -e '#!/bin/bash\njava -jar /usr/local/lib/picard.jar $@' \
-      > /usr/local/bin/picard \
-      && chmod +x /usr/local/bin/picard
-
-RUN pip install cython && pip3 install cython
-RUN pip install numpy>=1.10 scipy>=0.17 pysam>=0.8.2 pyfaidx>=0.4.2 statsmodels \
-    multiprocessing matplotlib git+https://github.com/jvierstra/genome-tools@5e3cc51 \
-    git+https://github.com/jvierstra/footprint-tools@914923e
-
-ENTRYPOINT ["/bin/bash","-c"]
