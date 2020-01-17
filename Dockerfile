@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
     git \
     openjdk-8-jre \
     python \
-	python3 \
+    python3 \
     tabix \
     libboost-dev 
 
