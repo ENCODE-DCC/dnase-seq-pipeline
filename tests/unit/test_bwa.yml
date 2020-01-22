@@ -1,0 +1,6 @@
+- name: test_bwa_aln
+  command: >-
+      tests/caper_run.sh tests/unit/test_bwa_aln.wdl 
+  stdout:
+    contains:
+      - "bwa aln"
