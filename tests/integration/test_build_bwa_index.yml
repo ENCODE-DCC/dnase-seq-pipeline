@@ -12,4 +12,4 @@
       - path: "test-output/chr22.fa.ann"
       - path: "test-output/chr22.fa.bwt"
       - path: "test-output/chr22.fa.pac"
-      - path: "test-output/chr22.fa.sa"      
+      - path: "test-output/chr22.fa.sa"
