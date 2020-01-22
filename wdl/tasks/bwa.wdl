@@ -14,7 +14,7 @@ task index {
     String prefix = basename(fasta)
 
     command {
-        cp ~{fasta} ~{prefix}
+        ln ~{fasta} .
         bwa index ~{prefix}
     }
 
