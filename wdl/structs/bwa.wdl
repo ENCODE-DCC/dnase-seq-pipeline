@@ -7,5 +7,5 @@ struct BWAIndex {
     File ann
     File bwt
     File pac
-    File sa    
+    File sa
 }
