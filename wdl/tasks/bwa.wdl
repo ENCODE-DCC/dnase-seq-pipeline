@@ -1,7 +1,7 @@
 version 1.0
 
 
-import "../structs/bwa_struct.wdl"
+import "../structs/bwa.wdl"
 
 
 task index {
