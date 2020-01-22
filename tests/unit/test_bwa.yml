@@ -1,13 +1,16 @@
 - name: test_bwa_index
   command: >-
-      tests/caper_run.sh tests/unit/test_bwa_index.wdl tests/unit/json/test_bwa_index.json 
+      tests/caper_run.sh \
+      tests/unit/test_bwa_index.wdl \
+      tests/unit/json/test_bwa_index.json 
   stdout:
     contains:
-      - "bwa index"
-      - "-p dummy.txt"
+      - "bwa index dummy.txt"
+
 - name: test_bwa_aln
   command: >-
-      tests/caper_run.sh tests/unit/test_bwa_aln.wdl 
+      tests/caper_run.sh \
+      tests/unit/test_bwa_aln.wdl 
   stdout:
     contains:
       - "bwa aln"

@@ -1,0 +1,15 @@
+- name: test_build_bwa_index
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/test_build_bwa_index.wdl \
+      tests/integration/json/test_build_bwa_index.json
+  stdout:
+    contains:
+      - "bwa index chr22.fa"
+  files:
+      - path: "test-output/chr22.fa"
+      - path: "test-output/chr22.fa.amb"
+      - path: "test-output/chr22.fa.ann"
+      - path: "test-output/chr22.fa.bwt"
+      - path: "test-output/chr22.fa.pac"
+      - path: "test-output/chr22.fa.sa"      

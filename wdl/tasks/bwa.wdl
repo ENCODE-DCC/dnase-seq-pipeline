@@ -12,14 +12,13 @@ task index {
     String prefix = basename(fasta)
 
     command {
-        bwa index \
-        -p ~{prefix} \
-        ~{fasta}
+        cp ~{fasta} ~{prefix}
+        bwa index ~{prefix}
     }
 
     output {
         BWAIndex bwa_index = {
-            "fasta": fasta,
+            "fasta": prefix,
             "amb": "~{prefix}.amb",
             "ann": "~{prefix}.ann",
             "bwt": "~{prefix}.bwt",

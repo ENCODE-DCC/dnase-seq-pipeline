@@ -13,5 +13,9 @@ workflow build_bwa_index {
         input:
             fasta=fasta
     }
+
+    output {
+        BWAIndex bwa_index = index.bwa_index
+    }
 }
 
