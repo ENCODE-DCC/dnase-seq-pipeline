@@ -1,0 +1,7 @@
+{
+  "build_index.genome_reference_fasta": "/Users/otto/github/dnase-seq-pipeline/test_data/ref/chr22.fa",
+  "build_index.output_prefix": "testing123",
+  "build_index.cpu": 2,
+  "build_index.ramGB": 4,
+  "build_index.disks": "local-disk 20 SSD"
+}
