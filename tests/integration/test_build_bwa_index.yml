@@ -8,8 +8,14 @@
       - "bwa index chr22.fa"
   files:
       - path: "test-output/chr22.fa"
+        md5sum: 69a750d5ed9490e0d1e707a43368ba86
       - path: "test-output/chr22.fa.amb"
+        md5sum: 24d28e70f4a7333073ade6cb41c3478a
       - path: "test-output/chr22.fa.ann"
+        md5sum: 8c08281c99ac4d49d9b32e06f0475b65
       - path: "test-output/chr22.fa.bwt"
+        md5sum: 12a40328a31dcb84b8a4af33a58ec47f
       - path: "test-output/chr22.fa.pac"
+        md5sum: 366896466b5889c16b79ca98be32360f
       - path: "test-output/chr22.fa.sa"
+        md5sum: bec836ed0158792031e4529ca53debdd

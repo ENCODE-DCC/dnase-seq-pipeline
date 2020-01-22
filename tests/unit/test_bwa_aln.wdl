@@ -1,7 +1,7 @@
 version 1.0
 
 
-import "wdl/tasks/bwa.wdl"
+import "../../wdl/tasks/bwa.wdl"
 
 
 workflow test_bwa_aln {
