@@ -19,7 +19,7 @@ task index {
     }
 
     output {
-        BWAIndex bwa_index = {
+        BwaIndex bwa_index = {
             "fasta": prefix,
             "amb": "~{prefix}.amb",
             "ann": "~{prefix}.ann",
@@ -38,7 +38,29 @@ task index {
 
 
 task aln {
+    input {
+        File fastq
+        BwaIndex bwa_index
+        BwaAlnParams params
+        String out = "out.sai"
+    }
+    
     command {
-        bwa aln
+        bwa aln \
+        ~{true="-Y" false="" params.filter_casava} \
+        ~{"-n " + params.probability_missing} \
+        ~{"-l " + params.seed_length} \
+        ~{"-t " + params.threads} \
+        ~{bwa_index.fasta} \
+        ~{fastq} \
+        > ~{out}
+    }
+
+    output {
+        File sai = out
+    }
+
+    runtime {
+        cpu: params.threads
     }
 }

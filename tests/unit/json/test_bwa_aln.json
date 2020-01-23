@@ -1,0 +1,17 @@
+{
+    "test_bwa_aln.fastq": "tests/data/dummy.txt",
+    "test_bwa_aln.bwa_index": {
+        "fasta": "tests/data/dummy.txt",
+        "amb": "tests/data/dummy.txt",
+        "ann": "tests/data/dummy.txt",
+        "bwt": "tests/data/dummy.txt",
+        "pac": "tests/data/dummy.txt",
+        "sa": "tests/data/dummy.txt"
+    },
+    "test_bwa_aln.params": {
+        "filter_casava": true,
+        "probability_missing": 0.04,
+        "seed_length": 32,
+        "threads": 1
+    }
+}

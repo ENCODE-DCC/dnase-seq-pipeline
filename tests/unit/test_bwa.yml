@@ -10,7 +10,14 @@
 - name: test_bwa_aln
   command: >-
       tests/caper_run.sh \
-      tests/unit/test_bwa_aln.wdl 
+      tests/unit/test_bwa_aln.wdl \
+      tests/unit/json/test_bwa_aln.json
   stdout:
     contains:
       - "bwa aln"
+      - "-Y"
+      - "-n 0.04"
+      - "-l 32"
+      - "-t 1"
+      - "dummy.txt"
+      - "> out.sai"

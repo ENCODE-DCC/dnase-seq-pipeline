@@ -19,3 +19,15 @@
         md5sum: 366896466b5889c16b79ca98be32360f
       - path: "test-output/chr22.fa.sa"
         md5sum: bec836ed0158792031e4529ca53debdd
+
+- name: test_align_fastq_with_bwa
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/test_align_fastq_with_bwa.wdl \
+      tests/integration/json/test_align_fastq_with_bwa.json
+  stdout:
+    contains:
+      - "bwa aln"
+  files:
+      - path: "test-output/out.sai"
+        md5sum: 28c4bc03f721c3e5c2db63c8170c0b23

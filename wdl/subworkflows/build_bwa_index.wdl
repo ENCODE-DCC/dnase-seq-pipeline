@@ -20,4 +20,3 @@ workflow build_bwa_index {
         BWAIndex bwa_index = index.bwa_index
     }
 }
-
