@@ -17,6 +17,6 @@ workflow build_bwa_index {
     }
 
     output {
-        BWAIndex bwa_index = index.bwa_index
+        BwaIndex bwa_index = index.bwa_index
     }
 }
