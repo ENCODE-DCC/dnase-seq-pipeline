@@ -1,22 +1,18 @@
-# CircleCI 2.0 configuration file
-# for ENCODE DNase-seq Pipeline
-# Maintainer: Ulugbek Baymuradov
+# CircleCI 2.1 configuration file
+# for ENCODE DNASE-SEQ-PIPELINE
+# Maintainer: Otto Jolanki
 
 # Defaults and functions
 ---
+version: 2.1
 defaults: &defaults
   docker:
     - image: circleci/buildpack-deps:xenial-scm
   working_directory: ~/dnase-seq-pipeline
 
-python_defaults: &python_defaults
-  docker:
-    - image: quay.io/encode-dcc/dnase-seq-pipeline:${CIRCLE_BRANCH}_${CIRCLE_WORKFLOW_ID}
-  working_directory: ~/dnase-seq-pipeline
-
 machine_defaults: &machine_defaults
   machine:
-    image: circleci/classic:latest
+    image: ubuntu-1604:201903-01
   working_directory: ~/dnase-seq-pipeline
 
 make_tag: &make_tag
@@ -24,32 +20,16 @@ make_tag: &make_tag
   command: |
     echo "export TAG=quay.io/encode-dcc/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_BRANCH}_${CIRCLE_WORKFLOW_ID}" > ${BASH_ENV}
 
-install_singularity: &install_singularity
-  name: install singularity
-  command: |
-    sudo apt-get update
-    sudo apt-get install \
-    dh-autoreconf \
-    build-essential \
-    libarchive-dev \
-    squashfs-tools
-    wget https://github.com/singularityware/singularity/releases/download/2.6.0/singularity-2.6.0.tar.gz
-    tar xvf singularity-2.6.0.tar.gz
-    cd singularity-2.6.0
-    ./configure --prefix=/usr/local --sysconfdir=/etc
-    make
-    sudo make install
-    singularity --version
-# Jobs
-version: 2
-jobs:
-  unittests:
-    <<: *python_defaults
+commands:
+  install_python_requirements:
+    description: "Install pytest workflow requirements"
     steps:
       - checkout
-      - run:
-          command: |
-            cd src
+      - run: pip install --upgrade pip
+      - run: pip install pytest-workflow
+      - run: pip install -r requirements.txt
+
+jobs:
   build:
     <<: *defaults
     steps:
@@ -63,19 +43,40 @@ jobs:
             echo "pulling template!"
             docker pull quay.io/encode-dcc/dnase-seq-pipeline:template
             docker login -u=${QUAY_ROBOT_USER} -p=${QUAY_ROBOT_USER_TOKEN} quay.io
-            docker build --cache-from quay.io/encode-dcc/dnase-seq-pipeline:template --build-arg GIT_COMMIT_HASH=${CIRCLE_SHA1} --build-arg BRANCH=${CIRCLE_BRANCH} --build-arg BUILD_TAG=${TAG} -t $TAG -t quay.io/encode-dcc/dnase-seq-pipeline:template .
+            docker build --cache-from quay.io/encode-dcc/dnase-seq-pipeline:template --build-arg GIT_COMMIT_HASH=${CIRCLE_SHA1} --build-arg BRANCH=${CIRCLE_BRANCH} --build-arg BUILD_TAG=${TAG} -t $TAG .
             docker push $TAG
-            docker push quay.io/encode-dcc/dnase-seq-pipeline:template
             docker logout
           no_output_timeout: 30m
 
+  push_template:
+      <<: *defaults
+      steps:
+        - checkout
+        - setup_remote_docker
+        - run: *make_tag
+        - run:
+            command: |
+              source ${BASH_ENV}
+              docker pull $TAG
+              docker login -u=${QUAY_ROBOT_USER} -p=${QUAY_ROBOT_USER_TOKEN} quay.io
+              docker tag $TAG quay.io/encode-dcc/dnase-seq-pipeline:template
+              docker push quay.io/encode-dcc/dnase-seq-pipeline:template
+              docker logout
+            no_output_timeout: 30m
+
+  run_pytest:
+    <<: *machine_defaults
+    steps:
+      - install_python_requirements
+
 # Workflow
 workflows:
-  version: 2
   build_workflow:
     jobs:
-      - build:
-          filters:
-            branches:
-              ignore:
-                - PIP-371_markdown
+      - build
+      - run_pytest:
+          requires:
+            - build
+      - push_template:
+          requires:
+            - run_pytest 
