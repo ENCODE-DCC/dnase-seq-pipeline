@@ -13,7 +13,7 @@ workflow build_bwa_index {
     call bwa.index {
         input:
             fasta=fasta,
-            resources=resources
+            resources=resources,
     }
 
     output {
