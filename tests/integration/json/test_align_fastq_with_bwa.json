@@ -15,8 +15,8 @@
         "threads": 1
     },
     "test_align_fastq_with_bwa.align_fastq_with_bwa.resources": {
-      "cpu": 1,
-      "memory_gb": 1,
-      "disks": "local-disk 10 SSD"
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
     }
 }
