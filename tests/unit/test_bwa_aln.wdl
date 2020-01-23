@@ -9,6 +9,7 @@ workflow test_bwa_aln {
         File fastq
         BwaIndex bwa_index
         BwaAlnParams params
+        Resources resources
     }
     
     call bwa.aln {
@@ -16,5 +17,6 @@ workflow test_bwa_aln {
             fastq=fastq,
             bwa_index=bwa_index,
             params=params,
+            resources=resources,
     }
 }

@@ -13,5 +13,10 @@
         "probability_missing": 0.04,
         "seed_length": 32,
         "threads": 1
+    },
+    "test_bwa_aln.resources": {
+      "cpu": 1,
+      "memory_gb": 1,
+      "disks": "local-disk 10 SSD"
     }
 }

@@ -9,6 +9,7 @@ workflow align_fastq_with_bwa {
         File fastq
         BwaIndex bwa_index
         BwaAlnParams params
+        Resources resources
     }
 
     call bwa.aln {
@@ -16,6 +17,7 @@ workflow align_fastq_with_bwa {
             fastq=fastq,
             bwa_index=bwa_index,
             params=params,
+            resources=resources,
     }
 
     output {

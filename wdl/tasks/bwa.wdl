@@ -42,6 +42,7 @@ task aln {
         File fastq
         BwaIndex bwa_index
         BwaAlnParams params
+        Resources resources
         String out = "out.sai"
     }
     
@@ -61,6 +62,8 @@ task aln {
     }
 
     runtime {
-        cpu: params.threads
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
     }
 }
