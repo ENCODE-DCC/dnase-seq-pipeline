@@ -117,7 +117,9 @@ workflows:
       - test_bwa_aln:
           requires:
             - build
-      - run_all_tests
+      - run_all_tests:
+          requires:
+            - build
       - push_template:
           requires:
             - test_bwa_aln
