@@ -1,10 +1,10 @@
-# dnase-seq-pipeline
-ENCODE DNase-seq pipeline
+# ENCODE DNase-seq pipeline
 
-# Testing
+### Testing
 Install requirements.txt and run
 `$ pytest`
 
-Environment variable DNASE_DOCKER_IMAGE_TAG has to contain tag of the docker image the tests are run in.
-Environment variable CROMWELL has to contain the path to cromwell.jar.
-Environment variable WOMTOOL has to contain the path to womtool.jar.
+Environment variables:
+* DNASE_DOCKER_IMAGE_TAG - docker image to run tests
+* CROMWELL - path to cromwell.jar
+* WOMTOOL - path to womtool.jar
