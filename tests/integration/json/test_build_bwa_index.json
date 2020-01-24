@@ -1,5 +1,5 @@
 {
-    "test_build_bwa_index.build_bwa_index.fasta": "test_data/ref/chr22.fa",
+    "test_build_bwa_index.build_bwa_index.fasta": "tests/data/ref/chr22.fa",
     "test_build_bwa_index.build_bwa_index.resources": {
         "cpu": 1,
         "memory_gb": 2,
