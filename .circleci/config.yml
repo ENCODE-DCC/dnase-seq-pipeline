@@ -25,9 +25,18 @@ commands:
     description: "Install pytest workflow requirements"
     steps:
       - checkout
+      - run: pyenv global 3.7.0
       - run: pip install --upgrade pip
       - run: pip install pytest-workflow
       - run: pip install -r requirements.txt
+
+  download_file:
+    description: "Download a file using wget"
+    parameters:
+      file_url:
+        type: string
+    steps:
+      - run: wget <<parameters.file_url>>
 
 jobs:
   build:
@@ -68,6 +77,8 @@ jobs:
     <<: *machine_defaults
     steps:
       - install_python_requirements
+      - download_file:
+          file_url: "https://github.com/broadinstitute/cromwell/releases/download/48/cromwell-48.jar"
 
 # Workflow
 workflows:
