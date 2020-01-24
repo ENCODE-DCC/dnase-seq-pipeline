@@ -58,7 +58,7 @@ commands:
       tag:
         type: string
     steps:
-      - run: pytests --tag <<parameters.tag>>
+      - run: pytest --tag <<parameters.tag>>
 
 
 jobs:
@@ -108,9 +108,9 @@ workflows:
   build_workflow:
     jobs:
       - build
-      - run_pytest:
+      - test_bwa_aln:
           requires:
             - build
       - push_template:
           requires:
-            - run_pytest 
+            - test_bwa_aln 
