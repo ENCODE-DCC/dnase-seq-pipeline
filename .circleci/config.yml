@@ -15,18 +15,20 @@ machine_defaults: &machine_defaults
     image: ubuntu-1604:201903-01
   working_directory: ~/dnase-seq-pipeline
 
-set_environment_variables: &set_environment_variables
-  name: set build environment variables 
-  command: |
-    echo "export DNASE_DOCKER_IMAGE_TAG=quay.io/encode-dcc/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_BRANCH}_${CIRCLE_WORKFLOW_ID}" >> ${BASH_ENV}
-    echo "export CROMWELL=./cromwell-48.jar" >> ${BASH_ENV}
-    echo "export WOMTOOL=./womtool-48.jar" >> ${BASH_ENV}
-
 commands:
+  set_environment_variables:
+    description: "Set env for docker pushes and test runs"
+    steps:
+      - run:
+          command: |
+            echo "export DNASE_DOCKER_IMAGE_TAG=quay.io/encode-dcc/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_BRANCH}_${CIRCLE_WORKFLOW_ID}" >> ${BASH_ENV}
+            echo "export CROMWELL=./cromwell-48.jar" >> ${BASH_ENV}
+            echo "export WOMTOOL=./womtool-48.jar" >> ${BASH_ENV}
+            source ${BASH_ENV}
+
   install_python_requirements:
     description: "Install pytest workflow requirements"
     steps:
-      - checkout
       - run: pyenv global 3.7.0
       - run: pip install --upgrade pip
       - run: pip install pytest-workflow
@@ -40,17 +42,35 @@ commands:
     steps:
       - run: wget <<parameters.file_url>>
 
+  prepare_pytest_environment:
+    description: "Get machine ready to run pytest-workflow"
+    steps:
+      - set_environment_variables
+      - install_python_requirements
+      - download_file:
+          file_url: "https://github.com/broadinstitute/cromwell/releases/download/48/cromwell-48.jar"
+      - download_file:
+          file_url: "https://github.com/broadinstitute/cromwell/releases/download/48/womtool-48.jar"
+
+  run_test_tag:
+    description: "Run tagged test"
+    parameters:
+      tag:
+        type: string
+    steps:
+      - run: pytests --tag <<parameters.tag>>
+
+
 jobs:
   build:
     <<: *defaults
     steps:
       - checkout
       - setup_remote_docker
-      - run: *set_environment_variables
+      - set_environment_variables
       - run:
           name: build image
           command: |
-            source ${BASH_ENV}
             echo "pulling template!"
             docker pull quay.io/encode-dcc/dnase-seq-pipeline:template
             docker login -u=${QUAY_ROBOT_USER} -p=${QUAY_ROBOT_USER_TOKEN} quay.io
@@ -64,10 +84,9 @@ jobs:
       steps:
         - checkout
         - setup_remote_docker
-        - run: *set_environment_variables
+        - set_environment_variables
         - run:
             command: |
-              source ${BASH_ENV}
               docker pull $DNASE_DOCKER_IMAGE_TAG
               docker login -u=${QUAY_ROBOT_USER} -p=${QUAY_ROBOT_USER_TOKEN} quay.io
               docker tag $DNASE_DOCKER_IMAGE_TAG quay.io/encode-dcc/dnase-seq-pipeline:template
@@ -75,19 +94,14 @@ jobs:
               docker logout
             no_output_timeout: 30m
 
-  run_pytest:
+  test_bwa_aln:
     <<: *machine_defaults
     steps:
-      - run: *set_environment_variables
-      - install_python_requirements
-      - download_file:
-          file_url: "https://github.com/broadinstitute/cromwell/releases/download/48/cromwell-48.jar"
-      - download_file:
-          file_url: "https://github.com/broadinstitute/cromwell/releases/download/48/womtool-48.jar"
-      - run:
-          command: |
-            source ${BASH_ENV}
-            env
+      - checkout
+      - prepare_pytest_environment
+      - run_test_tag:
+          tag: "test_bwa_aln" 
+
 
 # Workflow
 workflows:
