@@ -1,0 +1,22 @@
+{
+    "test_align_fastq_with_bwa.align_fastq_with_bwa.fastq": "tests/data/dnase/alignment/r1.fastq.gz",
+    "test_align_fastq_with_bwa.align_fastq_with_bwa.bwa_index": {
+        "fasta": "tests/data/ref/chr22.fa",
+        "amb": "tests/data/ref/chr22.fa.amb",
+        "ann": "tests/data/ref/chr22.fa.ann",
+        "bwt": "tests/data/ref/chr22.fa.bwt",
+        "pac": "tests/data/ref/chr22.fa.pac",
+        "sa": "tests/data/ref/chr22.fa.sa"
+    },
+    "test_align_fastq_with_bwa.align_fastq_with_bwa.params": {
+        "filter_casava": true,
+        "probability_missing": 0.04,
+        "seed_length": 32,
+        "threads": 1
+    },
+    "test_align_fastq_with_bwa.align_fastq_with_bwa.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "test_bwa_index.fasta": "tests/data/dummy.txt",
+    "test_bwa_index.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}

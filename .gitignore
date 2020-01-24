@@ -16,3 +16,6 @@ wdltool*.jar
 
 # Nextflow Files
 *.nf
+
+.envrc
+
