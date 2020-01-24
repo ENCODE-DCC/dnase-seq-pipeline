@@ -102,6 +102,12 @@ jobs:
       - run_test_tag:
           tag: "test_bwa_aln" 
 
+  run_all_tests:
+    <<: *machine_defaults
+    steps:
+      - checkout
+      - prepare_pytest_environment
+      - run: pytest
 
 # Workflow
 workflows:
@@ -111,6 +117,8 @@ workflows:
       - test_bwa_aln:
           requires:
             - build
+      - run_all_tests
       - push_template:
           requires:
-            - test_bwa_aln 
+            - test_bwa_aln
+            - run_all_tests
