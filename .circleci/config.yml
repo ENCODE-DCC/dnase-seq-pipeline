@@ -107,7 +107,11 @@ jobs:
     steps:
       - checkout
       - prepare_pytest_environment
-      - run: pytest
+      - run:
+          command: |
+            echo ${BASH_ENV}
+            source ${BASH_ENV}
+            pytest
 
 # Workflow
 workflows:
