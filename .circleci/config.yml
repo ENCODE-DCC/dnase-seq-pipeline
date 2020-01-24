@@ -109,7 +109,7 @@ jobs:
       - prepare_pytest_environment
       - run:
           command: |
-            echo ${BASH_ENV}
+            cat `echo ${BASH_ENV}`
             source ${BASH_ENV}
             pytest
 
