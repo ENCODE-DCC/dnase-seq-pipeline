@@ -103,37 +103,35 @@ jobs:
               docker logout
             no_output_timeout: 30m
 
-  test_bwa_aln:
+  test_bwa_unit:
     <<: *machine_defaults
     steps:
       - checkout
       - prepare_pytest_environment
       - install_git_lfs_and_get_data
       - run_test_tag:
-          tag: "test_bwa_aln" 
+          tag: "bwa_unit" 
 
-  run_all_tests:
+  test_bwa_integration:
     <<: *machine_defaults
     steps:
       - checkout
       - prepare_pytest_environment
       - install_git_lfs_and_get_data
-      - run:
-          command: |
-            pytest
-
+      - run_test_tag:
+          tag: "bwa_integration" 
 # Workflow
 workflows:
   build_workflow:
     jobs:
       - build
-      - test_bwa_aln:
+      - test_bwa_unit:
           requires:
             - build
-      - run_all_tests:
+      - test_bwa_integration:
           requires:
             - build
       - push_template:
           requires:
-            - test_bwa_aln
-            - run_all_tests
+            - test_bwa_unit
+            - test_bwa_integration
