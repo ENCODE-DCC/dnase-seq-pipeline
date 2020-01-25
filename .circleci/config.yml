@@ -60,6 +60,15 @@ commands:
     steps:
       - run: pytest --tag <<parameters.tag>>
 
+  install_git_lfs_and_get_data:
+    steps:
+      - run:
+          command: |
+            curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+            sudo apt-get install git-lfs
+            git lfs install
+            git lfs pull
+
 
 jobs:
   build:
@@ -99,6 +108,7 @@ jobs:
     steps:
       - checkout
       - prepare_pytest_environment
+      - install_git_lfs_and_get_data
       - run_test_tag:
           tag: "test_bwa_aln" 
 
@@ -107,10 +117,9 @@ jobs:
     steps:
       - checkout
       - prepare_pytest_environment
+      - install_git_lfs_and_get_data
       - run:
           command: |
-            cat `echo ${BASH_ENV}`
-            source ${BASH_ENV}
             pytest
 
 # Workflow
