@@ -1,4 +1,6 @@
 - name: test_bwa_index
+  tags:
+    - unit
   command: >-
       tests/caper_run.sh \
       tests/unit/test_bwa_index.wdl \
@@ -8,6 +10,8 @@
       - "bwa index dummy.txt"
 
 - name: test_bwa_aln
+  tags:
+    - unit
   command: >-
       tests/caper_run.sh \
       tests/unit/test_bwa_aln.wdl \
