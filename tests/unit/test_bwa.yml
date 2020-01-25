@@ -1,6 +1,6 @@
 - name: test_bwa_index
   tags:
-    - bwa_unit
+    - unit
   command: >-
       tests/caper_run.sh \
       tests/unit/test_bwa_index.wdl \
@@ -11,7 +11,7 @@
 
 - name: test_bwa_aln
   tags:
-    - bwa_unit
+    - unit
   command: >-
       tests/caper_run.sh \
       tests/unit/test_bwa_aln.wdl \
