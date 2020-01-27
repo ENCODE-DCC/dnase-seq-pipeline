@@ -3,7 +3,7 @@ version 1.0
 
 struct IndexedFasta {
     File fasta
-    File faidx
+    File fai
 }
 
 

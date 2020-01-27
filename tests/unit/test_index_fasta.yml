@@ -1,0 +1,10 @@
+- name: test_index_fasta
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/test_index_fasta.wdl \
+    tests/unit/json/test_index_fasta.json
+  stdout:
+    contains:
+      - "samtools faidx dummy.txt"

@@ -1,30 +1,28 @@
 version 1.0
 
 
-import "../structs/resources.wdl
+import "../structs/resources.wdl"
 import "../structs/samtools.wdl"
 
 
 task index_fasta {
     input {
-        File fasta,
-        String output_filename = "idx.faidx"
+        File fasta
         Resources resources
     }
 
     String prefix = basename(fasta)
 
     command {
-        ln ~{fasta}
-        samtools faidx \
-            ~{fasta} \
-            -o ~{output_filename}
+        ln ~{fasta} .
+        samtools faidx ~{prefix}
     }
 
     output {
         IndexedFasta indexed_fasta = {
             "fasta": prefix,
-            "faidx": "~{prefix}.faidx"
+            "fai": "~{prefix}.fai"
+        }
     }
 
     runtime {
