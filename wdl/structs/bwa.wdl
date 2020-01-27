@@ -12,8 +12,8 @@ struct BwaIndex {
 
 
 struct BwaAlnParams {
-    Int threads
-    Int seed_length
-    Float probability_missing
-    Boolean filter_casava
+    Int? threads
+    Int? seed_length
+    Float? probability_missing
+    Boolean? filter_casava
 }
