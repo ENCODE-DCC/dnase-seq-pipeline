@@ -1,0 +1,27 @@
+{
+    "test_bwa_sampe.fastqs": {
+        "R1": "tests/data/dummy.txt",
+        "R2": "tests/data/dummy.txt"
+    },
+    "test_bwa_sampe.saiss": {
+        "S1": "tests/data/dummy.txt",
+        "S2": "tests/data/dummy.txt"
+    },
+    "test_bwa_sampe.bwa_index": {
+        "fasta": "tests/data/dummy.txt",
+        "amb": "tests/data/dummy.txt",
+        "ann": "tests/data/dummy.txt",
+        "bwt": "tests/data/dummy.txt",
+        "pac": "tests/data/dummy.txt",
+        "sa": "tests/data/dummy.txt"
+    },
+    "test_bwa_sampe.params": {
+        "max_insert_size": 750,
+        "max_paired_hits": 10
+    },
+    "test_bwa_aln.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

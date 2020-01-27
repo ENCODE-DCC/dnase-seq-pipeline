@@ -11,9 +11,21 @@ struct BwaIndex {
 }
 
 
+struct SaiPair {
+    File S1
+    File S2
+}
+
+
 struct BwaAlnParams {
     Int? threads
     Int? seed_length
     Float? probability_missing
     Boolean? filter_casava
+}
+
+
+struct BwaSampeParams {
+    Int? max_insert_size
+    Int? max_paired_hits
 }
