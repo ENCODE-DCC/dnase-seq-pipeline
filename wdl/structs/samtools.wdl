@@ -12,6 +12,7 @@ struct IndexedBam {
     File bai
 }
 
+
 struct IndexedSam {
     File sam
     File sai
