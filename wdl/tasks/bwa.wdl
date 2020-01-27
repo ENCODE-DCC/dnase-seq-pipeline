@@ -82,8 +82,8 @@ task sampe {
 
     command {
         bwa sampe \
-        ~{"-a " + params.max_insert_size}
-        ~{"-n " + params.max_paired_hits}
+        ~{"-a " + params.max_insert_size} \
+        ~{"-n " + params.max_paired_hits} \
         ~{bwa_index.fasta} \
         ~{sais.S1} \
         ~{sais.S2} \

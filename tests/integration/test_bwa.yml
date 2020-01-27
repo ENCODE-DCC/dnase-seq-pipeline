@@ -50,8 +50,22 @@
       - "-n 0.04"
       - "-l 32"
   files:
-      - path: "test-output/r1.out.sai"
+      - path: "test-output/r1.sai"
         md5sum: 28c4bc03f721c3e5c2db63c8170c0b23
-      - path: "test-output/r2.out.sai"
+      - path: "test-output/r2.sai"
         md5sum: 9e384cfc82963b7db3696aca59666ab6
+
+- name: test_make_sam_from_sai_and_fastq_pair
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/test_make_sam_from_sai_and_fastq_pair.wdl \
+      tests/integration/json/test_make_sam_from_sai_and_fastq_pair.json
+  stdout:
+    contains:
+      - "bwa sampe"
+  files:
+      - path: "test-output/out.sam"
+        md5sum: 282e561f4858835cd80b8e49c0ec02e9
         

@@ -1,0 +1,27 @@
+{
+    "test_make_sam_from_sai_and_fastq_pair.make_sam_from_sai_and_fastq_pair.fastqs": {
+        "R1": "tests/data/dnase/alignment/r1.fastq.gz",
+        "R2": "tests/data/dnase/alignment/r2.fastq.gz"
+    },
+    "test_make_sam_from_sai_and_fastq_pair.make_sam_from_sai_and_fastq_pair.sais": {
+        "S1": "tests/data/dnase/alignment/r1.out.sai",
+        "S2": "tests/data/dnase/alignment/r2.out.sai"
+    },
+    "test_make_sam_from_sai_and_fastq_pair.make_sam_from_sai_and_fastq_pair.bwa_index": {
+        "fasta": "tests/data/ref/chr22.fa",
+        "amb": "tests/data/ref/chr22.fa.amb",
+        "ann": "tests/data/ref/chr22.fa.ann",
+        "bwt": "tests/data/ref/chr22.fa.bwt",
+        "pac": "tests/data/ref/chr22.fa.pac",
+        "sa": "tests/data/ref/chr22.fa.sa"
+    },
+    "test_make_sam_from_sai_and_fastq_pair.make_sam_from_sai_and_fastq_pair.params": {
+        "max_insert_size": 750,
+        "max_paired_hits": 10
+    },
+    "test_make_sam_from_sai_and_fastq_pair.make_sam_from_sai_and_fastq_pair.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
