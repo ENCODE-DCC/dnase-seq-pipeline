@@ -62,3 +62,33 @@
       - "-l 32"
       - "-t 1"
 
+- name: test_bwa_sampe
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/test_bwa_sampe.wdl \
+      tests/unit/json/test_bwa_sampe.json
+  stdout:
+    contains:
+      - "bwa sampe"
+      - "-a 750"
+      - "-n 10"
+      - "dummy.txt"
+      - "> out.sam"
+
+- name: test_bwa_sampe_no_params
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/test_bwa_sampe.wdl \
+      tests/unit/json/test_bwa_sampe_no_params.json
+  stdout:
+    contains:
+      - "bwa sampe"
+      - "dummy.txt"
+      - "> out.sam"
+    must_not_contain:
+      - "-a 750"
+      - "-n 10"

@@ -16,8 +16,6 @@
         "sa": "tests/data/dummy.txt"
     },
     "test_bwa_sampe.params": {
-        "max_insert_size": 750,
-        "max_paired_hits": 10
     },
     "test_bwa_sampe.resources": {
         "cpu": 1,
