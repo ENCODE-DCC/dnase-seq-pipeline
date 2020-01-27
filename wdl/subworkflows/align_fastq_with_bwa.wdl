@@ -10,7 +10,7 @@ workflow align_fastq_with_bwa {
         BwaIndex bwa_index
         BwaAlnParams params
         Resources resources
-        String out
+        String? out
     }
 
     call bwa.aln {
