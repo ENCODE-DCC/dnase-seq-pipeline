@@ -7,8 +7,8 @@ import "../../wdl/tasks/samtools.wdl"
 workflow test_samtools_view {
     input {
         File in
-        IndexedFasta indexed_fasta
-        SamtoolViewParams params
+        IndexedFasta? indexed_fasta
+        SamtoolsViewParams params
         Resources resources
     }
     

@@ -36,9 +36,9 @@ task faidx {
 task view {
     input {
         File in
-        IndexedFasta? indexed_fasta
-        SamtoolsViewParams params
+        IndexedFasta indexed_fasta = {}
         Resources resources
+        SamtoolsViewParams params
         String out_path = "out"
     }
 
