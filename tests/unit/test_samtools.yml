@@ -28,3 +28,24 @@
       - "-t "
       - "dummy.txt"
       - "out"
+
+- name: test_samtools_view_no_params
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/test_samtools_view.wdl \
+    tests/unit/json/test_samtools_view_no_params.json
+  stdout:
+    contains:
+      - "samtools view"
+      - "dummy.txt"
+      - "out.bam"
+    must_not_contain:
+      - "-f 0x004"
+      - "-F 1024"
+      - "-h "
+      - "-b "
+      - "-1 "
+      - "-@ 4"
+      - "-t "
