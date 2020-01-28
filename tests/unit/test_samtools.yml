@@ -8,3 +8,23 @@
   stdout:
     contains:
       - "samtools faidx dummy.txt"
+
+- name: test_samtools_view
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/test_samtools_view.wdl \
+    tests/unit/json/test_samtools_view.json
+  stdout:
+    contains:
+      - "samtools view"
+      - "-f 0x004"
+      - "-F 1024"
+      - "-h"
+      - "-b"
+      - "-1"
+      - "-@ 4"
+      - "-t"
+      - "dummy.txt"
+      - "out"
