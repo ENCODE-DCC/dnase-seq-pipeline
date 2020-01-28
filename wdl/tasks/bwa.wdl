@@ -49,13 +49,13 @@ task aln {
     
     command {
         bwa aln \
-        ~{true="-Y" false="" params.filter_casava} \
-        ~{"-n " + params.probability_missing} \
-        ~{"-l " + params.seed_length} \
-        ~{"-t " + params.threads} \
-        ~{bwa_index.fasta} \
-        ~{fastq} \
-        > ~{out}
+            ~{true="-Y" false="" params.filter_casava} \
+            ~{"-n " + params.probability_missing} \
+            ~{"-l " + params.seed_length} \
+            ~{"-t " + params.threads} \
+            ~{bwa_index.fasta} \
+            ~{fastq} \
+            > ~{out}
     }
 
     output {
@@ -82,14 +82,14 @@ task sampe {
 
     command {
         bwa sampe \
-        ~{"-a " + params.max_insert_size} \
-        ~{"-n " + params.max_paired_hits} \
-        ~{bwa_index.fasta} \
-        ~{sais.S1} \
-        ~{sais.S2} \
-        ~{fastqs.R1} \
-        ~{fastqs.R2} \
-        > ~{out}
+            ~{"-a " + params.max_insert_size} \
+            ~{"-n " + params.max_paired_hits} \
+            ~{bwa_index.fasta} \
+            ~{sais.S1} \
+            ~{sais.S2} \
+            ~{fastqs.R1} \
+            ~{fastqs.R2} \
+            > ~{out}
     }
 
     output {
