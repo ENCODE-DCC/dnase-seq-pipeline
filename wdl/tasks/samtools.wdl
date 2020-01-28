@@ -38,6 +38,7 @@ task view {
         File in
         IndexedFasta? indexed_fasta
         SamtoolsViewParams params
+        Resources resources
         String out_path = "out"
     }
 
@@ -56,5 +57,11 @@ task view {
 
     output {
         File out = out_path
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
     }
 }
