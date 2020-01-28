@@ -1,4 +1,4 @@
-- name: test_build_fasta_index
+- name: test_samtools_build_fasta_index
   tags:
     - integration
   command: >-
