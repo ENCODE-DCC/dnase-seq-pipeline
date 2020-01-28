@@ -22,8 +22,7 @@ RUN apt-get update && apt-get install -y \
     tabix \
     libboost-dev \
     python-pip \
-    python3-pip \
-    bowtie
+    python3-pip 
 
 RUN mkdir /software
 WORKDIR /software
@@ -116,6 +115,8 @@ RUN pip install cython numpy
 RUN pip3 install biopython==1.76 pysam==0.15.0 numpy==1.18.1 scipy==1.4.1 scikit-learn==0.22.1
 
 RUN pip install biopython pysam scipy scikit-learn statsmodels multiprocessing matplotlib git+https://github.com/jvierstra/genome-tools@5e3cc51 git+https://github.com/jvierstra/footprint-tools@914923e
+
+RUN apt-get install -y bowtie
 
 #make scripts findable by which
 RUN chmod 755 /software/stampipes/scripts/bwa/bamcounts.py
