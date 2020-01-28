@@ -1,0 +1,15 @@
+- name: test_build_fasta_index
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/test_build_fasta_index.wdl \
+      tests/integration/json/test_build_fasta_index.json
+  stdout:
+    contains:
+      - "samtools faidx chr22.fa"
+  files:
+      - path: "test-output/chr22.fa.fai"
+        md5sum: d89b1fd70e1fe59b329a8346a59ffc03
+      - path: "test-output/chr22.fa"
+        md5sum: 69a750d5ed9490e0d1e707a43368ba86

@@ -1,0 +1,10 @@
+- name: test_faidx
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/test_faidx.wdl \
+    tests/unit/json/test_faidx.json
+  stdout:
+    contains:
+      - "samtools faidx dummy.txt"
