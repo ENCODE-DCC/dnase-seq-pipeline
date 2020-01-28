@@ -116,6 +116,8 @@ RUN pip3 install biopython==1.76 pysam==0.15.0 numpy==1.18.1 scipy==1.4.1 scikit
 
 RUN pip install biopython pysam scipy scikit-learn statsmodels multiprocessing matplotlib git+https://github.com/jvierstra/genome-tools@5e3cc51 git+https://github.com/jvierstra/footprint-tools@914923e
 
+RUN apt-get install -y bowtie
+
 #make scripts findable by which
 RUN chmod 755 /software/stampipes/scripts/bwa/bamcounts.py
 RUN chmod 755 /software/stampipes/scripts/bwa/aggregate/basic/sparse_motifs.py 
