@@ -67,5 +67,4 @@
       - "bwa sampe"
   files:
       - path: "test-output/out.sam"
-        md5sum: 282e561f4858835cd80b8e49c0ec02e9
         
