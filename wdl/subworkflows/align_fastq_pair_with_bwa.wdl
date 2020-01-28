@@ -20,7 +20,7 @@ workflow align_fastq_pair_with_bwa {
                 bwa_index=bwa_index,
                 params=params,
                 resources=resources,
-                out="~{basename(fastq, remove_suffix)}.sai"
+                out="~{basename(fastq, remove_suffix)}.sai",
         }
     }
 
