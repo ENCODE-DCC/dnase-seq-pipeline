@@ -22,7 +22,8 @@ RUN apt-get update && apt-get install -y \
     tabix \
     libboost-dev \
     python-pip \
-    python3-pip 
+    python3-pip \
+    bowtie
 
 RUN mkdir /software
 WORKDIR /software
