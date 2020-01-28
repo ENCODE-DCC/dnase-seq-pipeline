@@ -5,7 +5,7 @@ import "../structs/resources.wdl"
 import "../structs/samtools.wdl"
 
 
-task index_fasta {
+task faidx {
     input {
         File fasta
         Resources resources

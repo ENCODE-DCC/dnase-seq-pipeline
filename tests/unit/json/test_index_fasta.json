@@ -1,8 +1,0 @@
-{
-    "test_index_fasta.fasta": "tests/data/dummy.txt",
-    "test_index_fasta.resources": {
-        "cpu": 1,
-        "memory_gb": 2,
-        "disks": "local-disk 10 SSD"
-    }
-}

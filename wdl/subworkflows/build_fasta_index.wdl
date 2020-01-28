@@ -10,13 +10,13 @@ workflow build_fasta_index {
        Resources resources
     }
 
-    call samtools.index_fasta {
+    call samtools.faidx {
         input:
             fasta=fasta,
             resources=resources,
     }
 
     output {
-        IndexedFasta indexed_fasta = index_fasta.indexed_fasta
+        IndexedFasta indexed_fasta = faidx.indexed_fasta
     }
 }
