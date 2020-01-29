@@ -1,0 +1,10 @@
+- name: test_bowtie_index
+  tags:
+    - unit
+  command:
+    tests/caper_run.sh \
+    tests/unit/test_bowtie_index.wdl \
+    tests/unit/json/test_bowtie_index.json
+  stdout:
+    contains:
+      - "bowtie-build dummy.txt dummy.txt" 

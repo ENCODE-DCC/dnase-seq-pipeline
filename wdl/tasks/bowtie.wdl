@@ -14,7 +14,8 @@ task index {
     String prefix = basename(fasta)
 
     command {
-        bowtie-build ~{fasta} ~{prefix}
+        ln ~{fasta} . 
+        bowtie-build ~{prefix} ~{prefix}
     }
 
     output {
