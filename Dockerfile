@@ -112,10 +112,10 @@ ENV PATH="/software/hotspot2/scripts:${PATH}"
 RUN git clone -b 'bwa_2.6.0-rc' --single-branch --depth 1 https://github.com/StamLab/stampipes.git
 
 # Install stampipes requirements
-RUN pip install cython numpy 
+RUN pip install cython numpy scipy
 RUN pip3 install biopython==1.76 pysam==0.15.0 numpy==1.18.1 scipy==1.4.1 scikit-learn==0.22.1
 
-RUN pip install biopython pysam scipy scikit-learn statsmodels multiprocessing matplotlib git+https://github.com/jvierstra/genome-tools@5e3cc51 git+https://github.com/jvierstra/footprint-tools@914923e
+RUN pip install biopython pysam scikit-learn statsmodels multiprocessing matplotlib git+https://github.com/jvierstra/genome-tools@5e3cc51 git+https://github.com/jvierstra/footprint-tools@914923e
 
 RUN apt-get install -y bowtie
 
