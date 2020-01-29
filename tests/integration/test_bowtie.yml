@@ -1,0 +1,10 @@
+- name: test_build_bowtie_index
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/test_build_bowtie_index.wdl \
+    tests/integration/json/test_build_bowtie_index.json
+  stdout:
+    contains:
+      - "bowtie-build chr22.fa chr22.fa"
