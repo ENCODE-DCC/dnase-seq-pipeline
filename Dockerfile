@@ -86,6 +86,7 @@ RUN git clone https://github.com/StamLab/hotspot.git \
     && make
 
 ENV PATH="/software/hotspot/hotspot-distr/ScriptTokenizer/src:${PATH}"
+ENV PATH="/software/hotspot/hotspot-distr/hotspot-deploy/bin:${PATH}"
 
 # Get BedGraphToBigWig v385 for hotspots2
 RUN git clone https://github.com/ENCODE-DCC/kentutils_v385_bin_bulkrna.git \
@@ -111,10 +112,10 @@ ENV PATH="/software/hotspot2/scripts:${PATH}"
 RUN git clone -b 'bwa_2.6.0-rc' --single-branch --depth 1 https://github.com/StamLab/stampipes.git
 
 # Install stampipes requirements
-RUN pip install cython numpy 
+RUN pip install cython numpy scipy
 RUN pip3 install biopython==1.76 pysam==0.15.0 numpy==1.18.1 scipy==1.4.1 scikit-learn==0.22.1
 
-RUN pip install biopython pysam scipy scikit-learn statsmodels multiprocessing matplotlib git+https://github.com/jvierstra/genome-tools@5e3cc51 git+https://github.com/jvierstra/footprint-tools@914923e
+RUN pip install biopython pysam scikit-learn statsmodels multiprocessing matplotlib git+https://github.com/jvierstra/genome-tools@5e3cc51 git+https://github.com/jvierstra/footprint-tools@914923e
 
 RUN apt-get install -y bowtie
 
@@ -125,6 +126,7 @@ RUN chmod 755 /software/stampipes/scripts/bam/random_sample.sh
 RUN chmod 755 /software/stampipes/scripts/SPOT/runhotspot.bash
 RUN chmod 755 /software/stampipes/scripts/utility/picard_inserts_process.py
 RUN chmod 755 /software/stampipes/scripts/utility/preseq_targets.sh
+RUN chmod 755 /software/stampipes/awk/*.awk
 
 # Add required stampipe locations to PATH to enable locating scripts with which
 ENV PATH="/software/stampipes/scripts/umi:${PATH}"
@@ -133,5 +135,5 @@ ENV PATH="/software/stampipes/scripts/bam:${PATH}"
 ENV PATH="/software/stampipes/scripts/SPOT:${PATH}"
 ENV PATH="/software/stampipes/scripts/bwa/aggregate/basic:${PATH}"
 ENV PATH="/software/stampipes/scripts/utility:${PATH}"
-
+ENV PATH="/software/stampipes/awk:${PATH}"
 
