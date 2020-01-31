@@ -3,7 +3,7 @@
     - integration
   command: >-
     tests/caper_run.sh \
-    tests/integration/test_build_bowtie_index.wdl \
+    tests/integration/wdl/test_build_bowtie_index.wdl \
     tests/integration/json/test_build_bowtie_index.json
   stdout:
     contains:
