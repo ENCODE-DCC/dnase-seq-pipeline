@@ -3,7 +3,7 @@
     - unit
   command: >-
     tests/caper_run.sh \
-    tests/unit/test_samtools_faidx.wdl \
+    tests/unit//wdl/test_samtools_faidx.wdl \
     tests/unit/json/test_samtools_faidx.json
   stdout:
     contains:
@@ -14,7 +14,7 @@
     - unit
   command: >-
     tests/caper_run.sh \
-    tests/unit/test_samtools_view.wdl \
+    tests/unit/wdl/test_samtools_view.wdl \
     tests/unit/json/test_samtools_view.json
   stdout:
     contains:
@@ -34,7 +34,7 @@
     - unit
   command: >-
     tests/caper_run.sh \
-    tests/unit/test_samtools_view.wdl \
+    tests/unit/wdl/test_samtools_view.wdl \
     tests/unit/json/test_samtools_view_no_params.json
   stdout:
     contains:

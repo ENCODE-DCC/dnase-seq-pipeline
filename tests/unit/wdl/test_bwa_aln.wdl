@@ -1,22 +1,20 @@
 version 1.0
 
 
-import "../../wdl/tasks/bwa.wdl"
+import "../../../wdl/tasks/bwa.wdl"
 
 
-workflow test_bwa_sampe {
+workflow test_bwa_aln {
     input {
-        FastqPair fastqs
-        SaiPair sais
+        File fastq
         BwaIndex bwa_index
-        BwaSampeParams params
+        BwaAlnParams params
         Resources resources
     }
     
-    call bwa.sampe {
+    call bwa.aln {
         input:
-            fastqs=fastqs,
-            sais=sais,
+            fastq=fastq,
             bwa_index=bwa_index,
             params=params,
             resources=resources,

@@ -1,7 +1,7 @@
 version 1.0
 
 
-import "../../wdl/subworkflows/align_fastq_with_bwa.wdl"
+import "../../../wdl/subworkflows/align_fastq_with_bwa.wdl"
 
 
 workflow test_align_fastq_with_bwa {

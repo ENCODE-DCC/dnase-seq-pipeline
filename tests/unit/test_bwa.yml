@@ -3,7 +3,7 @@
     - unit
   command: >-
       tests/caper_run.sh \
-      tests/unit/test_bwa_index.wdl \
+      tests/unit/wdl/test_bwa_index.wdl \
       tests/unit/json/test_bwa_index.json 
   stdout:
     contains:
@@ -14,7 +14,7 @@
     - unit
   command: >-
       tests/caper_run.sh \
-      tests/unit/test_bwa_aln.wdl \
+      tests/unit/wdl/test_bwa_aln.wdl \
       tests/unit/json/test_bwa_aln.json
   stdout:
     contains:
@@ -31,7 +31,7 @@
     - unit
   command: >-
       tests/caper_run.sh \
-      tests/unit/test_bwa_aln.wdl \
+      tests/unit/wdl/test_bwa_aln.wdl \
       tests/unit/json/test_bwa_aln_no_params.json
   stdout:
     contains:
@@ -49,7 +49,7 @@
     - unit
   command: >-
       tests/caper_run.sh \
-      tests/unit/test_bwa_aln.wdl \
+      tests/unit/wdl/test_bwa_aln.wdl \
       tests/unit/json/test_bwa_aln_filter_casava_true.json
   stdout:
     contains:
@@ -67,7 +67,7 @@
     - unit
   command: >-
       tests/caper_run.sh \
-      tests/unit/test_bwa_sampe.wdl \
+      tests/unit/wdl/test_bwa_sampe.wdl \
       tests/unit/json/test_bwa_sampe.json
   stdout:
     contains:
@@ -82,7 +82,7 @@
     - unit
   command: >-
       tests/caper_run.sh \
-      tests/unit/test_bwa_sampe.wdl \
+      tests/unit/wdl/test_bwa_sampe.wdl \
       tests/unit/json/test_bwa_sampe_no_params.json
   stdout:
     contains:

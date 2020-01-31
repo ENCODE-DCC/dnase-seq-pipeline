@@ -1,7 +1,7 @@
 version 1.0
 
 
-import "../../wdl/subworkflows/build_fasta_index.wdl"
+import "../../../wdl/subworkflows/build_fasta_index.wdl"
 
 
 workflow test_build_fasta_index {

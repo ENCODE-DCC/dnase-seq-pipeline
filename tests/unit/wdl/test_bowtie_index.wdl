@@ -1,15 +1,16 @@
 version 1.0
 
-import "../../wdl/tasks/samtools.wdl"
+
+import "../../../wdl/tasks/bowtie.wdl"
 
 
-workflow test_faidx {
+workflow test_bowtie_index {
     input {
         File fasta
         Resources resources
     }
 
-    call samtools.faidx {
+    call bowtie.index {
         input:
             fasta=fasta,
             resources=resources,

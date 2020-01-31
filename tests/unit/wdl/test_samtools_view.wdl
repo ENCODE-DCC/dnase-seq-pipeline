@@ -1,7 +1,7 @@
 version 1.0
 
 
-import "../../wdl/tasks/samtools.wdl"
+import "../../../wdl/tasks/samtools.wdl"
 
 
 workflow test_samtools_view {

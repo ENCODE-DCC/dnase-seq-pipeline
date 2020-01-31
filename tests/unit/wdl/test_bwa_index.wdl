@@ -1,16 +1,16 @@
 version 1.0
 
 
-import "../../wdl/tasks/bowtie.wdl"
+import "../../../wdl/tasks/bwa.wdl"
 
 
-workflow test_bowtie_index {
+workflow test_bwa_index {
     input {
         File fasta
         Resources resources
     }
-
-    call bowtie.index {
+    
+    call bwa.index {
         input:
             fasta=fasta,
             resources=resources,
