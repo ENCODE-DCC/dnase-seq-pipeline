@@ -35,3 +35,36 @@
   files:
       - path: "test-output/out.sai"
         md5sum: 28c4bc03f721c3e5c2db63c8170c0b23
+
+- name: test_align_fastq_pair_with_bwa
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/test_align_fastq_pair_with_bwa.wdl \
+      tests/integration/json/test_align_fastq_pair_with_bwa.json
+  stdout:
+    contains:
+      - "bwa aln"
+      - "-Y"
+      - "-n 0.04"
+      - "-l 32"
+  files:
+      - path: "test-output/r1.sai"
+        md5sum: 28c4bc03f721c3e5c2db63c8170c0b23
+      - path: "test-output/r2.sai"
+        md5sum: 9e384cfc82963b7db3696aca59666ab6
+
+- name: test_make_sam_from_sai_and_fastq_pair
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/test_make_sam_from_sai_and_fastq_pair.wdl \
+      tests/integration/json/test_make_sam_from_sai_and_fastq_pair.json
+  stdout:
+    contains:
+      - "bwa sampe"
+  files:
+      - path: "test-output/out.sam"
+        

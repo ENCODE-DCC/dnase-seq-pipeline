@@ -13,3 +13,20 @@
         md5sum: d89b1fd70e1fe59b329a8346a59ffc03
       - path: "test-output/chr22.fa"
         md5sum: 69a750d5ed9490e0d1e707a43368ba86
+
+- name: test_convert_sam_to_bam
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/test_convert_sam_to_bam.wdl \
+      tests/integration/json/test_convert_sam_to_bam.json
+  stdout:
+    contains:
+      - "samtools view"
+      - "-b "
+      - "-t "
+      - "chr22.fa.fai"
+      - "out.bam"
+  files:
+      - path: "test-output/out.bam"

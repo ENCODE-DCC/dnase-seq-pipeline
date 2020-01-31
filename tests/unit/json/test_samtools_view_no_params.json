@@ -1,0 +1,11 @@
+{
+    "test_samtools_view.in": "tests/data/dummy.txt",
+    "test_samtools_view.indexed_fasta": {},
+    "test_samtools_view.params": {},
+    "test_samtools_view.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_samtools_view.out_path": "out.bam"
+}
