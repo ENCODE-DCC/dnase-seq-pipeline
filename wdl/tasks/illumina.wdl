@@ -1,6 +1,10 @@
 version 1.0
 
 
+import "../structs/resources.wdl"
+import "../structs/fastq.wdl"
+
+
 task trim_adapters {
     input {
         FastqPair fastqs
