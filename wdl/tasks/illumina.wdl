@@ -9,7 +9,7 @@ task trim_adapters {
     input {
         FastqPair fastqs
         File adapters
-        Reseources = resources
+        Resources  resources
         String adapter1 = "P5"
         String adapter2 = "P7"
         String read1_out_filename = "trim.R1.fastq.gz"
@@ -28,7 +28,7 @@ task trim_adapters {
             ~{read2_out_filename} \
             &> trimstats.txt
     }
-        
+
     output {
         FastqPair trimmed_fastqs = {
             "R1": read1_out_filename,
@@ -36,7 +36,7 @@ task trim_adapters {
         }
         File trimstats = "trimstats.txt"
     }
-    
+
     runtime {
         cpu: resources.cpu
         memory: "~{resources.memory_gb} GB"

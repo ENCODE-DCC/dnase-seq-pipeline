@@ -1,0 +1,12 @@
+{
+    "test_illumina_trim_adapters.fastqs": {
+        "R1": "tests/data/dummy.txt",
+        "R2": "tests/data/dummy.txt"
+    },
+    "test_illumina_trim_adapters.adapters": "tests/data/dummy.txt",
+    "test_illumina_trim_adapters.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
