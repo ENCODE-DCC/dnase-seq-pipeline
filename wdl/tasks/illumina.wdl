@@ -43,3 +43,28 @@ task trim_adapters {
         disks: resources.disks
     }
 }
+
+
+task trimstats_to_trimcounts {
+    input {
+        File trimstats
+        Resources resources
+        String trimcounts_out = "trim.counts.txt"
+    }
+
+    command <<<
+        awk '{print "adapter-trimmed\t" \$NF * 2}' \
+            < ~{trimstats} \
+            > ~{trimcounts_out} 
+    >>>
+
+    output {
+        File trimcounts = trimcounts_out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
