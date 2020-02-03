@@ -13,6 +13,6 @@ workflow test_illumina_trimstats_to_trimcounts {
     call illumina.trimstats_to_trimcounts {
         input:
             resources=resources,
-            resources=resources,
+            trimstats=trimstats,
     }
 }
