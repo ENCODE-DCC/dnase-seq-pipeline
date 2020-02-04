@@ -9,7 +9,7 @@ task trim_adapters {
     input {
         FastqPair fastqs
         File adapters
-        Resources  resources
+        Resources resources
         String adapter1 = "P5"
         String adapter2 = "P7"
         String read1_out_filename = "trim.R1.fastq.gz"
