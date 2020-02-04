@@ -30,3 +30,21 @@
       - "out.bam"
   files:
       - path: "test-output/out.bam"
+
+- name: test_sort_bam_with_samtools
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/wdl/test_sort_bam_with_samtools.wdl \
+      tests/integration/json/test_sort_bam_with_samtools.json
+  stdout:
+    contains:
+      - "samtools sort"
+      - "-l 0"
+      - "-@ 1"
+      - "out.bam"
+      - "sorted.bam"
+  files:
+      - path: "test-output/sorted.bam"
+        md5sum: d41d8cd98f00b204e9800998ecf8427e
