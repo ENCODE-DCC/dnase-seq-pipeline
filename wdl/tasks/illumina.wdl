@@ -1,8 +1,8 @@
 version 1.0
 
 
-import "../structs/resources.wdl"
 import "../structs/fastq.wdl"
+import "../structs/resources.wdl"
 
 
 task trim_adapters {

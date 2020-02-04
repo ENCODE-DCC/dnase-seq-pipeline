@@ -18,3 +18,4 @@
   files:
     - path: "test-output/trim.R1.fastq.gz"
     - path: "test-output/trim.R2.fastq.gz"
+    - path: "test-output/trimstats.txt"
