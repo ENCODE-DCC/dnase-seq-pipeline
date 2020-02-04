@@ -1,0 +1,12 @@
+{
+    "test_trim_adapters_on_fastq_pair.trim_adapters_on_fastq_pair.fastqs": {
+        "R1": "",
+        "R2": ""
+    },
+    "test_trim_adapters_on_fastq_pair.trim_adapters_on_fastq_pair.adapters": "",
+    "test_trim_adapters_on_fastq_pair.trim_adapters_on_fastq_pair.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
