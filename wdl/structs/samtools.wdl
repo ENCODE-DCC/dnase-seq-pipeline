@@ -27,3 +27,9 @@ struct SamtoolsViewParams {
     String? include
     String? exclude
 }
+
+
+struct SamtoolsSortParams {
+    Int? compression_level
+    Int? threads
+}

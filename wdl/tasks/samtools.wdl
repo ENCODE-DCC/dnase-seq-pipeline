@@ -65,3 +65,31 @@ task view {
         disks: resources.disks
     }
 }
+
+
+task sort {
+    input {
+        File bam
+        Resources resources
+        SamtoolsSortParams params
+        String out = "sorted.bam"
+    }
+
+    command {
+        samtools sort \
+            ~{"-l " + params.compression_level} \
+            ~{"-@ " + params.threads} \
+            ~{bam} \
+            > ~{out}
+    }
+
+    output {
+        File sorted_bam = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
