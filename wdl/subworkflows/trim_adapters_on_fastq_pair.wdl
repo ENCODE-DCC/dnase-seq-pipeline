@@ -24,6 +24,7 @@ workflow trim_adapters_on_fastq_pair {
             fastqs=fastqs,
             read1_out_filename=read1_out_filename,
             read2_out_filename=read2_out_filename,
+            resources=resources,
             trimstats_out_filename=trimstats_out_filename,
     }
 
