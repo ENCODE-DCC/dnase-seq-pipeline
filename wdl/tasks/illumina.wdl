@@ -14,6 +14,7 @@ task trim_adapters {
         String adapter2 = "P7"
         String read1_out_filename = "trim.R1.fastq.gz"
         String read2_out_filename = "trim.R2.fastq.gz"
+        String trimstats_out_filename = "trimstats.txt"
     }
 
     command {
@@ -26,7 +27,7 @@ task trim_adapters {
             ~{fastqs.R2} \
             ~{read1_out_filename} \
             ~{read2_out_filename} \
-            &> trimstats.txt
+            &> ~{trimstats_out_filename}
     }
 
     output {
@@ -34,32 +35,7 @@ task trim_adapters {
             "R1": read1_out_filename,
             "R2": read2_out_filename
         }
-        File trimstats = "trimstats.txt"
-    }
-
-    runtime {
-        cpu: resources.cpu
-        memory: "~{resources.memory_gb} GB"
-        disks: resources.disks
-    }
-}
-
-
-task trimstats_to_trimcounts {
-    input {
-        File trimstats
-        Resources resources
-        String trimcounts_out = "trim.counts.txt"
-    }
-
-    command <<<
-        awk '{print "adapter-trimmed\t" \$NF * 2}' \
-            < ~{trimstats} \
-            > ~{trimcounts_out} 
-    >>>
-
-    output {
-        File trimcounts = trimcounts_out
+        File trimstats = trimstats_out_filename
     }
 
     runtime {

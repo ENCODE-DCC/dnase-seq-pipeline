@@ -1,8 +1,0 @@
-{
-    "test_illumina_trimstats_to_trimcounts.trimstats": "tests/data/dummy.txt",
-    "test_illumina_trimstats_to_trimcounts.resources": {
-        "cpu": 1,
-        "memory_gb": 1,
-        "disks": "local-disk 10 SSD"
-    }
-}
