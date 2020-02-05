@@ -22,7 +22,7 @@ task filter_reads {
     output {
         File flagged_bam = out
     }
-    
+
     runtime {
         cpu: resources.cpu
         memory: "~{resources.memory_gb} GB"

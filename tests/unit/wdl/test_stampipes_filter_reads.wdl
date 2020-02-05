@@ -11,7 +11,7 @@ workflow test_stampipes_filter_reads {
         Resources resources
         String? out
     }
-    
+
     call stampipes.filter_reads {
         input:
             bam=bam,
