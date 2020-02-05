@@ -1,0 +1,9 @@
+{
+    "test_samtools_sort.bam": "tests/data/dummy.txt",
+    "test_samtools_sort.params": {},
+    "test_samtools_sort.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

@@ -49,3 +49,34 @@
       - "-1 "
       - "-@ 4"
       - "-t "
+
+- name: test_samtools_sort
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_samtools_sort.wdl \
+    tests/unit/json/test_samtools_sort.json
+  stdout:
+    contains:
+      - "samtools sort"
+      - "-l 0"
+      - "-@ 2"
+      - "dummy.txt"
+      - "sorted.bam"
+
+- name: test_samtools_sort_no_params
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_samtools_sort.wdl \
+    tests/unit/json/test_samtools_sort_no_params.json
+  stdout:
+    contains:
+      - "samtools sort"
+      - "dummy.txt"
+      - "sorted.bam"
+    must_not_contain:
+      - "-l "
+      - "-@ "

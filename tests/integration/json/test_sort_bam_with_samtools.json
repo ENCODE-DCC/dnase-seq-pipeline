@@ -1,0 +1,12 @@
+{
+    "test_sort_bam_with_samtools.sort_bam_with_samtools.bam": "tests/data/dnase/alignment/out.bam",
+    "test_sort_bam_with_samtools.sort_bam_with_samtools.params": {
+        "compression_level": 0,
+        "threads": 1
+    },
+    "test_sort_bam_with_samtools.sort_bam_with_samtools.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
