@@ -4,7 +4,7 @@
   command: >-
       tests/caper_run.sh \
       tests/unit/wdl/test_bwa_index.wdl \
-      tests/unit/json/test_bwa_index.json 
+      tests/unit/json/test_bwa_index.json
   stdout:
     contains:
       - "bwa index dummy.txt"
