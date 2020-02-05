@@ -1,5 +1,4 @@
-# Test files can be large
-helpers/__pycache__
+__pycache__/
 
 .python-version
 
