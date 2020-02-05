@@ -1,0 +1,13 @@
+- name: test_stampipes_filter_reads
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/wdl/test_stampipes_filter_reads.wdl \
+      tests/unit/json/test_stampipes_filter_reads.json
+  stdout:
+    contains:
+      - "python3"
+      - "filter_reads.py"
+      - "dummy.txt"
+      - "flagged.bam"

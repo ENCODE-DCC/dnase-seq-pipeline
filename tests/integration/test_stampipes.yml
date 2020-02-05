@@ -1,0 +1,16 @@
+- name: test_flag_qc_fail_improper_pair_and_nonnuclear_bam_reads
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/wdl/test_flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.wdl \
+      tests/integration/json/test_flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.json
+  stdout:
+    contains:
+      - "python3"
+      - "filter_reads.py"
+      - "out.bam"
+      - "chr22.fa.nuclear.txt"
+      - "flagged.bam"
+  files:
+      - path: "test-output/flagged.bam"
