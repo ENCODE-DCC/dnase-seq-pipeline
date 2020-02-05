@@ -1,0 +1,21 @@
+- name: test_trim_adapters_on_fastq_pair
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_trim_adapters_on_fastq_pair.wdl \
+    tests/integration/json/test_trim_adapters_on_fastq_pair.json
+  stdout:
+    contains:
+      - "trim-adapters-illumina"
+      - "-f"
+      - "-1 P5"
+      - "-2 P7"
+      - "--threads=1"
+      - "trim.R1.fastq.gz"
+      - "trim.R2.fastq.gz"
+      - "&> trimstats.txt"
+  files:
+    - path: "test-output/trim.R1.fastq.gz"
+    - path: "test-output/trim.R2.fastq.gz"
+    - path: "test-output/trimstats.txt"

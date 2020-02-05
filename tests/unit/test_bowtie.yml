@@ -1,7 +1,7 @@
 - name: test_bowtie_index
   tags:
     - unit
-  command:
+  command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_bowtie_index.wdl \
     tests/unit/json/test_bowtie_index.json
