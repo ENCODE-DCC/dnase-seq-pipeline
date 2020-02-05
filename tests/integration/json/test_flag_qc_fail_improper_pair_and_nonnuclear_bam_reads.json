@@ -1,0 +1,9 @@
+{
+    "test_flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.bam": "tests/data/dnase/alignment/out.bam",
+    "test_flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.nuclear_chroms": "tests/data/ref/chr22.fa.nuclear.txt",
+    "test_flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
