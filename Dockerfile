@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     git \
     openjdk-8-jre \
+    pigz \
     python \
     python3 \
     tabix \
