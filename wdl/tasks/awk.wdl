@@ -4,9 +4,9 @@ version 1.0
 import "../structs/resources.wdl"
 
 
-task trim_fastq_to_length {
+task trim_to_length {
     input {
-        File fastq
+        File input_file 
         Int trim_length
         Resources resources
         String output_filename
@@ -18,7 +18,7 @@ task trim_fastq_to_length {
     >>>
 
     output {
-        File trimmed_fastq = output_filename
+        File trimmed = output_filename
     }
 
     runtime {
