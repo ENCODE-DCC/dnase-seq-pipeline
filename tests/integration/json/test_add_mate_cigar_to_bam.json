@@ -1,0 +1,13 @@
+{
+    "test_add_mate_cigar_to_bam.add_mate_cigar_to_bam.bam": "tests/data/dnase/alignment/flagged.bam",
+    "test_add_mate_cigar_to_bam.add_mate_cigar_to_bam.params": {
+        "max_records_to_examine": 0,
+        "restore_original_qualities": "false",
+        "validation_stringency": "SILENT"
+    },
+    "test_add_mate_cigar_to_bam.add_mate_cigar_to_bam.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

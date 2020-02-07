@@ -7,7 +7,7 @@
     tests/unit/json/test_picard_revert_original_base_qualities_and_add_mate_cigar.json
   stdout:
     contains:
-      - "picard RevertOriginalBaseQualitiesAndAddMateCigar"
+      - "java -jar picard.jar RevertOriginalBaseQualitiesAndAddMateCigar"
       - "INPUT="
       - "dummy.txt"
       - "OUTPUT=mate_cigar.bam"
@@ -24,7 +24,7 @@
     tests/unit/json/test_picard_mark_duplicates_with_mate_cigar.json
   stdout:
     contains:
-      - "picard MarkDuplicatesWithMateCigar"
+      - "java -jar picard.jar MarkDuplicatesWithMateCigar"
       - "INPUT="
       - "dummy.txt"
       - "OUTPUT=marked.bam"

@@ -14,7 +14,7 @@ task revert_original_base_qualities_and_add_mate_cigar {
     }
 
     command {
-        picard RevertOriginalBaseQualitiesAndAddMateCigar \
+        java -jar picard.jar RevertOriginalBaseQualitiesAndAddMateCigar \
             ~{"INPUT=" + bam} \
             ~{"OUTPUT=" + out} \
             ~{"RESTORE_ORIGINAL_QUALITIES=" + params.restore_original_qualities} \
@@ -44,7 +44,7 @@ task mark_duplicates_with_mate_cigar {
     }
 
     command {
-        picard MarkDuplicatesWithMateCigar \
+        java -jar picard.jar MarkDuplicatesWithMateCigar \
             ~{"INPUT=" + bam} \
             ~{"OUTPUT=" + out} \
             ~{"METRICS_FILE=" + metrics_path} \

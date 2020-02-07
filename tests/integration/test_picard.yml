@@ -1,0 +1,29 @@
+- name: test_add_mate_cigar_to_bam
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/wdl/test_add_mate_cigar_to_bam.wdl \
+      tests/integration/json/test_add_mate_cigar_to_bam.json
+  stdout:
+    contains:
+      - "picard RevertOriginalBaseQualitiesAndAddMateCigar"
+  files:
+      - path: "test-output/mate_cigar.bam"
+        md5sum: 69a750d5ed9490e0d1e707a43368ba86
+
+- name: test_mark_duplicates_in_bam_and_get_duplication_metrics
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/wdl/test_mark_duplicates_in_bam_and_get_duplication_metrics.wdl \
+      tests/integration/json/test_mark_duplicates_in_bam_and_get_duplication_metrics.json
+  stdout:
+    contains:
+      - "picard MarkDuplicatesWithMateCigar"
+  files:
+      - path: "test-output/marked.bam"
+        md5sum: 69a750d5ed9490e0d1e707a43368ba86
+      - path: "test-output/MarkDuplicates.picard"
+        md5sum: 69a750d5ed9490e0d1e707a43368ba86
