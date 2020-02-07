@@ -1,0 +1,9 @@
+{
+    "test_compression.input_file": "tests/data/dummy.txt",
+    "test_compression.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_compression.output_filename": "dummy.gz"
+}

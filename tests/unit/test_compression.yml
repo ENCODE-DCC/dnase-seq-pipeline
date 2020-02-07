@@ -1,0 +1,14 @@
+- name: test_compression  
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_compression.wdl \
+    tests/unit/json/test_compression.json
+  stdout:
+    contains:
+      - "pigz"
+      - "-n"
+      - "-c"
+      - "-p 1"
+      - "> dummy.gz"
