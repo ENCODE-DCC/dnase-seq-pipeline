@@ -7,9 +7,9 @@ import "../structs/resources.wdl"
 task trim_fastq_to_length {
     input {
         File fastq
-        String output_filename
-        Resources resources
         Int trim_length
+        Resources resources
+        String output_filename
     }
 
     command <<< 
@@ -26,3 +26,4 @@ task trim_fastq_to_length {
         memory: "~{resources.memory_gb} GB"
         disks: resources.disks
     }
+}
