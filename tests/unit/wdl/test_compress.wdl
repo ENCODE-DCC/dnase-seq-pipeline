@@ -4,7 +4,7 @@ version 1.0
 import "../../../wdl/tasks/compression.wdl"
 
 
-workflow test_compression {
+workflow test_compress {
     input {
         File input_file
         Resources resources

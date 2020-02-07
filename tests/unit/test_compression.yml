@@ -1,10 +1,10 @@
-- name: test_compression  
+- name: test_compress  
   tags:
     - unit
   command: >-
     tests/caper_run.sh \
-    tests/unit/wdl/test_compression.wdl \
-    tests/unit/json/test_compression.json
+    tests/unit/wdl/test_compress.wdl \
+    tests/unit/json/test_compress.json
   stdout:
     contains:
       - "pigz"
@@ -12,3 +12,17 @@
       - "-c"
       - "-p 1"
       - "> dummy.gz"
+
+- name: test_decompress 
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_decompress.wdl \
+    tests/unit/json/test_decompress.json
+  stdout:
+    contains:
+      - "pigz"
+      - "-c"
+      - "-p 1"
+      - "foo.txt"
