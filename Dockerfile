@@ -59,7 +59,7 @@ ENV PATH="/software/bwa:${PATH}"
 
 # Get picard and make alias
 RUN wget --quiet https://github.com/broadinstitute/picard/releases/download/2.8.1/picard.jar
-RUN echo 'alias picard="java -jar /software/picard.jar"' >> ~/.bashrc
+RUN chmod 755 picard.jar
 
 # Install bedops
 RUN git clone https://github.com/bedops/bedops.git \
