@@ -7,7 +7,7 @@ import "../structs/resources.wdl"
 task compress {
     input {
         File input_file
-        String output_filename
+        String output_filename = "compressed.gz"
         Resources resources
     }
 
@@ -35,7 +35,7 @@ task compress {
 task decompress {
     input {
         File input_file
-        String output_filename
+        String output_filename = "decompressed"
         Resources resources
     }
 

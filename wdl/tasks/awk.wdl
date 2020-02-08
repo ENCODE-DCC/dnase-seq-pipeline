@@ -9,7 +9,7 @@ task trim_to_length {
         File input_file 
         Int trim_length
         Resources resources
-        String output_filename
+        String output_filename = "trimmed"
     }
 
     command <<< 
