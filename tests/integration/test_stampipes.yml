@@ -9,7 +9,7 @@
     contains:
       - "python3"
       - "filter_reads.py"
-      - "out.bam"
+      - "sorted.bam"
       - "chr22.fa.nuclear.txt"
       - "flagged.bam"
   files:

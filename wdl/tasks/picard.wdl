@@ -51,7 +51,7 @@ task mark_duplicates_with_mate_cigar {
             ~{"ASSUME_SORTED=" + params.assume_sorted} \
             ~{"MINIMUM_DISTANCE=" + params.minimum_distance} \
             ~{"READ_NAME_REGEX=" + params.read_name_regex} \
-            ~{"VALIDATION_STRINGENCY=" + params.validation_stringency} \
+            ~{"VALIDATION_STRINGENCY=" + params.validation_stringency}
     }
 
     output {

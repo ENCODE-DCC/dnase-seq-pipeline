@@ -3,7 +3,7 @@
     "test_picard_mark_duplicates_with_mate_cigar.params": {
         "assume_sorted": "true",
         "minimum_distance": 300,
-        "read_name_regex": "[a-zA-Z0-9]+:[0-9]+:[a-zA-Z0-9]+:[0-9]+:([0-9]+):([0-9]+):([0-9]+).*",
+        "read_name_regex": "'[a-zA-Z0-9]+:[0-9]+:[a-zA-Z0-9]+:[0-9]+:([0-9]+):([0-9]+):([0-9]+).*'",
         "validation_stringency": "SILENT"
     },
     "test_picard_mark_duplicates_with_mate_cigar.resources": {
