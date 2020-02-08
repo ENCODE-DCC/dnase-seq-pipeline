@@ -23,6 +23,4 @@
       - "MarkDuplicatesWithMateCigar"
   files:
       - path: "test-output/marked.bam"
-        md5sum: 69a750d5ed9490e0d1e707a43368ba86
       - path: "test-output/MarkDuplicates.picard"
-        md5sum: 69a750d5ed9490e0d1e707a43368ba86
