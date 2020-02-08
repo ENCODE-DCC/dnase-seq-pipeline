@@ -7,10 +7,9 @@
       tests/integration/json/test_add_mate_cigar_to_bam.json
   stdout:
     contains:
-      - "picard RevertOriginalBaseQualitiesAndAddMateCigar"
+      - "RevertOriginalBaseQualitiesAndAddMateCigar"
   files:
       - path: "test-output/mate_cigar.bam"
-        md5sum: 69a750d5ed9490e0d1e707a43368ba86
 
 - name: test_mark_duplicates_in_bam_and_get_duplication_metrics
   tags:
@@ -21,7 +20,7 @@
       tests/integration/json/test_mark_duplicates_in_bam_and_get_duplication_metrics.json
   stdout:
     contains:
-      - "picard MarkDuplicatesWithMateCigar"
+      - "MarkDuplicatesWithMateCigar"
   files:
       - path: "test-output/marked.bam"
         md5sum: 69a750d5ed9490e0d1e707a43368ba86
