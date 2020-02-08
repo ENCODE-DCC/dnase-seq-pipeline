@@ -1,5 +1,5 @@
 {
-    "test_mark_duplicates_in_bam_and_get_duplication_metrics.mark_duplicates_in_bam_and_get_duplication_metrics.bam": "tests/data/dummy.txt",
+    "test_mark_duplicates_in_bam_and_get_duplication_metrics.mark_duplicates_in_bam_and_get_duplication_metrics.bam": "tests/data/dnase/alignment/mate_cigar.bam",
     "test_mark_duplicates_in_bam_and_get_duplication_metrics.mark_duplicates_in_bam_and_get_duplication_metrics.params": {
         "assume_sorted": "true",
         "minimum_distance": 300,
