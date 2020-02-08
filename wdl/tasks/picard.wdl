@@ -10,7 +10,7 @@ task revert_original_base_qualities_and_add_mate_cigar {
         File bam
         Resources resources
         RevertOriginalBaseQualitiesAndAddMateCigarParams params
-        String? out = "mate_cigar.bam"
+        String out = "mate_cigar.bam"
     }
 
     command {
@@ -39,8 +39,8 @@ task mark_duplicates_with_mate_cigar {
         File bam
         Resources resources
         MarkDuplicatesWithMateCigarParams params
-        String? metrics_path = "MarkDuplicates.picard"
-        String? out = "marked.bam"
+        String metrics_path = "MarkDuplicates.picard"
+        String out = "marked.bam"
     }
 
     command {
