@@ -1,0 +1,13 @@
+{
+    "test_picard_revert_original_base_qualities_and_add_mate_cigar.bam": "tests/data/dummy.txt",
+    "test_picard_revert_original_base_qualities_and_add_mate_cigar.params": {
+        "max_records_to_examine": 0,
+        "restore_original_qualities": "false",
+        "validation_stringency": "SILENT"
+    },
+    "test_picard_revert_original_base_qualities_and_add_mate_cigar.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

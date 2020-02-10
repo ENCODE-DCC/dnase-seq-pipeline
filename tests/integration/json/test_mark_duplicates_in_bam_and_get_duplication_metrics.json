@@ -1,0 +1,14 @@
+{
+    "test_mark_duplicates_in_bam_and_get_duplication_metrics.mark_duplicates_in_bam_and_get_duplication_metrics.bam": "tests/data/dnase/alignment/mate_cigar.bam",
+    "test_mark_duplicates_in_bam_and_get_duplication_metrics.mark_duplicates_in_bam_and_get_duplication_metrics.params": {
+        "assume_sorted": "true",
+        "minimum_distance": 300,
+        "read_name_regex": "'[a-zA-Z0-9]+:[0-9]+:[a-zA-Z0-9]+:[0-9]+:([0-9]+):([0-9]+):([0-9]+).*'",
+        "validation_stringency": "SILENT"
+    },
+    "test_mark_duplicates_in_bam_and_get_duplication_metrics.mark_duplicates_in_bam_and_get_duplication_metrics.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

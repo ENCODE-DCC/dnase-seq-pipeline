@@ -1,0 +1,35 @@
+- name: test_picard_revert_original_base_qualities_and_add_mate_cigar
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_picard_revert_original_base_qualities_and_add_mate_cigar.wdl \
+    tests/unit/json/test_picard_revert_original_base_qualities_and_add_mate_cigar.json
+  stdout:
+    contains:
+      - "java -jar $(which picard.jar) RevertOriginalBaseQualitiesAndAddMateCigar"
+      - "INPUT="
+      - "dummy.txt"
+      - "OUTPUT=mate_cigar.bam"
+      - "RESTORE_ORIGINAL_QUALITIES=false"
+      - "VALIDATION_STRINGENCY=SILENT"
+      - "MAX_RECORDS_TO_EXAMINE=0"
+
+- name: test_picard_mark_duplicates_with_mate_cigar
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_picard_mark_duplicates_with_mate_cigar.wdl \
+    tests/unit/json/test_picard_mark_duplicates_with_mate_cigar.json
+  stdout:
+    contains:
+      - "java -jar $(which picard.jar) MarkDuplicatesWithMateCigar"
+      - "INPUT="
+      - "dummy.txt"
+      - "OUTPUT=marked.bam"
+      - "METRICS_FILE=MarkDuplicates.picard"
+      - "ASSUME_SORTED=true"
+      - "MINIMUM_DISTANCE=300"
+      - "READ_NAME_REGEX='[a-zA-Z0-9]+:[0-9]+:[a-zA-Z0-9]+:[0-9]+:([0-9]+):([0-9]+):([0-9]+).*'"
+      - "VALIDATION_STRINGENCY=SILENT"

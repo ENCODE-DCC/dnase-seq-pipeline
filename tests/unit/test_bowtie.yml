@@ -7,4 +7,4 @@
     tests/unit/json/test_bowtie_index.json
   stdout:
     contains:
-      - "bowtie-build dummy.txt dummy.txt" 
+      - "bowtie-build dummy.txt dummy.txt"

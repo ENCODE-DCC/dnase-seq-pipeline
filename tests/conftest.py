@@ -16,3 +16,9 @@ def test_data_dir():
 def bams_match():
     from comparisons import compare_bams_as_sams
     return compare_bams_as_sams
+
+
+@pytest.fixture
+def skip_lines_match():
+    from comparisons import skip_n_lines_and_compare
+    return skip_n_lines_and_compare
