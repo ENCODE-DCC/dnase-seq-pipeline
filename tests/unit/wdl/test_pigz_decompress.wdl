@@ -1,18 +1,20 @@
 version 1.0
 
 
-import "../../../wdl/tasks/compression.wdl"
+import "../../../wdl/tasks/pigz.wdl"
 
 
-workflow test_compress {
+workflow test_decompress {
     input {
+        Boolean compress
         File input_file
         Resources resources
         String output_filename
     }
 
-    call compression.compress {
-        input: 
+    call pigz.pigz{
+        input:
+            compress=compress,
             input_file=input_file,
             output_filename=output_filename,
             resources=resources,

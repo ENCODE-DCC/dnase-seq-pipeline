@@ -1,4 +1,5 @@
 {
+    "test_compress.compress": true,
     "test_compress.input_file": "tests/data/dummy.txt",
     "test_compress.resources": {
         "cpu": 1,
