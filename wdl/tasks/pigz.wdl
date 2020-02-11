@@ -8,7 +8,7 @@ import "../structs/resources.wdl"
 task pigz{
     input {
         File input_file
-        String output_filename
+        String output_filename="out"
         PigzParams params
         Resources resources
     }
@@ -20,7 +20,6 @@ task pigz{
             -c \
             ~{true="-n" false="" params.noname} \
             ~{true="-d" false="" params.decompress} \
-            ~{"-p " + params.processes} \
             ~{prefix} \
             > ~{output_filename}
     }

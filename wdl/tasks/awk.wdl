@@ -11,10 +11,12 @@ task trim_to_length {
         Resources resources
         String output_filename = "trimmed"
     }
+        String prefix = basename(input_file)
 
-    command <<< 
-       awk 'NR%2==0 {print substr($0, 1, ~{trim_length})} NR%2!=0' \
-          > ~{output_filename}
+    command <<<
+        ln ~{input_file} .
+        awk 'NR%2==0 {print substr($0, 1, ~{trim_length})} NR%2!=0' ~{prefix} \
+            > ~{output_filename}
     >>>
 
     output {

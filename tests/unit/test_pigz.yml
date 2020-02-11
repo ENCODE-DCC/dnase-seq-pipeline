@@ -10,7 +10,6 @@
       - "pigz"
       - "-c"
       - "-n"
-      - "-p 1"
       - "dummy.txt"
       - "> dummy.gz"
 
@@ -26,6 +25,5 @@
       - "pigz"
       - "-c"
       - "-d"
-      - "-p 1"
       - "dummy.txt"
       - "> foo.txt"
