@@ -9,15 +9,16 @@ workflow preprocess {
     input {
         FastqPair raw_fastqs
         File adapters
-        Map[String, Resources] runtimes
         String size
     }
+
+    Machines compute = read_json("wdl/runtimes.json")
     
     call trim_adapters.trim_adapters_on_fastq_pair {
         input:
             fastqs=raw_fastqs,
             adapters=adapters,
-            resources=runtimes[size]
+            resources=compute.runtimes[size]
     }
 
   ##  call trim_read_length.trim_read_length_on_fastq_pair {

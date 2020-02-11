@@ -10,27 +10,28 @@ workflow mark {
     input {
         File sorted_bam
         File nuclear_chroms
-        Map[String, Resources] runtimes
         String size
     }
+
+    Machines compute = read_json("wdl/runtimes.json")
 
     call cigar.add_mate_cigar_to_bam {
         input:
             bam=sorted_bam,
-            resources=runtimes[size],
+            resources=compute.runtimes[size],
     }
 
     call qc.flag_qc_fail_improper_pair_and_nonnuclear_bam_reads {
         input:
             bam=add_mate_cigar_to_bam.mate_cigar_bam,
             nuclear_chroms=nuclear_chroms,
-            resources=runtimes[size],
+            resources=compute.runtimes[size],
     }
 
     call duplicates.mark_duplicates_in_bam_and_get_duplication_metrics {
         input:
             bam=flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.flagged_bam,
-            resources=runtimes[size],
+            resources=compute.runtimes[size],
     }
 
     output {

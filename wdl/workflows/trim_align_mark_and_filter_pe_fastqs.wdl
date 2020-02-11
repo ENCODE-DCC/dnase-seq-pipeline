@@ -9,24 +9,21 @@ import "pe/filter.wdl"
 
 workflow trim_align_mark_and_filter_pe_fastqs {
     input {
-        FastqPair raw_fastqs
         BwaIndex bwa_index
-        IndexedFasta indexed_fasta
+        FastqPair raw_fastqs
         File adapters
         File nuclear_chroms
-        Machines compute = read_json("runtimes.json")
-        
-        String preprocess_size = 'small'
-        String align_size = 'medium'
-        String mark_size = 'medium'
-        String filter_size = 'small'
+        IndexedFasta indexed_fasta
+        String machine_size_preprocess = 'medium'
+        String machine_size_align = 'large'
+        String machine_size_mark = 'medium2x'
+        String machine_size_filter = 'medium'
     }
 
     call preprocess.preprocess {
         input:
             raw_fastqs=raw_fastqs,
-            runtimes=compute.runtimes,
-            size=preprocess_size,
+            size=machine_size_preprocess,
     }
 
     call align.align {
@@ -34,23 +31,20 @@ workflow trim_align_mark_and_filter_pe_fastqs {
             bwa_index=bwa_index,
             indexed_fasta=indexed_fasta,
             preprocessed_fastqs=preprocess.trimmed_fastqs,
-            runtimes=compute.runtimes,
-            size=align_size,
+            size=machine_size_align,
     }
 
     call mark.mark {
         input:
             sorted_bam=align.sorted_bam,
             nuclear_chroms=nuclear_chroms,
-            runtimes=compute.runtimes,
-            size=align_size,
+            size=machine_size_mark,
     }
 
     call filter.filter {
         input:
             flagged_and_marked_bam=mark.flagged_and_marked_bam,
-            runtimes=compute.runtimes,
-            size=align_size,
+            size=machine_size_filter,
     }
 
     output {

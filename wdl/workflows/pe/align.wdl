@@ -12,15 +12,16 @@ workflow align {
         BwaIndex bwa_index
         FastqPair preprocessed_fastqs
         IndexedFasta indexed_fasta
-        Map[String, Resources] runtimes
         String size
     }
+
+    Machines compute = read_json("wdl/runtimes.json")
 
     call map.align_fastq_pair_with_bwa {
         input:
             bwa_index=bwa_index,
             fastqs=preprocessed_fastqs,
-            resources=runtimes[size],
+            resources=compute.runtimes[size],
     }
 
     call sam.make_sam_from_sai_and_fastq_pair {
@@ -28,20 +29,20 @@ workflow align {
             bwa_index=bwa_index,
             fastqs=preprocessed_fastqs,
             sais=align_fastq_pair_with_bwa.sais,
-            resources=runtimes[size],
+            resources=compute.runtimes[size],
     }
 
     call bam.convert_sam_to_bam {
         input:
             indexed_fasta=indexed_fasta,
             sam=make_sam_from_sai_and_fastq_pair.sam,
-            resources=runtimes[size],
+            resources=compute.runtimes[size],
     }
 
     call sort.sort_bam_with_samtools {
         input:
             bam=convert_sam_to_bam.unsorted_bam,
-            resources=runtimes[size],
+            resources=compute.runtimes[size],
             
     }
 
