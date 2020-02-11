@@ -1,10 +1,10 @@
 version 1.0
 
 
-import "../align_fastq_pair_with_bwa.wdl" as map
-import "../make_sam_from_sai_and_fastq_pair.wdl" as sam
-import "../convert_sam_to_bam.wdl" as bam
-import "../sort_bam_with_samtools.wdl" as sort
+import "../../subworkflows/align_fastq_pair_with_bwa.wdl" as map
+import "../../subworkflows/make_sam_from_sai_and_fastq_pair.wdl" as sam
+import "../../subworkflows/convert_sam_to_bam.wdl" as bam
+import "../../subworkflows/sort_bam_with_samtools.wdl" as sort
 
 
 workflow align {

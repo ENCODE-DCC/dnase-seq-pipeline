@@ -1,10 +1,10 @@
 version 1.0
 
 
-import "../subworkflows/pe/preprocess.wdl"
-import "../subworkflows/pe/align.wdl"
-import "../subworkflows/pe/mark.wdl"
-import "../subworkflows/pe/filter.wdl"
+import "pe/preprocess.wdl"
+import "pe/align.wdl"
+import "pe/mark.wdl"
+import "pe/filter.wdl"
 
 
 workflow trim_align_mark_and_filter_pe_fastqs {

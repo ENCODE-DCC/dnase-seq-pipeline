@@ -1,8 +1,8 @@
 version 1.0
 
 
-import "../flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.wdl" as flag_qc
-import "../mark_duplicates_in_bam_and_get_duplication_metrics.wdl" as flag_duplicates
+import "../../subworkflows/flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.wdl" as flag_qc
+import "../../subworkflows/mark_duplicates_in_bam_and_get_duplication_metrics.wdl" as flag_duplicates
 
 
 workflow mark {

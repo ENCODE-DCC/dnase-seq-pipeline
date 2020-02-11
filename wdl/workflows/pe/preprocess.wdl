@@ -1,8 +1,8 @@
 version 1.0
 
 
-import "../trim_adapters_on_fastq_pair.wdl" as trim_adapters
-import "../trim_read_length_on_fastq_pair.wdl" as trim_read_length
+import "../../subworkflows/trim_adapters_on_fastq_pair.wdl" as trim_adapters
+import "../../subworkflows/trim_read_length_on_fastq_pair.wdl" as trim_read_length
 
 
 workflow preprocess {
