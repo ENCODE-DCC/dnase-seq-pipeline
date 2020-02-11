@@ -28,10 +28,10 @@ workflow trim_align_mark_and_filter_pe_fastqs {
             }
         }
 
-       String preprocess_size = 'small'
-       String align_size = 'medium'
-       String mark_size = 'medium'
-       String filter_size = 'small'
+        String preprocess_size = 'small'
+        String align_size = 'medium'
+        String mark_size = 'medium'
+        String filter_size = 'small'
     }
 
     call preprocess.preprocess {
