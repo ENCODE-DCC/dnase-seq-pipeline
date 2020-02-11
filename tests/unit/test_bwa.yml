@@ -37,12 +37,12 @@
     contains:
       - "bwa aln"
       - "dummy.txt"
+      - "-t 1"
       - "> out.sai"
     must_not_contain:
       - "-Y"
       - "-n 0.04"
       - "-l 32"
-      - "-t 1"
 
 - name: test_bwa_aln_filter_casava_true
   tags:
@@ -55,12 +55,12 @@
     contains:
       - "bwa aln"
       - "-Y"
+      - "-t 1"
       - "dummy.txt"
       - "> out.sai"
     must_not_contain:
       - "-n 0.04"
       - "-l 32"
-      - "-t 1"
 
 - name: test_bwa_sampe
   tags:
