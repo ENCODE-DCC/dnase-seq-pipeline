@@ -6,7 +6,7 @@ import "../../tasks/samtools.wdl"
 workflow filter {
     input {
         File flagged_and_marked_bam
-        Resources filter_resources
+        Map[String, Resources] runtimes
     }
 
     Int qc_fail_flag = 512
@@ -19,7 +19,7 @@ workflow filter {
                 "binary": true,
                 "exclude": qc_fail_flag
             },
-            resources=filter_resources,
+            resources=runtimes['small'],
     }
 
     call samtools.view as filter_nuclear_chroms {
@@ -29,7 +29,7 @@ workflow filter {
                 "binary": true,
                 "exclude": non_nuclear_flag
             },
-            resources=filter_resources,
+            resources=runtimes['small'],
     }
 
     output {

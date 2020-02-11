@@ -12,15 +12,14 @@ workflow align {
         BwaIndex bwa_index
         FastqPair preprocessed_fastqs
         IndexedFasta indexed_fasta
-        
-        Resources align_resources
+        Map[String, Resources] runtimes
     }
 
     call map.align_fastq_pair_with_bwa {
         input:
             bwa_index=bwa_index,
             fastqs=preprocessed_fastqs,
-            resources=align_resources,
+            resources=runtimes['small'],
     }
 
     call sam.make_sam_from_sai_and_fastq_pair {
@@ -28,20 +27,20 @@ workflow align {
             bwa_index=bwa_index,
             fastqs=preprocessed_fastqs,
             sais=align_fastq_pair_with_bwa.sais,
-            resources=align_resources,
+            resources=runtimes['small'],
     }
 
     call bam.convert_sam_to_bam {
         input:
             indexed_fasta=indexed_fasta,
             sam=make_sam_from_sai_and_fastq_pair.sam,
-            resources=align_resources,
+            resources=runtimes['small'],
     }
 
     call sort.sort_bam_with_samtools {
         input:
             bam=convert_sam_to_bam.unsorted_bam,
-            resources=align_resources,
+            resources=runtimes['small'],
             
     }
 
