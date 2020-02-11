@@ -7,7 +7,11 @@ import "../tasks/picard.wdl"
 workflow add_mate_cigar_to_bam {
     input {
         File bam
-        RevertOriginalBaseQualitiesAndAddMateCigarParams params
+        RevertOriginalBaseQualitiesAndAddMateCigarParams params = {
+            "max_records_to_examine": 0,
+            "restore_original_qualities": "false",
+            "validation_stringency": "SILENT"
+        }
         Resources resources
         String? out
     }

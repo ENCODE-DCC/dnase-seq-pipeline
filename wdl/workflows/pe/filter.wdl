@@ -6,6 +6,7 @@ import "../../tasks/samtools.wdl"
 workflow filter {
     input {
         File flagged_and_marked_bam
+        Resources filter_resources
     }
 
     Int qc_fail_flag = 512
@@ -17,7 +18,8 @@ workflow filter {
             params={
                 "binary": true,
                 "exclude": qc_fail_flag
-            }
+            },
+            resources=filter_resources,
     }
 
     call samtools.view as filter_nuclear_chroms {
@@ -26,11 +28,12 @@ workflow filter {
             params={
                 "binary": true,
                 "exclude": non_nuclear_flag
-            }
+            },
+            resources=filter_resources,
     }
 
     output {
-        File filtered = filter_qc_fail.out,
+        File filtered = filter_qc_fail.out
         File nuclear = filter_nuclear_chroms.out
     }
 }

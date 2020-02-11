@@ -8,7 +8,10 @@ workflow sort_bam_with_samtools {
     input {
         File bam
         Resources resources
-        SamtoolsSortParams params
+        SamtoolsSortParams params = {
+            "compression_level": 0,
+            "threads": 1
+        }
         String? out 
     }
 
