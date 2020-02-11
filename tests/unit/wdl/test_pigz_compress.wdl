@@ -6,17 +6,17 @@ import "../../../wdl/tasks/pigz.wdl"
 
 workflow test_compress {
     input {
-        Boolean compress
         File input_file
+        PigzParams params
         Resources resources
         String output_filename
     }
 
     call pigz.pigz {
         input:
-            compress=compress,
             input_file=input_file,
             output_filename=output_filename,
+            params=params,
             resources=resources,
     }
 }

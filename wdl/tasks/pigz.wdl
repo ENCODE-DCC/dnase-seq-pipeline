@@ -1,6 +1,7 @@
 version 1.0
 
 
+import "../structs/pigz.wdl"
 import "../structs/resources.wdl"
 
 
@@ -8,17 +9,18 @@ task pigz{
     input {
         File input_file
         String output_filename
-        Boolean compress
+        PigzParams params
         Resources resources
     }
-    String action_param =  if compress then "-c -n" else "-c -d" 
     String prefix = basename(input_file)
 
     command {
-        ls ~{input_file} .
+        ln ~{input_file} .
         pigz \
-            ~{action_param} \
-            -p ~{resources.cpu} \
+            -c \
+            ~{true="-n" false="" params.noname} \
+            ~{true="-d" false="" params.decompress} \
+            ~{"-p " + params.processes} \
             ~{prefix} \
             > ~{output_filename}
     }

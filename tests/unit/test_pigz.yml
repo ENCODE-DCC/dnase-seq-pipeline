@@ -8,9 +8,10 @@
   stdout:
     contains:
       - "pigz"
-      - "-c -n"
-      - "dummy.txt"
+      - "-c"
+      - "-n"
       - "-p 1"
+      - "dummy.txt"
       - "> dummy.gz"
 
 - name: test_pigz_decompress 
@@ -23,7 +24,8 @@
   stdout:
     contains:
       - "pigz"
-      - "-c -d"
-      - "dummy.txt"
+      - "-c"
+      - "-d"
       - "-p 1"
-      - "foo.txt"
+      - "dummy.txt"
+      - "> foo.txt"
