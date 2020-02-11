@@ -1,7 +1,7 @@
 {
     "test_align_fastq_pair_with_bwa.align_fastq_pair_with_bwa.fastqs": {
-        "R1": "tests/data/dnase/alignment/r1.fastq.gz",
-        "R2": "tests/data/dnase/alignment/r2.fastq.gz"
+        "R1": "tests/data/dnase/trimming/trim.R1.fastq.gz",
+        "R2": "tests/data/dnase/trimming/trim.R2.fastq.gz"
     },
     "test_align_fastq_pair_with_bwa.align_fastq_pair_with_bwa.bwa_index": {
         "fasta": "tests/data/ref/chr22.fa",

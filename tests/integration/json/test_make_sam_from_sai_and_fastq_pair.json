@@ -1,11 +1,11 @@
 {
     "test_make_sam_from_sai_and_fastq_pair.make_sam_from_sai_and_fastq_pair.fastqs": {
-        "R1": "tests/data/dnase/alignment/r1.fastq.gz",
-        "R2": "tests/data/dnase/alignment/r2.fastq.gz"
+        "R1": "tests/data/dnase/trimming/trim.R1.fastq.gz",
+        "R2": "tests/data/dnase/trimming/trim.R2.fastq.gz"
     },
     "test_make_sam_from_sai_and_fastq_pair.make_sam_from_sai_and_fastq_pair.sais": {
-        "S1": "tests/data/dnase/alignment/r1.sai",
-        "S2": "tests/data/dnase/alignment/r2.sai"
+        "S1": "tests/data/dnase/alignment/trim.R1.sai",
+        "S2": "tests/data/dnase/alignment/trim.R2.sai"
     },
     "test_make_sam_from_sai_and_fastq_pair.make_sam_from_sai_and_fastq_pair.bwa_index": {
         "fasta": "tests/data/ref/chr22.fa",
