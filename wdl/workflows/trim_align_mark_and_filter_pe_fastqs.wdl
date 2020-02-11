@@ -20,14 +20,25 @@ workflow trim_align_mark_and_filter_pe_fastqs {
                 "cpu": 1,
                 "memory_gb": 2,
                 "disks": "local-disk 10 SSD"
+            },
+            "medium": {
+                "cpu": 2,
+                "memory_gb": 4,
+                "disks": "local-disk 30 SSD"
             }
         }
+
+       String preprocess_size = 'small'
+       String align_size = 'medium'
+       String mark_size = 'medium'
+       String filter_size = 'small'
     }
 
     call preprocess.preprocess {
         input:
             raw_fastqs=raw_fastqs,
             runtimes=runtimes,
+            size=preprocess_size,
     }
 
     call align.align {
@@ -36,6 +47,7 @@ workflow trim_align_mark_and_filter_pe_fastqs {
             indexed_fasta=indexed_fasta,
             preprocessed_fastqs=preprocess.trimmed_fastqs,
             runtimes=runtimes,
+            size=align_size,
     }
 
     call mark.mark {
@@ -43,12 +55,14 @@ workflow trim_align_mark_and_filter_pe_fastqs {
             sorted_bam=align.sorted_bam,
             nuclear_chroms=nuclear_chroms,
             runtimes=runtimes,
+            size=align_size,
     }
 
     call filter.filter {
         input:
             flagged_and_marked_bam=mark.flagged_and_marked_bam,
             runtimes=runtimes,
+            size=align_size,
     }
 
     output {

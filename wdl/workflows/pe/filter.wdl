@@ -7,6 +7,7 @@ workflow filter {
     input {
         File flagged_and_marked_bam
         Map[String, Resources] runtimes
+        String size
     }
 
     Int qc_fail_flag = 512
@@ -19,7 +20,7 @@ workflow filter {
                 "binary": true,
                 "exclude": qc_fail_flag
             },
-            resources=runtimes['small'],
+            resources=runtimes[size],
     }
 
     call samtools.view as filter_nuclear_chroms {
@@ -29,7 +30,7 @@ workflow filter {
                 "binary": true,
                 "exclude": non_nuclear_flag
             },
-            resources=runtimes['small'],
+            resources=runtimes[size],
     }
 
     output {

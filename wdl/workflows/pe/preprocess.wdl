@@ -10,13 +10,14 @@ workflow preprocess {
         FastqPair raw_fastqs
         File adapters
         Map[String, Resources] runtimes
+        String size
     }
     
     call trim_adapters.trim_adapters_on_fastq_pair {
         input:
             fastqs=raw_fastqs,
             adapters=adapters,
-            resources=runtimes['small']
+            resources=runtimes[size]
     }
 
   ##  call trim_read_length.trim_read_length_on_fastq_pair {
