@@ -14,20 +14,8 @@ workflow trim_align_mark_and_filter_pe_fastqs {
         IndexedFasta indexed_fasta
         File adapters
         File nuclear_chroms
-
-        Map[String, Resources] runtimes = {
-            "small": {
-                "cpu": 1,
-                "memory_gb": 2,
-                "disks": "local-disk 10 SSD"
-            },
-            "medium": {
-                "cpu": 2,
-                "memory_gb": 4,
-                "disks": "local-disk 30 SSD"
-            }
-        }
-
+        Machines compute = read_json("runtimes.json")
+        
         String preprocess_size = 'small'
         String align_size = 'medium'
         String mark_size = 'medium'
@@ -37,7 +25,7 @@ workflow trim_align_mark_and_filter_pe_fastqs {
     call preprocess.preprocess {
         input:
             raw_fastqs=raw_fastqs,
-            runtimes=runtimes,
+            runtimes=compute.runtimes,
             size=preprocess_size,
     }
 
@@ -46,7 +34,7 @@ workflow trim_align_mark_and_filter_pe_fastqs {
             bwa_index=bwa_index,
             indexed_fasta=indexed_fasta,
             preprocessed_fastqs=preprocess.trimmed_fastqs,
-            runtimes=runtimes,
+            runtimes=compute.runtimes,
             size=align_size,
     }
 
@@ -54,14 +42,14 @@ workflow trim_align_mark_and_filter_pe_fastqs {
         input:
             sorted_bam=align.sorted_bam,
             nuclear_chroms=nuclear_chroms,
-            runtimes=runtimes,
+            runtimes=compute.runtimes,
             size=align_size,
     }
 
     call filter.filter {
         input:
             flagged_and_marked_bam=mark.flagged_and_marked_bam,
-            runtimes=runtimes,
+            runtimes=compute.runtimes,
             size=align_size,
     }
 
