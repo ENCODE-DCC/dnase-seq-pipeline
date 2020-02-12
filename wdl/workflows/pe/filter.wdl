@@ -6,7 +6,7 @@ import "../../tasks/samtools.wdl"
 workflow filter {
     input {
         File flagged_and_marked_bam
-        String size
+        String machine_size
     }
 
     Machines compute = read_json("wdl/runtimes.json")
@@ -21,7 +21,7 @@ workflow filter {
                 "binary": true,
                 "exclude": qc_fail_flag
             },
-            resources=compute.runtimes[size],
+            resources=compute.runtimes[machine_size],
     }
 
     call samtools.view as filter_nuclear_chroms {
@@ -31,7 +31,7 @@ workflow filter {
                 "binary": true,
                 "exclude": non_nuclear_flag
             },
-            resources=compute.runtimes[size],
+            resources=compute.runtimes[machine_size],
     }
 
     output {

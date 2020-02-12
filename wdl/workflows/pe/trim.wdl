@@ -5,11 +5,11 @@ import "../../subworkflows/trim_adapters_on_fastq_pair.wdl" as trim_adapters
 # import "../../subworkflows/trim_read_length_on_fastq_pair.wdl" as trim_read_length
 
 
-workflow preprocess {
+workflow trim {
     input {
         FastqPair raw_fastqs
         File adapters
-        String size
+        String machine_size
     }
 
     Machines compute = read_json("wdl/runtimes.json")
@@ -18,7 +18,7 @@ workflow preprocess {
         input:
             fastqs=raw_fastqs,
             adapters=adapters,
-            resources=compute.runtimes[size]
+            resources=compute.runtimes[machine_size]
     }
 
   ##  call trim_read_length.trim_read_length_on_fastq_pair {
