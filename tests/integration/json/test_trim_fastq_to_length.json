@@ -5,6 +5,5 @@
         "cpu": 1,
         "memory_gb": 2,
         "disks": "local-disk 10 SSD"
-    },
-    "test_trim_fastq_to_length.trim_fastq_to_length.output_filename": "trimmed_to_length.R1.fastq.gz"
+    }
 }

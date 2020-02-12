@@ -10,8 +10,8 @@ workflow trim_fastq_to_length {
         File fastq
         Int trim_length
         Resources resources
-        String output_filename
     }
+        String output_filename = "trimmed_to_length_" + basename(fastq)
 
     call pigz.pigz as decompress {
         input:

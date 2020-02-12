@@ -10,5 +10,18 @@
       - "pigz"
       - "-c"
       - "-d"
-      - "trim.R1.fastq.gz"
+      - "trimmed_to_length_trim.R1.fastq.gz"
       - "> out"
+      - "awk 'NR%2==0 {print substr($0, 1, 15)} NR%2!=0' out"
+      - "> trimmed"
+      - "-n"
+      - "trimmed"
+      - "> trimmed_to_length_trim.R1.fastq.gz"
+
+- name: test_trim_fastq_pair_to_length 
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_trim_fastq_pair_to_length.wdl \
+    tests/integration/json/test_trim_fastq_pair_to_length.json
