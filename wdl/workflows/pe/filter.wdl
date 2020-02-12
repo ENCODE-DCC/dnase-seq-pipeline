@@ -1,7 +1,7 @@
 version 1.0
 
 import "../../subworkflows/filter_bam_reads_with_qc_fail_flag.wdl" as qc
-import "../../subworkflows/filter_bam_reads_with_non_nuclear_flag.wdl" as nuclear
+import "../../subworkflows/filter_bam_reads_with_nonnuclear_flag.wdl" as nuclear
 
 
 workflow filter {
@@ -18,7 +18,7 @@ workflow filter {
             resources=compute.runtimes[machine_size],
     }
 
-    call nuclear.filter_bam_reads_with_non_nuclear_flag {
+    call nuclear.filter_bam_reads_with_nonnuclear_flag {
         input:
             flagged_and_marked_bam=filter_bam_reads_with_qc_fail_flag.filtered,
             resources=compute.runtimes[machine_size],
@@ -26,6 +26,6 @@ workflow filter {
 
     output {
         File filtered = filter_bam_reads_with_qc_fail_flag.filtered
-        File nuclear = filter_bam_reads_with_non_nuclear_flag.nuclear
+        File nuclear = filter_bam_reads_with_nonnuclear_flag.nuclear
     }
 }
