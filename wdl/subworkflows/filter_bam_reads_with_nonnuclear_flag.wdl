@@ -4,7 +4,7 @@ version 1.0
 import "../tasks/samtools.wdl"
 
 
-workflow filter_bam_reads_with_non_nuclear_flag {
+workflow filter_bam_reads_with_nonnuclear_flag {
     input {
         File flagged_and_marked_bam
         Int non_nuclear_flag = 4096
