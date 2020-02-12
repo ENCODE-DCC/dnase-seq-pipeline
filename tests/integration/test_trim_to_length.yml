@@ -1,6 +1,6 @@
-- name: test_trim_fastq_to_length 
+- name: test_trim_fastq_to_length
   tags:
-    - integration 
+    - integration
   command: >-
     tests/caper_run.sh \
     tests/integration/wdl/test_trim_fastq_to_length.wdl \
@@ -18,7 +18,7 @@
       - "trimmed"
       - "> trimmed_to_length_trim.R1.fastq.gz"
 
-- name: test_trim_fastq_pair_to_length 
+- name: test_trim_fastq_pair_to_length
   tags:
     - integration
   command: >-
