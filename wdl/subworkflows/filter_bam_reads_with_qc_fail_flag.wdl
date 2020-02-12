@@ -7,7 +7,7 @@ import "../tasks/samtools.wdl"
 workflow filter_bam_reads_with_qc_fail_flag {
     input {
         File flagged_and_marked_bam
-        Int qc_fail_flag = 512
+        String qc_fail_flag = "512"
         Resources resources
     }
 
