@@ -1,6 +1,7 @@
 version 1.0
 
-import "../../tasks/samtools.wdl"
+import "../../subworkflows/filter_bam_reads_with_qc_fail_flag.wdl" as qc
+import "../../subworkflows/filter_bam_reads_with_non_nuclear_flag.wdl" as nuclear
 
 
 workflow filter {
@@ -10,32 +11,21 @@ workflow filter {
     }
 
     Machines compute = read_json("wdl/runtimes.json")
-    
-    Int qc_fail_flag = 512
-    Int non_nuclear_flag = 4096
 
-    call samtools.view as filter_qc_fail {
+    call qc.filter_bam_reads_with_qc_fail_flag {
         input:
-            in=flagged_and_marked_bam,
-            params={
-                "binary": true,
-                "exclude": qc_fail_flag
-            },
+            flagged_and_marked_bam=flagged_and_marked_bam,
             resources=compute.runtimes[machine_size],
     }
 
-    call samtools.view as filter_nuclear_chroms {
+    call nuclear.filter_bam_reads_with_non_nuclear_flag {
         input:
-            in=filter_qc_fail.out,
-            params={
-                "binary": true,
-                "exclude": non_nuclear_flag
-            },
+            flagged_and_marked_bam=filter_bam_reads_with_qc_fail_flag.filtered,
             resources=compute.runtimes[machine_size],
     }
 
     output {
-        File filtered = filter_qc_fail.out
-        File nuclear = filter_nuclear_chroms.out
+        File filtered = filter_bam_reads_with_qc_fail_flag.filtered
+        File nuclear = filter_bam_reads_with_non_nuclear_flag.nuclear
     }
 }
