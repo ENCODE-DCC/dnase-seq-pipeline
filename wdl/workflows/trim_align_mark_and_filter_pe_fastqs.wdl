@@ -1,10 +1,10 @@
 version 1.0
 
 
-import "pe/trim.wdl"
-import "pe/align.wdl"
-import "pe/mark.wdl"
-import "pe/filter.wdl"
+import "pe/trim.wdl" as raw_fastqs
+import "pe/align.wdl" as trimmed_fastqs
+import "pe/mark.wdl" as sorted_bam
+import "pe/filter.wdl" as flagged_and_marked_bam
 
 
 workflow trim_align_mark_and_filter_pe_fastqs {
@@ -20,13 +20,13 @@ workflow trim_align_mark_and_filter_pe_fastqs {
         String machine_size_filter = 'medium'
     }
 
-    call trim.trim {
+    call raw_fastqs.trim {
         input:
             raw_fastqs=raw_fastqs,
             machine_size=machine_size_trim,
     }
 
-    call align.align {
+    call trimmed_fastqs.align {
         input:
             bwa_index=bwa_index,
             indexed_fasta=indexed_fasta,
@@ -34,14 +34,14 @@ workflow trim_align_mark_and_filter_pe_fastqs {
             machine_size=machine_size_align,
     }
 
-    call mark.mark {
+    call sorted_bam.mark {
         input:
             sorted_bam=align.sorted_bam,
             nuclear_chroms=nuclear_chroms,
             machine_size=machine_size_mark,
     }
 
-    call filter.filter {
+    call flagged_and_marked_bam.filter {
         input:
             flagged_and_marked_bam=mark.flagged_and_marked_bam,
             machine_size=machine_size_filter,
