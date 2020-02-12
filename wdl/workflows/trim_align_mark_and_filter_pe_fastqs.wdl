@@ -52,6 +52,6 @@ workflow trim_align_mark_and_filter_pe_fastqs {
         File filtered_bam = filter.filtered
         File nuclear_bam = filter.nuclear
         File trimstats = trim.trimstats
-        File duplicate_metrics = mark.duplication_metrics
+        File duplication_metrics = mark.duplication_metrics
     }
 }
