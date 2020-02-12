@@ -11,8 +11,7 @@ workflow align_fastq_with_bwa {
         BwaAlnParams params = {
             "filter_casava": true,
             "probability_missing": 0.04,
-            "seed_length": 32,
-            "threads": 1
+            "seed_length": 32
         }
         Resources resources
         String? out
