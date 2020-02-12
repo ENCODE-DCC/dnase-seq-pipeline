@@ -7,17 +7,14 @@ import "../tasks/samtools.wdl"
 workflow filter_bam_reads_with_nonnuclear_flag {
     input {
         File flagged_and_marked_bam
-        String non_nuclear_flag = "4096"
+        SamtoolsViewParams params = read_json("../subworkflows/params/filter_bam_reads_with_nonnuclear_flag.json")
         Resources resources
     }
 
     call samtools.view {
         input:
             in=flagged_and_marked_bam,
-            params={
-                "output_bam": true,
-                "exclude": non_nuclear_flag
-            },
+            params=params,
             resources=resources,
     }
 

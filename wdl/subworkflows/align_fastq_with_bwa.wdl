@@ -8,11 +8,7 @@ workflow align_fastq_with_bwa {
     input {
         File fastq
         BwaIndex bwa_index
-        BwaAlnParams params = {
-            "filter_casava": true,
-            "probability_missing": 0.04,
-            "seed_length": 32
-        }
+        BwaAlnParams params
         Resources resources
         String? out
     }

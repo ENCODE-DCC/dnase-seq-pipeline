@@ -8,7 +8,7 @@ workflow align_fastq_pair_with_bwa {
     input {
         FastqPair fastqs
         BwaIndex bwa_index
-        BwaAlnParams? params
+        BwaAlnParams params
         Resources resources
         String remove_suffix = ".fastq.gz"
     }
