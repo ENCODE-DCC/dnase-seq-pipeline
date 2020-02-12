@@ -13,8 +13,8 @@
       "sa": "../../tests/data/ref/chr22.fa.sa"
   },
   "trim_align_mark_and_filter_pe_fastqs.raw_fastqs": {
-      "R1": "../../tests/data/dnase/trimming/trim.R1.fastq.gz",
-      "R2": "../../tests/data/dnase/trimming/trim.R2.fastq.gz"
+      "R1": "../../tests/data/dnase/alignment/r1.fastq.gz",
+      "R2": "../../tests/data/dnase/alignment/r2.fastq.gz"
   },
   "trim_align_mark_and_filter_pe_fastqs.trim.adapters": "../../tests/data/dnase/alignment/adapters.txt"
 }
