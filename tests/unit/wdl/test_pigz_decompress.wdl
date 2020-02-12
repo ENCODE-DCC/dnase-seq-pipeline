@@ -12,7 +12,7 @@ workflow test_decompress {
         String output_filename
     }
 
-    call pigz.pigz{
+    call pigz.pigz {
         input:
             input_file=input_file,
             output_filename=output_filename,
