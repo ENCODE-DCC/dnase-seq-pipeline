@@ -1,8 +1,8 @@
 version 1.0
 
 
-import "../../subworkflows/trim_adapters_on_fastq_pair.wdl" as trim_adapters
-# import "../../subworkflows/trim_read_length_on_fastq_pair.wdl" as trim_read_length
+import "../../subworkflows/trim_adapters_on_fastq_pair.wdl" as raw_fastqs
+# import "../../subworkflows/trim_read_length_on_fastq_pair.wdl" as adapter_trimmed_fastqs
 
 
 workflow trim {
@@ -14,14 +14,14 @@ workflow trim {
 
     Machines compute = read_json("wdl/runtimes.json")
     
-    call trim_adapters.trim_adapters_on_fastq_pair {
+    call raw_fastqs.trim_adapters_on_fastq_pair {
         input:
             fastqs=raw_fastqs,
             adapters=adapters,
             resources=compute.runtimes[machine_size]
     }
 
-  ##  call trim_read_length.trim_read_length_on_fastq_pair {
+  ##  call adapter_trimmed_fastqs.trim_read_length_on_fastq_pair {
   ##      input:
   ##          fastqs=trim_adapters_on_fastq_pair.trimmed_fastqs
   ##  }
