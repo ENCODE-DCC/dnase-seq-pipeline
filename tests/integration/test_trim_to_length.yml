@@ -17,6 +17,9 @@
       - "-n"
       - "trimmed"
       - "> trimmed_to_length_trim.R1.fastq.gz"
+  files:
+    - path: "test-output/trimmed_to_length_trim.R1.fastq.gz"
+      md5sum: f9a21000d6b1c69d5dbdc9de8072f18d
 
 - name: test_trim_fastq_pair_to_length
   tags:
@@ -25,3 +28,8 @@
     tests/caper_run.sh \
     tests/integration/wdl/test_trim_fastq_pair_to_length.wdl \
     tests/integration/json/test_trim_fastq_pair_to_length.json
+  files:
+    - path: "test-output/trimmed_to_length_trim.R1.fastq.gz"
+      md5sum: f9a21000d6b1c69d5dbdc9de8072f18d
+    - path: "test-output/trimmed_to_length_trim.R2.fastq.gz"
+      md5sum: 1254dd2a0ab65c229f0bf9645e255915
