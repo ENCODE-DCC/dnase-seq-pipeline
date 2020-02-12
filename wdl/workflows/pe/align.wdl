@@ -10,7 +10,6 @@ import "../subworkflows/sort_bam_with_samtools.wdl" as unsorted_bam
 workflow align {
     input {
         BwaIndex bwa_index
-        BwaAlnParams params
         FastqPair trimmed_fastqs
         IndexedFasta indexed_fasta
         String machine_size
@@ -22,7 +21,6 @@ workflow align {
         input:
             bwa_index=bwa_index,
             fastqs=trimmed_fastqs,
-            params=params,
             resources=compute.runtimes[machine_size],
     }
 

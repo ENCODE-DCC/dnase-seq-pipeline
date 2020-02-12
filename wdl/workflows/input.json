@@ -16,10 +16,5 @@
       "R1": "../../tests/data/dnase/alignment/r1.fastq.gz",
       "R2": "../../tests/data/dnase/alignment/r2.fastq.gz"
   },
-  "trim_align_mark_and_filter_pe_fastqs.trim.adapters": "../../tests/data/dnase/alignment/adapters.txt",
-   "trim_align_mark_and_filter_pe_fastqs.align.params": {
-        "filter_casava": true,
-        "seed_length": 32,
-        "probability_missing": 0.04
-  }
+  "trim_align_mark_and_filter_pe_fastqs.trim.adapters": "../../tests/data/dnase/alignment/adapters.txt"
 }

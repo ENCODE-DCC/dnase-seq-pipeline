@@ -7,7 +7,11 @@ import "../tasks/samtools.wdl"
 workflow filter_bam_reads_with_qc_fail_flag {
     input {
         File flagged_and_marked_bam
-        SamtoolsViewParams params = read_json("../subworkflows/params/filter_bam_reads_with_qc_fail_flag.json")
+        Int? qc_fail_flag = 512
+        SamtoolsViewParams params = object {
+            exclude: qc_fail_flag,
+            output_bam: true
+        }
         Resources resources
     }
 
