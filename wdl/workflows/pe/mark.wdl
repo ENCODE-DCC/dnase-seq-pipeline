@@ -1,9 +1,9 @@
 version 1.0
 
 
-import "../../subworkflows/add_mate_cigar_to_bam.wdl" as sorted_bam
-import "../../subworkflows/flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.wdl" as mate_cigar_bam
-import "../../subworkflows/mark_duplicates_in_bam_and_get_duplication_metrics.wdl" as qc_fail_flagged_bam
+import "../subworkflows/add_mate_cigar_to_bam.wdl" as sorted_bam
+import "../subworkflows/flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.wdl" as mate_cigar_bam
+import "../subworkflows/mark_duplicates_in_bam_and_get_duplication_metrics.wdl" as qc_fail_flagged_bam
 
 
 workflow mark {
@@ -13,7 +13,7 @@ workflow mark {
         String machine_size
     }
 
-    Machines compute = read_json("wdl/runtimes.json")
+    Machines compute = read_json("../runtimes.json")
 
     call sorted_bam.add_mate_cigar_to_bam {
         input:

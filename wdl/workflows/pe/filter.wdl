@@ -1,7 +1,7 @@
 version 1.0
 
-import "../../subworkflows/filter_bam_reads_with_qc_fail_flag.wdl" as qc
-import "../../subworkflows/filter_bam_reads_with_nonnuclear_flag.wdl" as nuclear
+import "../subworkflows/filter_bam_reads_with_qc_fail_flag.wdl" as qc
+import "../subworkflows/filter_bam_reads_with_nonnuclear_flag.wdl" as nuclear
 
 
 workflow filter {
@@ -10,7 +10,7 @@ workflow filter {
         String machine_size
     }
 
-    Machines compute = read_json("wdl/runtimes.json")
+    Machines compute = read_json("../runtimes.json")
 
     call qc.filter_bam_reads_with_qc_fail_flag {
         input:

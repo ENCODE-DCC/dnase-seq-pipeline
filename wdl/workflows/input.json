@@ -1,0 +1,20 @@
+{
+  "trim_align_mark_and_filter_pe_fastqs.align.indexed_fasta": {
+      "fasta": "../../tests/data/ref/chr22.fa",
+      "fai": "../../tests/data/ref/chr22.fa.fai"
+  },
+  "trim_align_mark_and_filter_pe_fastqs.mark.nuclear_chroms": "../../tests/data/ref/chr22.fa.nuclear.txt",
+  "trim_align_mark_and_filter_pe_fastqs.align.bwa_index": {
+      "bwt": "../../tests/data/ref/chr22.fa.bwt",
+      "fasta": "../../tests/data/ref/chr22.fa",
+      "pac": "../../tests/data/ref/chr22.fa.pac",
+      "ann": "../../tests/data/ref/chr22.fa.ann",
+      "amb": "../../tests/data/ref/chr22.fa.amb",
+      "sa": "../../tests/data/ref/chr22.fa.sa"
+  },
+  "trim_align_mark_and_filter_pe_fastqs.raw_fastqs": {
+      "R1": "../../tests/data/dnase/trimming/trim.R1.fastq.gz",
+      "R2": "../../tests/data/dnase/trimming/trim.R2.fastq.gz"
+  },
+  "trim_align_mark_and_filter_pe_fastqs.trim.adapters": "../../tests/data/dnase/alignment/adapters.txt"
+}

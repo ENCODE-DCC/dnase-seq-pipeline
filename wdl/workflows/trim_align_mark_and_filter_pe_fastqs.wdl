@@ -9,11 +9,7 @@ import "pe/filter.wdl" as flagged_and_marked_bam
 
 workflow trim_align_mark_and_filter_pe_fastqs {
     input {
-        BwaIndex bwa_index
         FastqPair raw_fastqs
-        File adapters
-        File nuclear_chroms
-        IndexedFasta indexed_fasta
         String machine_size_trim = 'medium'
         String machine_size_align = 'large'
         String machine_size_mark = 'medium2x'
@@ -28,8 +24,6 @@ workflow trim_align_mark_and_filter_pe_fastqs {
 
     call trimmed_fastqs.align {
         input:
-            bwa_index=bwa_index,
-            indexed_fasta=indexed_fasta,
             trimmed_fastqs=trim.trimmed_fastqs,
             machine_size=machine_size_align,
     }
@@ -37,7 +31,6 @@ workflow trim_align_mark_and_filter_pe_fastqs {
     call sorted_bam.mark {
         input:
             sorted_bam=align.sorted_bam,
-            nuclear_chroms=nuclear_chroms,
             machine_size=machine_size_mark,
     }
 
