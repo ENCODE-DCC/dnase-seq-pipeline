@@ -7,12 +7,12 @@ import "../structs/fastq.wdl"
 
 workflow trim_fastq_pair_to_length {
     input {
-        FastqPair fastqs_to_trim
+        FastqPair fastqs
         Int trim_length
         Resources resources
     }
     
-    scatter (fastq in [fastqs_to_trim.R1, fastqs_to_trim.R2]) {
+    scatter (fastq in [fastqs.R1, fastqs.R2]) {
         call trim_fastq_to_length.trim_fastq_to_length as trim {
             input:
                 fastq=fastq,
@@ -22,7 +22,7 @@ workflow trim_fastq_pair_to_length {
     }
 
     output {
-        FastqPair fastqs_out = {
+        FastqPair trimmed_fastqs = {
             "R1": trim.trimmed[0],
             "R2": trim.trimmed[1]
         }

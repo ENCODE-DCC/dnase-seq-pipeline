@@ -1,0 +1,4 @@
+{
+    "filter.flagged_and_marked_bam": "tests/data/dnase/alignment/flagged.bam",
+    "filter.machine_size": "small"
+}
