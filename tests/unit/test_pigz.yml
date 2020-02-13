@@ -1,0 +1,29 @@
+- name: test_pigz_compress
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_pigz_compress.wdl \
+    tests/unit/json/test_pigz_compress.json
+  stdout:
+    contains:
+      - "pigz"
+      - "-c"
+      - "-n"
+      - "dummy.txt"
+      - "> dummy.gz"
+
+- name: test_pigz_decompress 
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_pigz_decompress.wdl \
+    tests/unit/json/test_pigz_decompress.json
+  stdout:
+    contains:
+      - "pigz"
+      - "-c"
+      - "-d"
+      - "dummy.txt"
+      - "> foo.txt"

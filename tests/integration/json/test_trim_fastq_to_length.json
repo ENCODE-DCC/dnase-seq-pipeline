@@ -1,0 +1,9 @@
+{
+    "test_trim_fastq_to_length.trim_fastq_to_length.fastq": "tests/data/dnase/trimming/trim.R1.fastq.gz",
+    "test_trim_fastq_to_length.trim_fastq_to_length.trim_length": 15,
+    "test_trim_fastq_to_length.trim_fastq_to_length.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}

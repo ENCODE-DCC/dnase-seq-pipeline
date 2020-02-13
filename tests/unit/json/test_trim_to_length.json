@@ -1,0 +1,10 @@
+{
+    "test_trim_to_length.input_file": "tests/data/dummy.txt",
+    "test_trim_to_length.output_filename": "foo.gz",
+    "test_trim_to_length.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_trim_to_length.trim_length": 42
+}

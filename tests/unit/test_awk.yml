@@ -1,0 +1,11 @@
+- name: test_trim_to_length
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_trim_to_length.wdl \
+    tests/unit/json/test_trim_to_length.json
+  stdout:
+    contains:
+      - "awk 'NR%2==0 {print substr($0, 1, 42)} NR%2!=0'"
+      - "> foo.gz"
