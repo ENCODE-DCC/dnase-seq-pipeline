@@ -14,13 +14,13 @@ workflow filter {
 
     call qc.filter_bam_reads_with_qc_fail_flag {
         input:
-            flagged_and_marked_bam=flagged_and_marked_bam,
+            flagged_bam=flagged_and_marked_bam,
             resources=compute.runtimes[machine_size],
     }
 
     call nuclear.filter_bam_reads_with_nonnuclear_flag {
         input:
-            flagged_and_marked_bam=filter_bam_reads_with_qc_fail_flag.filtered,
+            flagged_bam=filter_bam_reads_with_qc_fail_flag.filtered,
             resources=compute.runtimes[machine_size],
     }
 
