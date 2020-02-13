@@ -1,21 +1,30 @@
-- name: test_trim_align_mark_and_filter_pe_fastqs
+- name: test_pe_align
   tags:
     - functional
   command: >-
       tests/caper_run.sh \
-      wdl/workflows/trim_align_mark_and_filter_pe_fastqs.wdl \
-      tests/functional/json/test_trim_align_mark_and_filter_pe_fastqs.json
+      wdl/workflows/pe/align.wdl \
+      tests/functional/json/test_pe_align.json
   stdout:
     contains:
       - "bwa aln"
       - "bwa sampe"
       - "samtools sort"
+  files:
+      - path: "test-output/sorted.bam"
+
+- name: test_pe_mark
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/pe/mark.wdl \
+      tests/functional/json/test_pe_mark.json
+  stdout:
+    contains:
       - "filter_reads.py"
       - "RevertOriginalBaseQualitiesAndAddMateCigar"
       - "MarkDuplicatesWithMateCigar"
   files:
-      - path: "test-output/qc_fail_flag_filtered.bam"
       - path: "test-output/flagged.bam"
-      - path: "test-output/nuclear.bam"
       - path: "test-output/MarkDuplicates.picard"
-      - path: "test-output/trimstats.txt"

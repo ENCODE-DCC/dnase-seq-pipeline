@@ -1,0 +1,5 @@
+{
+  "mark.machine_size": "small",
+  "mark.sorted_bam": "tests/data/dnase/alignment/sorted.bam",
+  "mark.nuclear_chroms": "tests/data/ref/chr22.fa.nuclear.txt"
+}
