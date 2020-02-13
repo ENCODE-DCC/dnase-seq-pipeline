@@ -1,7 +1,7 @@
 version 1.0
 
 
-import "wdl/subworkflows/trim_adapters_on_fastq_pair.wdl" as raw_fastqs
+import "../../../wdl/subworkflows/trim_adapters_on_fastq_pair.wdl" as raw_fastqs
 # import "../../subworkflows/trim_read_length_on_fastq_pair.wdl" as adapter_trimmed_fastqs
 
 

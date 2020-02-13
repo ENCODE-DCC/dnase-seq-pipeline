@@ -1,9 +1,9 @@
 version 1.0
 
 
-import "wdl/subworkflows/add_mate_cigar_to_bam.wdl" as sorted_bam
-import "wdl/subworkflows/mark_duplicates_in_bam_and_get_duplication_metrics.wdl" as mate_cigar_bam
-import "wdl/subworkflows/flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.wdl" as duplicate_marked_bam
+import "../../../wdl/subworkflows/add_mate_cigar_to_bam.wdl" as sorted_bam
+import "../../../wdl/subworkflows/mark_duplicates_in_bam_and_get_duplication_metrics.wdl" as mate_cigar_bam
+import "../../../wdl/subworkflows/flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.wdl" as duplicate_marked_bam
 
 
 workflow mark {

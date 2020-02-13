@@ -1,10 +1,10 @@
 version 1.0
 
 
-import "wdl/workflows/pe/trim.wdl" as raw_fastqs
-import "wdl/workflows/pe/align.wdl" as trimmed_fastqs
-import "wdl/workflows/pe/mark.wdl" as sorted_bam
-import "wdl/workflows/pe/filter.wdl" as flagged_and_marked_bam
+import "../../wdl/workflows/pe/trim.wdl" as raw_fastqs
+import "../../wdl/workflows/pe/align.wdl" as trimmed_fastqs
+import "../../wdl/workflows/pe/mark.wdl" as sorted_bam
+import "../../wdl/workflows/pe/filter.wdl" as flagged_and_marked_bam
 
 
 workflow trim_align_mark_and_filter_pe_fastqs {

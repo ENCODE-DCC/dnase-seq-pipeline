@@ -1,7 +1,7 @@
 version 1.0
 
-import "wdl/subworkflows/filter_bam_reads_with_qc_fail_flag.wdl" as qc
-import "wdl/subworkflows/filter_bam_reads_with_nonnuclear_flag.wdl" as nuclear
+import "../../../wdl/subworkflows/filter_bam_reads_with_qc_fail_flag.wdl" as qc
+import "../../../wdl/subworkflows/filter_bam_reads_with_nonnuclear_flag.wdl" as nuclear
 
 
 workflow filter {
