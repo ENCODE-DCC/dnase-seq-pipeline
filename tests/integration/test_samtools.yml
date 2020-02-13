@@ -62,8 +62,6 @@
       - "-F 512"
   files:
       - path: "test-output/qc_fail_flag_filtered.bam"
-        md5sum: 69a750d5ed9490e0d1e707a43368ba86
-
 
 - name: test_filter_bam_reads_with_nonnuclear_flag
   tags:
