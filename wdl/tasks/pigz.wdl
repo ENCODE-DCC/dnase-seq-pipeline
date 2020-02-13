@@ -5,13 +5,14 @@ import "../structs/pigz.wdl"
 import "../structs/resources.wdl"
 
 
-task pigz{
+task pigz {
     input {
         File input_file
-        String output_filename="out"
+        String output_filename = "out"
         PigzParams params
         Resources resources
     }
+
     String prefix = basename(input_file)
 
     command {
@@ -23,9 +24,11 @@ task pigz{
             ~{prefix} \
             > ~{output_filename}
     }
+
     output {
         File out = output_filename 
     }
+
     runtime {
         cpu: resources.cpu
         memory: "~{resources.memory_gb} GB"

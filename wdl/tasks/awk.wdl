@@ -11,7 +11,8 @@ task trim_to_length {
         Resources resources
         String output_filename = "trimmed"
     }
-        String prefix = basename(input_file)
+
+    String prefix = basename(input_file)
 
     command <<<
         ln ~{input_file} .
