@@ -9,7 +9,7 @@ workflow trim_fastq_pair_to_length {
     input {
         FastqPair fastqs_to_trim
         Int trim_length
-        Resources resources_trim_pair
+        Resources resources
     }
     
     scatter (fastq in [fastqs_to_trim.R1, fastqs_to_trim.R2]) {
@@ -17,7 +17,7 @@ workflow trim_fastq_pair_to_length {
             input:
                 fastq=fastq,
                 trim_length=trim_length,
-                resources=resources_trim_pair,
+                resources=resources,
         }
     }
 
