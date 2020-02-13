@@ -4,7 +4,7 @@
   command: >-
       tests/caper_run.sh \
       wdl/workflows/trim_align_mark_and_filter_pe_fastqs.wdl \
-      tests/integration/json/test_trim_align_mark_and_filter_pe_fastqs.json
+      tests/functional/json/test_trim_align_mark_and_filter_pe_fastqs.json
   stdout:
     contains:
       - "bwa aln"
