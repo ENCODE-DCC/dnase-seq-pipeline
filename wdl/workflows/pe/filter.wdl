@@ -1,7 +1,7 @@
 version 1.0
 
-import "../../../wdl/subworkflows/filter_bam_reads_with_qc_fail_flag.wdl" as qc
-import "../../../wdl/subworkflows/filter_bam_reads_with_nonnuclear_flag.wdl" as nuclear
+import "../../../wdl/subworkflows/filter_bam_reads_with_qc_fail_flag.wdl" as flagged_and_marked_bam
+import "../../../wdl/subworkflows/filter_bam_reads_with_nonnuclear_flag.wdl" as qc_fail_flag_filtered_bam
 
 
 workflow filter {
@@ -12,13 +12,13 @@ workflow filter {
 
     Machines compute = read_json("wdl/runtimes.json")
 
-    call qc.filter_bam_reads_with_qc_fail_flag {
+    call flagged_and_marked_bam.filter_bam_reads_with_qc_fail_flag {
         input:
             flagged_bam=flagged_and_marked_bam,
             resources=compute.runtimes[machine_size],
     }
 
-    call nuclear.filter_bam_reads_with_nonnuclear_flag {
+    call qc_fail_flag_filtered_bam.filter_bam_reads_with_nonnuclear_flag {
         input:
             flagged_bam=filter_bam_reads_with_qc_fail_flag.filtered,
             resources=compute.runtimes[machine_size],
