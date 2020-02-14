@@ -19,7 +19,7 @@ workflow trim {
         input:
             fastqs=raw_fastqs,
             adapters=adapters,
-            resources=compute.runtimes[machine_size]
+            resources=compute.runtimes[machine_size],
     }
 
     call adapter_trimmed_fastqs.trim_fastq_pair_to_length {
