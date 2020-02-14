@@ -144,7 +144,7 @@ workflows:
       - wdl_integration_tests:
           requires:
             - build
-      - wdl_funtional_tests:
+      - wdl_functional_tests:
           requires:
             - build
       - push_template:
