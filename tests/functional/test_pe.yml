@@ -27,6 +27,7 @@
       - "bwa aln"
       - "bwa sampe"
       - "samtools sort"
+      - "-n"
   files:
       - path: "test-output/sorted.bam"
 
@@ -40,6 +41,7 @@
   stdout:
     contains:
       - "filter_reads.py"
+      - "samtools sort"
       - "RevertOriginalBaseQualitiesAndAddMateCigar"
       - "MarkDuplicatesWithMateCigar"
   files:

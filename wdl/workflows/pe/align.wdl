@@ -4,7 +4,7 @@ version 1.0
 import "../../../wdl/subworkflows/align_fastq_pair_with_bwa.wdl" as trimmed_fastqs
 import "../../../wdl/subworkflows/make_sam_from_sai_and_fastq_pair.wdl" as aligned_fastqs
 import "../../../wdl/subworkflows/convert_sam_to_bam.wdl" as sam
-import "../../../wdl/subworkflows/sort_bam_with_samtools.wdl" as unsorted_bam
+import "../../../wdl/subworkflows/sort_bam_by_name.wdl" as unsorted_bam
 
 
 workflow align {
@@ -39,13 +39,13 @@ workflow align {
             resources=compute.runtimes[machine_size],
     }
 
-    call unsorted_bam.sort_bam_with_samtools {
+    call unsorted_bam.sort_bam_by_name {
         input:
             bam=convert_sam_to_bam.unsorted_bam,
             resources=compute.runtimes[machine_size],
     }
 
     output {
-        File sorted_bam = sort_bam_with_samtools.sorted_bam
+        File name_sorted_bam = sort_bam_by_name.name_sorted_bam
     }
 }
