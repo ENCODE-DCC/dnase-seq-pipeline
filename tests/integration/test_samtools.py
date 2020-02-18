@@ -10,6 +10,13 @@ def test_sort_bam_by_coordinate_bams_match(test_data_dir, workflow_dir, bams_mat
     assert bams_match(actual_bam_path.as_posix(), expected_bam_path.as_posix())
 
 
+@pytest.mark.workflow(name='test_sort_bam_by_name')
+def test_sort_bam_by_name_bams_match(test_data_dir, workflow_dir, bams_match):
+    actual_bam_path = workflow_dir / Path('test-output/sorted.bam')
+    expected_bam_path = test_data_dir / Path('dnase/alignment/name_sorted.bam')
+    assert bams_match(actual_bam_path.as_posix(), expected_bam_path.as_posix())
+
+
 @pytest.mark.workflow(name='test_filter_bam_reads_with_nonnuclear_flag')
 def test_filter_bam_reads_with_nonnuclear_flag_bams_match(test_data_dir, workflow_dir, bams_match):
     actual_bam_path = workflow_dir / Path('test-output/nuclear.bam')
