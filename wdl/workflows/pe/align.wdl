@@ -42,7 +42,7 @@ workflow align {
     call unsorted_bam.sort_bam_with_samtools {
         input:
             bam=convert_sam_to_bam.unsorted_bam,
-            resources=compute.runtimes[machine_size], 
+            resources=compute.runtimes[machine_size],
     }
 
     output {

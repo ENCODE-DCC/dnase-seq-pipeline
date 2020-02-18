@@ -14,7 +14,7 @@ workflow trim {
     }
 
     Machines compute = read_json("wdl/runtimes.json")
-    
+
     call raw_fastqs.trim_adapters_on_fastq_pair {
         input:
             fastqs=raw_fastqs,
@@ -28,7 +28,7 @@ workflow trim {
             trim_length=trim_length,
             resources=compute.runtimes[machine_size],
     }
-    
+
     output {
         FastqPair trimmed_fastqs = trim_fastq_pair_to_length.trimmed_fastqs
         File trimstats = trim_adapters_on_fastq_pair.trimstats
