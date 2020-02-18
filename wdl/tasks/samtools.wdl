@@ -78,6 +78,7 @@ task sort {
     command {
         samtools sort \
             ~{"-l " + params.compression_level} \
+            ~{true="-n" false="" params.sort_by_name} \
             ~{"-@ " + resources.cpu} \
             ~{bam} \
             > ~{out}

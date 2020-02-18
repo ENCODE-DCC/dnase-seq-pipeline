@@ -31,13 +31,13 @@
   files:
       - path: "test-output/out.bam"
 
-- name: test_sort_bam_with_samtools
+- name: test_sort_bam_by_coordinate
   tags:
     - integration
   command: >-
       tests/caper_run.sh \
-      tests/integration/wdl/test_sort_bam_with_samtools.wdl \
-      tests/integration/json/test_sort_bam_with_samtools.json
+      tests/integration/wdl/test_sort_bam_by_coordinate.wdl \
+      tests/integration/json/test_sort_bam_by_coordinate.json
   stdout:
     contains:
       - "samtools sort"

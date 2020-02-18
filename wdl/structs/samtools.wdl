@@ -30,4 +30,5 @@ struct SamtoolsViewParams {
 
 struct SamtoolsSortParams {
     Int? compression_level
+    Boolean? sort_by_name
 }
