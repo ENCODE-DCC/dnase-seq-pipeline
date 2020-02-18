@@ -45,6 +45,26 @@
       - "-@ 1"
       - "out.bam"
       - "sorted.bam"
+    must_not_contain:
+      - "-n"
+  files:
+      - path: "test-output/sorted.bam"
+
+- name: test_sort_bam_by_name
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/wdl/test_sort_bam_by_name.wdl \
+      tests/integration/json/test_sort_bam_by_name.json
+  stdout:
+    contains:
+      - "samtools sort"
+      - "-l 0"
+      - "-n"
+      - "-@ 1"
+      - "out.bam"
+      - "sorted.bam"
   files:
       - path: "test-output/sorted.bam"
 
