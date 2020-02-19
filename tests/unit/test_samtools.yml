@@ -77,6 +77,6 @@
       - "samtools sort"
       - "dummy.txt"
       - "sorted.bam"
+      - "-@ 1"
     must_not_contain:
       - "-l "
-      - "-@ "

@@ -1,0 +1,65 @@
+- name: test_pe_trim
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/pe/trim.wdl \
+      tests/functional/json/test_pe_trim.json
+  stdout:
+    contains:
+      - "trim-adapters-illumina"
+      - "pigz"
+      - "awk"
+  files:
+      - path: "test-output/trimstats.txt"
+      - path: "test-output/trimmed_to_length_trim.R1.fastq.gz"
+      - path: "test-output/trimmed_to_length_trim.R1.fastq.gz"
+
+- name: test_pe_align
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/pe/align.wdl \
+      tests/functional/json/test_pe_align.json
+  stdout:
+    contains:
+      - "bwa aln"
+      - "bwa sampe"
+      - "samtools sort"
+      - "-n"
+  files:
+      - path: "test-output/sorted.bam"
+
+- name: test_pe_mark
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/pe/mark.wdl \
+      tests/functional/json/test_pe_mark.json
+  stdout:
+    contains:
+      - "filter_reads.py"
+      - "samtools sort"
+      - "RevertOriginalBaseQualitiesAndAddMateCigar"
+      - "MarkDuplicatesWithMateCigar"
+  files:
+      - path: "test-output/marked.bam"
+      - path: "test-output/MarkDuplicates.picard"
+
+- name: test_pe_filter
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/pe/filter.wdl \
+      tests/functional/json/test_pe_filter.json
+  stdout:
+    contains:
+      - "samtools view"
+      - "-F 512"
+      - "-F 4096"
+  files:
+      - path: "test-output/qc_fail_flag_filtered.bam"
+      - path: "test-output/nuclear.bam"

@@ -1,0 +1,8 @@
+{
+    "test_sort_bam_by_name.sort_bam_by_name.bam": "tests/data/dnase/alignment/out.bam",
+    "test_sort_bam_by_name.sort_bam_by_name.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

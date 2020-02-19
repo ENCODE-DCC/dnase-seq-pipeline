@@ -52,7 +52,7 @@ task aln {
             ~{true="-Y" false="" params.filter_casava} \
             ~{"-n " + params.probability_missing} \
             ~{"-l " + params.seed_length} \
-            ~{"-t " + params.threads} \
+            ~{"-t " + resources.cpu} \
             ~{bwa_index.fasta} \
             ~{fastq} \
             > ~{out}

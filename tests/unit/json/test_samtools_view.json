@@ -8,12 +8,11 @@
         "output_bam": true,
         "fast_compression": true,
         "include_header": true,
-        "compression_threads": 4,
         "include": "0x004",
         "exclude": "1024"
     },
     "test_samtools_view.resources": {
-        "cpu": 1,
+        "cpu": 4,
         "memory_gb": 1,
         "disks": "local-disk 10 SSD"
     }

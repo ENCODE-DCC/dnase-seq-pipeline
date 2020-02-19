@@ -34,7 +34,7 @@
       - "bwa aln"
   files:
       - path: "test-output/out.sai"
-        md5sum: 28c4bc03f721c3e5c2db63c8170c0b23
+        md5sum: f2c7939269dd6e4be6b8743340f1a6d5
 
 - name: test_align_fastq_pair_with_bwa
   tags:
@@ -50,10 +50,10 @@
       - "-n 0.04"
       - "-l 32"
   files:
-      - path: "test-output/r1.sai"
-        md5sum: 28c4bc03f721c3e5c2db63c8170c0b23
-      - path: "test-output/r2.sai"
-        md5sum: 9e384cfc82963b7db3696aca59666ab6
+      - path: "test-output/trim.R1.sai"
+        md5sum: f2c7939269dd6e4be6b8743340f1a6d5
+      - path: "test-output/trim.R2.sai"
+        md5sum: 848b51c23b5b2d3f7c4343f4db2beb43
 
 - name: test_make_sam_from_sai_and_fastq_pair
   tags:

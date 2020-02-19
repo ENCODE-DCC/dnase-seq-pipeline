@@ -1,5 +1,5 @@
 {
-    "test_align_fastq_with_bwa.align_fastq_with_bwa.fastq": "tests/data/dnase/alignment/r1.fastq.gz",
+    "test_align_fastq_with_bwa.align_fastq_with_bwa.fastq": "tests/data/dnase/trimming/trim.R1.fastq.gz",
     "test_align_fastq_with_bwa.align_fastq_with_bwa.bwa_index": {
         "fasta": "tests/data/ref/chr22.fa",
         "amb": "tests/data/ref/chr22.fa.amb",
@@ -11,8 +11,7 @@
     "test_align_fastq_with_bwa.align_fastq_with_bwa.params": {
         "filter_casava": true,
         "probability_missing": 0.04,
-        "seed_length": 32,
-        "threads": 1
+        "seed_length": 32
     },
     "test_align_fastq_with_bwa.align_fastq_with_bwa.resources": {
         "cpu": 1,

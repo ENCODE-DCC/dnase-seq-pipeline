@@ -49,7 +49,7 @@ task view {
             ~{true="-h" false="" params.include_header} \
             ~{true="-b" false="" params.output_bam} \
             ~{true="-1" false="" params.fast_compression} \
-            ~{"-@ " + params.compression_threads} \
+            ~{"-@ " + resources.cpu} \
             ~{"-t " + indexed_fasta.fai} \
             ~{in} \
             > ~{out_path}
@@ -78,7 +78,8 @@ task sort {
     command {
         samtools sort \
             ~{"-l " + params.compression_level} \
-            ~{"-@ " + params.threads} \
+            ~{true="-n" false="" params.sort_by_name} \
+            ~{"-@ " + resources.cpu} \
             ~{bam} \
             > ~{out}
     }

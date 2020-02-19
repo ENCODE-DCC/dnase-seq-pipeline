@@ -1,5 +1,5 @@
 {
-    "test_trim_fastq_pair_to_length.trim_fastq_pair_to_length.fastqs_to_trim": {
+    "test_trim_fastq_pair_to_length.trim_fastq_pair_to_length.fastqs": {
         "R1": "tests/data/dnase/trimming/trim.R1.fastq.gz",
         "R2": "tests/data/dnase/trimming/trim.R2.fastq.gz"
     },

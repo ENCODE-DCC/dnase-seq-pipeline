@@ -23,7 +23,6 @@ struct SamtoolsViewParams {
     Boolean? output_bam
     Boolean? fast_compression
     Boolean? include_header
-    Int? compression_threads
     String? include
     String? exclude
 }
@@ -31,5 +30,5 @@ struct SamtoolsViewParams {
 
 struct SamtoolsSortParams {
     Int? compression_level
-    Int? threads
+    Boolean? sort_by_name
 }

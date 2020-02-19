@@ -1,0 +1,8 @@
+{
+    "test_filter_bam_reads_with_nonnuclear_flag.filter_bam_reads_with_nonnuclear_flag.flagged_bam": "tests/data/dnase/alignment/flagged.bam",
+    "test_filter_bam_reads_with_nonnuclear_flag.filter_bam_reads_with_nonnuclear_flag.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

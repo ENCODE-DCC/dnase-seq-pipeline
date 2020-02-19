@@ -1,0 +1,8 @@
+{
+    "trim.machine_size": "small",
+    "trim.raw_fastqs": {
+        "R1": "tests/data/dnase/trimming/trim.R1.fastq.gz",
+        "R2": "tests/data/dnase/trimming/trim.R2.fastq.gz"
+    },
+    "trim.adapters": "tests/data/dnase/alignment/adapters.txt"
+}

@@ -83,7 +83,11 @@ jobs:
             echo "pulling template!"
             docker pull quay.io/encode-dcc/dnase-seq-pipeline:template
             docker login -u=${QUAY_ROBOT_USER} -p=${QUAY_ROBOT_USER_TOKEN} quay.io
-            docker build --cache-from quay.io/encode-dcc/dnase-seq-pipeline:template --build-arg GIT_COMMIT_HASH=${CIRCLE_SHA1} --build-arg BRANCH=${CIRCLE_BRANCH} --build-arg BUILD_DNASE_DOCKER_IMAGE_TAG=${DNASE_DOCKER_IMAGE_TAG} -t $DNASE_DOCKER_IMAGE_TAG .
+            docker build --cache-from quay.io/encode-dcc/dnase-seq-pipeline:template \
+                --build-arg GIT_COMMIT_HASH=${CIRCLE_SHA1} \
+                --build-arg BRANCH=${CIRCLE_BRANCH} \
+                --build-arg BUILD_DNASE_DOCKER_IMAGE_TAG=${DNASE_DOCKER_IMAGE_TAG} \
+                -t $DNASE_DOCKER_IMAGE_TAG .
             docker push $DNASE_DOCKER_IMAGE_TAG
             docker logout
           no_output_timeout: 30m
@@ -120,6 +124,15 @@ jobs:
       - install_git_lfs_and_get_data
       - run_test_tag:
           tag: "integration"
+
+  wdl_functional_tests:
+    <<: *machine_defaults
+    steps:
+      - checkout
+      - prepare_pytest_environment
+      - install_git_lfs_and_get_data
+      - run_test_tag:
+          tag: "functional"
 # Workflow
 workflows:
   build_workflow:
@@ -129,6 +142,9 @@ workflows:
           requires:
             - build
       - wdl_integration_tests:
+          requires:
+            - build
+      - wdl_functional_tests:
           requires:
             - build
       - push_template:

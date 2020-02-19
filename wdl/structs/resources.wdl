@@ -6,3 +6,8 @@ struct Resources {
     Int memory_gb
     String disks
 }
+
+
+struct Machines {
+    Map[String, Resources] runtimes
+}

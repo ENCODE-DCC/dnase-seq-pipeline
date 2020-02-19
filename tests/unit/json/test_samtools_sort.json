@@ -1,11 +1,10 @@
 {
     "test_samtools_sort.bam": "tests/data/dummy.txt",
     "test_samtools_sort.params": {
-        "compression_level": 0,
-        "threads": 2
+        "compression_level": 0
     },
     "test_samtools_sort.resources": {
-        "cpu": 1,
+        "cpu": 2,
         "memory_gb": 1,
         "disks": "local-disk 10 SSD"
     }

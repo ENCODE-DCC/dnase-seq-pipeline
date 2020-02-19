@@ -4,11 +4,14 @@ version 1.0
 import "../tasks/samtools.wdl"
 
 
-workflow sort_bam_with_samtools {
+workflow sort_bam_by_name {
     input {
         File bam
         Resources resources
-        SamtoolsSortParams params
+        SamtoolsSortParams params = object {
+            compression_level: 0,
+            sort_by_name: true
+        }
         String? out 
     }
 
@@ -21,6 +24,6 @@ workflow sort_bam_with_samtools {
     }
 
     output {
-        File sorted_bam = sort.sorted_bam
+        File name_sorted_bam = sort.sorted_bam
     }
 }
