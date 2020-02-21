@@ -101,6 +101,8 @@ RUN git clone https://github.com/StamLab/modwt.git \
     && git checkout 28e9f479c737836ffc870199f2468e30659ab38d \
     && make
 
+ENV PATH="/software/modwt/bin:$PATH"
+
 # Install hotspots2 v2.1
 RUN git clone -b 'v2.1' --single-branch --depth 1 https://github.com/Altius/hotspot2.git \
      && cd hotspot2 \
