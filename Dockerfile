@@ -2,6 +2,7 @@ FROM ubuntu@sha256:2695d3e10e69cc500a16eae6d6629c803c43ab075fa5ce60813a0fc49c47e
 MAINTAINER Otto Jolanki
 
 RUN apt-get update && apt-get install -y \ 
+    bc \
     gcc \
     g++ \
     zlib1g-dev \
