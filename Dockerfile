@@ -2,6 +2,7 @@ FROM ubuntu@sha256:2695d3e10e69cc500a16eae6d6629c803c43ab075fa5ce60813a0fc49c47e
 MAINTAINER Otto Jolanki
 
 RUN apt-get update && apt-get install -y \ 
+    bc \
     gcc \
     g++ \
     zlib1g-dev \
@@ -100,6 +101,8 @@ RUN git clone https://github.com/StamLab/modwt.git \
     && cd modwt \
     && git checkout 28e9f479c737836ffc870199f2468e30659ab38d \
     && make
+
+ENV PATH="/software/modwt/bin:${PATH}"
 
 # Install hotspots2 v2.1
 RUN git clone -b 'v2.1' --single-branch --depth 1 https://github.com/Altius/hotspot2.git \
