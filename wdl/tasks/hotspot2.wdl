@@ -13,12 +13,12 @@ task hotspot2 {
         Resources resources
     }
 
-    String prefix = basename(nuclear_bam, ".bam")
     Float fdr = params.hotspot_threshold
+    String prefix = basename(nuclear_bam, ".bam") + "." + fdr
 
     command {
         ln ~{nuclear_bam} ~{prefix}
-        hotspot2.sh
+        hotspot2.sh \
             -c ~{index.chrom_sizes} \
             -C ~{index.center_sites} \
             -M ~{index.mappable_regions} \
@@ -30,17 +30,17 @@ task hotspot2 {
     }
 
     output {
-        HotSpot2Output out = object {
-            allcalls: "~{prefix}.allcalls.starch",
-            cleavage: "~{prefix}.cleavage.total",
-            cutcounts: "~{prefix}.cutcounts.starch",
-            density_bed: "~{prefix}.density.starch",
-            density_bw: "~{prefix}.density.bw",
-            fragments: "~{prefix}.fragments.sorted.starch",
-            hotspots: "~{prefix}.hotspots.fdr~{fdr}.starch",
-            peaks: "~{prefix}.peaks.starch",
-            narrowpeaks: "~{prefix}.narrowpeaks.starch",
-            spot_score: "~{prefix}.SPOT.txt"
+        HotSpot2Peaks peaks = {
+            "allcalls": "~{prefix}.allcalls.starch",
+            "cleavage": "~{prefix}.cleavage.total",
+            "cutcounts": "~{prefix}.cutcounts.starch",
+            "density_bed": "~{prefix}.density.starch",
+            "density_bw": "~{prefix}.density.bw",
+            "fragments": "~{prefix}.fragments.sorted.starch",
+            "hotspots": "~{prefix}.hotspots.fdr~{fdr}.starch",
+            "peaks": "~{prefix}.peaks.starch",
+            "narrowpeaks": "~{prefix}.peaks.narrowpeaks.starch",
+            "spot_score": "~{prefix}.SPOT.txt"
         }
     }
 

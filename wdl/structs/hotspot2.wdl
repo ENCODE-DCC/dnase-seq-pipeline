@@ -2,9 +2,9 @@ version 1.0
 
 
 struct HotSpot2Index {
-    String chrom_sizes
-    String center_sites
-    String mappable_regions
+    File chrom_sizes
+    File center_sites
+    File mappable_regions
     
 }
 
@@ -16,7 +16,7 @@ struct HotSpot2Params {
 }
 
 
-struct HotSpot2Output {
+struct HotSpot2Peaks {
     File allcalls
     File cleavage
     File cutcounts

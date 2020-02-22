@@ -1,0 +1,30 @@
+- name: test_call_peaks_with_hotspot2
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_call_peaks_with_hotspot2.wdl \
+    tests/integration/json/test_call_peaks_with_hotspot2.json
+  stdout:
+    contains:
+      - "hotspot2.sh"
+      - "chr22.chrom_sizes.bed"
+      - "chr22.K36.center_sites.n100.starch"
+      - "chr22.K36.mappable_only.bed"
+      - "-f 0.05"
+      - "-F 0.5"
+      - "-p varWidth_20_default"
+      - "filtered"
+  files:
+    - path: "test-output/filtered.0.05.allcalls.starch"
+    - path: "test-output/filtered.0.05.cleavage.total"
+      md5sum: 7b281efd7aadbe033e2915861d736251
+    - path: "test-output/filtered.0.05.cutcounts.starch"
+    - path: "test-output/filtered.0.05.density.starch"
+    - path: "test-output/filtered.0.05.density.bw"
+    - path: "test-output/filtered.0.05.fragments.sorted.starch"
+    - path: "test-output/filtered.0.05.hotspots.fdr0.05.starch"
+    - path: "test-output/filtered.0.05.peaks.starch"
+    - path: "test-output/filtered.0.05.peaks.narrowpeaks.starch"
+    - path: "test-output/filtered.0.05.SPOT.txt"
+      md5sum: d5c0602308fc750da6630ea52ef8b058
