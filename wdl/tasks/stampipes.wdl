@@ -54,3 +54,31 @@ task bamcounts  {
         disks: resources.disks
     }
 }
+
+
+task info {
+    input {
+         File hotspots
+         File spot_score
+         Resources resources
+         String out = basename(hotspots, ".starch") + ".info"
+    }
+
+    command {
+        info.sh \
+            ~{hotspots}
+            hotspot2 \
+            ~{spot_score} \
+            > ~{out}
+    }
+
+    output {
+        File hotspot2_info = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}

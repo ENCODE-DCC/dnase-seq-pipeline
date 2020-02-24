@@ -25,3 +25,16 @@
       - "dummy.txt"
       - "tagcounts.txt"
 
+- name: test_stampipes_info
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/wdl/test_stampipes_info.wdl \
+      tests/unit/json/test_stampipes_info.json
+  stdout:
+    contains:
+      - "info.sh"
+      - "dummy.txt"
+      - "hotspot2"
+      - "dummy.txt.info"
