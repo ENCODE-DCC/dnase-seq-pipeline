@@ -1,0 +1,16 @@
+{
+    "test_hotspot1_runhotspot.subsampled_bam": "tests/data/dummy.txt",
+    "test_hotspot1_runhotspot.index": {
+        "chrom_info": "tests/data/dummy.txt",
+        "mappable_regions": "tests/data/dummy.txt"
+    },
+    "test_hotspot1_runhotspot.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_hotspot1_runhotspot.params": {
+        "genome_name": "chr22",
+        "read_length": 36
+    }
+}
