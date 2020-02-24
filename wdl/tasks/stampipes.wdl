@@ -66,7 +66,7 @@ task info {
 
     command {
         info.sh \
-            ~{hotspots}
+            ~{hotspots} \
             hotspot2 \
             ~{spot_score} \
             > ~{out}
