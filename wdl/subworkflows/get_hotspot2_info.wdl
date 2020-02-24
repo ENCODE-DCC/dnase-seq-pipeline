@@ -16,11 +16,12 @@ workflow get_hotspot2_info {
         input:
             hotspots=hotspots,
             spot_score=spot_score,
+            spot_type="hotspot2",
             resources=resources,
             out=out,
     }
 
     output {
-        File hotspot2_info = info.hotspot2_info
+        File hotspot2_info = info.hotspot_info
     }
 }

@@ -8,6 +8,7 @@ workflow test_stampipes_info {
     input {
          File hotspots
          File spot_score
+         File spot_type
          Resources resources
          String? out
     }
@@ -16,6 +17,7 @@ workflow test_stampipes_info {
         input:
             hotspots=hotspots,
             spot_score=spot_score,
+            spot_type=spot_type,
             resources=resources,
             out=out,
     }

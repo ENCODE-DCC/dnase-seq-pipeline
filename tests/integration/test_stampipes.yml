@@ -41,5 +41,8 @@
   stdout:
     contains:
       - "info.sh"
+      - "hotspot2"
+      - "filtered.0.05.hotspots.fdr0.05.hotspot2.info"
   files:
-      - path: "test-output/filtered.0.05.hotspots.fdr.0.05.info"
+      - path: "test-output/filtered.0.05.hotspots.fdr0.05.hotspot2.info"
+        md5sum: d4b24c39a2c52e74b580bb5e4f661b92

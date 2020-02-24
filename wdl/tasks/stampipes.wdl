@@ -60,20 +60,21 @@ task info {
     input {
          File hotspots
          File spot_score
+         String spot_type
          Resources resources
-         String out = basename(hotspots, ".starch") + ".info"
+         String out = basename(hotspots, ".starch") + "." + spot_type + ".info"
     }
 
     command {
         info.sh \
             ~{hotspots} \
-            hotspot2 \
+            ~{spot_type} \
             ~{spot_score} \
             > ~{out}
     }
 
     output {
-        File hotspot2_info = out
+        File hotspot_info = out
     }
 
     runtime {
