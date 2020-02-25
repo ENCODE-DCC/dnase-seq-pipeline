@@ -72,6 +72,14 @@ RUN git clone https://github.com/bedops/bedops.git \
 
 ENV PATH="/software/bedops/bin:${PATH}"
 
+# Install bedtools
+RUN wget --quiet https://github.com/arq5x/bedtools2/releases/download/v2.25.0/bedtools-2.25.0.tar.gz \
+      && tar xf bedtools-2.25.0.tar.gz \
+      && cd bedtools2 \
+      && make
+
+ENV PATH="/softward/bedtools2/bin/:${PATH}"
+
 # Install trim-adapters-illumina
 RUN git clone https://bitbucket.org/jvierstra/bio-tools.git \
       && cd bio-tools \
