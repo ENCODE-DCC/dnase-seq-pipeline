@@ -9,4 +9,5 @@
     contains:
       - "runhotspot.bash"
   files:
-    - path: "test-output/filtered.spot.out"
+    - path: "test-output/subsample.spot.out"
+      md5sum: 565eeacc5094f8ec00242d062e0e4453

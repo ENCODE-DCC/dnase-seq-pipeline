@@ -20,7 +20,7 @@ task runhotspot {
         ln ~{index.mappable_regions} .
         runhotspot.bash \
             $HOTSPOT_DIRECTORY \
-            . \
+            $PWD \
             ~{subsampled_bam} \
             ~{params.genome_name} \
             ~{params.read_length} \

@@ -83,3 +83,30 @@ task info {
         disks: resources.disks
     }
 }
+
+
+task random_sample {
+    input {
+        File bam
+        Int sample_number
+        Resources resources
+        String? out = "subsample.bam"
+    }
+
+    command {
+        random_sample.sh \
+            ~{bam} \
+            ~{out} \
+            ~{sample_number}
+    }
+
+    output {
+        File subsampled_bam = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}

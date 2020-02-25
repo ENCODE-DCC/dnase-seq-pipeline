@@ -8,7 +8,7 @@
   stdout:
     contains:
       - "runhotspot.bash"
-      - "/software/hotspot/hotspot_distr"
+      - "$HOTSPOT_DIRECTORY"
       - "dummy.txt"
       - "chr22"
       - "36"
