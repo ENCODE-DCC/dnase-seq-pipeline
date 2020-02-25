@@ -89,7 +89,7 @@ RUN git clone https://github.com/StamLab/hotspot.git \
 
 ENV PATH="/software/hotspot/hotspot-distr/ScriptTokenizer/src:${PATH}"
 ENV PATH="/software/hotspot/hotspot-distr/hotspot-deploy/bin:${PATH}"
-ENV HOTSPOT_DIRECTORY="/software/hotspot/hotspot-distr/"
+ENV HOTSPOT_DIRECTORY="/software/hotspot/hotspot-distr"
 
 # Get BedGraphToBigWig v385 for hotspots2
 RUN git clone https://github.com/ENCODE-DCC/kentutils_v385_bin_bulkrna.git \
