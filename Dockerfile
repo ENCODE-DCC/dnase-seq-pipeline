@@ -124,6 +124,8 @@ ENV PATH="/software/hotspot2/scripts:${PATH}"
 # Pull bwa_2.6.0-rc tag of stampipes
 RUN git clone -b 'bwa_2.6.0-rc' --single-branch --depth 1 https://github.com/StamLab/stampipes.git
 
+ENV STAMPIPES="/software/stampipes"
+
 # Install stampipes requirements
 RUN pip install cython numpy scipy
 RUN pip3 install biopython==1.76 pysam==0.15.0 numpy==1.18.1 scipy==1.4.1 scikit-learn==0.22.1
