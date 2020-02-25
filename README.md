@@ -5,8 +5,9 @@ The *wdl* folder is split up into:
 * tasks
 * subworkflows
 * workflows
+* structs
 
-Tasks wrap generic command-line utilities. Subworkflows use one or more tasks to create DNase-seq-specific utilities. Workflows combine mutliple subworkflows into a conceptually useful unit of work for consumption by the end user.
+Tasks wrap generic command-line utilities. Subworkflows use one or more tasks to create DNase-seq-specific utilities. Workflows combine mutliple subworkflows into a conceptually useful unit of work for consumption by the end user. Structs define the abstract groups of parameters and files that should be passed around together.
 
 The *tests* folder is split up into:
 * unit
@@ -19,7 +20,7 @@ In general unit tests ensure proper wrapping of command-line utilities by tasks.
 ### Testing
 We use pytest-workflow and Caper to run Cromwell and compare outputs. Usually we can compare md5sums using the pytest-workflow yml. However for binary files like BAM and starch we write custom comparisons (kept in the .py files) that first convert the ouputs to plain text. These are automattically run by pytest-workflow after outputs have been generated.
 
-The tests can be run by calling `pytest` in the parent dnase-seq-pipeline folder.
+The tests can be run by calling `pytest` in the parent *dnase-seq-pipeline* folder.
 
 Tests dependencies:
 * Java

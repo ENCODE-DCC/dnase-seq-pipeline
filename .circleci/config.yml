@@ -33,7 +33,16 @@ commands:
       - run: pip install --upgrade pip
       - run: pip install pytest-workflow
       - run: pip install -r requirements.txt
-      - run: apt-get update && apt-get install bedops -y
+
+  install_bedops:
+    description: "Install bedops for test output comparisons"
+    steps:
+      - download_file:
+          file_url: "https://github.com/bedops/bedops/releases/download/v2.4.36/bedops_linux_x86_64-v2.4.36.tar.bz2"
+      - run:
+          command: |
+            tar jxvf bedops_linux_x86_64-v2.4.36.tar.bz2
+            sudo cp bin/* /usr/local/bin
 
   download_file:
     description: "Download a file using wget"
@@ -48,6 +57,7 @@ commands:
     steps:
       - set_environment_variables
       - install_python_requirements
+      - install_bedops
       - download_file:
           file_url: "https://github.com/broadinstitute/cromwell/releases/download/48/cromwell-48.jar"
       - download_file:

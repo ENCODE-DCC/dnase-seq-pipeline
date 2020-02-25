@@ -16,14 +16,14 @@
       - "-p varWidth_20_default"
       - "filtered"
   files:
-    - path: "test-output/filtered.0.05.allcalls.starch"
+    - path: "test-output/filtered.0.05.hotspots.fdr0.05.starch"
     - path: "test-output/filtered.0.05.cleavage.total"
       md5sum: 7b281efd7aadbe033e2915861d736251
     - path: "test-output/filtered.0.05.cutcounts.starch"
     - path: "test-output/filtered.0.05.density.starch"
     - path: "test-output/filtered.0.05.density.bw"
     - path: "test-output/filtered.0.05.fragments.sorted.starch"
-    - path: "test-output/filtered.0.05.hotspots.fdr0.05.starch"
+    - path: "test-output/filtered.0.05.allcalls.starch"
     - path: "test-output/filtered.0.05.peaks.starch"
     - path: "test-output/filtered.0.05.peaks.narrowpeaks.starch"
     - path: "test-output/filtered.0.05.SPOT.txt"
