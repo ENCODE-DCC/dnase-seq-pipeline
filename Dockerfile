@@ -72,6 +72,14 @@ RUN git clone https://github.com/bedops/bedops.git \
 
 ENV PATH="/software/bedops/bin:${PATH}"
 
+# Install bedtools
+RUN wget --quiet https://github.com/arq5x/bedtools2/releases/download/v2.25.0/bedtools-2.25.0.tar.gz \
+      && tar xf bedtools-2.25.0.tar.gz \
+      && cd bedtools2 \
+      && make
+
+ENV PATH="/software/bedtools2/bin/:${PATH}"
+
 # Install trim-adapters-illumina
 RUN git clone https://bitbucket.org/jvierstra/bio-tools.git \
       && cd bio-tools \
@@ -89,6 +97,7 @@ RUN git clone https://github.com/StamLab/hotspot.git \
 
 ENV PATH="/software/hotspot/hotspot-distr/ScriptTokenizer/src:${PATH}"
 ENV PATH="/software/hotspot/hotspot-distr/hotspot-deploy/bin:${PATH}"
+ENV HOTSPOT_DIRECTORY="/software/hotspot/hotspot-distr"
 
 # Get BedGraphToBigWig v385 for hotspots2
 RUN git clone https://github.com/ENCODE-DCC/kentutils_v385_bin_bulkrna.git \
@@ -114,6 +123,8 @@ ENV PATH="/software/hotspot2/scripts:${PATH}"
 
 # Pull bwa_2.6.0-rc tag of stampipes
 RUN git clone -b 'bwa_2.6.0-rc' --single-branch --depth 1 https://github.com/StamLab/stampipes.git
+
+ENV STAMPIPES="/software/stampipes"
 
 # Install stampipes requirements
 RUN pip install cython numpy scipy
