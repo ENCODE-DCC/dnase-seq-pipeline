@@ -78,7 +78,7 @@ RUN wget --quiet https://github.com/arq5x/bedtools2/releases/download/v2.25.0/be
       && cd bedtools2 \
       && make
 
-ENV PATH="/softward/bedtools2/bin/:${PATH}"
+ENV PATH="/software/bedtools2/bin/:${PATH}"
 
 # Install trim-adapters-illumina
 RUN git clone https://bitbucket.org/jvierstra/bio-tools.git \
