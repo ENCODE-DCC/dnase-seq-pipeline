@@ -1,0 +1,12 @@
+- name: test_get_hotspot1_score
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_hotspot1_score.wdl \
+    tests/integration/json/test_get_hotspot1_score.json
+  stdout:
+    contains:
+      - "runhotspot.bash"
+  files:
+    - path: "test-output/filtered.spot.out"

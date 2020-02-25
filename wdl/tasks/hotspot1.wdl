@@ -13,14 +13,13 @@ task runhotspot {
         Resources resources
     }
 
-    String hotspot1_directory = "/software/hotspot/hotspot_distr"
     String prefix = basename(subsampled_bam, ".bam")
 
     command {
         ln ~{index.chrom_info} .
         ln ~{index.mappable_regions} .
         runhotspot.bash \
-            ~{hotspot1_directory} \
+            $HOTSPOT_DIRECTORY \
             . \
             ~{subsampled_bam} \
             ~{params.genome_name} \
