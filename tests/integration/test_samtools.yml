@@ -97,3 +97,18 @@
       - "-F 4096"
   files:
       - path: "test-output/nuclear.bam"
+
+- name: test_get_first_read_in_pair_from_bam
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/wdl/test_get_first_read_in_pair_from_bam.wdl \
+      tests/integration/json/test_get_first_read_in_pair_from_bam.json
+  stdout:
+    contains:
+      - "samtools view"
+      - "-b"
+      - "-f 64"
+  files:
+      - path: "test-output/first_in_pair.bam"
