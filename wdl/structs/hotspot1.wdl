@@ -1,7 +1,7 @@
 version 1.0
 
 
-struct HotSpot1Index {
+struct HotSpot1Reference {
     File chrom_info
     File mappable_regions
 }

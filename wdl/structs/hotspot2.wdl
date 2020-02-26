@@ -1,7 +1,7 @@
 version 1.0
 
 
-struct HotSpot2Index {
+struct HotSpot2Reference {
     File chrom_sizes
     File center_sites
     File mappable_regions
