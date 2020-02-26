@@ -8,7 +8,7 @@ import "../structs/resources.wdl"
 task hotspot2 {
     input {
         File nuclear_bam
-        HotSpot2Index index
+        HotSpot2Reference reference
         HotSpot2Params params
         Resources resources
     }
@@ -19,9 +19,9 @@ task hotspot2 {
     command {
         ln ~{nuclear_bam} ~{prefix}
         hotspot2.sh \
-            -c ~{index.chrom_sizes} \
-            -C ~{index.center_sites} \
-            -M ~{index.mappable_regions} \
+            -c ~{reference.chrom_sizes} \
+            -C ~{reference.center_sites} \
+            -M ~{reference.mappable_regions} \
             ~{"-f " + params.hotspot_threshold} \
             ~{"-F " + params.site_call_threshold} \
             ~{"-p " + params.peaks_definition} \

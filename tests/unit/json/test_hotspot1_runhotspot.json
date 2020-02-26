@@ -1,6 +1,6 @@
 {
     "test_hotspot1_runhotspot.subsampled_bam": "tests/data/dummy.txt",
-    "test_hotspot1_runhotspot.index": {
+    "test_hotspot1_runhotspot.reference": {
         "chrom_info": "tests/data/dummy.txt",
         "mappable_regions": "tests/data/dummy.txt"
     },

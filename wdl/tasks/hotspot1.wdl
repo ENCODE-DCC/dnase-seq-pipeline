@@ -8,7 +8,7 @@ import "../structs/resources.wdl"
 task runhotspot {
     input {
         File subsampled_bam
-        HotSpot1Index index
+        HotSpot1Reference reference
         HotSpot1Params params
         Resources resources
     }
@@ -16,8 +16,8 @@ task runhotspot {
     String prefix = basename(subsampled_bam, ".bam")
 
     command {
-        ln ~{index.chrom_info} .
-        ln ~{index.mappable_regions} .
+        ln ~{reference.chrom_info} .
+        ln ~{reference.mappable_regions} .
         runhotspot.bash \
             $HOTSPOT_DIRECTORY \
             $PWD \

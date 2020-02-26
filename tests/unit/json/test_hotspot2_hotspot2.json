@@ -1,6 +1,6 @@
 {
     "test_hotspot2_hotspot2.nuclear_bam": "tests/data/dummy.txt",
-    "test_hotspot2_hotspot2.index": {
+    "test_hotspot2_hotspot2.reference": {
         "chrom_sizes": "tests/data/dummy.txt",
         "center_sites": "tests/data/dummy.txt",
         "mappable_regions": "tests/data/dummy.txt"

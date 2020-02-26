@@ -7,7 +7,7 @@ import "../../../wdl/tasks/hotspot1.wdl"
 workflow test_hotspot1_runhotspot {
     input {
         File subsampled_bam
-        HotSpot1Index index
+        HotSpot1Reference reference
         HotSpot1Params params
         Resources resources
     }
@@ -15,7 +15,7 @@ workflow test_hotspot1_runhotspot {
     call hotspot1.runhotspot {
         input:
             subsampled_bam=subsampled_bam,
-            index=index,
+            reference=reference,
             params=params,
             resources=resources,
     }

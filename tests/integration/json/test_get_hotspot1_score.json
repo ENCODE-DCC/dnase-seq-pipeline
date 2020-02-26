@@ -1,6 +1,6 @@
 {
     "test_get_hotspot1_score.get_hotspot1_score.subsampled_bam": "tests/data/dnase/hotspot1/subsample.bam",
-    "test_get_hotspot1_score.get_hotspot1_score.index": {
+    "test_get_hotspot1_score.get_hotspot1_score.reference": {
         "chrom_info": "tests/data/dnase/hotspot1/chr22.chromInfo.bed",
         "mappable_regions": "tests/data/dnase/hotspot1/chr22.K36.mappable_only.bed"
     },
