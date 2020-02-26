@@ -87,7 +87,7 @@ Tests dependencies:
 * Java
 * Docker
 * `pip install requirements.txt`
-* `conda install bedops` or `apt-get install bedops` (https://bedops.readthedocs.io/en/latest/content/installation.html)
+* `conda install bedops` or `brew install bedops` (https://bedops.readthedocs.io/en/latest/content/installation.html)
 
 The script that runs Caper expects some environment variables:
 * DNASE_DOCKER_IMAGE_TAG - docker image to run tests (e.g. https://quay.io/encode-dcc/dnase-seq-pipeline:template)
