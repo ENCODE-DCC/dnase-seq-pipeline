@@ -68,8 +68,10 @@ commands:
     parameters:
       tag:
         type: string
+      wt:
+        type: string
     steps:
-      - run: pytest -v --tag <<parameters.tag>> --wt 4
+      - run: pytest -v --tag <<parameters.tag>> --wt <<parameters.wt>> --kwd
 
   install_git_lfs_and_get_data:
     steps:
@@ -126,6 +128,7 @@ jobs:
       - install_git_lfs_and_get_data
       - run_test_tag:
           tag: "unit"
+          wt: "4"
 
   wdl_integration_tests:
     <<: *machine_defaults
@@ -135,6 +138,7 @@ jobs:
       - install_git_lfs_and_get_data
       - run_test_tag:
           tag: "integration"
+          wt: "4"
 
   wdl_functional_tests:
     <<: *machine_defaults
@@ -144,6 +148,8 @@ jobs:
       - install_git_lfs_and_get_data
       - run_test_tag:
           tag: "functional"
+          wt: "4"
+
 # Workflow
 workflows:
   build_workflow:

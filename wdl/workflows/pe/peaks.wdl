@@ -1,7 +1,7 @@
 version 1.0
 
 
-import "../../../wdl/subworkflows/call_peaks_with_hotspot2.wdl" as nuclear_bam
+import "../../../wdl/subworkflows/call_peaks_with_hotspot2.wdl"
 
 
 workflow peaks {
@@ -12,14 +12,14 @@ workflow peaks {
     }
 
     Machines compute = read_json("wdl/runtimes.json")
-    
-    scatter (fdr in [0.05, 0.001]) {
+
+    scatter(fdr in [0.05, 0.001]) {
         HotSpot2Params params = object {
             hotspot_threshold: fdr,
-            site_call_threshold: 0.5,
+            site_call_threshold: fdr,
             peaks_definition: "varWidth_20_default"
         }
-        call nuclear_bam.call_peaks_with_hotspot2 {
+        call call_peaks_with_hotspot2.call_peaks_with_hotspot2 {
             input:
                 nuclear_bam=nuclear_bam,
                 reference=reference,

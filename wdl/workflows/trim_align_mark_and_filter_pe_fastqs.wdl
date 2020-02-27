@@ -11,8 +11,8 @@ workflow trim_align_mark_and_filter_pe_fastqs {
     input {
         FastqPair raw_fastqs
         String machine_size_trim = "medium"
-        String machine_size_align = "large"
-        String machine_size_mark = "medium2x"
+        String machine_size_align = "medium"
+        String machine_size_mark = "medium"
         String machine_size_filter = "medium"
     }
 
