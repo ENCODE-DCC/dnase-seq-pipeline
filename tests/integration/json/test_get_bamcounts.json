@@ -1,0 +1,8 @@
+{
+    "test_get_bamcounts.get_bamcounts.bam": "tests/data/dnase/aggregation/expected/merged.bam",
+    "test_get_bamcounts.get_bamcounts.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}
