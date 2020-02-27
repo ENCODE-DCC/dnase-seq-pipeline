@@ -1,6 +1,9 @@
 version 1.0
 
 
+import "../structs/resources.wdl"
+
+
 task bamcounts  {
     input {
         File bam
@@ -15,7 +18,7 @@ task bamcounts  {
     }
 
     output {
-        File out
+        File counts = out
     }
 
     runtime {
