@@ -14,3 +14,19 @@
       - "flagged.bam"
   files:
       - path: "test-output/flagged.bam"
+
+- name: test_get_bamcounts 
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_bamcounts.wdl \
+    tests/integration/json/test_get_bamcounts.json
+  stdout:
+    contains:
+      - "python3 $(which bamcounts.py)"
+      - "merged.bam"
+      - "tagcounts.txt"
+  files:
+    - path: "test-output/tagcounts.txt"
+      md5sum: adb348eedf1373493f7eec75a85dec7f
