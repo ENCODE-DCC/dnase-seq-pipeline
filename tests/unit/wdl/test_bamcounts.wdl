@@ -13,6 +13,6 @@ workflow test_bamcounts {
     call bamcounts.bamcounts {
         input:
             bam=bam,
-            resources=resources
+            resources=resources,
     }
 }
