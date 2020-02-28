@@ -1,7 +1,7 @@
 version 1.0
 
 
-import "../tasks/bamcounts.wdl"
+import "../tasks/stampipes.wdl"
 
 
 workflow get_bamcounts {
@@ -10,7 +10,7 @@ workflow get_bamcounts {
         Resources resources
     }
 
-    call bamcounts.bamcounts {
+    call stampipes.bamcounts {
         input:
             bam=bam,
             resources=resources,
