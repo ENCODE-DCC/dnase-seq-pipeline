@@ -11,3 +11,17 @@
       - "filter_reads.py"
       - "dummy.txt"
       - "flagged.bam"
+
+- name: test_stampipes_bamcounts 
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_stampipes_bamcounts.wdl \
+    tests/unit/json/test_stampipes_bamcounts.json
+  stdout:
+    contains:
+      - "python3 $(which bamcounts.py)"
+      - "dummy.txt"
+      - "tagcounts.txt"
+
