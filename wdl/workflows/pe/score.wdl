@@ -9,6 +9,7 @@ import "../../../wdl/subworkflows/get_hotspot1_score.wdl" as first_in_pair_bam
 workflow score {
     input {
         File nuclear_bam
+        HotSpot1Params params
         HotSpot1Reference reference
         String machine_size
     }
@@ -30,6 +31,7 @@ workflow score {
     call first_in_pair_bam.get_hotspot1_score {
         input:
             subsampled_bam=get_first_read_in_pair_from_bam.first_in_pair_bam,
+            params=params,
             reference=reference,
             resources=compute.runtimes[machine_size],
     }
