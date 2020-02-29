@@ -46,3 +46,18 @@
   files:
       - path: "test-output/filtered.0.05.hotspots.fdr0.05.hotspot2.info"
         md5sum: d4b24c39a2c52e74b580bb5e4f661b92
+
+- name: test_get_random_sample_from_bam
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/wdl/test_get_random_sample_from_bam.wdl \
+      tests/integration/json/test_get_random_sample_from_bam.json
+  stdout:
+    contains:
+      - "random_sample.sh"
+      - "5000000"
+      - "subsample.bam"
+  files:
+      - path: "test-output/subsample.bam"
