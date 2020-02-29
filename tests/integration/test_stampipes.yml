@@ -30,19 +30,3 @@
   files:
     - path: "test-output/tagcounts.txt"
       md5sum: adb348eedf1373493f7eec75a85dec7f
-
-- name: test_get_hotspot2_info
-  tags:
-    - integration
-  command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_get_hotspot2_info.wdl \
-      tests/integration/json/test_get_hotspot2_info.json
-  stdout:
-    contains:
-      - "info.sh"
-      - "hotspot2"
-      - "filtered.0.05.hotspots.fdr0.05.hotspot2.info"
-  files:
-      - path: "test-output/filtered.0.05.hotspots.fdr0.05.hotspot2.info"
-        md5sum: d4b24c39a2c52e74b580bb5e4f661b92

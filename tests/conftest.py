@@ -22,9 +22,3 @@ def bams_match():
 def skip_lines_match():
     from comparisons import skip_n_lines_and_compare
     return skip_n_lines_and_compare
-
-
-@pytest.fixture
-def starches_match():
-    from comparisons import compare_starches_as_beds
-    return compare_starches_as_beds

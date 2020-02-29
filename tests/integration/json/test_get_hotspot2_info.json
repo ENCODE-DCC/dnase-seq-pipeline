@@ -1,9 +1,0 @@
-{
-    "test_get_hotspot2_info.get_hotspot2_info.hotspots": "tests/data/dnase/hotspot2/expected/filtered.0.05.hotspots.fdr0.05.starch",
-    "test_get_hotspot2_info.get_hotspot2_info.spot_score": "tests/data/dnase/hotspot2/expected/filtered.0.05.SPOT.txt",
-    "test_get_hotspot2_info.get_hotspot2_info.resources": {
-        "cpu": 1,
-        "memory_gb": 1,
-        "disks": "local-disk 10 SSD"
-    }
-}
