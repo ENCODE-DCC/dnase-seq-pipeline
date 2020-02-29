@@ -99,3 +99,19 @@
         md5sum: 7b281efd7aadbe033e2915861d736251
       - path: "test-output/filtered.0.05.density.starch"
       - path: "test-output/filtered.0.05.allcalls.starch"
+
+- name: test_pe_score
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/pe/score.wdl \
+      tests/functional/json/test_pe_score.json
+  stdout:
+    contains:
+      - "random_sample.sh"
+      - "samtools view"
+      - "runhotspot.bash"
+  files:
+      - path: "test-output/first_in_pair.spot.out"
+        md5sum: 09e71419a7c0023634359f3e6a30a155
