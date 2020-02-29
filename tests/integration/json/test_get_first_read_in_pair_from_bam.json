@@ -1,0 +1,8 @@
+{
+    "test_get_first_read_in_pair_from_bam.get_first_read_in_pair_from_bam.paired_end_bam": "tests/data/dnase/aggregation/expected/filtered.bam",
+    "test_get_first_read_in_pair_from_bam.get_first_read_in_pair_from_bam.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

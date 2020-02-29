@@ -1,0 +1,18 @@
+{
+  "test_call_peaks_with_hotspot2.call_peaks_with_hotspot2.params": {
+    "hotspot_threshold": "0.05",
+    "site_call_threshold": "0.5",
+    "peaks_definition": "varWidth_20_default"
+  },
+  "test_call_peaks_with_hotspot2.call_peaks_with_hotspot2.nuclear_bam": "tests/data/dnase/alignment/expected/filtered.bam",
+  "test_call_peaks_with_hotspot2.call_peaks_with_hotspot2.reference": {
+    "chrom_sizes": "tests/data/dnase/hotspot2/chr22.chrom_sizes.bed",
+    "center_sites": "tests/data/dnase/hotspot2/chr22.K36.center_sites.n100.starch",
+    "mappable_regions": "tests/data/dnase/hotspot2/chr22.K36.mappable_only.bed"
+  },
+  "test_call_peaks_with_hotspot2.call_peaks_with_hotspot2.resources": {
+    "cpu": "1",
+    "memory_gb": "1",
+    "disks": "local-disk 10 SSD"
+  }
+}

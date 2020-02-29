@@ -1,0 +1,9 @@
+{
+    "peaks.nuclear_bam": "tests/data/dnase/alignment/expected/filtered.bam",
+    "peaks.reference": {
+        "chrom_sizes": "tests/data/dnase/hotspot2/chr22.chrom_sizes.bed",
+        "center_sites": "tests/data/dnase/hotspot2/chr22.K36.center_sites.n100.starch",
+        "mappable_regions": "tests/data/dnase/hotspot2/chr22.K36.mappable_only.bed"
+    },
+    "peaks.machine_size": "small"
+}

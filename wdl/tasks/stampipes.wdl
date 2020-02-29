@@ -54,3 +54,59 @@ task bamcounts  {
         disks: resources.disks
     }
 }
+
+
+task info {
+    input {
+         File hotspots
+         File spot_score
+         String spot_type
+         Resources resources
+         String out = basename(hotspots, ".starch") + "." + spot_type + ".info"
+    }
+
+    command {
+        info.sh \
+            ~{hotspots} \
+            ~{spot_type} \
+            ~{spot_score} \
+            > ~{out}
+    }
+
+    output {
+        File hotspot_info = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
+
+
+task random_sample {
+    input {
+        File bam
+        Int sample_number
+        Resources resources
+        String? out = "subsample.bam"
+    }
+
+    command {
+        random_sample.sh \
+            ~{bam} \
+            ~{out} \
+            ~{sample_number}
+    }
+
+    output {
+        File subsampled_bam = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}

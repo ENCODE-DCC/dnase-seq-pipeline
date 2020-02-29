@@ -34,6 +34,16 @@ commands:
       - run: pip install pytest-workflow
       - run: pip install -r requirements.txt
 
+  install_bedops:
+    description: "Install bedops for test output comparisons"
+    steps:
+      - download_file:
+          file_url: "https://github.com/bedops/bedops/releases/download/v2.4.36/bedops_linux_x86_64-v2.4.36.tar.bz2"
+      - run:
+          command: |
+            tar jxvf bedops_linux_x86_64-v2.4.36.tar.bz2
+            sudo cp bin/* /usr/local/bin
+
   download_file:
     description: "Download a file using wget"
     parameters:
@@ -47,6 +57,7 @@ commands:
     steps:
       - set_environment_variables
       - install_python_requirements
+      - install_bedops
       - download_file:
           file_url: "https://github.com/broadinstitute/cromwell/releases/download/48/cromwell-48.jar"
       - download_file:
@@ -57,8 +68,10 @@ commands:
     parameters:
       tag:
         type: string
+      wt:
+        type: string
     steps:
-      - run: pytest -v --tag <<parameters.tag>> --wt 4
+      - run: pytest -v --tag <<parameters.tag>> --wt <<parameters.wt>> --kwd
 
   install_git_lfs_and_get_data:
     steps:
@@ -115,6 +128,7 @@ jobs:
       - install_git_lfs_and_get_data
       - run_test_tag:
           tag: "unit"
+          wt: "4"
 
   wdl_integration_tests:
     <<: *machine_defaults
@@ -124,6 +138,7 @@ jobs:
       - install_git_lfs_and_get_data
       - run_test_tag:
           tag: "integration"
+          wt: "4"
 
   wdl_functional_tests:
     <<: *machine_defaults
@@ -133,6 +148,8 @@ jobs:
       - install_git_lfs_and_get_data
       - run_test_tag:
           tag: "functional"
+          wt: "4"
+
 # Workflow
 workflows:
   build_workflow:

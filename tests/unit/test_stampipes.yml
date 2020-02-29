@@ -25,3 +25,30 @@
       - "dummy.txt"
       - "tagcounts.txt"
 
+- name: test_stampipes_info
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/wdl/test_stampipes_info.wdl \
+      tests/unit/json/test_stampipes_info.json
+  stdout:
+    contains:
+      - "info.sh"
+      - "dummy.txt"
+      - "hotspot2"
+      - "dummy.txt.hotspot2.info"
+
+- name: test_stampipes_random_sample
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/wdl/test_stampipes_random_sample.wdl \
+      tests/unit/json/test_stampipes_random_sample.json
+  stdout:
+    contains:
+      - "random_sample.sh"
+      - "dummy.txt"
+      - "subsample.bam"
+      - "5000000"
