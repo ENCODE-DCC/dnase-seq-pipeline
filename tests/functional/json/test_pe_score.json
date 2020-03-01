@@ -1,6 +1,6 @@
 {
     "score.machine_size": "small",
-    "score.get_hotspot1_score.params": {
+    "score.params": {
         "genome_name": "chr22",
         "read_length": 36
     },
