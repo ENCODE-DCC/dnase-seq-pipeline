@@ -1,6 +1,7 @@
 FROM ubuntu@sha256:2695d3e10e69cc500a16eae6d6629c803c43ab075fa5ce60813a0fc49c47e859
 MAINTAINER Otto Jolanki
 
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \ 
     bc \
     gcc \
@@ -24,7 +25,9 @@ RUN apt-get update && apt-get install -y \
     tabix \
     libboost-dev \
     python-pip \
-    python3-pip 
+    python3-pip \
+    tzdata \
+    r-base
 
 RUN mkdir /software
 WORKDIR /software
