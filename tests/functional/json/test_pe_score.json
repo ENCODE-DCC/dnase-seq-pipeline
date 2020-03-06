@@ -1,0 +1,12 @@
+{
+    "score.machine_size": "small",
+    "score.params": {
+        "genome_name": "chr22",
+        "read_length": 36
+    },
+    "score.reference": {
+        "chrom_info": "tests/data/dnase/hotspot1/chr22.chromInfo.bed",
+        "mappable_regions": "tests/data/dnase/hotspot1/chr22.K36.mappable_only.bed"
+    },
+    "score.nuclear_bam": "tests/data/dnase/filtering/nuclear.bam"
+}

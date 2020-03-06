@@ -1,7 +1,7 @@
 version 1.0
 
 
-import "../../../wdl/subworkflows/call_peaks_with_hotspot2.wdl"
+import "../../../wdl/subworkflows/call_peaks_with_hotspot2.wdl" as nuclear_bam
 
 
 workflow peaks {
@@ -19,7 +19,7 @@ workflow peaks {
             site_call_threshold: fdr,
             peaks_definition: "varWidth_20_default"
         }
-        call call_peaks_with_hotspot2.call_peaks_with_hotspot2 {
+        call nuclear_bam.call_peaks_with_hotspot2 {
             input:
                 nuclear_bam=nuclear_bam,
                 reference=reference,
