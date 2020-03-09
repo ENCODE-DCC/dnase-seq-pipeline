@@ -1,0 +1,8 @@
+{
+    "test_bedops_starch.sorted_bed": "tests/data/dummy.txt",
+    "test_bedops_starch.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "test_bedops_sort_bed.unsorted_bed": "tests/data/dummy.txt",
+    "test_bedops_sort_bed.params": {
+        "max_memory": "2G"
+    },
+    "test_bedops_sort_bed.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

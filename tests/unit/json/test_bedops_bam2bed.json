@@ -1,0 +1,11 @@
+{
+    "test_bedops_bam2bed.bam": "tests/data/dummy.txt",
+    "test_bedops_bam2bed.params": {
+        "do_not_sort": true
+    },
+    "test_bedops_bam2bed.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

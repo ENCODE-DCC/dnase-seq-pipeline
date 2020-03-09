@@ -1,0 +1,15 @@
+{
+    "test_bedops_bedmap.sorted_reference_bed_or_starch": "tests/data/dummy.txt",
+    "test_bedops_bedmap.sorted_map_bed_or_starch": "tests/data/dummy.txt",
+    "test_bedops_bedmap.params": {
+        "count": true,
+        "echo": true,
+        "faster": true,
+        "delimiter": "\"\t\""
+    },
+    "test_bedops_bedmap.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
