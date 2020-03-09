@@ -78,7 +78,6 @@ task sort_bed {
 }
 
 
-
 task bam2bed {
     input {
         File bam
