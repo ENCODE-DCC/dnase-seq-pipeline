@@ -13,7 +13,7 @@ workflow test_bedops_bam2bed {
 
     call bedops.bam2bed {
         input:
-            unsorted_bed,
+            unsorted_bed=unsorted_bed,
             params=params,
             resources=resources,
     }
