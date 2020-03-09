@@ -28,7 +28,6 @@ task unstarch {
 }
 
 
-
 task starch {
     input {
         File sorted_bed
