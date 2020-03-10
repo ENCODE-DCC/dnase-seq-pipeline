@@ -4,7 +4,7 @@ version 1.0
 import "../structs/resources.wdl"
 
 
-task trim_to_length {
+task trim_fastq_reads_to_length {
     input {
         File input_file 
         Int trim_length
@@ -30,3 +30,35 @@ task trim_to_length {
         disks: resources.disks
     }
 }
+
+
+task shift_bed_reads_start_and_end_range {
+    input {
+        File bed
+        Int bin_size
+        Int window_size
+        Resources resources
+        String out = "shifted.bed"
+    }
+
+    command <<<
+        awk \
+            -v "binI=~{bin_size}" \
+            -v "win=~{window_size}" \
+            'BEGIN{halfBin=binI/2; shiftFactor=win-halfBin}
+            {print $1 "\t" $2 + shiftFactor "\t" $3 - shiftFactor "\t" "id" "\t" $4}' \
+            ~{bed} \
+            > ~{out}
+    >>>
+
+    output {
+        File shifted_bed = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
+

@@ -1,0 +1,70 @@
+- name: test_bedops_unstarch
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/wdl/test_bedops_unstarch.wdl \
+      tests/unit/json/test_bedops_unstarch.json
+  stdout:
+    contains:
+      - "unstarch"
+      - "dummy.txt"
+      - "> out.bed"
+
+- name: test_bedops_starch
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/wdl/test_bedops_starch.wdl \
+      tests/unit/json/test_bedops_starch.json
+  stdout:
+    contains:
+      - "starch"
+      - "dummy.txt"
+      - "> out.starch"
+
+- name: test_bedops_sort_bed
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/wdl/test_bedops_sort_bed.wdl \
+      tests/unit/json/test_bedops_sort_bed.json
+  stdout:
+    contains:
+      - "sort-bed"
+      - "--max-mem 2G"
+      - "dummy.txt"
+      - "sorted.bed"
+
+- name: test_bedops_bam2bed
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/wdl/test_bedops_bam2bed.wdl \
+      tests/unit/json/test_bedops_bam2bed.json
+  stdout:
+    contains:
+      - "bam2bed"
+      - "--do-not-sort"
+      - "dummy.txt"
+      - "out.bed"
+
+- name: test_bedops_bedmap
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/wdl/test_bedops_bedmap.wdl \
+      tests/unit/json/test_bedops_bedmap.json
+  stdout:
+    contains:
+      - "bedmap"
+      - "--count"
+      - "--echo"
+      - "--faster"
+      - '--delim "\t"'
+      - "dummy.txt"
+      - "mapped.bed"

@@ -1,0 +1,10 @@
+{
+    "test_awk_shift_bed_reads_start_and_end_range.bed": "tests/data/dummy.txt",
+    "test_awk_shift_bed_reads_start_and_end_range.bin_size": 20,
+    "test_awk_shift_bed_reads_start_and_end_range.window_size": 75,
+    "test_awk_shift_bed_reads_start_and_end_range.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

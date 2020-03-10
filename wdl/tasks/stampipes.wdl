@@ -90,7 +90,7 @@ task random_sample {
         File bam
         Int sample_number
         Resources resources
-        String? out = "subsample.bam"
+        String out = "subsample.bam"
     }
 
     command {
@@ -102,6 +102,64 @@ task random_sample {
 
     output {
         File subsampled_bam = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
+
+
+task starch_to_bigwig {
+    input {
+        File starch
+        File chrom_sizes
+        Int? bin_size
+        Resources resources
+        String out = basename(starch, "starch") + ".bw"
+    }
+
+    command {
+        starch_to_bigwig.bash \
+            ~{starch} \
+            ~{out} \
+            ~{chrom_sizes} \
+            ~{bin_size}
+    }
+
+    output {
+        File bigwig = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
+
+
+task cutfragments {
+    input {
+        File bed
+        Resources resources
+        String cuts_path = "cuts.bed"
+        String fragments_path = "fragments.bed"
+    }
+
+    command {
+        awk \
+            -v cutfile=~{cuts_path} \
+            -v fragmentfile=~{fragments_path} \
+            -f cutfragments.awk \
+            ~{bed}
+    }
+
+    output {
+        File cuts_bed = cuts_path
+        File fragments_bed = fragments_path
     }
 
     runtime {

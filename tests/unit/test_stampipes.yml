@@ -52,3 +52,32 @@
       - "dummy.txt"
       - "subsample.bam"
       - "5000000"
+
+- name: test_stampipes_starch_to_bigwig
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/wdl/test_stampipes_starch_to_bigwig.wdl \
+      tests/unit/json/test_stampipes_starch_to_bigwig.json
+  stdout:
+    contains:
+      - "starch_to_bigwig.bash"
+      - "dummy.txt"
+      - "dummy.txt.bw"
+      - "20"
+
+- name: test_stampipes_cutfragments
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/wdl/test_stampipes_cutfragments.wdl \
+      tests/unit/json/test_stampipes_cutfragments.json
+  stdout:
+    contains:
+      - "awk"
+      - "cutfile"
+      - "fragmentfile"
+      - "-f cutfragments.awk"
+      - "dummy.txt"

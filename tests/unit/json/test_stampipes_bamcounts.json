@@ -1,6 +1,6 @@
 {
-    "test_bamcounts.bam": "tests/data/dummy.txt",
-    "test_bamcounts.resources": {
+    "test_stampipes_bamcounts.bam": "tests/data/dummy.txt",
+    "test_stampipes_bamcounts.resources": {
         "cpu": 1,
         "memory_gb": 2,
         "disks": "local-disk 10 SSD"

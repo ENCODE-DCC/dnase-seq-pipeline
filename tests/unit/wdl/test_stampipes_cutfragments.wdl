@@ -4,15 +4,15 @@ version 1.0
 import "../../../wdl/tasks/stampipes.wdl"
 
 
-workflow test_stampipes_bamcounts {
+workflow test_stampipes_cutfragments {
     input {
-        File bam
+        File bed
         Resources resources
     }
 
-    call stampipes.bamcounts {
+    call stampipes.cutfragments {
         input:
-            bam=bam,
+            bed=bed,
             resources=resources,
     }
 }

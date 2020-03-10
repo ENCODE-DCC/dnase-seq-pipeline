@@ -1,0 +1,10 @@
+{
+    "test_stampipes_starch_to_bigwig.starch": "tests/data/dummy.txt",
+    "test_stampipes_starch_to_bigwig.chrom_sizes": "tests/data/dummy.txt",
+    "test_stampipes_starch_to_bigwig.bin_size": 20,
+    "test_stampipes_starch_to_bigwig.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
