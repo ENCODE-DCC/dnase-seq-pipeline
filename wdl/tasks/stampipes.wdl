@@ -110,3 +110,32 @@ task random_sample {
         disks: resources.disks
     }
 }
+
+
+task starch_to_bigwig {
+    input {
+        File starch
+        File chrom_sizes
+        Int? bin_size
+        Resources resources
+        String? out = basename(starch, "starch") + ".bw"
+    }
+
+    command {
+        starch_to_bigwig.bash \
+            ~{starch} \
+            ~{out} \
+            ~{chrom_sizes} \
+            ~{bin_size}
+    }
+
+    output {
+        File bigwig = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
