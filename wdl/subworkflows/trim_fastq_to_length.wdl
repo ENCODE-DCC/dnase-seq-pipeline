@@ -30,7 +30,7 @@ workflow trim_fastq_to_length {
 
     call pigz.pigz as compress {
         input:
-            input_file=trim_to_length.trimmed,
+            input_file=trim_fastq_reads_to_length.trimmed,
             params={"noname": true},
             output_filename=output_filename,
             resources=resources,
