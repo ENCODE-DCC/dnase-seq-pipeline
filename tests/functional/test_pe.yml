@@ -8,6 +8,8 @@
   stdout:
     contains:
       - "trim-adapters-illumina"
+      - "P5"
+      - "P7"
       - "pigz"
       - "awk"
   files:
