@@ -5,7 +5,7 @@
         "count": true,
         "echo": true,
         "faster": true,
-        "delimiter": "\"\t\""
+        "delimiter": "\"\\t\""
     },
     "test_bedops_bedmap.resources": {
         "cpu": 1,
