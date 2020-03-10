@@ -4,7 +4,7 @@ version 1.0
 import "../structs/resources.wdl"
 
 
-task trim_to_length {
+task trim_fastq_reads_to_length {
     input {
         File input_file 
         Int trim_length
