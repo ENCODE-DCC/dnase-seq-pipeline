@@ -20,7 +20,7 @@
   stdout:
     contains:
       - "awk"
-      - '-v "binI="'
-      - '-v "win="'
+      - '-v "binI=20"'
+      - '-v "win=75"'
       - "BEGIN{halfBin=binI/2; shiftFactor=win-halfBin}"
-      = '{print $1 "\t" $2 + shiftFactor "\t" $3 - shiftFactor "\t" "id" "\t" $4}'
+      - '{print $1 "\t" $2 + shiftFactor "\t" $3 - shiftFactor "\t" "id" "\t" $4}'

@@ -41,15 +41,15 @@ task shift_bed_reads_start_and_end_range {
         String out = "shifted.bed"
     }
 
-    command {
+    command <<<
         awk \
             -v "binI=~{bin_size}" \
             -v "win=~{window_size}" \
-            'BEGIN{halfBin=binI/2; shiftFactor=win-halfBin} \
+            'BEGIN{halfBin=binI/2; shiftFactor=win-halfBin}
             {print $1 "\t" $2 + shiftFactor "\t" $3 - shiftFactor "\t" "id" "\t" $4}' \
             ~{bed} \
             > ~{out}
-    }
+    >>>
 
     output {
         File shifted_bed = out
