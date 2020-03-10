@@ -11,7 +11,8 @@ workflow trim_fastq_to_length {
         Int trim_length
         Resources resources
     }
-        String output_filename = "trimmed_to_length_" + basename(fastq)
+
+    String output_filename = "trimmed_to_length_" + basename(fastq)
 
     call pigz.pigz as decompress {
         input:
@@ -20,7 +21,7 @@ workflow trim_fastq_to_length {
             resources=resources,
     }
 
-    call awk.trim_to_length {
+    call awk.trim_fastq_reads_to_length {
         input:
             input_file=decompress.out,
             trim_length=trim_length,
