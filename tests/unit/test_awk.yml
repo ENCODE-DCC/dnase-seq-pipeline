@@ -9,3 +9,18 @@
     contains:
       - "awk 'NR%2==0 {print substr($0, 1, 42)} NR%2!=0'"
       - "> foo.gz"
+
+- name: test_awk_shift_bed_reads_start_and_end_range
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_awk_shift_bed_reads_start_and_end_range.wdl \
+    tests/unit/json/test_awk_shift_bed_reads_start_and_end_range.json
+  stdout:
+    contains:
+      - "awk"
+      - '-v "binI="'
+      - '-v "win="'
+      - "BEGIN{halfBin=binI/2; shiftFactor=win-halfBin}"
+      = '{print $1 "\t" $2 + shiftFactor "\t" $3 - shiftFactor "\t" "id" "\t" $4}'

@@ -6,7 +6,7 @@ import "../../../wdl/tasks/awk.wdl"
 
 workflow test_awk_trim_fastq_reads_to_length {
     input {
-        File input_file 
+        File input_file
         Int trim_length
         Resources resources
         String output_filename
