@@ -4,7 +4,7 @@ version 1.0
 import "../../../wdl/tasks/stampipes.wdl"
 
 
-workflow test_bamcounts {
+workflow test_stampipes_bamcounts {
     input {
         File bam
         Resources resources
