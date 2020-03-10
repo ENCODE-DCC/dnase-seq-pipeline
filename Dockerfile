@@ -139,7 +139,7 @@ RUN apt-get install -y bowtie
 
 #make scripts findable by which
 RUN chmod 755 /software/stampipes/scripts/bwa/bamcounts.py
-RUN chmod 755 /software/stampipes/scripts/bwa/aggregate/basic/sparse_motifs.py 
+RUN chmod 755 /software/stampipes/scripts/bwa/aggregate/basic/cutfragments.awk
 RUN chmod 755 /software/stampipes/scripts/bam/random_sample.sh
 RUN chmod 755 /software/stampipes/scripts/SPOT/runhotspot.bash
 RUN chmod 755 /software/stampipes/scripts/utility/picard_inserts_process.py
@@ -154,4 +154,3 @@ ENV PATH="/software/stampipes/scripts/SPOT:${PATH}"
 ENV PATH="/software/stampipes/scripts/bwa/aggregate/basic:${PATH}"
 ENV PATH="/software/stampipes/scripts/utility:${PATH}"
 ENV PATH="/software/stampipes/awk:${PATH}"
-
