@@ -1,0 +1,8 @@
+{
+    "test_stampipes_cutfragments.bed": "tests/data/dummy.txt",
+    "test_stampipes_cutfragments.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}

@@ -66,3 +66,18 @@
       - "dummy.txt"
       - "dummy.txt.bw"
       - "20"
+
+- name: test_stampipes_cutfragments
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/wdl/test_stampipes_cutfragments.wdl \
+      tests/unit/json/test_stampipes_cutfragments.json
+  stdout:
+    contains:
+      - "awk"
+      - "cutfile"
+      - "fragmentfile"
+      - "-f cutfragments.awk"
+      - "dummy.txt"
