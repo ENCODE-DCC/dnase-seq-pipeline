@@ -17,6 +17,8 @@
         "R2": "tests/data/dnase/alignment/r2.fastq.gz"
     },
     "trim_align_mark_and_filter_pe_fastqs.trim.adapters": "tests/data/dnase/alignment/adapters.txt",
+    "trim_align_mark_and_filter_pe_fastqs.trim.adapter1": "P5",
+    "trim_align_mark_and_filter_pe_fastqs.trim.adapter2": "P7",
     "trim_align_mark_and_filter_pe_fastqs.machine_size_filter": "small",
     "trim_align_mark_and_filter_pe_fastqs.machine_size_align": "small",
     "trim_align_mark_and_filter_pe_fastqs.machine_size_trim": "small",
