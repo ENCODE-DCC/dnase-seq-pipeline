@@ -1,0 +1,20 @@
+{
+    "test_bwa_samse.fastq": "tests/data/dummy.txt",
+    "test_bwa_samse.sai": "tests/data/dummy.txt",
+    "test_bwa_samse.bwa_index": {
+        "fasta": "tests/data/dummy.txt",
+        "amb": "tests/data/dummy.txt",
+        "ann": "tests/data/dummy.txt",
+        "bwt": "tests/data/dummy.txt",
+        "pac": "tests/data/dummy.txt",
+        "sa": "tests/data/dummy.txt"
+    },
+    "test_bwa_samse.params": {
+        "max_paired_hits": 10
+    },
+    "test_bwa_samse.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

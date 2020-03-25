@@ -102,3 +102,34 @@ task sampe {
         disks: resources.disks
     }
 }
+
+
+task samse {
+    input {
+        File fastq
+        File sai
+        BwaIndex bwa_index
+        BwaSamseParams params
+        Resources resources
+        String out = "out.sam"
+    }
+
+    command {
+        bwa samse \
+            ~{"-n " + params.max_paired_hits} \
+            ~{bwa_index.fasta} \
+            ~{sai} \
+            ~{fastq} \
+            > ~{out}
+    }
+
+    output {
+        File sam = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
