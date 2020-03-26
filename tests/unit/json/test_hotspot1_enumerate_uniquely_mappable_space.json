@@ -1,0 +1,17 @@
+{
+    "test_hotspot1_enumerate_uniquely_mappable_space.bwaindex": {
+        "fasta": "tests/data/dummy.txt",
+        "amb": "tests/data/dummy.txt",
+        "ann": "tests/data/dummy.txt",
+        "bwt": "tests/data/dummy.txt",
+        "pac": "tests/data/dummy.txt",
+        "sa": "tests/data/dummy.txt"
+    },
+    "test_hotspot1_enumerate_uniquely_mappable_space.cleaned_fasta": "tests/data/dummy.txt",
+    "test_hotspot1_enumerate_uniquely_mappable_space.kmer_length": 42,
+    "test_hotspot1_enumerate_uniquely_mappable_space.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

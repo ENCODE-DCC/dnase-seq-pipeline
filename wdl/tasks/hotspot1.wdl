@@ -45,7 +45,7 @@ task enumerate_uniquely_mappable_space {
         BwaIndex bwaindex
         File cleaned_fasta
         Int kmer_length
-        File out = "enumerated_space.bed" 
+        String out = "enumerated_space.bed" 
         Resources resources
     }
 
