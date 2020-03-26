@@ -62,3 +62,26 @@ task shift_bed_reads_start_and_end_range {
     }
 }
 
+
+task clean_reference_fasta_headers {
+    input {
+        File fasta
+        Resources resources
+        String out = "cleaned.fa" 
+    }
+
+    command <<<
+        awk '/^>/{$0=$1} 1' ~{fasta} \
+            > ~{out}
+    >>>
+
+    output {
+        File cleaned_fasta = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}

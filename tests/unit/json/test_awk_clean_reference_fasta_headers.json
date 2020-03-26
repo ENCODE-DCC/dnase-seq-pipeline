@@ -1,0 +1,8 @@
+{
+    "test_awk_clean_reference_fasta_headers.fasta": "tests/data/dummy.txt",
+    "test_awk_clean_reference_fasta_headers.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
