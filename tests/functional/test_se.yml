@@ -1,0 +1,15 @@
+- name: test_se_align
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/se/align.wdl \
+      tests/functional/json/test_se_align.json
+  stdout:
+    contains:
+      - "bwa aln"
+      - "bwa samse"
+      - "samtools sort"
+      - "-n"
+  files:
+      - path: "test-output/sorted.bam"
