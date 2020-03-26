@@ -3,6 +3,7 @@ version 1.0
 
 import "../structs/hotspot1.wdl"
 import "../structs/resources.wdl"
+import "../structs/bwa.wdl"
 
 
 task runhotspot {
@@ -37,3 +38,32 @@ task runhotspot {
         disks: resources.disks
     }
 }
+
+
+task enumerate_uniquely_mappable_space {
+    input {
+        BwaIndex bwaindex
+        File cleaned_fasta
+        Int kmer_length
+        File out = "enumerated_space.bed" 
+        Resources resources
+    }
+
+    command {
+        perl $(which enumerateUniquelyMappableSpace.pl) \
+            ~{kmer_length} \
+            ~{bwaindex.fasta} \
+            ~{cleaned_fasta}
+    }
+
+    output {
+        File enumerated_space = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
+
