@@ -67,4 +67,17 @@
       - "bwa sampe"
   files:
       - path: "test-output/out.sam"
+
+- name: test_make_sam_from_sai_and_fastq
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/wdl/test_make_sam_from_sai_and_fastq.wdl \
+      tests/integration/json/test_make_sam_from_sai_and_fastq.json
+  stdout:
+    contains:
+      - "bwa samse"
+  files:
+      - path: "test-output/out.sam"
         

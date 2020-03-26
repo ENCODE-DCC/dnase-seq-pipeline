@@ -28,3 +28,8 @@ struct BwaSampeParams {
     Int? max_insert_size
     Int? max_paired_hits
 }
+
+
+struct BwaSamseParams {
+    Int? max_paired_hits
+}

@@ -92,3 +92,17 @@
     must_not_contain:
       - "-a 750"
       - "-n 10"
+
+- name: test_bwa_samse
+  tags:
+    - unit
+  command: >-
+      tests/caper_run.sh \
+      tests/unit/wdl/test_bwa_samse.wdl \
+      tests/unit/json/test_bwa_samse.json
+  stdout:
+    contains:
+      - "bwa samse"
+      - "-n 10"
+      - "dummy.txt"
+      - "> out.sam"
