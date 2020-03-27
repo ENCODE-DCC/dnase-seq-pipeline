@@ -85,3 +85,27 @@ task clean_reference_fasta_headers {
         disks: resources.disks
     }
 }
+
+
+task merge_adjacent_bed {
+    input {
+        File bed
+        Resources resources
+        String out = "adjacent_merged.bed"
+    }
+
+    command {
+        awk -f $(which merge_adjacent_bed.awk) ~{bed} \
+            > ~{out}
+    }
+
+    output {
+        File adjacent_merged_bed = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}

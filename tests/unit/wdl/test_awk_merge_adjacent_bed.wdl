@@ -4,15 +4,15 @@ version 1.0
 import "../../../wdl/tasks/awk.wdl"
 
 
-workflow test_awk_clean_reference_fasta_headers {
+workflow test_awk_merge_adjacent_bed {
     input {
-        File fasta
+        File bed
         Resources resources
     }
 
-    call awk.clean_reference_fasta_headers {
+    call awk.merge_adjacent_bed {
         input:
-            fasta=fasta,
+            bed=bed,
             resources=resources,
     }
 }
