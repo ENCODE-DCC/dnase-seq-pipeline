@@ -1,0 +1,18 @@
+- name: test_concatenate_fastqs
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_concatenate_fastqs.wdl \
+    tests/integration/json/test_concatenate_fastqs.json
+  stdout:
+    contains:
+      - "cat"
+      - "1.fastq.gz"
+      - "2.fastq.gz"
+      - "3.fastq.gz"
+      - "4.fastq.gz"
+      - "> concatenated.fastq.gz"
+  files:
+    - path: "test-output/concatenated.fastq.gz"
+      md5sum: 52afaef92fadeabb19e9ee6c229882c0
