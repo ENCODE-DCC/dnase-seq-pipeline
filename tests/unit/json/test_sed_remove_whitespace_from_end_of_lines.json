@@ -1,0 +1,8 @@
+{
+    "test_sed_remove_whitespace_from_end_of_lines.input_file": "tests/data/dummy.txt",
+    "test_sed_remove_whitespace_from_end_of_lines.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

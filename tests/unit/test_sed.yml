@@ -1,0 +1,12 @@
+- name: test_sed_remove_whitespace_from_end_of_lines 
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_sed_remove_whitespace_from_end_of_lines.wdl \
+    tests/unit/json/test_sed_remove_whitespace_from_end_of_lines.json
+  stdout:
+    contains:
+      - "sed"
+      - "s/[[:blank:]]*$//"
+      - "out.txt"
