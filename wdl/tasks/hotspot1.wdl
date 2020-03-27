@@ -53,7 +53,8 @@ task enumerate_uniquely_mappable_space {
         perl $(which enumerateUniquelyMappableSpace.pl) \
             ~{kmer_length} \
             ~{bwaindex.fasta} \
-            ~{cleaned_fasta}
+            ~{cleaned_fasta} \
+            > ~{out}
     }
 
     output {

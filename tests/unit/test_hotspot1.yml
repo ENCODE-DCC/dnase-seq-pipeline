@@ -27,3 +27,4 @@
       - "enumerateUniquelyMappableSpace.pl"
       - "42"
       - "dummy.txt"
+      - "> enumerated_space.bed"
