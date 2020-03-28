@@ -1,0 +1,10 @@
+- name: test_build_mappable_only_bed 
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_build_mappable_only_bed.wdl \
+    tests/integration/json/test_build_mappable_only_bed.json
+  stdout:
+    contains:
+      - "awk"

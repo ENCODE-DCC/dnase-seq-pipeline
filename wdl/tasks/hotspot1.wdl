@@ -3,7 +3,7 @@ version 1.0
 
 import "../structs/hotspot1.wdl"
 import "../structs/resources.wdl"
-import "../structs/bwa.wdl"
+import "../structs/bowtie.wdl"
 
 
 task runhotspot {
@@ -42,17 +42,25 @@ task runhotspot {
 
 task enumerate_uniquely_mappable_space {
     input {
-        BwaIndex bwaindex
+        BowtieIndex bowtieindex
         File cleaned_fasta
         Int kmer_length
         String out = "enumerated_space.bed" 
         Resources resources
     }
 
+    String bowtieindex_prefix = basename(bowtieindex.ebwt_1, ".1.ebwt")
+
     command {
+        ln ~{bowtieindex.ebwt_1} .
+        ln ~{bowtieindex.ebwt_2} .
+        ln ~{bowtieindex.ebwt_3} .
+        ln ~{bowtieindex.ebwt_4} .
+        ln ~{bowtieindex.rev_ebwt1} .
+        ln ~{bowtieindex.rev_ebwt2} .
         perl $(which enumerateUniquelyMappableSpace.pl) \
             ~{kmer_length} \
-            ~{bwaindex.fasta} \
+            ~{bowtieindex_prefix} \
             ~{cleaned_fasta} \
             > ~{out}
     }

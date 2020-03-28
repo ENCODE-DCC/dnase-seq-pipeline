@@ -1,11 +1,11 @@
 {
-    "test_hotspot1_enumerate_uniquely_mappable_space.bwaindex": {
-        "fasta": "tests/data/dummy.txt",
-        "amb": "tests/data/dummy.txt",
-        "ann": "tests/data/dummy.txt",
-        "bwt": "tests/data/dummy.txt",
-        "pac": "tests/data/dummy.txt",
-        "sa": "tests/data/dummy.txt"
+    "test_hotspot1_enumerate_uniquely_mappable_space.bowtieindex": {
+        "ebwt_1": "tests/data/dummy.txt",
+        "ebwt_2": "tests/data/dummy.txt",
+        "ebwt_3": "tests/data/dummy.txt",
+        "ebwt_4": "tests/data/dummy.txt",
+        "rev_ebwt1": "tests/data/dummy.txt",
+        "rev_ebwt2": "tests/data/dummy.txt"
     },
     "test_hotspot1_enumerate_uniquely_mappable_space.cleaned_fasta": "tests/data/dummy.txt",
     "test_hotspot1_enumerate_uniquely_mappable_space.kmer_length": 42,
