@@ -1,0 +1,17 @@
+{
+    "test_concatenate_fastq_pairs.concatenate_fastq_pairs.fastqs": [
+        {
+            "R1": "tests/data/dnase/concatenation/1.fastq.gz",
+            "R2": "tests/data/dnase/concatenation/3.fastq.gz"
+        },
+        {
+            "R1": "tests/data/dnase/concatenation/2.fastq.gz",
+            "R2": "tests/data/dnase/concatenation/4.fastq.gz"
+        }
+    ],
+    "test_concatenate_fastq_pairs.concatenate_fastq_pairs.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}

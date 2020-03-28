@@ -16,3 +16,25 @@
   files:
     - path: "test-output/concatenated.fastq.gz"
       md5sum: 52afaef92fadeabb19e9ee6c229882c0
+
+- name: test_concatenate_fastq_pairs
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_concatenate_fastq_pairs.wdl \
+    tests/integration/json/test_concatenate_fastq_pairs.json
+  stdout:
+    contains:
+      - "cat"
+      - "1.fastq.gz"
+      - "2.fastq.gz"
+      - "3.fastq.gz"
+      - "4.fastq.gz"
+      - "> concatenated.R1.fastq.gz"
+      - "> concatenated.R2.fastq.gz"
+  files:
+    - path: "test-output/concatenated.R1.fastq.gz"
+      md5sum: 254f9337d5caf325001239fe27aabc83
+    - path: "test-output/concatenated.R2.fastq.gz"    
+      md5sum: d7e08187357b780efc3f7f5634d07a29
