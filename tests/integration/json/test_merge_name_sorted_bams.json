@@ -1,0 +1,11 @@
+{
+    "test_merge_name_sorted_bams.merge_name_sorted_bams.name_sorted_bams": [
+        "tests/data/dnase/merging/name_sorted_1.bam",
+        "tests/data/dnase/merging/name_sorted_2.bam"        
+    ],
+    "test_merge_name_sorted_bams.merge_name_sorted_bams.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

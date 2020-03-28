@@ -112,3 +112,18 @@
       - "-f 64"
   files:
       - path: "test-output/first_in_pair.bam"
+
+- name: test_merge_name_sorted_bams
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/wdl/test_merge_name_sorted_bams.wdl \
+      tests/integration/json/test_merge_name_sorted_bams.json
+  stdout:
+    contains:
+      - "samtools merge"
+      - "-@"
+      - "merged.bam"
+  files:
+      - path: "test-output/merged.bam"
