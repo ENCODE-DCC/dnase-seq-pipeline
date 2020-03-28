@@ -1,0 +1,16 @@
+{
+    "test_samtools_merge.sorted_bams": [
+        "tests/data/dummy.txt",
+        "tests/data/dummy.txt",
+        "tests/data/dummy.txt"
+    ],        
+    "test_samtools_merge.params": {
+        "fast_compression": true,
+        "name_sorted": true
+    },
+    "test_samtools_merge.resources": {
+        "cpu": 4,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
