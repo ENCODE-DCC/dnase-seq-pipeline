@@ -155,4 +155,4 @@ ENV PATH="/software/stampipes/scripts/SPOT:${PATH}"
 ENV PATH="/software/stampipes/scripts/bwa/aggregate/basic:${PATH}"
 ENV PATH="/software/stampipes/scripts/utility:${PATH}"
 ENV PATH="/software/stampipes/awk:${PATH}"
-ENV PATH="/software/stampipes/makefiles/densities:${PATH}
+ENV PATH="/software/stampipes/makefiles/densities:${PATH}"
