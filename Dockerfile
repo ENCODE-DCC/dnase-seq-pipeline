@@ -145,6 +145,7 @@ RUN chmod 755 /software/stampipes/scripts/SPOT/runhotspot.bash
 RUN chmod 755 /software/stampipes/scripts/utility/picard_inserts_process.py
 RUN chmod 755 /software/stampipes/scripts/utility/preseq_targets.sh
 RUN chmod 755 /software/stampipes/awk/*.awk
+RUN chmod 755 /software/stampipes/makefiles/densities/chrombuckets.mk
 
 # Add required stampipe locations to PATH to enable locating scripts with which
 ENV PATH="/software/stampipes/scripts/umi:${PATH}"
@@ -154,3 +155,4 @@ ENV PATH="/software/stampipes/scripts/SPOT:${PATH}"
 ENV PATH="/software/stampipes/scripts/bwa/aggregate/basic:${PATH}"
 ENV PATH="/software/stampipes/scripts/utility:${PATH}"
 ENV PATH="/software/stampipes/awk:${PATH}"
+ENV PATH="/software/stampipes/makefiles/densities:${PATH}
