@@ -8,3 +8,10 @@
   stdout:
     contains:
       - "awk"
+      - "perl"
+      - "merge_adjacent_bed.awk"
+      - "s/[[:blank:]]*$//"
+      - "sort-bed"
+  files:
+    - path: "test-output/sorted.bed"
+      md5sum: 85724d06d7ceddded0129c120f258e75
