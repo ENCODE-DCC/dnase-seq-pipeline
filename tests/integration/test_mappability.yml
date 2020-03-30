@@ -13,5 +13,5 @@
       - "s/[[:blank:]]*$//"
       - "sort-bed"
   files:
-    - path: "test-output/sorted.bed"
+    - path: "test-output/chr22.K9.mappable_only.bed"
       md5sum: 85724d06d7ceddded0129c120f258e75

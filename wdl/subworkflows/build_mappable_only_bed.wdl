@@ -16,6 +16,8 @@ workflow build_mappable_only_bed {
         Int kmer_length
     }
     
+    String mappable_output = basename(reference_genome, ".fa") + ".K" + kmer_length + ".mappable_only.bed"
+
     call awk.clean_reference_fasta_headers {
         input:
             fasta=reference_genome,
@@ -44,6 +46,7 @@ workflow build_mappable_only_bed {
 
     call bedops.sort_bed {
         input:
+            out = mappable_output,
             params=sortbedparams,
             resources=resources,
             unsorted_bed=remove_whitespace_from_end_of_lines.end_whitespace_trimmed,
