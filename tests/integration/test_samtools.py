@@ -39,7 +39,7 @@ def test_get_first_read_in_pair_from_bam_bams_match(test_data_dir, workflow_dir,
 
 
 @pytest.mark.workflow(name='test_merge_name_sorted_bams')
-def test_get_first_read_in_pair_from_bam_bams_match(test_data_dir, workflow_dir, bams_match):
+def test_merge_name_sorted_bams_bams_match(test_data_dir, workflow_dir, bams_match):
     actual_bam_path = workflow_dir / Path('test-output/merged.bam')
     expected_bam_path = test_data_dir / Path('dnase/merging/merged.bam')
     assert bams_match(actual_bam_path.as_posix(), expected_bam_path.as_posix())
