@@ -81,3 +81,18 @@
       - "fragmentfile"
       - "-f cutfragments.awk"
       - "dummy.txt"
+
+- name: test_stampipes_chrom_buckets
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_stampipes_chrom_buckets.wdl \
+    tests/unit/json/test_stampipes_chrom_buckets.json
+  stdout:
+    contains:
+      - "make all -f"
+      - "FAI"
+      - "GENOME"
+      - "BUCKETS_DIR"
+      - "dummy.txt"

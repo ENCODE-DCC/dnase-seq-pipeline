@@ -168,3 +168,30 @@ task cutfragments {
         disks: resources.disks
     }
 }
+
+
+task chrom_buckets {
+    input {
+        File fai
+        Resources resources
+        String genome_build
+    }
+
+    command {
+        make all -f $(which chrombuckets.mk) \
+            FAI=~{fai} \
+            GENOME=~{genome_build} \
+            BUCKETS_DIR=.
+    }
+
+    output {
+        File chrombuckets = "chrom-buckets." + genome_build + ".75_20.bed.starch"
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
+
