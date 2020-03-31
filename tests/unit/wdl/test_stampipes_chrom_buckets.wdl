@@ -8,13 +8,13 @@ workflow test_stampipes_chrom_buckets {
     input {
         File fai
         Resources resources
-        String genome_build
+        String genome_name
     }
 
     call stampipes.chrom_buckets {
         input:
             fai=fai,
-            genome_build=genome_build,
+            genome_name=genome_name,
             resources=resources,
     }
 }

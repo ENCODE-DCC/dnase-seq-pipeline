@@ -1,6 +1,6 @@
 {
     "test_stampipes_chrom_buckets.fai": "tests/data/dummy.txt",
-    "test_stampipes_chrom_buckets.genome_build": "chr22",
+    "test_stampipes_chrom_buckets.genome_name": "chr22",
     "test_stampipes_chrom_buckets.resources": {
         "cpu": 1,
         "memory_gb": 2,

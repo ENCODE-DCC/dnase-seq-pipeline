@@ -19,6 +19,6 @@ workflow get_chrombuckets {
     }
 
     output {
-        File chrom_buckets.chrombuckets
+        File chrombuckets = chrom_buckets.chrombuckets
     }
 }

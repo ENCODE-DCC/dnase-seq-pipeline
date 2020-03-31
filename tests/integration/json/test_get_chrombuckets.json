@@ -1,0 +1,9 @@
+{
+    "test_get_chrombuckets.get_chrombuckets.fai": "tests/data/ref/chr22.fa.fai",
+    "test_get_chrombuckets.get_chrombuckets.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_get_chrombuckets.get_chrombuckets.genome_name": "chr22"
+}

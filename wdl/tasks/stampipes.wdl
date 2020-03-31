@@ -174,18 +174,18 @@ task chrom_buckets {
     input {
         File fai
         Resources resources
-        String genome_build
+        String genome_name
     }
 
     command {
         make all -f $(which chrombuckets.mk) \
             FAI=~{fai} \
-            GENOME=~{genome_build} \
+            GENOME=~{genome_name} \
             BUCKETS_DIR=.
     }
 
     output {
-        File chrombuckets = "chrom-buckets." + genome_build + ".75_20.bed.starch"
+        File chrombuckets = "chrom-buckets." + genome_name + ".75_20.bed.starch"
     }
 
     runtime {
