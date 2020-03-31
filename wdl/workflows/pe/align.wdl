@@ -42,6 +42,7 @@ workflow align {
     call unsorted_bam.sort_bam_by_name {
         input:
             bam=convert_sam_to_bam.unsorted_bam,
+            out="name_sorted_pe.bam"
             resources=compute.runtimes[machine_size],
     }
 

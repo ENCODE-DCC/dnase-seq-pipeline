@@ -12,5 +12,5 @@
         "amb": "tests/data/ref/chr22.fa.amb",
         "sa": "tests/data/ref/chr22.fa.sa"
     },
-    "align.fastq": "tests/data/dnase/trimming/trim.R1.fastq.gz"
+    "align.trimmed_fastq": "tests/data/dnase/trimming/trim.R1.fastq.gz"
 }

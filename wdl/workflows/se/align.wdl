@@ -1,7 +1,7 @@
 version 1.0
 
 
-import "../../../wdl/subworkflows/align_fastq_with_bwa.wdl" as fastq
+import "../../../wdl/subworkflows/align_fastq_with_bwa.wdl" as trimmed_fastq
 import "../../../wdl/subworkflows/make_sam_from_sai_and_fastq.wdl" as aligned_fastq
 import "../../../wdl/subworkflows/convert_sam_to_bam.wdl" as sam
 import "../../../wdl/subworkflows/sort_bam_by_name.wdl" as unsorted_bam
@@ -10,24 +10,25 @@ import "../../../wdl/subworkflows/sort_bam_by_name.wdl" as unsorted_bam
 workflow align {
     input {
         BwaIndex bwa_index
-        File fastq
+        File trimmed_fastq
         IndexedFasta indexed_fasta
         String machine_size
+        String out = "name_sorted_se.bam"
     }
 
     Machines compute = read_json("wdl/runtimes.json")
 
-    call fastq.align_fastq_with_bwa {
+    call trimmed_fastq.align_fastq_with_bwa {
         input:
             bwa_index=bwa_index,
-            fastq=fastq,
+            fastq=trimmed_fastq,
             resources=compute.runtimes[machine_size],
     }
 
     call aligned_fastq.make_sam_from_sai_and_fastq {
         input:
             bwa_index=bwa_index,
-            fastq=fastq,
+            fastq=trimmed_fastq,
             sai=align_fastq_with_bwa.sai,
             resources=compute.runtimes[machine_size],
     }
@@ -42,6 +43,7 @@ workflow align {
     call unsorted_bam.sort_bam_by_name {
         input:
             bam=convert_sam_to_bam.unsorted_bam,
+            out=out,
             resources=compute.runtimes[machine_size],
     }
 
