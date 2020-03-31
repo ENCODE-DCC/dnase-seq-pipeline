@@ -94,3 +94,32 @@ task sort {
         disks: resources.disks
     }
 }
+
+
+task merge {
+    input {
+        Array[File] sorted_bams
+        Resources resources
+        SamtoolsMergeParams params
+        String out = "merged.bam"
+    }
+
+    command {
+        samtools merge \
+            ~{true="-1" false="" params.fast_compression} \
+            ~{true="-n" false="" params.name_sorted} \
+            ~{"-@ " + resources.cpu} \
+            ~{out} \
+            ~{sep=" " sorted_bams}
+    }
+
+    output {
+        File merged_bam = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}

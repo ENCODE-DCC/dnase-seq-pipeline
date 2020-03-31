@@ -80,3 +80,18 @@
       - "-@ 1"
     must_not_contain:
       - "-l "
+
+- name: test_samtools_merge
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_samtools_merge.wdl \
+    tests/unit/json/test_samtools_merge.json
+  stdout:
+    contains:
+      - "samtools merge"
+      - "-@ 4"
+      - "-n"
+      - "dummy.txt"
+      - "merged.bam"
