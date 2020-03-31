@@ -19,7 +19,7 @@ workflow trim {
 
     call concatenated_fastqs.trim_adapters_on_fastq_pair {
         input:
-            fastqs=raw_fastqs,
+            fastqs=concatenated_fastqs,
             adapters=adapters,
             adapter1=adapter1,
             adapter2=adapter2,

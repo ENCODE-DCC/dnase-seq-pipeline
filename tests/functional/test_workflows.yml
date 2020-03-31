@@ -1,4 +1,4 @@
-- name: concatenate_trim_and_align_se_fastqs
+- name: test_concatenate_trim_and_align_se_fastqs
   tags:
     - functional
   command: >-
@@ -14,6 +14,24 @@
       - "samtools sort"
   files:
       - path: "test-output/name_sorted_se.bam"
+
+- name: test_concatenate_trim_and_align_pe_fastqs
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/concatenate_trim_and_align_pe_fastqs.wdl \
+      tests/functional/json/test_concatenate_trim_and_align_pe_fastqs.json
+  stdout:
+    contains:
+      - "cat"
+      - "awk"
+      - "bwa aln"
+      - "bwa sampe"
+      - "samtools sort"
+  files:
+      - path: "test-output/name_sorted_pe.bam"
+      - path: "test-output/trimstats.txt"
 
 - name: test_trim_align_mark_and_filter_pe_fastqs
   tags:
