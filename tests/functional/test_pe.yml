@@ -33,7 +33,7 @@
   files:
       - path: "test-output/trimstats.txt"
       - path: "test-output/trimmed_to_length_trim.R1.fastq.gz"
-      - path: "test-output/trimmed_to_length_trim.R1.fastq.gz"
+      - path: "test-output/trimmed_to_length_trim.R2.fastq.gz"
 
 - name: test_pe_align
   tags:
