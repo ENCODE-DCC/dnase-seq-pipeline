@@ -1,0 +1,14 @@
+- name: test_mixed_merge
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/mixed/merge.wdl \
+      tests/functional/json/test_mixed_merge.json
+  stdout:
+    contains:
+      - "samtools merge"
+      - "-n"
+      - "merged.bam"
+  files:
+      - path: "test-output/merged.bam"

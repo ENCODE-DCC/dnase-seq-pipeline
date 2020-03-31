@@ -1,0 +1,7 @@
+{
+    "merge.name_sorted_bams": [
+        "tests/data/dnase/merging/name_sorted_1.bam",
+        "tests/data/dnase/merging/name_sorted_2.bam"
+    ],
+    "merge.machine_size": "small"
+}
