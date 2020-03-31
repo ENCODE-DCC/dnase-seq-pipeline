@@ -1,5 +1,5 @@
 {
   "mark.machine_size": "small",
-  "mark.name_sorted_bam": "tests/data/dnase/alignment/name_sorted.bam",
+  "mark.merged_bam": "tests/data/dnase/alignment/name_sorted.bam",
   "mark.nuclear_chroms": "tests/data/ref/chr22.fa.nuclear.txt"
 }

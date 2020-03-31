@@ -1,7 +1,7 @@
 version 1.0
 
 
-import "../../../wdl/subworkflows/flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.wdl" as name_sorted_bam
+import "../../../wdl/subworkflows/flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.wdl" as merged_bam
 import "../../../wdl/subworkflows/sort_bam_by_coordinate.wdl" as flagged_bam
 import "../../../wdl/subworkflows/add_mate_cigar_to_bam.wdl" as coordinate_sorted_bam
 import "../../../wdl/subworkflows/mark_duplicates_in_bam_and_get_duplication_metrics.wdl" as mate_cigar_bam
@@ -10,16 +10,16 @@ import "../../../wdl/subworkflows/flag_qc_fail_improper_pair_and_nonnuclear_bam_
 
 workflow mark {
     input {
-        File name_sorted_bam
+        File merged_bam
         File nuclear_chroms
         String machine_size
     }
 
     Machines compute = read_json("wdl/runtimes.json")
 
-    call name_sorted_bam.flag_qc_fail_improper_pair_and_nonnuclear_bam_reads {
+    call merged_bam.flag_qc_fail_improper_pair_and_nonnuclear_bam_reads {
         input:
-            bam=name_sorted_bam,
+            bam=merged_bam,
             nuclear_chroms=nuclear_chroms,
             resources=compute.runtimes[machine_size],
     }

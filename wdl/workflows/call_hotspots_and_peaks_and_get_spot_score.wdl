@@ -1,8 +1,8 @@
 version 1.0
 
 
-import "../../wdl/workflows/pe/peaks.wdl" as nuclear_bam_for_peaks
-import "../../wdl/workflows/pe/score.wdl" as nuclear_bam_for_score
+import "../../wdl/workflows/mixed/peaks.wdl" as nuclear_bam_for_peaks
+import "../../wdl/workflows/mixed/score.wdl" as nuclear_bam_for_score
 
 
 workflow call_hotspots_and_peaks_and_get_spot_score {

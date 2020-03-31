@@ -33,17 +33,15 @@
       - path: "test-output/name_sorted_pe.bam"
       - path: "test-output/trimstats.txt"
 
-- name: test_trim_align_mark_and_filter_pe_fastqs
+- name: test_merge_mark_and_filter_bams
   tags:
     - functional
   command: >-
       tests/caper_run.sh \
-      wdl/workflows/trim_align_mark_and_filter_pe_fastqs.wdl \
-      tests/functional/json/test_trim_align_mark_and_filter_pe_fastqs.json
+      wdl/workflows/merge_mark_and_filter_bams.wdl \
+      tests/functional/json/test_merge_mark_and_filter_bams.json
   stdout:
     contains:
-      - "bwa aln"
-      - "bwa sampe"
       - "samtools sort"
       - "filter_reads.py"
       - "RevertOriginalBaseQualitiesAndAddMateCigar"
@@ -53,7 +51,6 @@
       - path: "test-output/marked.bam"
       - path: "test-output/nuclear.bam"
       - path: "test-output/MarkDuplicates.picard"
-      - path: "test-output/trimstats.txt"
 
 - name: test_call_hotspots_and_peaks_and_get_spot_score
   tags:
