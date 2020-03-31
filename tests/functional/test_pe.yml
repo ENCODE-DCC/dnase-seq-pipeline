@@ -1,3 +1,21 @@
+- name: test_pe_concatenate
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/pe/concatenate.wdl \
+      tests/functional/json/test_pe_concatenate.json
+  stdout:
+    contains:
+      - "cat"
+      - "concatenated.R1.fastq.gz"
+      - "concatenated.R2.fastq.gz"
+  files:
+    - path: "test-output/concatenated.R1.fastq.gz"
+      md5sum: 254f9337d5caf325001239fe27aabc83
+    - path: "test-output/concatenated.R2.fastq.gz"
+      md5sum: d7e08187357b780efc3f7f5634d07a29
+
 - name: test_pe_trim
   tags:
     - functional

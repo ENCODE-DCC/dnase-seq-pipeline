@@ -1,0 +1,13 @@
+{
+    "concatenate.raw_fastqs": [
+        {
+            "R1": "tests/data/dnase/concatenation/1.fastq.gz",
+            "R2": "tests/data/dnase/concatenation/3.fastq.gz"
+        },
+        {
+            "R1": "tests/data/dnase/concatenation/2.fastq.gz",
+            "R2": "tests/data/dnase/concatenation/4.fastq.gz"
+        }
+    ],
+    "concatenate.machine_size": "small"
+}
