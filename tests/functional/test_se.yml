@@ -41,4 +41,4 @@
       - "samtools sort"
       - "-n"
   files:
-      - path: "test-output/sorted.bam"
+      - path: "test-output/name_sorted_se.bam"
