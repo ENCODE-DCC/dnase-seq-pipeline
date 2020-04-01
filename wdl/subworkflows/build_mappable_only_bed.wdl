@@ -9,11 +9,11 @@ import "../tasks/sed.wdl"
 
 workflow build_mappable_only_bed {
     input {
-        BedopsSortBedParams sortbedparams
+        BedopsSortBedParams params = object {}
         BowtieIndex bowtieindex
+        Int kmer_length
         File reference_genome
         Resources resources
-        Int kmer_length
     }
     
     String mappable_output = basename(reference_genome, ".fa") + ".K" + kmer_length + ".mappable_only.bed"
@@ -34,7 +34,7 @@ workflow build_mappable_only_bed {
 
     call awk.merge_adjacent_bed {
         input:
-            bed=enumerate_uniquely_mappable_space.enumerated_space,
+            bed=enumerate_uniquely_mappable_space.enumerated_space_bed,
             resources=resources,
     }
 
@@ -46,8 +46,8 @@ workflow build_mappable_only_bed {
 
     call bedops.sort_bed {
         input:
-            out = mappable_output,
-            params=sortbedparams,
+            out=mappable_output,
+            params=params,
             resources=resources,
             unsorted_bed=remove_whitespace_from_end_of_lines.end_whitespace_trimmed,
     }

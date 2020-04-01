@@ -5,7 +5,6 @@
           "disks": "local-disk 10 SSD"
     },
     "test_build_mappable_only_bed.build_mappable_only_bed.reference_genome": "tests/data/ref/chr22.fa",
-    "test_build_mappable_only_bed.build_mappable_only_bed.sortbedparams": {},
     "test_build_mappable_only_bed.build_mappable_only_bed.kmer_length": 9,
     "test_build_mappable_only_bed.build_mappable_only_bed.bowtieindex": {
         "ebwt_1": "tests/data/ref/chr22.fa.1.ebwt",

@@ -71,7 +71,9 @@ task clean_reference_fasta_headers {
     }
 
     command <<<
-        awk '/^>/{$0=$1} 1' ~{fasta} \
+        awk \
+            '/^>/{$0=$1} 1' \
+            ~{fasta} \
             > ~{out}
     >>>
 
@@ -95,7 +97,10 @@ task merge_adjacent_bed {
     }
 
     command {
-        awk -f $(which merge_adjacent_bed.awk) ~{bed} \
+        awk \
+            -f \
+            $(which merge_adjacent_bed.awk) \
+            ~{bed} \
             > ~{out}
     }
 

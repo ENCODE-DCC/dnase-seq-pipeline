@@ -45,8 +45,8 @@ task enumerate_uniquely_mappable_space {
         BowtieIndex bowtieindex
         File cleaned_fasta
         Int kmer_length
-        String out = "enumerated_space.bed" 
         Resources resources
+        String out = "enumerated_space.bed" 
     }
 
     String bowtieindex_prefix = basename(bowtieindex.ebwt_1, ".1.ebwt")
@@ -66,7 +66,7 @@ task enumerate_uniquely_mappable_space {
     }
 
     output {
-        File enumerated_space = out
+        File enumerated_space_bed = out
     }
 
     runtime {

@@ -12,7 +12,9 @@ task remove_whitespace_from_end_of_lines{
     }
 
     command {
-        sed 's/[[:blank:]]*$//' ~{input_file} \
+        sed \
+            's/[[:blank:]]*$//' \
+            ~{input_file} \
             > ~{out}
     }
 

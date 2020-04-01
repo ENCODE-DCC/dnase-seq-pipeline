@@ -46,5 +46,6 @@
     tests/unit/json/test_awk_merge_adjacent_bed.json
   stdout:
     contains:
-      - "awk -f"
+      - "awk"
+      - "-f"
       - "> adjacent_merged.bed"
