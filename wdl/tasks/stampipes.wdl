@@ -173,15 +173,20 @@ task cutfragments {
 task chrom_buckets {
     input {
         File fai
+        Int bin_size = 20
+        Int window_size = 75
         Resources resources
         String genome_name
     }
 
     command {
-        make all -f $(which chrombuckets.mk) \
+        make all \
+            -f $(which chrombuckets.mk) \
             FAI=~{fai} \
             GENOME=~{genome_name} \
-            BUCKETS_DIR=.
+            BUCKETS_DIR=. \
+            BINI=~{bin_size} \
+            WIN=~{window_size}
     }
 
     output {

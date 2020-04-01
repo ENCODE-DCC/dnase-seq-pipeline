@@ -91,8 +91,11 @@
     tests/unit/json/test_stampipes_chrom_buckets.json
   stdout:
     contains:
-      - "make all -f"
+      - "make all"
+      - "-f"
       - "FAI"
       - "GENOME"
       - "BUCKETS_DIR"
+      - "BINI"
+      - "WIN"
       - "dummy.txt"

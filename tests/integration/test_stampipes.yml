@@ -71,7 +71,8 @@
     tests/integration/json/test_get_chrombuckets.json
   stdout:
     contains:
-      - "make all -f"
+      - "make all"
+      - "-f"
       - "FAI"
       - "GENOME"
       - "BUCKETS_DIR"
