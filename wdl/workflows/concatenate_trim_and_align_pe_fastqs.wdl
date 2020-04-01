@@ -4,8 +4,6 @@ version 1.0
 import "../../wdl/workflows/pe/concatenate.wdl" as raw_fastqs
 import "../../wdl/workflows/pe/trim.wdl" as concatenated_fastqs
 import "../../wdl/workflows/pe/align.wdl" as trimmed_fastqs
-import "../../wdl/workflows/pe/mark.wdl" as name_sorted_bam
-import "../../wdl/workflows/pe/filter.wdl" as flagged_and_marked_bam
 
 
 workflow concatenate_trim_and_align_pe_fastqs {
