@@ -1,0 +1,12 @@
+- name: test_sed_remove_trailing_whitespaces
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_sed_remove_trailing_whitespaces.wdl \
+    tests/unit/json/test_sed_remove_trailing_whitespaces.json
+  stdout:
+    contains:
+      - "sed"
+      - "s/[[:blank:]]*$//"
+      - "out.txt"

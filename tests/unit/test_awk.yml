@@ -24,3 +24,28 @@
       - '-v "win=75"'
       - "BEGIN{halfBin=binI/2; shiftFactor=win-halfBin}"
       - '{print $1 "\t" $2 + shiftFactor "\t" $3 - shiftFactor "\t" "id" "\t" $4}'
+
+- name: test_awk_clean_reference_fasta_headers
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_awk_clean_reference_fasta_headers.wdl \
+    tests/unit/json/test_awk_clean_reference_fasta_headers.json
+  stdout:
+    contains:
+      - "awk"
+      - "/^>/{$0=$1} 1"
+
+- name: test_awk_merge_adjacent_bed
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_awk_merge_adjacent_bed.wdl \
+    tests/unit/json/test_awk_merge_adjacent_bed.json
+  stdout:
+    contains:
+      - "awk"
+      - "-f"
+      - "> adjacent_merged.bed"

@@ -1,0 +1,17 @@
+{
+    "test_hotspot1_enumerate_uniquely_mappable_space.bowtie_index": {
+        "ebwt_1": "tests/data/dummy.txt",
+        "ebwt_2": "tests/data/dummy.txt",
+        "ebwt_3": "tests/data/dummy.txt",
+        "ebwt_4": "tests/data/dummy.txt",
+        "rev_ebwt1": "tests/data/dummy.txt",
+        "rev_ebwt2": "tests/data/dummy.txt"
+    },
+    "test_hotspot1_enumerate_uniquely_mappable_space.cleaned_fasta": "tests/data/dummy.txt",
+    "test_hotspot1_enumerate_uniquely_mappable_space.kmer_length": 42,
+    "test_hotspot1_enumerate_uniquely_mappable_space.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

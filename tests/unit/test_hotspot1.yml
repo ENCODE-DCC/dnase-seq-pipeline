@@ -13,3 +13,18 @@
       - "chr22"
       - "36"
       - "DNaseI"
+
+- name: test_hotspot1_enumerate_uniquely_mappable_space 
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_hotspot1_enumerate_uniquely_mappable_space.wdl \
+    tests/unit/json/test_hotspot1_enumerate_uniquely_mappable_space.json
+  stdout:
+    contains:
+      - "perl"
+      - "enumerateUniquelyMappableSpace.pl"
+      - "42"
+      - "dummy.txt"
+      - "> enumerated_space.bed"
