@@ -50,7 +50,7 @@
       - "-f"
       - "> adjacent_merged.bed"
 
-- name: test_awk_convert_fai_to_bed_format 
+- name: test_awk_convert_fai_to_bed_format
   tags:
     - unit
   command: >-
