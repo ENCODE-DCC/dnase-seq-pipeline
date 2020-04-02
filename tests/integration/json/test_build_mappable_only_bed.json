@@ -6,7 +6,7 @@
     },
     "test_build_mappable_only_bed.build_mappable_only_bed.reference_genome": "tests/data/ref/chr22.fa",
     "test_build_mappable_only_bed.build_mappable_only_bed.kmer_length": 9,
-    "test_build_mappable_only_bed.build_mappable_only_bed.bowtieindex": {
+    "test_build_mappable_only_bed.build_mappable_only_bed.bowtie_index": {
         "ebwt_1": "tests/data/ref/chr22.fa.1.ebwt",
         "ebwt_2": "tests/data/ref/chr22.fa.2.ebwt",
         "ebwt_3": "tests/data/ref/chr22.fa.3.ebwt",

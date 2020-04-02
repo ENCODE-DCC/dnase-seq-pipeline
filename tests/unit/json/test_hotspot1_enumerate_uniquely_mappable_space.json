@@ -1,5 +1,5 @@
 {
-    "test_hotspot1_enumerate_uniquely_mappable_space.bowtieindex": {
+    "test_hotspot1_enumerate_uniquely_mappable_space.bowtie_index": {
         "ebwt_1": "tests/data/dummy.txt",
         "ebwt_2": "tests/data/dummy.txt",
         "ebwt_3": "tests/data/dummy.txt",

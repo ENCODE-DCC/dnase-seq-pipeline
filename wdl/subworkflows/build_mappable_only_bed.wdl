@@ -10,7 +10,7 @@ import "../tasks/sed.wdl"
 workflow build_mappable_only_bed {
     input {
         BedopsSortBedParams params = object {}
-        BowtieIndex bowtieindex
+        BowtieIndex bowtie_index
         Int kmer_length
         File reference_genome
         Resources resources
@@ -26,7 +26,7 @@ workflow build_mappable_only_bed {
 
     call hotspot1.enumerate_uniquely_mappable_space {
         input:
-            bowtieindex=bowtieindex,
+            bowtie_index=bowtie_index,
             cleaned_fasta=clean_reference_fasta_headers.cleaned_fasta,
             kmer_length=kmer_length,
             resources=resources,

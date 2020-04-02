@@ -42,25 +42,25 @@ task runhotspot {
 
 task enumerate_uniquely_mappable_space {
     input {
-        BowtieIndex bowtieindex
+        BowtieIndex bowtie_index
         File cleaned_fasta
         Int kmer_length
         Resources resources
         String out = "enumerated_space.bed" 
     }
 
-    String bowtieindex_prefix = basename(bowtieindex.ebwt_1, ".1.ebwt")
+    String bowtie_index_prefix = basename(bowtie_index.ebwt_1, ".1.ebwt")
 
     command {
-        ln ~{bowtieindex.ebwt_1} .
-        ln ~{bowtieindex.ebwt_2} .
-        ln ~{bowtieindex.ebwt_3} .
-        ln ~{bowtieindex.ebwt_4} .
-        ln ~{bowtieindex.rev_ebwt1} .
-        ln ~{bowtieindex.rev_ebwt2} .
+        ln ~{bowtie_index.ebwt_1} .
+        ln ~{bowtie_index.ebwt_2} .
+        ln ~{bowtie_index.ebwt_3} .
+        ln ~{bowtie_index.ebwt_4} .
+        ln ~{bowtie_index.rev_ebwt1} .
+        ln ~{bowtie_index.rev_ebwt2} .
         perl $(which enumerateUniquelyMappableSpace.pl) \
             ~{kmer_length} \
-            ~{bowtieindex_prefix} \
+            ~{bowtie_index_prefix} \
             ~{cleaned_fasta} \
             > ~{out}
     }
