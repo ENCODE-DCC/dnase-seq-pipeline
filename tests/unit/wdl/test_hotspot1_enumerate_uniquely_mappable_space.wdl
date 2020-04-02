@@ -17,6 +17,6 @@ workflow test_hotspot1_enumerate_uniquely_mappable_space {
             bowtieindex=bowtieindex,
             cleaned_fasta=cleaned_fasta,
             kmer_length=kmer_length,
-            resources=resources
+            resources=resources,
     }
 }

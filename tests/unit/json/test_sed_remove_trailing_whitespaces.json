@@ -1,0 +1,8 @@
+{
+    "test_sed_remove_trailing_whitespaces.input_file": "tests/data/dummy.txt",
+    "test_sed_remove_trailing_whitespaces.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

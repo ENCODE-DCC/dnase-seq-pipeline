@@ -4,7 +4,7 @@ version 1.0
 import "../structs/resources.wdl"
 
 
-task remove_whitespace_from_end_of_lines{
+task remove_trailing_whitespaces {
     input {
         File input_file
         Resources resources
@@ -19,7 +19,7 @@ task remove_whitespace_from_end_of_lines{
     }
 
     output {
-        File end_whitespace_trimmed = out
+        File trailing_whitespace_trimmed = out
     }
 
     runtime {
