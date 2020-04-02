@@ -61,3 +61,20 @@
       - "subsample.bam"
   files:
       - path: "test-output/subsample.bam"
+
+- name: test_get_chrombuckets
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_chrombuckets.wdl \
+    tests/integration/json/test_get_chrombuckets.json
+  stdout:
+    contains:
+      - "make all"
+      - "-f"
+      - "FAI"
+      - "GENOME"
+      - "BUCKETS_DIR"
+  files:
+    - path: "test-output/chrom-buckets.chr22.75_20.bed.starch"
