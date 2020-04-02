@@ -1,0 +1,16 @@
+- name: test_get_chrom_sizes 
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_chrom_sizes.wdl \
+    tests/integration/json/test_get_chrom_sizes.json
+  stdout:
+    contains:
+      - "awk"
+      - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
+      - "sort-bed"
+      - "chr22.fa.chrom_sizes.bed"
+  files:
+    - path: "test-output/chr22.fa.chrom_sizes.bed"
+      md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b

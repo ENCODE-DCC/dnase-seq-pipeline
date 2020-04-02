@@ -81,6 +81,12 @@ task clean_reference_fasta_headers {
         File cleaned_fasta = out
     }
 
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
 
 task convert_fai_to_bed_format {
     input {
