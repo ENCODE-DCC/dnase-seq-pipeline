@@ -1,0 +1,8 @@
+{
+    "test_awk_convert_fai_to_bed_format.fai": "tests/data/dummy.txt",
+    "test_awk_convert_fai_to_bed_format.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

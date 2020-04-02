@@ -49,3 +49,16 @@
       - "awk"
       - "-f"
       - "> adjacent_merged.bed"
+
+- name: test_awk_convert_fai_to_bed_format 
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_awk_convert_fai_to_bed_format.wdl \
+    tests/unit/json/test_awk_convert_fai_to_bed_format.json
+  stdout:
+    contains:
+      - "awk"
+      - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
+      - "> fai_to.bed"
