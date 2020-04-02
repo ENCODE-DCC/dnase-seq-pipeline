@@ -173,8 +173,8 @@ task cutfragments {
 task chrom_buckets {
     input {
         File fai
-        Int bin_size = 20
-        Int window_size = 75
+        Int bin_size
+        Int window_size
         Resources resources
         String genome_name
     }
@@ -190,7 +190,7 @@ task chrom_buckets {
     }
 
     output {
-        File chrombuckets = "chrom-buckets." + genome_name + ".75_20.bed.starch"
+        File chrombuckets = "chrom-buckets." + genome_name + "." + window_size + "_" + bin_size + ".bed.starch"
     }
 
     runtime {
