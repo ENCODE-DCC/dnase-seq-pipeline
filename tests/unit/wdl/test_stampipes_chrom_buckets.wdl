@@ -19,6 +19,6 @@ workflow test_stampipes_chrom_buckets {
             fai=fai,
             genome_name=genome_name,
             resources=resources,
-            window_size=window_size
+            window_size=window_size,
     }
 }
