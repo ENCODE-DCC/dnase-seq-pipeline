@@ -88,6 +88,31 @@ task clean_reference_fasta_headers {
     }
 }
 
+task convert_fai_to_bed_format {
+    input {
+        File fai
+        Resources resources
+        String out = "fai_to.bed"
+    }
+
+    command <<<
+        awk \
+            'BEGIN{OFS="\t"} {print $1, 0, $2}' \
+            ~{fai} \
+            > ~{out}
+    >>>
+
+    output {
+        File bed = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
+
 
 task merge_adjacent_bed {
     input {

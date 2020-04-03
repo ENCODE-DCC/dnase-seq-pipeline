@@ -1,0 +1,8 @@
+{
+    "test_get_chrom_sizes.get_chrom_sizes.fai": "tests/data/ref/chr22.fa.fai",
+    "test_get_chrom_sizes.get_chrom_sizes.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}
