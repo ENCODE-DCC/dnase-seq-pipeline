@@ -62,6 +62,7 @@
       - "awk"
       - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
       - "> fai_to.bed"
+
 - name: test_awk_convert_chrom_sizes_to_chrom_info 
   tags:
     - unit
