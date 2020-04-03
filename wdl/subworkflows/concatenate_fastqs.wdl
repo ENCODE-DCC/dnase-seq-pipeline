@@ -8,7 +8,7 @@ workflow concatenate_fastqs {
     input {
         Array[File] fastqs
         Resources resources
-        String? out
+        String out = "concatenated.fastq.gz"
     }
 
     call cat.cat {

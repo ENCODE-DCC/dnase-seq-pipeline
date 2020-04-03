@@ -1,0 +1,4 @@
+{
+    "trim.machine_size": "small",
+    "trim.concatenated_fastq": "tests/data/dnase/trimming/trim.R1.fastq.gz"
+}

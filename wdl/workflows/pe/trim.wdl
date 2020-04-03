@@ -1,13 +1,13 @@
 version 1.0
 
 
-import "../../../wdl/subworkflows/trim_adapters_on_fastq_pair.wdl" as raw_fastqs
+import "../../../wdl/subworkflows/trim_adapters_on_fastq_pair.wdl" as concatenated_fastqs
 import "../../../wdl/subworkflows/trim_fastq_pair_to_length.wdl" as adapter_trimmed_fastqs
 
 
 workflow trim {
     input {
-        FastqPair raw_fastqs
+        FastqPair concatenated_fastqs
         File adapters
         String adapter1
         String adapter2
@@ -17,9 +17,9 @@ workflow trim {
 
     Machines compute = read_json("wdl/runtimes.json")
 
-    call raw_fastqs.trim_adapters_on_fastq_pair {
+    call concatenated_fastqs.trim_adapters_on_fastq_pair {
         input:
-            fastqs=raw_fastqs,
+            fastqs=concatenated_fastqs,
             adapters=adapters,
             adapter1=adapter1,
             adapter2=adapter2,

@@ -1,73 +1,62 @@
-- name: test_concatenate_trim_and_align_se_fastqs
+- name: test_mixed_merge
   tags:
     - functional
   command: >-
       tests/caper_run.sh \
-      wdl/workflows/concatenate_trim_and_align_se_fastqs.wdl \
-      tests/functional/json/test_concatenate_trim_and_align_se_fastqs.json
+      wdl/workflows/mixed/merge.wdl \
+      tests/functional/json/test_mixed_merge.json
   stdout:
     contains:
-      - "cat"
-      - "awk"
-      - "bwa aln"
-      - "bwa samse"
-      - "samtools sort"
+      - "samtools merge"
+      - "-n"
+      - "merged.bam"
   files:
-      - path: "test-output/name_sorted_se.bam"
+      - path: "test-output/merged.bam"
 
-- name: test_concatenate_trim_and_align_pe_fastqs
+- name: test_mixed_mark
   tags:
     - functional
   command: >-
       tests/caper_run.sh \
-      wdl/workflows/concatenate_trim_and_align_pe_fastqs.wdl \
-      tests/functional/json/test_concatenate_trim_and_align_pe_fastqs.json
+      wdl/workflows/mixed/mark.wdl \
+      tests/functional/json/test_mixed_mark.json
   stdout:
     contains:
-      - "cat"
-      - "awk"
-      - "bwa aln"
-      - "bwa sampe"
-      - "samtools sort"
-  files:
-      - path: "test-output/name_sorted_pe.bam"
-      - path: "test-output/trimstats.txt"
-
-- name: test_merge_mark_and_filter_bams
-  tags:
-    - functional
-  command: >-
-      tests/caper_run.sh \
-      wdl/workflows/merge_mark_and_filter_bams.wdl \
-      tests/functional/json/test_merge_mark_and_filter_bams.json
-  stdout:
-    contains:
-      - "samtools sort"
       - "filter_reads.py"
+      - "samtools sort"
       - "RevertOriginalBaseQualitiesAndAddMateCigar"
       - "MarkDuplicatesWithMateCigar"
   files:
-      - path: "test-output/qc_fail_flag_filtered.bam"
       - path: "test-output/marked.bam"
-      - path: "test-output/nuclear.bam"
       - path: "test-output/MarkDuplicates.picard"
 
-- name: test_call_hotspots_and_peaks_and_get_spot_score
+- name: test_mixed_filter
   tags:
     - functional
   command: >-
       tests/caper_run.sh \
-      wdl/workflows/call_hotspots_and_peaks_and_get_spot_score.wdl \
-      tests/functional/json/test_call_hotspots_and_peaks_and_get_spot_score.json
+      wdl/workflows/mixed/filter.wdl \
+      tests/functional/json/test_mixed_filter.json
+  stdout:
+    contains:
+      - "samtools view"
+      - "-F 512"
+      - "-F 4096"
+  files:
+      - path: "test-output/qc_fail_flag_filtered.bam"
+      - path: "test-output/nuclear.bam"
+
+- name: test_mixed_peaks
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/mixed/peaks.wdl \
+      tests/functional/json/test_mixed_peaks.json
   stdout:
     contains:
       - "hotspot2.sh"
-      - "random_sample.sh"
-      - "samtools view"
-      - "runhotspot.bash"
   files:
-      - path: "test-output/first_in_pair.spot.out"
-        md5sum: 521eb7de83cd3dc2164af72038841c83
       - path: "test-output/filtered.0.001.density.bw"
       - path: "test-output/filtered.0.001.peaks.narrowpeaks.starch"
       - path: "test-output/filtered.0.001.fragments.sorted.starch"
@@ -92,3 +81,19 @@
         md5sum: 7b281efd7aadbe033e2915861d736251
       - path: "test-output/filtered.0.05.density.starch"
       - path: "test-output/filtered.0.05.allcalls.starch"
+
+- name: test_mixed_score
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/mixed/score.wdl \
+      tests/functional/json/test_mixed_score.json
+  stdout:
+    contains:
+      - "random_sample.sh"
+      - "samtools view"
+      - "runhotspot.bash"
+  files:
+      - path: "test-output/first_in_pair.spot.out"
+        md5sum: 09e71419a7c0023634359f3e6a30a155

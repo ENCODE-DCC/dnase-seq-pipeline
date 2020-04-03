@@ -1,3 +1,21 @@
+- name: test_pe_concatenate
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/pe/concatenate.wdl \
+      tests/functional/json/test_pe_concatenate.json
+  stdout:
+    contains:
+      - "cat"
+      - "concatenated.R1.fastq.gz"
+      - "concatenated.R2.fastq.gz"
+  files:
+    - path: "test-output/concatenated.R1.fastq.gz"
+      md5sum: 254f9337d5caf325001239fe27aabc83
+    - path: "test-output/concatenated.R2.fastq.gz"
+      md5sum: d7e08187357b780efc3f7f5634d07a29
+
 - name: test_pe_trim
   tags:
     - functional
@@ -15,7 +33,7 @@
   files:
       - path: "test-output/trimstats.txt"
       - path: "test-output/trimmed_to_length_trim.R1.fastq.gz"
-      - path: "test-output/trimmed_to_length_trim.R1.fastq.gz"
+      - path: "test-output/trimmed_to_length_trim.R2.fastq.gz"
 
 - name: test_pe_align
   tags:
@@ -31,89 +49,4 @@
       - "samtools sort"
       - "-n"
   files:
-      - path: "test-output/sorted.bam"
-
-- name: test_pe_mark
-  tags:
-    - functional
-  command: >-
-      tests/caper_run.sh \
-      wdl/workflows/pe/mark.wdl \
-      tests/functional/json/test_pe_mark.json
-  stdout:
-    contains:
-      - "filter_reads.py"
-      - "samtools sort"
-      - "RevertOriginalBaseQualitiesAndAddMateCigar"
-      - "MarkDuplicatesWithMateCigar"
-  files:
-      - path: "test-output/marked.bam"
-      - path: "test-output/MarkDuplicates.picard"
-
-- name: test_pe_filter
-  tags:
-    - functional
-  command: >-
-      tests/caper_run.sh \
-      wdl/workflows/pe/filter.wdl \
-      tests/functional/json/test_pe_filter.json
-  stdout:
-    contains:
-      - "samtools view"
-      - "-F 512"
-      - "-F 4096"
-  files:
-      - path: "test-output/qc_fail_flag_filtered.bam"
-      - path: "test-output/nuclear.bam"
-
-- name: test_pe_peaks
-  tags:
-    - functional
-  command: >-
-      tests/caper_run.sh \
-      wdl/workflows/pe/peaks.wdl \
-      tests/functional/json/test_pe_peaks.json
-  stdout:
-    contains:
-      - "hotspot2.sh"
-  files:
-      - path: "test-output/filtered.0.001.density.bw"
-      - path: "test-output/filtered.0.001.peaks.narrowpeaks.starch"
-      - path: "test-output/filtered.0.001.fragments.sorted.starch"
-      - path: "test-output/filtered.0.001.SPOT.txt"
-        md5sum: cc9d4ebad2c1a7e9a637d2628fd927e3
-      - path: "test-output/filtered.0.001.cutcounts.starch"
-      - path: "test-output/filtered.0.001.hotspots.fdr0.001.starch"
-      - path: "test-output/filtered.0.001.peaks.starch"
-      - path: "test-output/filtered.0.001.cleavage.total"
-        md5sum: 7b281efd7aadbe033e2915861d736251
-      - path: "test-output/filtered.0.001.density.starch"
-      - path: "test-output/filtered.0.001.allcalls.starch"
-      - path: "test-output/filtered.0.05.density.bw"
-      - path: "test-output/filtered.0.05.peaks.narrowpeaks.starch"
-      - path: "test-output/filtered.0.05.fragments.sorted.starch"
-      - path: "test-output/filtered.0.05.SPOT.txt"
-        md5sum: d5c0602308fc750da6630ea52ef8b058
-      - path: "test-output/filtered.0.05.cutcounts.starch"
-      - path: "test-output/filtered.0.05.hotspots.fdr0.05.starch"
-      - path: "test-output/filtered.0.05.peaks.starch"
-      - path: "test-output/filtered.0.05.cleavage.total"
-        md5sum: 7b281efd7aadbe033e2915861d736251
-      - path: "test-output/filtered.0.05.density.starch"
-      - path: "test-output/filtered.0.05.allcalls.starch"
-
-- name: test_pe_score
-  tags:
-    - functional
-  command: >-
-      tests/caper_run.sh \
-      wdl/workflows/pe/score.wdl \
-      tests/functional/json/test_pe_score.json
-  stdout:
-    contains:
-      - "random_sample.sh"
-      - "samtools view"
-      - "runhotspot.bash"
-  files:
-      - path: "test-output/first_in_pair.spot.out"
-        md5sum: 09e71419a7c0023634359f3e6a30a155
+      - path: "test-output/name_sorted_pe.bam"

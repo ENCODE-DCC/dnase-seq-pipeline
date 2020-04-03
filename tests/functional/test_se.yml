@@ -1,3 +1,32 @@
+- name: test_se_concatenate
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/se/concatenate.wdl \
+      tests/functional/json/test_se_concatenate.json
+  stdout:
+    contains:
+      - "cat"
+      - "concatenated.fastq.gz"
+  files:
+      - path: "test-output/concatenated.fastq.gz"
+        md5sum: 52afaef92fadeabb19e9ee6c229882c0
+
+- name: test_se_trim
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/se/trim.wdl \
+      tests/functional/json/test_se_trim.json
+  stdout:
+    contains:
+      - "pigz"
+      - "awk"
+  files:
+      - path: "test-output/trimmed_to_length_trim.R1.fastq.gz"
+
 - name: test_se_align
   tags:
     - functional
@@ -12,4 +41,4 @@
       - "samtools sort"
       - "-n"
   files:
-      - path: "test-output/sorted.bam"
+      - path: "test-output/name_sorted_se.bam"
