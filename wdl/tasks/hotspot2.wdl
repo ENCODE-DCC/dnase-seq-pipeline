@@ -62,10 +62,10 @@ task extract_center_sites {
     }
 
     command {
-        $(which extractCebterSites.sh) \
+        $(which extractCenterSites.sh) \
             -c ~{chrom_sizes} \
             -M ~{mappable_regions_bed} \
-            -o ~{out}
+            -o ~{out} \
             -n ~{neighborhood_size}
     }
 

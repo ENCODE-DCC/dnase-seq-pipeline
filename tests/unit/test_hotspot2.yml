@@ -15,3 +15,18 @@
       - "-f 0.01"
       - "-F 0.5"
       - "-p varWidth_20_default"
+
+- name: test_hotspot2_extract_center_sites
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_hotspot2_extract_center_sites.wdl \
+    tests/unit/json/test_hotspot2_extract_center_sites.json
+  stdout:
+    contains:
+      - "extractCenterSites.sh"
+      - "-c"
+      - "-M"
+      - "-o center_sites.starch"
+      - "-n 42"
