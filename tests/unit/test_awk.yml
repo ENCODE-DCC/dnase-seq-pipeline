@@ -62,3 +62,15 @@
       - "awk"
       - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
       - "> fai_to.bed"
+- name: test_awk_convert_chrom_sizes_to_chrom_info 
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_awk_convert_chrom_sizes_to_chrom_info.wdl \
+    tests/unit/json/test_awk_convert_chrom_sizes_to_chrom_info.json
+  stdout:
+    contains:
+      - "awk"
+      - 'BEGIN{OFS="\t"} {print $1, $2, $3, $1}'
+      - "> chromInfo.bed"
