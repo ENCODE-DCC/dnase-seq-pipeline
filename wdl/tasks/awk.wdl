@@ -138,3 +138,29 @@ task merge_adjacent_bed {
         disks: resources.disks
     }
 }
+
+
+task convert_chrom_sizes_to_chrom_info {
+    input {
+        File chrom_sizes
+        Resources resources
+        String out = "chromInfo.bed"
+    }
+
+    command <<< 
+        awk \
+            'BEGIN{OFS="\t"} {print $1, $2, $3, $1}' \
+            ~{chrom_sizes} \
+            > ~{out}
+    >>>
+
+    output {
+        File chrom_info = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}

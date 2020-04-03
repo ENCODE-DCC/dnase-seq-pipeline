@@ -1,0 +1,8 @@
+{
+    "test_convert_chrom_sizes_to_chrom_info.chrom_sizes": "tests/data/dummy.txt",
+    "test_convert_chrom_sizes_to_chrom_info.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
