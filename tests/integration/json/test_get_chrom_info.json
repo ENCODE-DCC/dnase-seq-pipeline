@@ -1,0 +1,9 @@
+
+{
+    "test_get_chrom_info.get_chrom_info.chrom_sizes": "tests/data/ref/chr22.chrom_sizes.bed",
+    "test_get_chrom_info.get_chrom_info.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}
