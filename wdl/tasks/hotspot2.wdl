@@ -55,7 +55,7 @@ task hotspot2 {
 task extract_center_sites {
     input {
         File chrom_sizes
-        File mappable_regions_bed
+        File mappable_regions
         Int neighborhood_size
         Resources resources
         String out = "center_sites.starch"
@@ -64,7 +64,7 @@ task extract_center_sites {
     command {
         $(which extractCenterSites.sh) \
             -c ~{chrom_sizes} \
-            -M ~{mappable_regions_bed} \
+            -M ~{mappable_regions} \
             -o ~{out} \
             -n ~{neighborhood_size}
     }
