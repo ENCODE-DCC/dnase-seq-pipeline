@@ -1,0 +1,8 @@
+{
+    "test_awk_extract_histogram_from_picard_insert_size_metrics.insert_size_metrics": "tests/data/dummy.txt",
+    "test_awk_extract_histogram_from_picard_insert_size_metrics.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

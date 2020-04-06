@@ -196,4 +196,29 @@ task normalize_bed_values {
         memory: "~{resources.memory_gb} GB"
         disks: resources.disks
     }
+
+
+task extract_histogram_from_picard_insert_size_metrics {
+    input {
+        File insert_size_metrics
+        Resources resources
+        String out = "histogram.tsv"
+    }
+
+    command <<<
+        awk \
+            '/## HISTOGRAM/{x=1;next}x' \
+            ~{insert_size_metrics} \
+            > ~{out}
+    >>>
+
+    output {
+        File histogram = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
 }
