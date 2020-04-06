@@ -1,0 +1,10 @@
+{
+    "test_hotspot2_extract_center_sites.chrom_sizes": "tests/data/dummy.txt",
+    "test_hotspot2_extract_center_sites.mappable_regions": "tests/data/dummy.txt",
+    "test_hotspot2_extract_center_sites.neighborhood_size": 42,
+    "test_hotspot2_extract_center_sites.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}

@@ -50,3 +50,32 @@ task hotspot2 {
         disks: resources.disks
     }
 }
+
+
+task extract_center_sites {
+    input {
+        File chrom_sizes
+        File mappable_regions
+        Int neighborhood_size
+        Resources resources
+        String out = "center_sites.starch"
+    }
+
+    command {
+        $(which extractCenterSites.sh) \
+            -c ~{chrom_sizes} \
+            -M ~{mappable_regions} \
+            -o ~{out} \
+            -n ~{neighborhood_size}
+    }
+
+    output {
+        File center_sites_starch = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}

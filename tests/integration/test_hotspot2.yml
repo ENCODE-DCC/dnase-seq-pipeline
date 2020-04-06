@@ -28,3 +28,22 @@
     - path: "test-output/filtered.0.05.peaks.narrowpeaks.starch"
     - path: "test-output/filtered.0.05.SPOT.txt"
       md5sum: d5c0602308fc750da6630ea52ef8b058
+
+- name: test_get_center_sites
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_center_sites.wdl \
+    tests/integration/json/test_get_center_sites.json
+  stdout:
+    contains:
+      - "extractCenterSites.sh"
+      - "-c" 
+      - "chr22.chrom_sizes.bed"
+      - "-M" 
+      - "chr22.K36.mappable_only.bed"
+      - "-o chr22.K36.center_sites.n100.starch"
+      - "-n 100"
+  files:
+    - path: "test-output/chr22.K36.center_sites.n100.starch"

@@ -1,0 +1,9 @@
+{
+    "test_get_center_sites.get_center_sites.chrom_sizes": "tests/data/dnase/hotspot2/chr22.chrom_sizes.bed",
+    "test_get_center_sites.get_center_sites.mappable_regions": "tests/data/dnase/hotspot2/chr22.K36.mappable_only.bed",
+    "test_get_center_sites.get_center_sites.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}

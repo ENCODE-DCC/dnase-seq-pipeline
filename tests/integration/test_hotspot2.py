@@ -43,3 +43,10 @@ def test_call_peaks_with_hotspot2_allcalls_match(test_data_dir, workflow_dir, st
     actual_starch_path = workflow_dir / Path('test-output/filtered.0.05.allcalls.starch')
     expected_starch_path = test_data_dir / Path('dnase/hotspot2/expected/filtered.0.05.allcalls.starch')
     assert starches_match(actual_starch_path.as_posix(), expected_starch_path.as_posix())
+
+
+@pytest.mark.workflow(name='test_get_center_sites')
+def test_get_center_sites_starches_match(test_data_dir, workflow_dir, starches_match):
+    actual_starch_path = workflow_dir / Path('test-output/chr22.K36.center_sites.n100.starch')
+    expected_starch_path = test_data_dir / Path('dnase/hotspot2/chr22.K36.center_sites.n100.starch')
+    assert starches_match(actual_starch_path.as_posix(), expected_starch_path.as_posix())
