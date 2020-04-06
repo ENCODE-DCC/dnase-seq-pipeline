@@ -8,9 +8,7 @@ workflow sort_bam_by_coordinate {
     input {
         File bam
         Resources resources
-        SamtoolsSortParams params = {
-            "compression_level": 0
-        }
+        SamtoolsSortParams params = {}
         String? out 
     }
 

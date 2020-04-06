@@ -41,7 +41,6 @@
   stdout:
     contains:
       - "samtools sort"
-      - "-l 0"
       - "-@ 1"
       - "out.bam"
       - "sorted.bam"
@@ -60,7 +59,6 @@
   stdout:
     contains:
       - "samtools sort"
-      - "-l 0"
       - "-n"
       - "-@ 1"
       - "out.bam"

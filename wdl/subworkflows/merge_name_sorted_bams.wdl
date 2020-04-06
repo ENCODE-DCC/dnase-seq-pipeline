@@ -9,8 +9,7 @@ workflow merge_name_sorted_bams {
         Array[File] name_sorted_bams
         Resources resources
         SamtoolsMergeParams params = object {
-            name_sorted: true,
-            fast_compression: true
+            name_sorted: true
         }
         String? out
     }

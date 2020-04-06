@@ -9,7 +9,6 @@ workflow sort_bam_by_name {
         File bam
         Resources resources
         SamtoolsSortParams params = object {
-            compression_level: 0,
             sort_by_name: true
         }
         String? out 
