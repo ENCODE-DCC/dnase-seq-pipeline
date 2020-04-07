@@ -1,8 +1,8 @@
 version 1.0
 
 
-import "../../wdl/tasks/awk.wdl"
-import "../../wdl/tasks/bedops.wdl"
+import "../tasks/awk.wdl"
+import "../tasks/bedops.wdl"
 
 
 workflow get_chrom_sizes {

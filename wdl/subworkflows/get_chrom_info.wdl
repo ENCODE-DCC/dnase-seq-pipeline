@@ -1,7 +1,7 @@
 version 1.0
 
 
-import "../../wdl/tasks/awk.wdl"
+import "../tasks/awk.wdl"
 
 
 workflow get_chrom_info {
