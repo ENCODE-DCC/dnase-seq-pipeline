@@ -22,8 +22,8 @@ commands:
       - run:
           command: |
             echo "export DNASE_DOCKER_IMAGE_TAG=quay.io/encode-dcc/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_BRANCH}_${CIRCLE_WORKFLOW_ID}" >> ${BASH_ENV}
-            echo "export CROMWELL=./cromwell-48.jar" >> ${BASH_ENV}
-            echo "export WOMTOOL=./womtool-48.jar" >> ${BASH_ENV}
+            echo "export CROMWELL=./cromwell-49.jar" >> ${BASH_ENV}
+            echo "export WOMTOOL=./womtool-49.jar" >> ${BASH_ENV}
             source ${BASH_ENV}
 
   install_python_requirements:
@@ -59,9 +59,9 @@ commands:
       - install_python_requirements
       - install_bedops
       - download_file:
-          file_url: "https://github.com/broadinstitute/cromwell/releases/download/48/cromwell-48.jar"
+          file_url: "https://github.com/broadinstitute/cromwell/releases/download/49/cromwell-49.jar"
       - download_file:
-          file_url: "https://github.com/broadinstitute/cromwell/releases/download/48/womtool-48.jar"
+          file_url: "https://github.com/broadinstitute/cromwell/releases/download/49/womtool-49.jar"
 
   run_test_tag:
     description: "Run tagged test"
@@ -130,7 +130,7 @@ jobs:
       - install_git_lfs_and_get_data
       - run_test_tag:
           tag: "unit"
-          wt: "4"
+          wt: "5"
 
   wdl_integration_tests:
     <<: *machine_defaults
