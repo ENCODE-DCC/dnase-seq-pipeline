@@ -45,7 +45,7 @@
       - "out.bam"
       - "sorted.bam"
     must_not_contain:
-      - "-n"
+      - " -n "
   files:
       - path: "test-output/sorted.bam"
 
@@ -59,7 +59,7 @@
   stdout:
     contains:
       - "samtools sort"
-      - "-n"
+      - " -n "
       - "-@ 1"
       - "out.bam"
       - "sorted.bam"
@@ -156,3 +156,16 @@
   files:
       - path: "test-output/nuclear.flagstats.txt"
         md5sum: 6b093b425c422f5443282f0dd8cc1e10
+
+- name: test_get_number_of_reads_from_bam
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/wdl/test_get_number_of_reads_from_bam.wdl \
+      tests/integration/json/test_get_number_of_reads_from_bam.json
+  stdout:
+    contains:
+      - "samtools view"
+      - "-c"
+      - "84600"

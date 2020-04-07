@@ -49,6 +49,7 @@ task view {
             ~{true="-h" false="" params.include_header} \
             ~{true="-b" false="" params.output_bam} \
             ~{true="-1" false="" params.fast_compression} \
+            ~{true="-c" false="" params.count} \
             ~{"-@ " + resources.cpu} \
             ~{"-t " + indexed_fasta.fai} \
             ~{in} \
