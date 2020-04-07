@@ -200,3 +200,27 @@ task chrom_buckets {
     }
 }
 
+
+task picard_inserts_process {
+    input {
+        File histogram
+        Resources resources
+        String out = "CollectInsertSizeMetrics.picard.info"
+    }
+
+    command {
+        python3 $(which picard_inserts_process.py) \
+            ~{histogram} \
+            > ~{out}
+    }
+
+    output {
+        File insert_size_metrics_info = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}

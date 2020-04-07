@@ -99,3 +99,17 @@
       - "BINI"
       - "WIN"
       - "dummy.txt"
+
+- name: test_stampipes_picard_inserts_process 
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_stampipes_picard_inserts_process.wdl \
+    tests/unit/json/test_stampipes_picard_inserts_process.json
+  stdout:
+    contains:
+      - "python3"
+      - "which picard_inserts_process.py"
+      - "> CollectInsertSizeMetrics.picard.info"
+
