@@ -4,15 +4,15 @@ version 1.0
 import "../../../wdl/tasks/samtools.wdl"
 
 
-workflow test_faidx {
+workflow test_samtools_stats {
     input {
-        File fasta
+        File bam
         Resources resources
     }
 
-    call samtools.faidx {
+    call samtools.stats {
         input:
-            fasta=fasta,
+            bam=bam,
             resources=resources,
     }
 }

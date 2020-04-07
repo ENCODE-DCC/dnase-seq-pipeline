@@ -95,3 +95,29 @@
       - "-n"
       - "dummy.txt"
       - "merged.bam"
+
+- name: test_samtools_stats
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_samtools_stats.wdl \
+    tests/unit/json/test_samtools_stats.json
+  stdout:
+    contains:
+      - "samtools stats"
+      - "-@ 2"
+      - "dummy.txt.stats.txt"
+
+- name: test_samtools_flagstats
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_samtools_flagstats.wdl \
+    tests/unit/json/test_samtools_flagstats.json
+  stdout:
+    contains:
+      - "samtools flagstats"
+      - "-@ 2"
+      - "dummy.txt.flagstats.txt"

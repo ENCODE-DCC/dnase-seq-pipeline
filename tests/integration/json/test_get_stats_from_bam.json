@@ -1,0 +1,8 @@
+{
+    "test_get_stats_from_bam.get_stats_from_bam.bam": "tests/data/dnase/filtering/nuclear.bam",
+    "test_get_stats_from_bam.get_stats_from_bam.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

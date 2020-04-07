@@ -1,7 +1,7 @@
 version 1.0
 
 
-import "../../wdl/tasks/hotspot2.wdl"
+import "../tasks/hotspot2.wdl"
 
 
 workflow get_center_sites {
