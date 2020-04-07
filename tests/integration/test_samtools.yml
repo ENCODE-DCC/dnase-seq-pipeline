@@ -45,7 +45,7 @@
       - "out.bam"
       - "sorted.bam"
     must_not_contain:
-      - "-n"
+      - " -n "
   files:
       - path: "test-output/sorted.bam"
 
@@ -59,7 +59,7 @@
   stdout:
     contains:
       - "samtools sort"
-      - "-n"
+      - " -n "
       - "-@ 1"
       - "out.bam"
       - "sorted.bam"
