@@ -141,7 +141,7 @@ task stats {
     }
 
     output {
-        File stats = out
+        File bam_stats = out
     }
 
     runtime {
@@ -168,7 +168,7 @@ task flagstats {
     }
 
     output {
-        File flagstats = out
+        File bam_flagstats = out
     }
 
     runtime {

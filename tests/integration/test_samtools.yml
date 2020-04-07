@@ -125,3 +125,34 @@
       - "merged.bam"
   files:
       - path: "test-output/merged.bam"
+
+- name: test_get_stats_from_bam
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/wdl/test_get_stats_from_bam.wdl \
+      tests/integration/json/test_get_stats_from_bam.json
+  stdout:
+    contains:
+      - "samtools stats"
+      - "-@ 1"
+      - "nuclear.stats.txt"
+  files:
+      - path: "test-output/nuclear.stats.txt"
+
+- name: test_get_flagstats_from_bam
+  tags:
+    - integration
+  command: >-
+      tests/caper_run.sh \
+      tests/integration/wdl/test_get_flagstats_from_bam.wdl \
+      tests/integration/json/test_get_flagstats_from_bam.json
+  stdout:
+    contains:
+      - "samtools flagstats"
+      - "-@ 1"
+      - "nuclear.flagstats.txt"
+  files:
+      - path: "test-output/nuclear.flagstats.txt"
+        md5sum: 6b093b425c422f5443282f0dd8cc1e10
