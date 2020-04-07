@@ -123,3 +123,57 @@ task merge {
         disks: resources.disks
     }
 }
+
+
+task stats {
+    input {
+        File bam
+        Resources resources
+    }
+
+    String out = basename(bam, ".bam") + ".stats.txt"
+
+    command {
+        samtools stats \
+            ~{"-@ " + resources.cpu} \
+            ~{bam} \
+            > ~{out}
+    }
+
+    output {
+        File stats = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
+
+
+task flagstats {
+    input {
+        File bam
+        Resources resources
+    }
+
+    String out = basename(bam, ".bam") + ".flagstats.txt"
+
+    command {
+        samtools flagstats \
+            ~{"-@ " + resources.cpu} \
+            ~{bam} \
+            > ~{out}
+    }
+
+    output {
+        File flagstats = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
