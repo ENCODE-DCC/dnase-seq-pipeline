@@ -35,7 +35,7 @@ task remove_first_n_lines {
         File input_file
         Int number_of_lines
         Resources resources
-        String out = "out.txt"
+        String out = "first_n_lines_removed.txt"
     }
 
     String sed_command = number_of_lines + "d"

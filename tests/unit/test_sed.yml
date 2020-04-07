@@ -22,4 +22,4 @@
     contains:
       - "sed"
       - "1d"
-      - "> out.txt"
+      - "> first_n_lines_removed.txt"
