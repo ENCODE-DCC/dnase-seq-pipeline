@@ -130,7 +130,7 @@ jobs:
       - install_git_lfs_and_get_data
       - run_test_tag:
           tag: "unit"
-          wt: "6"
+          wt: "4"
 
   wdl_integration_tests:
     <<: *machine_defaults
