@@ -109,7 +109,7 @@
     contains:
       - "unstarch"
       - "awk"
-      - "print $1 "\t" $2 "\t" $3 "\t" $4 "\t" normalized_value"
+      - 'print $1 "\t" $2 "\t" $3 "\t" $4 "\t" normalized_value'
       - "starch"
       - "starch_to_bigwig.bash"
   files:
