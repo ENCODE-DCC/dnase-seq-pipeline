@@ -102,11 +102,9 @@ ENV PATH="/software/hotspot/hotspot-distr/ScriptTokenizer/src:${PATH}"
 ENV PATH="/software/hotspot/hotspot-distr/hotspot-deploy/bin:${PATH}"
 ENV HOTSPOT_DIRECTORY="/software/hotspot/hotspot-distr"
 
-# Get BedGraphToBigWig v385 for hotspots2
-RUN git clone https://github.com/ENCODE-DCC/kentutils_v385_bin_bulkrna.git \
-    && rm kentutils_v385_bin_bulkrna/bedSort 
+RUN git clone https://github.com/ENCODE-DCC/kentUtils_bin_v381.git
 
-ENV PATH="/software/kentutils_v385_bin_bulkrna:${PATH}"
+ENV PATH="/software/kentUtils_bin_v381:${PATH}"
 
 # Install modwt for hotspot2
 RUN git clone https://github.com/StamLab/modwt.git \
