@@ -97,3 +97,19 @@
   files:
       - path: "test-output/first_in_pair.spot.out"
         md5sum: 09e71419a7c0023634359f3e6a30a155
+
+- name: test_mixed_normalize
+  tags:
+    - functional
+  command: >-
+      tests/caper_run.sh \
+      wdl/workflows/mixed/normalize.wdl \
+      tests/functional/json/test_mixed_normalize.json
+  stdout:
+    contains:
+      - "awk"
+      - "wigToBigWig"
+  files:
+      - path: "test-output/normalized.nuclear.density.starch"
+      - path: "test-output/normalized.nuclear.density.bw"
+

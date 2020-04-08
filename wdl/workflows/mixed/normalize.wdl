@@ -9,7 +9,7 @@ workflow normalize {
     input {
         File density_starch
         File nuclear_bam
-        File chrom_sizes
+        File fai
         String machine_size
     }
 
@@ -24,14 +24,14 @@ workflow normalize {
 
     call normalized_density_starch.make_bigwig_from_starch {
         input:
-            starch=normalize_density_starch.density_starch,
-            chrom_sizes=chrom_sizes,
+            starch=normalize_density_starch.normalized_starch,
+            fai=fai,
             resources=compute.runtimes[machine_size],
             
     }
 
     output {
-        File normalized_density = normalize_density_starch.density_starch
+        File normalized_density = normalize_density_starch.normalized_starch
         File normalized_density_bw = make_bigwig_from_starch.bigwig
     }
 }
