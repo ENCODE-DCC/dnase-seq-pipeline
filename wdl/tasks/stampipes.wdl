@@ -118,7 +118,7 @@ task starch_to_bigwig {
         File chrom_sizes
         Int? bin_size
         Resources resources
-        String out = basename(starch, "starch") + ".bw"
+        String out = basename(starch, ".starch") + ".bw"
     }
 
     command {
