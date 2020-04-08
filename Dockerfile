@@ -104,7 +104,7 @@ ENV HOTSPOT_DIRECTORY="/software/hotspot/hotspot-distr"
 
 RUN git clone https://github.com/ENCODE-DCC/kentUtils_bin_v381.git
 
-ENV PATH="/software/kentUtils_bin_v381:${PATH}"
+ENV PATH="/software/kentUtils_bin_v381/bin:${PATH}"
 
 # Install modwt for hotspot2
 RUN git clone https://github.com/StamLab/modwt.git \
