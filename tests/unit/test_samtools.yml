@@ -21,11 +21,11 @@
       - "samtools view"
       - "-f 0x004"
       - "-F 1024"
-      - "-h "
-      - "-b "
-      - "-1 "
+      - " -h "
+      - " -b "
+      - " -1 "
       - "-@ 4"
-      - "-t "
+      - " -t "
       - "dummy.txt"
       - "out"
 
@@ -44,11 +44,11 @@
     must_not_contain:
       - "-f 0x004"
       - "-F 1024"
-      - "-h "
-      - "-b "
-      - "-1 "
+      - " -h "
+      - " -b "
+      - " -1 "
       - "-@ 4"
-      - "-t "
+      - " -t "
 
 - name: test_samtools_sort
   tags:
