@@ -87,7 +87,7 @@ task collect_insert_size_metrics {
 
     output {
         File insert_size_metrics = out
-        File histrogram_pdf = pdf_out
+        File histogram_pdf = pdf_out
     }
 
     runtime {

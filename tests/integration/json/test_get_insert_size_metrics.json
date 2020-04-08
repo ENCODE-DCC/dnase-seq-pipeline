@@ -1,0 +1,8 @@
+{
+    "test_get_insert_size_metrics.get_insert_size_metrics.nuclear_bam": "tests/data/dnase/filtering/nuclear.bam",
+    "test_get_insert_size_metrics.get_insert_size_metrics.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
