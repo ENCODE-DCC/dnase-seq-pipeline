@@ -107,8 +107,11 @@
       tests/functional/json/test_mixed_normalize.json
   stdout:
     contains:
+      - "unstarch"
       - "awk"
-      - "wigToBigWig"
+      - "print $1 "\t" $2 "\t" $3 "\t" $4 "\t" normalized_value"
+      - "starch"
+      - "starch_to_bigwig.bash"
   files:
       - path: "test-output/normalized.nuclear.density.starch"
       - path: "test-output/normalized.nuclear.density.bw"
