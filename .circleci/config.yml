@@ -123,17 +123,14 @@ jobs:
             no_output_timeout: 30m
 
   wdl_unit_tests:
-    machine:
-      image: ubuntu-1604:201903-01
-    resource_class: xlarge
-    working_directory: ~/dnase-seq-pipeline
+    <<: *machine_defaults
     steps:
       - checkout
       - prepare_pytest_environment
       - install_git_lfs_and_get_data
       - run_test_tag:
           tag: "unit"
-          wt: "4"
+          wt: "5"
 
   wdl_integration_tests:
     <<: *machine_defaults
