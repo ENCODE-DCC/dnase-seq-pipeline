@@ -7,7 +7,7 @@ import "../tasks/stampipes.wdl"
 workflow make_bigwig_from_starch {
     input {
         File starch
-        File chrom_sizes
+        File fai
         Int bin_size = 20
         Resources resources
     }
@@ -15,7 +15,7 @@ workflow make_bigwig_from_starch {
     call stampipes.starch_to_bigwig {
         input:
              starch=starch,
-             chrom_sizes=chrom_sizes,
+             fai=fai,
              resources=resources,
     }
 

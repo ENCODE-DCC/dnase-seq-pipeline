@@ -115,7 +115,7 @@ task random_sample {
 task starch_to_bigwig {
     input {
         File starch
-        File chrom_sizes
+        File fai
         Int? bin_size
         Resources resources
         String out = basename(starch, ".starch") + ".bw"
@@ -125,7 +125,7 @@ task starch_to_bigwig {
         starch_to_bigwig.bash \
             ~{starch} \
             ~{out} \
-            ~{chrom_sizes} \
+            ~{fai} \
             ~{bin_size}
     }
 

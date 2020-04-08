@@ -5,5 +5,5 @@
         "memory_gb": 1,
         "disks": "local-disk 10 SSD"
     },
-    "test_make_bigwig_from_starch.make_bigwig_from_starch.chrom_sizes": "tests/data/ref/chr22.chrom_sizes.bed"
+    "test_make_bigwig_from_starch.make_bigwig_from_starch.fai": "tests/data/ref/chr22.fa.fai"
 }
