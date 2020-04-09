@@ -196,6 +196,7 @@ task normalize_bed_values {
         memory: "~{resources.memory_gb} GB"
         disks: resources.disks
     }
+}
 
 
 task extract_histogram_from_picard_insert_size_metrics {
