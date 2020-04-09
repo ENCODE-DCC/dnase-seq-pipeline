@@ -1,0 +1,10 @@
+{
+    "test_awk_normalize_bed_values.bed": "tests/data/dummy.txt",
+    "test_awk_normalize_bed_values.number_of_reads": 5,
+    "test_awk_normalize_bed_values.scale": 10,    
+    "test_awk_normalize_bed_values.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

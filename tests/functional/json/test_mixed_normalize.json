@@ -1,0 +1,6 @@
+{
+  "normalize.fai": "tests/data/ref/chr22.fa.fai",
+  "normalize.machine_size": "small",
+  "normalize.nuclear_bam": "tests/data/dnase/filtering/nuclear.bam",
+  "normalize.density_starch": "tests/data/dnase/aggregation/expected/peaks/nuclear.density.starch"
+}

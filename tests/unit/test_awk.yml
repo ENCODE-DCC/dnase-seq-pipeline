@@ -75,3 +75,18 @@
       - "awk"
       - 'BEGIN{OFS="\t"} {print $1, $2, $3, $1}'
       - "> chromInfo.bed"
+
+- name: test_awk_normalize_bed_values
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_awk_normalize_bed_values.wdl \
+    tests/unit/json/test_awk_normalize_bed_values.json
+  stdout:
+    contains:
+      - "awk"
+      - "current_value"
+      - "normalized_value=(current_value / 5) * 10;"
+      - 'print $1 "\t" $2 "\t" $3 "\t" $4 "\t" normalized_value'
+      - "> normalized.dummy.txt"

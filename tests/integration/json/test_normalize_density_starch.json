@@ -1,0 +1,9 @@
+{
+    "test_normalize_density_starch.normalize_density_starch.density_starch": "tests/data/dnase/aggregation/expected/peaks/nuclear.density.starch",
+    "test_normalize_density_starch.normalize_density_starch.nuclear_bam": "tests/data/dnase/filtering/nuclear.bam",
+    "test_normalize_density_starch.normalize_density_starch.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

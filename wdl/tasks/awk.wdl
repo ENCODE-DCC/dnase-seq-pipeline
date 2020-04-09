@@ -164,3 +164,36 @@ task convert_chrom_sizes_to_chrom_info {
         disks: resources.disks
     }
 }
+
+
+task normalize_bed_values {
+    input {
+        File bed
+        Int number_of_reads
+        Int scale
+        Resources resources
+    }
+
+    String out = "normalized." + basename(bed)
+
+    command <<<
+        awk \
+            '{
+                current_value=$5;
+                normalized_value=(current_value / ~{number_of_reads}) * ~{scale};
+                print $1 "\t" $2 "\t" $3 "\t" $4 "\t" normalized_value
+            }' \
+            ~{bed} \
+            > ~{out}
+    >>>
+
+    output {
+        File normalized_bed = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
