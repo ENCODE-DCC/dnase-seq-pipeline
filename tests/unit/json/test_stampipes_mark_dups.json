@@ -1,0 +1,8 @@
+{
+    "test_stampipes_mark_dups.bam": "tests/data/dummy.txt",
+    "test_stampipes_mark_dups.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

@@ -107,7 +107,7 @@
       - "WIN"
       - "dummy.txt"
 
-- name: test_stampipes_picard_inserts_process 
+- name: test_stampipes_picard_inserts_process
   tags:
     - unit
     - unit_machine_2
@@ -121,3 +121,17 @@
       - "which picard_inserts_process.py"
       - "> CollectInsertSizeMetrics.picard.info"
 
+- name: test_stampipes_mark_dups
+  tags:
+    - unit 
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_stampipes_mark_dups.wdl \
+    tests/unit/json/test_stampipes_mark_dups.json
+  stdout:
+    contains:
+      - "python3"
+      - "which mark_dups.py"
+      - "-i"
+      - "-o /dev/null"
+      - "--hist dups.hist"
