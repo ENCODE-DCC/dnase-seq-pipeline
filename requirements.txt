@@ -1,5 +1,5 @@
 attrs==19.3.0
-caper==0.6.3
+caper==0.8.2
 certifi==2019.11.28
 cffi==1.13.2
 chardet==3.0.4
