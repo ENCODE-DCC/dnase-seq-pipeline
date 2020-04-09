@@ -11,7 +11,7 @@ workflow test_picard_collect_insert_size_metrics {
         Resources resources
     }
 
-    call picard.collect_insert_size_metrics{
+    call picard.collect_insert_size_metrics {
         input:
             bam=bam,
             params=params,

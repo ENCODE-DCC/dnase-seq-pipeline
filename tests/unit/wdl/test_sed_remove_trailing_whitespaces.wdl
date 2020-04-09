@@ -6,13 +6,13 @@ import "../../../wdl/tasks/sed.wdl"
 
 workflow test_sed_remove_trailing_whitespaces {
     input {
-        File input_file
+        File in
         Resources resources
     }
 
     call sed.remove_trailing_whitespaces {
         input:
-            input_file=input_file,
+            in=in,
             resources=resources,
     }
 }

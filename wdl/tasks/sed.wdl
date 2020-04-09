@@ -6,7 +6,7 @@ import "../structs/resources.wdl"
 
 task remove_trailing_whitespaces {
     input {
-        File input_file
+        File in
         Resources resources
         String out = "out.txt"
     }
@@ -14,7 +14,7 @@ task remove_trailing_whitespaces {
     command {
         sed \
             's/[[:blank:]]*$//' \
-            ~{input_file} \
+            ~{in} \
             > ~{out}
     }
 
@@ -32,7 +32,7 @@ task remove_trailing_whitespaces {
 
 task remove_first_n_lines {
     input {
-        File input_file
+        File in
         Int number_of_lines
         Resources resources
         String out = "first_n_lines_removed.txt"
@@ -43,7 +43,7 @@ task remove_first_n_lines {
     command {
        sed \
           ~{sed_command} \
-          ~{input_file} \
+          ~{in} \
           > ~{out}
     }
 
