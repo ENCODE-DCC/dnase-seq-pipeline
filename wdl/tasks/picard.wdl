@@ -78,9 +78,9 @@ task collect_insert_size_metrics {
 
     command {
         java -jar $(which picard.jar) CollectInsertSizeMetrics \
-            INPUT=~{bam} \
-            OUTPUT=~{out} \
-            HISTOGRAM_FILE=~{pdf_out} \
+            ~{"INPUT=" + bam} \
+            ~{"OUTPUT=" + out} \
+            ~{"HISTOGRAM_FILE=" + pdf_out} \
             ~{"VALIDATION_STRINGENCY=" + params.validation_stringency} \
             ~{"ASSUME_SORTED=" + params.assume_sorted}
     }
