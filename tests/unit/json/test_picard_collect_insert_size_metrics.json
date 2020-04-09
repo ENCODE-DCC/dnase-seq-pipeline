@@ -1,0 +1,11 @@
+{   "test_picard_collect_insert_size_metrics.bam": "tests/data/dummy.txt",
+    "test_picard_collect_insert_size_metrics.params": {
+      "assume_sorted": "true",
+      "validation_stringency": "LENIENT"
+    },
+    "test_picard_collect_insert_size_metrics.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

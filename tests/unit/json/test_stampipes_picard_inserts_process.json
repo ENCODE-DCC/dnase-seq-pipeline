@@ -1,0 +1,8 @@
+{
+    "test_stampipes_picard_inserts_process.histogram": "tests/data/dummy.txt",
+    "test_stampipes_picard_inserts_process.resources" : {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}

@@ -33,3 +33,20 @@
       - "MINIMUM_DISTANCE=300"
       - "READ_NAME_REGEX='[a-zA-Z0-9]+:[0-9]+:[a-zA-Z0-9]+:[0-9]+:([0-9]+):([0-9]+):([0-9]+).*'"
       - "VALIDATION_STRINGENCY=SILENT"
+
+- name: test_picard_collect_insert_size_metrics 
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_picard_collect_insert_size_metrics.wdl \
+    tests/unit/json/test_picard_collect_insert_size_metrics.json
+  stdout:
+    contains:
+      - "java -jar $(which picard.jar) CollectInsertSizeMetrics"
+      - "INPUT="
+      - "dummy.txt"
+      - "OUTPUT=CollectInsertSizeMetrics.picard"
+      - "HISTOGRAM_FILE=CollectInsertSizeMetrics.picard.pdf"
+      - "VALIDATION_STRINGENCY=LENIENT"
+      - "ASSUME_SORTED=true"

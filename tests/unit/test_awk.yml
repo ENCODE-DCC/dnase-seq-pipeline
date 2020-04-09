@@ -90,3 +90,16 @@
       - "normalized_value=(current_value / 5) * 10;"
       - 'print $1 "\t" $2 "\t" $3 "\t" $4 "\t" normalized_value'
       - "> normalized.dummy.txt"
+
+- name: test_awk_extract_histrogram_from_picard_insert_size_metrics
+  tags:
+    - unit 
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_awk_extract_histrogram_from_picard_insert_size_metrics.wdl \
+    tests/unit/json/test_awk_extract_histrogram_from_picard_insert_size_metrics.json
+  stdout:
+    contains:
+      - "awk"
+      - "'/## HISTOGRAM/{x=1;next}x'"
+      - "> histogram.tsv"

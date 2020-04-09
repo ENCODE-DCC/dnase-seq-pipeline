@@ -1,0 +1,9 @@
+{
+    "test_sed_remove_first_n_lines.in": "tests/data/dummy.txt",
+    "test_sed_remove_first_n_lines.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_sed_remove_first_n_lines.number_of_lines": 1
+}

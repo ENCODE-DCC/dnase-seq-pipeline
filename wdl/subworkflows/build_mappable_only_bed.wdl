@@ -40,7 +40,7 @@ workflow build_mappable_only_bed {
 
     call sed.remove_trailing_whitespaces {
         input:
-            input_file=merge_adjacent_bed.adjacent_merged_bed,
+            in=merge_adjacent_bed.adjacent_merged_bed,
             resources=resources,
     }
 

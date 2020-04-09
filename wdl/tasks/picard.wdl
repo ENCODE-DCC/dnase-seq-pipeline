@@ -65,3 +65,34 @@ task mark_duplicates_with_mate_cigar {
         disks: resources.disks
     }
 }
+
+
+task collect_insert_size_metrics {
+    input {
+        File bam
+        CollectInsertSizeMetricsParams params
+        Resources resources
+        String out = "CollectInsertSizeMetrics.picard"
+        String pdf_out = "CollectInsertSizeMetrics.picard.pdf"
+    }
+
+    command {
+        java -jar $(which picard.jar) CollectInsertSizeMetrics \
+            ~{"INPUT=" + bam} \
+            ~{"OUTPUT=" + out} \
+            ~{"HISTOGRAM_FILE=" + pdf_out} \
+            ~{"VALIDATION_STRINGENCY=" + params.validation_stringency} \
+            ~{"ASSUME_SORTED=" + params.assume_sorted}
+    }
+
+    output {
+        File insert_size_metrics = out
+        File histogram_pdf = pdf_out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}

@@ -1,0 +1,26 @@
+- name: test_get_insert_size_metrics 
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_insert_size_metrics.wdl \
+    tests/integration/json/test_get_insert_size_metrics.json
+  stdout:
+    contains:
+      - "java -jar $(which picard.jar) CollectInsertSizeMetrics"
+      - "INPUT="
+      - "OUTPUT="
+      - "HISTOGRAM_FILE="
+      - "VALIDATION_STRINGENCY=LENIENT"
+      - "ASSUME_SORTED=true"
+      - "awk"
+      - "/## HISTOGRAM/{x=1;next}x"
+      - "sed"
+      - "1d"
+      - "python3"
+      - "which picard_inserts_process.py"
+  files:
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard"
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
+      md5sum: 47bb1c08b1eb2fdbb08706fb082d8647
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
