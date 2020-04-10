@@ -8,7 +8,7 @@
         "genome_name": "chr22",
         "read_length": 36
     },
-    "call_hotspots_and_peaks_and_get_spot_score.nuclear_bam": "tests/data/dnase/alignment/expected/filtered.bam",
+    "call_hotspots_and_peaks_and_get_spot_score.nuclear_bam": "tests/data/dnase/filtering/nuclear.bam",
     "call_hotspots_and_peaks_and_get_spot_score.score.reference": {
         "chrom_info": "tests/data/dnase/hotspot1/chr22.chromInfo.bed",
         "mappable_regions": "tests/data/dnase/hotspot1/chr22.K36.mappable_only.bed"

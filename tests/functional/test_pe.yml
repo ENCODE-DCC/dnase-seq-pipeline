@@ -31,9 +31,9 @@
       - "pigz"
       - "awk"
   files:
-      - path: "test-output/trimstats.txt"
-      - path: "test-output/trimmed_to_length_trim.R1.fastq.gz"
-      - path: "test-output/trimmed_to_length_trim.R2.fastq.gz"
+    - path: "test-output/trimstats.txt"
+    - path: "test-output/trimmed_to_length_trim.R1.fastq.gz"
+    - path: "test-output/trimmed_to_length_trim.R2.fastq.gz"
 
 - name: test_pe_align
   tags:
@@ -49,4 +49,4 @@
       - "samtools sort"
       - "-n"
   files:
-      - path: "test-output/name_sorted_pe.bam"
+    - path: "test-output/name_sorted_pe.bam"

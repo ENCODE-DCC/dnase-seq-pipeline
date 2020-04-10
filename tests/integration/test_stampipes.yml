@@ -13,7 +13,7 @@
       - "chr22.fa.nuclear.txt"
       - "flagged.bam"
   files:
-      - path: "test-output/flagged.bam"
+    - path: "test-output/flagged.bam"
 
 - name: test_get_bamcounts 
   tags:
@@ -44,8 +44,8 @@
       - "hotspot2"
       - "filtered.0.05.hotspots.fdr0.05.hotspot2.info"
   files:
-      - path: "test-output/filtered.0.05.hotspots.fdr0.05.hotspot2.info"
-        md5sum: d4b24c39a2c52e74b580bb5e4f661b92
+    - path: "test-output/filtered.0.05.hotspots.fdr0.05.hotspot2.info"
+      md5sum: d4b24c39a2c52e74b580bb5e4f661b92
 
 - name: test_get_random_sample_from_bam
   tags:
@@ -60,7 +60,7 @@
       - "5000000"
       - "subsample.bam"
   files:
-      - path: "test-output/subsample.bam"
+    - path: "test-output/subsample.bam"
 
 - name: test_get_chrombuckets
   tags:

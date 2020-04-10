@@ -10,8 +10,8 @@
       - "cat"
       - "concatenated.fastq.gz"
   files:
-      - path: "test-output/concatenated.fastq.gz"
-        md5sum: 52afaef92fadeabb19e9ee6c229882c0
+    - path: "test-output/concatenated.fastq.gz"
+      md5sum: 52afaef92fadeabb19e9ee6c229882c0
 
 - name: test_se_trim
   tags:
@@ -25,7 +25,7 @@
       - "pigz"
       - "awk"
   files:
-      - path: "test-output/trimmed_to_length_trim.R1.fastq.gz"
+    - path: "test-output/trimmed_to_length_trim.R1.fastq.gz"
 
 - name: test_se_align
   tags:
@@ -41,4 +41,4 @@
       - "samtools sort"
       - "-n"
   files:
-      - path: "test-output/name_sorted_se.bam"
+    - path: "test-output/name_sorted_se.bam"

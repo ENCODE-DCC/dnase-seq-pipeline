@@ -109,7 +109,7 @@
       - "-b"
       - "-f 64"
   files:
-      - path: "test-output/first_in_pair.bam"
+    - path: "test-output/first_in_pair.bam"
 
 - name: test_merge_name_sorted_bams
   tags:
@@ -124,7 +124,7 @@
       - "-@"
       - "merged.bam"
   files:
-      - path: "test-output/merged.bam"
+    - path: "test-output/merged.bam"
 
 - name: test_get_stats_from_bam
   tags:
@@ -139,7 +139,7 @@
       - "-@ 1"
       - "nuclear.stats.txt"
   files:
-      - path: "test-output/nuclear.stats.txt"
+    - path: "test-output/nuclear.stats.txt"
 
 - name: test_get_flagstats_from_bam
   tags:
@@ -154,8 +154,8 @@
       - "-@ 1"
       - "nuclear.flagstats.txt"
   files:
-      - path: "test-output/nuclear.flagstats.txt"
-        md5sum: 6b093b425c422f5443282f0dd8cc1e10
+    - path: "test-output/nuclear.flagstats.txt"
+      md5sum: 59aa22deb9a314e2b26e26ff79b25d01
 
 - name: test_get_number_of_reads_from_bam
   tags:
@@ -168,4 +168,4 @@
     contains:
       - "samtools view"
       - "-c"
-      - "84600"
+      - "174806"
