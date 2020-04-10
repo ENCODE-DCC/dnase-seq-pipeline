@@ -1,0 +1,18 @@
+- name: test_get_preseq_metrics
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_preseq_metrics.wdl \
+    tests/integration/json/test_get_preseq_metrics.json
+  stdout:
+    contains:
+      - "python3 $(which mark_dups.py)"
+      - "preseq lc_extrap"
+    must_not_contain:
+      - "-defects"
+  files:
+    - path: "test-output/nuclear.preseq_targets.txt"
+      md5sum: 1c2f55280daae80307bfda6e2d726712
+    - path: "test-output/nuclear.preseq.txt"
+      md5sum: 4bbc21653c28e21c1b09be846a57e5de
