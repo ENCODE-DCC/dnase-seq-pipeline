@@ -109,7 +109,7 @@
       - "-b"
       - "-f 64"
   files:
-      - path: "test-output/first_in_pair.bam"
+    - path: "test-output/first_in_pair.bam"
 
 - name: test_merge_name_sorted_bams
   tags:
@@ -124,7 +124,7 @@
       - "-@"
       - "merged.bam"
   files:
-      - path: "test-output/merged.bam"
+    - path: "test-output/merged.bam"
 
 - name: test_get_stats_from_bam
   tags:
@@ -139,7 +139,7 @@
       - "-@ 1"
       - "nuclear.stats.txt"
   files:
-      - path: "test-output/nuclear.stats.txt"
+    - path: "test-output/nuclear.stats.txt"
 
 - name: test_get_flagstats_from_bam
   tags:
