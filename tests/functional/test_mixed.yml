@@ -96,7 +96,7 @@
       - "runhotspot.bash"
   files:
     - path: "test-output/first_in_pair.spot.out"
-      md5sum: 09e71419a7c0023634359f3e6a30a155
+      md5sum: b86f89d7c2778558a336ed9112913d46
 
 - name: test_mixed_normalize
   tags:
