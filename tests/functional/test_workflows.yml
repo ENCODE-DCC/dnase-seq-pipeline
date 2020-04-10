@@ -67,28 +67,28 @@
       - "runhotspot.bash"
   files:
     - path: "test-output/first_in_pair.spot.out"
-      md5sum: 521eb7de83cd3dc2164af72038841c83
-    - path: "test-output/filtered.0.001.density.bw"
-    - path: "test-output/filtered.0.001.peaks.narrowpeaks.starch"
-    - path: "test-output/filtered.0.001.fragments.sorted.starch"
-    - path: "test-output/filtered.0.001.SPOT.txt"
+      md5sum: b86f89d7c2778558a336ed9112913d46
+    - path: "test-output/nuclear.0.001.density.bw"
+    - path: "test-output/nuclear.0.001.peaks.narrowpeaks.starch"
+    - path: "test-output/nuclear.0.001.fragments.sorted.starch"
+    - path: "test-output/nuclear.0.001.SPOT.txt"
       md5sum: cc9d4ebad2c1a7e9a637d2628fd927e3
-    - path: "test-output/filtered.0.001.cutcounts.starch"
-    - path: "test-output/filtered.0.001.hotspots.fdr0.001.starch"
-    - path: "test-output/filtered.0.001.peaks.starch"
-    - path: "test-output/filtered.0.001.cleavage.total"
-      md5sum: 7b281efd7aadbe033e2915861d736251
-    - path: "test-output/filtered.0.001.density.starch"
-    - path: "test-output/filtered.0.001.allcalls.starch"
-    - path: "test-output/filtered.0.05.density.bw"
-    - path: "test-output/filtered.0.05.peaks.narrowpeaks.starch"
-    - path: "test-output/filtered.0.05.fragments.sorted.starch"
-    - path: "test-output/filtered.0.05.SPOT.txt"
+    - path: "test-output/nuclear.0.001.cutcounts.starch"
+    - path: "test-output/nuclear.0.001.hotspots.fdr0.001.starch"
+    - path: "test-output/nuclear.0.001.peaks.starch"
+    - path: "test-output/nuclear.0.001.cleavage.total"
+      md5sum: 757eda3362817896475725c6e4020d99
+    - path: "test-output/nuclear.0.001.density.starch"
+    - path: "test-output/nuclear.0.001.allcalls.starch"
+    - path: "test-output/nuclear.0.05.density.bw"
+    - path: "test-output/nuclear.0.05.peaks.narrowpeaks.starch"
+    - path: "test-output/nuclear.0.05.fragments.sorted.starch"
+    - path: "test-output/nuclear.0.05.SPOT.txt"
       md5sum: d5c0602308fc750da6630ea52ef8b058
-    - path: "test-output/filtered.0.05.cutcounts.starch"
-    - path: "test-output/filtered.0.05.hotspots.fdr0.05.starch"
-    - path: "test-output/filtered.0.05.peaks.starch"
-    - path: "test-output/filtered.0.05.cleavage.total"
-      md5sum: 7b281efd7aadbe033e2915861d736251
-    - path: "test-output/filtered.0.05.density.starch"
-    - path: "test-output/filtered.0.05.allcalls.starch"
+    - path: "test-output/nuclear.0.05.cutcounts.starch"
+    - path: "test-output/nuclear.0.05.hotspots.fdr0.05.starch"
+    - path: "test-output/nuclear.0.05.peaks.starch"
+    - path: "test-output/nuclear.0.05.cleavage.total"
+      md5sum: 757eda3362817896475725c6e4020d99
+    - path: "test-output/nuclear.0.05.density.starch"
+    - path: "test-output/nuclear.0.05.allcalls.starch"
