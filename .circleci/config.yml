@@ -182,4 +182,5 @@ workflows:
       - push_template:
           requires:
             - wdl_unit_tests
+            - wdl_unit_tests_overflow
             - wdl_integration_tests
