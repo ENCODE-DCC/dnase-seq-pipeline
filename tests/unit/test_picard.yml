@@ -1,6 +1,7 @@
 - name: test_picard_revert_original_base_qualities_and_add_mate_cigar
   tags:
     - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_picard_revert_original_base_qualities_and_add_mate_cigar.wdl \
@@ -18,6 +19,7 @@
 - name: test_picard_mark_duplicates_with_mate_cigar
   tags:
     - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_picard_mark_duplicates_with_mate_cigar.wdl \
@@ -37,6 +39,7 @@
 - name: test_picard_collect_insert_size_metrics 
   tags:
     - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_picard_collect_insert_size_metrics.wdl \
