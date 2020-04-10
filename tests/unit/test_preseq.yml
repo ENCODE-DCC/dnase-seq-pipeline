@@ -1,0 +1,30 @@
+- name: test_preseq_lc_extrap_no_defect
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_preseq_lc_extrap_no_defect.wdl \
+    tests/unit/json/test_preseq_lc_extrap_no_defect.json
+  stdout:
+    contains:
+      - "preseq lc_extrap"
+      - "-hist"
+      - "-extrap 1.001e9"
+      - "-step 1e6"
+    must_not_contain:
+      - "-defects"
+
+- name: test_preseq_lc_extrap_defect
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_preseq_lc_extrap_defect.wdl \
+    tests/unit/json/test_preseq_lc_extrap_defect.json
+  stdout:
+    contains:
+      - "preseq lc_extrap"
+      - "-defects"
+      - "-hist"
+      - "-extrap 1.001e9"
+      - "-step 1e6"
