@@ -4,7 +4,7 @@
     - unit_machine_2
   command: >-
     tests/caper_run.sh \
-    tests/unit/wdl/test_preseq_lc_extrap_no_defects.wdl \
+    tests/unit/wdl/test_preseq_lc_extrap.wdl \
     tests/unit/json/test_preseq_lc_extrap_no_defects.json
   stdout:
     contains:
@@ -21,7 +21,7 @@
     - unit_machine_2
   command: >-
     tests/caper_run.sh \
-    tests/unit/wdl/test_preseq_lc_extrap_defects.wdl \
+    tests/unit/wdl/test_preseq_lc_extrap.wdl \
     tests/unit/json/test_preseq_lc_extrap_defects.json
   stdout:
     contains:
