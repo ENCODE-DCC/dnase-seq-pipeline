@@ -4,7 +4,7 @@ version 1.0
 import "../../../wdl/tasks/preseq.wdl"
 
 
-workflow test_preseq_lc_extrap_defect {
+workflow test_preseq_lc_extrap_defects {
     input {
         File histogram
         PreseqLcExtrapParams params

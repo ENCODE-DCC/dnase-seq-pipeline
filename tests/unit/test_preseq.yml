@@ -1,11 +1,11 @@
-- name: test_preseq_lc_extrap_no_defect
+- name: test_preseq_lc_extrap_no_defects
   tags:
     - unit
     - unit_machine_2
   command: >-
     tests/caper_run.sh \
-    tests/unit/wdl/test_preseq_lc_extrap_no_defect.wdl \
-    tests/unit/json/test_preseq_lc_extrap_no_defect.json
+    tests/unit/wdl/test_preseq_lc_extrap_no_defects.wdl \
+    tests/unit/json/test_preseq_lc_extrap_no_defects.json
   stdout:
     contains:
       - "preseq lc_extrap"
@@ -15,14 +15,14 @@
     must_not_contain:
       - "-defects"
 
-- name: test_preseq_lc_extrap_defect
+- name: test_preseq_lc_extrap_defects
   tags:
     - unit
     - unit_machine_2
   command: >-
     tests/caper_run.sh \
-    tests/unit/wdl/test_preseq_lc_extrap_defect.wdl \
-    tests/unit/json/test_preseq_lc_extrap_defect.json
+    tests/unit/wdl/test_preseq_lc_extrap_defects.wdl \
+    tests/unit/json/test_preseq_lc_extrap_defects.json
   stdout:
     contains:
       - "preseq lc_extrap"

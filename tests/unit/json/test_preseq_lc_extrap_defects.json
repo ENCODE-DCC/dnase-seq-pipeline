@@ -1,11 +1,11 @@
 {
-    "test_preseq_lc_extrap_defect.histogram": "tests/data/dummy.txt",
-    "test_preseq_lc_extrap_defect.params": {
+    "test_preseq_lc_extrap_defects.histogram": "tests/data/dummy.txt",
+    "test_preseq_lc_extrap_defects.params": {
         "defects": true,
         "extrap": "1.001e9",
         "step_size": "1e6"
     },
-    "test_preseq_lc_extrap_defect.resources": { 
+    "test_preseq_lc_extrap_defects.resources": { 
         "cpu": 1,
         "memory_gb": 1,
         "disks": "local-disk 10 SSD"
