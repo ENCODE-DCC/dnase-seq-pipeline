@@ -22,5 +22,5 @@
   files:
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard"
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
-      md5sum: 47bb1c08b1eb2fdbb08706fb082d8647
+      md5sum: 2787fe8fac4200725fb06f414bde8c84
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
