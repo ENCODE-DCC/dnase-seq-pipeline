@@ -3,9 +3,9 @@
     - unit
     - unit_machine_1
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_hotspot2_hotspot2.wdl \
-      tests/unit/json/test_hotspot2_hotspot2.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_hotspot2_hotspot2.wdl \
+    tests/unit/json/test_hotspot2_hotspot2.json
   stdout:
     contains:
       - "hotspot2.sh"

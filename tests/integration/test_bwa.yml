@@ -2,9 +2,9 @@
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_build_bwa_index.wdl \
-      tests/integration/json/test_build_bwa_index.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_build_bwa_index.wdl \
+    tests/integration/json/test_build_bwa_index.json
   stdout:
     contains:
       - "bwa index chr22.fa"
@@ -26,9 +26,9 @@
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_align_fastq_with_bwa.wdl \
-      tests/integration/json/test_align_fastq_with_bwa.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_align_fastq_with_bwa.wdl \
+    tests/integration/json/test_align_fastq_with_bwa.json
   stdout:
     contains:
       - "bwa aln"
@@ -40,9 +40,9 @@
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_align_fastq_pair_with_bwa.wdl \
-      tests/integration/json/test_align_fastq_pair_with_bwa.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_align_fastq_pair_with_bwa.wdl \
+    tests/integration/json/test_align_fastq_pair_with_bwa.json
   stdout:
     contains:
       - "bwa aln"
@@ -59,9 +59,9 @@
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_make_sam_from_sai_and_fastq_pair.wdl \
-      tests/integration/json/test_make_sam_from_sai_and_fastq_pair.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_make_sam_from_sai_and_fastq_pair.wdl \
+    tests/integration/json/test_make_sam_from_sai_and_fastq_pair.json
   stdout:
     contains:
       - "bwa sampe"
@@ -72,9 +72,9 @@
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_make_sam_from_sai_and_fastq.wdl \
-      tests/integration/json/test_make_sam_from_sai_and_fastq.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_make_sam_from_sai_and_fastq.wdl \
+    tests/integration/json/test_make_sam_from_sai_and_fastq.json
   stdout:
     contains:
       - "bwa samse"

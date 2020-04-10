@@ -3,9 +3,9 @@
     - unit
     - unit_machine_2
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_stampipes_filter_reads.wdl \
-      tests/unit/json/test_stampipes_filter_reads.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_stampipes_filter_reads.wdl \
+    tests/unit/json/test_stampipes_filter_reads.json
   stdout:
     contains:
       - "python3"
@@ -32,9 +32,9 @@
     - unit
     - unit_machine_2
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_stampipes_info.wdl \
-      tests/unit/json/test_stampipes_info.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_stampipes_info.wdl \
+    tests/unit/json/test_stampipes_info.json
   stdout:
     contains:
       - "info.sh"
@@ -47,9 +47,9 @@
     - unit
     - unit_machine_2
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_stampipes_random_sample.wdl \
-      tests/unit/json/test_stampipes_random_sample.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_stampipes_random_sample.wdl \
+    tests/unit/json/test_stampipes_random_sample.json
   stdout:
     contains:
       - "random_sample.sh"
@@ -62,9 +62,9 @@
     - unit
     - unit_machine_2
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_stampipes_starch_to_bigwig.wdl \
-      tests/unit/json/test_stampipes_starch_to_bigwig.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_stampipes_starch_to_bigwig.wdl \
+    tests/unit/json/test_stampipes_starch_to_bigwig.json
   stdout:
     contains:
       - "starch_to_bigwig.bash"
@@ -77,9 +77,9 @@
     - unit
     - unit_machine_2
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_stampipes_cutfragments.wdl \
-      tests/unit/json/test_stampipes_cutfragments.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_stampipes_cutfragments.wdl \
+    tests/unit/json/test_stampipes_cutfragments.json
   stdout:
     contains:
       - "awk"
