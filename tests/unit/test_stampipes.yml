@@ -124,6 +124,7 @@
 - name: test_stampipes_mark_dups
   tags:
     - unit 
+    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_stampipes_mark_dups.wdl \
