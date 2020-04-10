@@ -1,6 +1,7 @@
 - name: test_bedops_unstarch
   tags:
     - unit
+    - unit_machine_1
   command: >-
       tests/caper_run.sh \
       tests/unit/wdl/test_bedops_unstarch.wdl \
@@ -14,6 +15,7 @@
 - name: test_bedops_starch
   tags:
     - unit
+    - unit_machine_1
   command: >-
       tests/caper_run.sh \
       tests/unit/wdl/test_bedops_starch.wdl \
@@ -27,6 +29,7 @@
 - name: test_bedops_sort_bed
   tags:
     - unit
+    - unit_machine_1
   command: >-
       tests/caper_run.sh \
       tests/unit/wdl/test_bedops_sort_bed.wdl \
@@ -41,6 +44,7 @@
 - name: test_bedops_bam2bed
   tags:
     - unit
+    - unit_machine_1
   command: >-
       tests/caper_run.sh \
       tests/unit/wdl/test_bedops_bam2bed.wdl \
@@ -55,6 +59,7 @@
 - name: test_bedops_bedmap
   tags:
     - unit
+    - unit_machine_1
   command: >-
       tests/caper_run.sh \
       tests/unit/wdl/test_bedops_bedmap.wdl \

@@ -1,6 +1,7 @@
 - name: test_pigz_compress
   tags:
     - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_pigz_compress.wdl \
@@ -16,6 +17,7 @@
 - name: test_pigz_decompress 
   tags:
     - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_pigz_decompress.wdl \

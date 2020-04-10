@@ -1,6 +1,7 @@
 - name: test_bowtie_index
   tags:
     - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_bowtie_index.wdl \

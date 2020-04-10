@@ -1,6 +1,7 @@
 - name: test_illumina_trim_adapters
   tags:
     - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_illumina_trim_adapters.wdl \

@@ -1,6 +1,7 @@
 - name: test_awk_trim_fastq_reads_to_length
   tags:
     - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_awk_trim_fastq_reads_to_length.wdl \
@@ -13,6 +14,7 @@
 - name: test_awk_shift_bed_reads_start_and_end_range
   tags:
     - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_awk_shift_bed_reads_start_and_end_range.wdl \
@@ -28,6 +30,7 @@
 - name: test_awk_clean_reference_fasta_headers
   tags:
     - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_awk_clean_reference_fasta_headers.wdl \
@@ -40,6 +43,7 @@
 - name: test_awk_merge_adjacent_bed
   tags:
     - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_awk_merge_adjacent_bed.wdl \
@@ -53,6 +57,7 @@
 - name: test_awk_convert_fai_to_bed_format
   tags:
     - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_awk_convert_fai_to_bed_format.wdl \
@@ -66,6 +71,7 @@
 - name: test_awk_convert_chrom_sizes_to_chrom_info 
   tags:
     - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_awk_convert_chrom_sizes_to_chrom_info.wdl \
@@ -79,6 +85,7 @@
 - name: test_awk_normalize_bed_values
   tags:
     - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_awk_normalize_bed_values.wdl \
@@ -93,7 +100,8 @@
 
 - name: test_awk_extract_histrogram_from_picard_insert_size_metrics
   tags:
-    - unit 
+    - unit
+    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_awk_extract_histrogram_from_picard_insert_size_metrics.wdl \
