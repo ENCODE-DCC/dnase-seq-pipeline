@@ -136,3 +136,17 @@
       - "-i"
       - "-o /dev/null"
       - "--hist dups.hist"
+
+- name: test_stampipes_get_preseq_targets
+  tags:
+    - unit
+    - unit_machine_2
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_stampipes_get_preseq_targets.wdl \
+    tests/unit/json/test_stampipes_get_preseq_targets.json
+  stdout:
+    contains:
+      - "preseq_targets.sh"
+      - "dummy.txt"
+      - "preseq_targets.txt"

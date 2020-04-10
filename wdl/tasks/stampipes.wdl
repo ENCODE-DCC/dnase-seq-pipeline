@@ -250,3 +250,28 @@ task mark_dups {
         disks: resources.disks
     }
 }
+
+
+task get_preseq_targets {
+    input {
+        File preseq
+        Resources resources
+        String out = "preseq_targets.txt"
+    }
+
+    command {
+        preseq_targets.sh \
+            ~{preseq} \
+            ~{out}
+    }
+
+    output {
+        File preseq_targets = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
