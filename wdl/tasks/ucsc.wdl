@@ -19,8 +19,8 @@ task bed_to_big_bed {
         bedToBigBed \
             ~{"-type=" + params.type} \
             ~{"-as=" + params.auto_sql} \
-            ~{bed}
-            ~{chrom_sizes}
+            ~{bed} \
+            ~{chrom_sizes} \
             ~{out}
     }
 
