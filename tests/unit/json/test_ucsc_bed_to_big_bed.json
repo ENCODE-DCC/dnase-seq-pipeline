@@ -1,7 +1,7 @@
 {
     "test_ucsc_bed_to_big_bed.bed": "tests/data/dummy.txt",
     "test_ucsc_bed_to_big_bed.chrom_sizes": "tests/data/dummy.txt",
-    "test_ucsc_bed_to_big_bed.auto_sql": "tests/data/dummy.txt"
+    "test_ucsc_bed_to_big_bed.auto_sql": "tests/data/dummy.txt",
     "test_ucsc_bed_to_big_bed.params": {
         "type": "bed6+4"
     },
