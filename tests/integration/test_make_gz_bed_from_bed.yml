@@ -1,0 +1,14 @@
+- name: test_make_gz_bed_from_bed
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_make_gz_bed_from_bed.wdl \
+    tests/integration/json/test_make_gz_bed_from_bed.json
+  stdout:
+    contains:
+      - "pigz"
+      - " -n "
+  files:
+    - path: "test-output/nuclear.allcalls.bed.gz"
+      md5sum: a803d89974185622cbacb168898b99a3

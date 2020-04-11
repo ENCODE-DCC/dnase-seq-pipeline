@@ -1,0 +1,8 @@
+{
+    "test_make_gz_bed_from_bed.make_gz_bed_from_bed.bed": "tests/data/dnase/aggregation/expected/peaks/nuclear.allcalls.bed",
+    "test_make_gz_bed_from_bed.make_gz_bed_from_bed.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
