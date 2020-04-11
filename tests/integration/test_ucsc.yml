@@ -1,0 +1,29 @@
+- name: test_make_big_bed_from_broad_peak_bed
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_make_big_bed_from_broad_peak_bed.wdl \
+    tests/integration/json/test_make_big_bed_from_broad_peak_bed.json
+  stdout:
+    contains:
+      - "bedToBigBed"
+      - "bed6+3"
+      - "broadPeaks.as"
+  files:
+    - path: "test-output/nuclear.hotspots.fdr0.05.bb"
+
+- name: test_make_big_bed_from_narrow_peak_bed
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_make_big_bed_from_narrow_peak_bed.wdl \
+    tests/integration/json/test_make_big_bed_from_narrow_peak_bed.json
+  stdout:
+    contains:
+      - "bedToBigBed"
+      - "bed6+4"
+      - "narrowPeaks.as"
+  files:
+    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
