@@ -1,0 +1,13 @@
+{
+    "test_preseq_lc_extrap.histogram": "tests/data/dummy.txt",
+    "test_preseq_lc_extrap.params": {
+        "defects": false,
+        "extrap": "1.001e9",
+        "step_size": "1e6"
+    },
+    "test_preseq_lc_extrap.resources": { 
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

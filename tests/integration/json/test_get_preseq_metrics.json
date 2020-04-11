@@ -1,0 +1,8 @@
+{
+    "test_get_preseq_metrics.get_preseq_metrics.nuclear_bam": "tests/data/dnase/filtering/nuclear.bam",
+    "test_get_preseq_metrics.get_preseq_metrics.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

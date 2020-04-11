@@ -224,3 +224,54 @@ task picard_inserts_process {
         disks: resources.disks
     }
 }
+
+
+task mark_dups {
+    input {
+        File bam
+        Resources resources
+        String out = "dups.hist"
+    }
+
+    command {
+        python3 $(which mark_dups.py) \
+            -i ~{bam} \
+            -o /dev/null \
+            --hist ~{out}
+    }
+
+    output {
+        File histogram = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
+
+
+task get_preseq_targets {
+    input {
+        File preseq
+        Resources resources
+        String out = "preseq_targets.txt"
+    }
+
+    command {
+        preseq_targets.sh \
+            ~{preseq} \
+            ~{out}
+    }
+
+    output {
+        File preseq_targets = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
