@@ -10,8 +10,7 @@ workflow make_big_bed_from_narrow_peak_bed {
         File chrom_sizes
         File auto_sql
         BedToBigBedParams params = object {
-            type: "bed6+4",
-            auto_sql: auto_sql
+            type: "bed6+4"
         }
         Resources resources
     }
@@ -20,6 +19,7 @@ workflow make_big_bed_from_narrow_peak_bed {
         input:
              bed=narrow_peak_bed,
              chrom_sizes=chrom_sizes,
+             auto_sql=auto_sql,
              params=params,
              resources=resources,
     }

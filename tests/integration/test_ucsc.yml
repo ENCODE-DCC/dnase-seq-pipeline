@@ -9,9 +9,10 @@
     contains:
       - "bedToBigBed"
       - "bed6+3"
-      - "broadPeaks.as"
+      - "broadPeak.as"
   files:
     - path: "test-output/nuclear.hotspots.fdr0.05.bb"
+      md5sum: 25bc52811fb6780f98112e7d39666fcf
 
 - name: test_make_big_bed_from_narrow_peak_bed
   tags:
@@ -24,6 +25,7 @@
     contains:
       - "bedToBigBed"
       - "bed6+4"
-      - "narrowPeaks.as"
+      - "narrowPeak.as"
   files:
     - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
+      md5sum: 5b6209d28a8afa848b69c2b18cc69ab6

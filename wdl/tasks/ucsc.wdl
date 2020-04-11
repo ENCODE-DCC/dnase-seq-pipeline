@@ -9,6 +9,7 @@ task bed_to_big_bed {
     input {
         File bed
         File chrom_sizes
+        File? auto_sql
         BedToBigBedParams params
         Resources resources
     }
@@ -18,7 +19,7 @@ task bed_to_big_bed {
     command {
         bedToBigBed \
             ~{"-type=" + params.type} \
-            ~{"-as=" + params.auto_sql} \
+            ~{"-as=" + auto_sql} \
             ~{bed} \
             ~{chrom_sizes} \
             ~{out}
