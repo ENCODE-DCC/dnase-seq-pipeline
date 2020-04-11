@@ -2,9 +2,9 @@
   tags:
     - functional
   command: >-
-      tests/caper_run.sh \
-      wdl/workflows/mixed/merge.wdl \
-      tests/functional/json/test_mixed_merge.json
+    tests/caper_run.sh \
+    wdl/workflows/mixed/merge.wdl \
+    tests/functional/json/test_mixed_merge.json
   stdout:
     contains:
       - "samtools merge"
@@ -17,9 +17,9 @@
   tags:
     - functional
   command: >-
-      tests/caper_run.sh \
-      wdl/workflows/mixed/mark.wdl \
-      tests/functional/json/test_mixed_mark.json
+    tests/caper_run.sh \
+    wdl/workflows/mixed/mark.wdl \
+    tests/functional/json/test_mixed_mark.json
   stdout:
     contains:
       - "filter_reads.py"
@@ -34,9 +34,9 @@
   tags:
     - functional
   command: >-
-      tests/caper_run.sh \
-      wdl/workflows/mixed/filter.wdl \
-      tests/functional/json/test_mixed_filter.json
+    tests/caper_run.sh \
+    wdl/workflows/mixed/filter.wdl \
+    tests/functional/json/test_mixed_filter.json
   stdout:
     contains:
       - "samtools view"
@@ -50,9 +50,9 @@
   tags:
     - functional
   command: >-
-      tests/caper_run.sh \
-      wdl/workflows/mixed/peaks.wdl \
-      tests/functional/json/test_mixed_peaks.json
+    tests/caper_run.sh \
+    wdl/workflows/mixed/peaks.wdl \
+    tests/functional/json/test_mixed_peaks.json
   stdout:
     contains:
       - "hotspot2.sh"
@@ -86,9 +86,9 @@
   tags:
     - functional
   command: >-
-      tests/caper_run.sh \
-      wdl/workflows/mixed/score.wdl \
-      tests/functional/json/test_mixed_score.json
+    tests/caper_run.sh \
+    wdl/workflows/mixed/score.wdl \
+    tests/functional/json/test_mixed_score.json
   stdout:
     contains:
       - "random_sample.sh"
@@ -102,9 +102,9 @@
   tags:
     - functional
   command: >-
-      tests/caper_run.sh \
-      wdl/workflows/mixed/normalize.wdl \
-      tests/functional/json/test_mixed_normalize.json
+    tests/caper_run.sh \
+    wdl/workflows/mixed/normalize.wdl \
+    tests/functional/json/test_mixed_normalize.json
   stdout:
     contains:
       - "unstarch"

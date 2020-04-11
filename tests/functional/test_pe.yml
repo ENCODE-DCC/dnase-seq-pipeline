@@ -2,9 +2,9 @@
   tags:
     - functional
   command: >-
-      tests/caper_run.sh \
-      wdl/workflows/pe/concatenate.wdl \
-      tests/functional/json/test_pe_concatenate.json
+    tests/caper_run.sh \
+    wdl/workflows/pe/concatenate.wdl \
+    tests/functional/json/test_pe_concatenate.json
   stdout:
     contains:
       - "cat"
@@ -20,9 +20,9 @@
   tags:
     - functional
   command: >-
-      tests/caper_run.sh \
-      wdl/workflows/pe/trim.wdl \
-      tests/functional/json/test_pe_trim.json
+    tests/caper_run.sh \
+    wdl/workflows/pe/trim.wdl \
+    tests/functional/json/test_pe_trim.json
   stdout:
     contains:
       - "trim-adapters-illumina"
@@ -39,9 +39,9 @@
   tags:
     - functional
   command: >-
-      tests/caper_run.sh \
-      wdl/workflows/pe/align.wdl \
-      tests/functional/json/test_pe_align.json
+    tests/caper_run.sh \
+    wdl/workflows/pe/align.wdl \
+    tests/functional/json/test_pe_align.json
   stdout:
     contains:
       - "bwa aln"

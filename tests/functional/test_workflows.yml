@@ -2,9 +2,9 @@
   tags:
     - functional
   command: >-
-      tests/caper_run.sh \
-      wdl/workflows/concatenate_trim_and_align_se_fastqs.wdl \
-      tests/functional/json/test_concatenate_trim_and_align_se_fastqs.json
+    tests/caper_run.sh \
+    wdl/workflows/concatenate_trim_and_align_se_fastqs.wdl \
+    tests/functional/json/test_concatenate_trim_and_align_se_fastqs.json
   stdout:
     contains:
       - "cat"
@@ -19,9 +19,9 @@
   tags:
     - functional
   command: >-
-      tests/caper_run.sh \
-      wdl/workflows/concatenate_trim_and_align_pe_fastqs.wdl \
-      tests/functional/json/test_concatenate_trim_and_align_pe_fastqs.json
+    tests/caper_run.sh \
+    wdl/workflows/concatenate_trim_and_align_pe_fastqs.wdl \
+    tests/functional/json/test_concatenate_trim_and_align_pe_fastqs.json
   stdout:
     contains:
       - "cat"
@@ -37,9 +37,9 @@
   tags:
     - functional
   command: >-
-      tests/caper_run.sh \
-      wdl/workflows/merge_mark_and_filter_bams.wdl \
-      tests/functional/json/test_merge_mark_and_filter_bams.json
+    tests/caper_run.sh \
+    wdl/workflows/merge_mark_and_filter_bams.wdl \
+    tests/functional/json/test_merge_mark_and_filter_bams.json
   stdout:
     contains:
       - "samtools sort"
@@ -56,9 +56,9 @@
   tags:
     - functional
   command: >-
-      tests/caper_run.sh \
-      wdl/workflows/call_hotspots_and_peaks_and_get_spot_score.wdl \
-      tests/functional/json/test_call_hotspots_and_peaks_and_get_spot_score.json
+    tests/caper_run.sh \
+    wdl/workflows/call_hotspots_and_peaks_and_get_spot_score.wdl \
+    tests/functional/json/test_call_hotspots_and_peaks_and_get_spot_score.json
   stdout:
     contains:
       - "hotspot2.sh"

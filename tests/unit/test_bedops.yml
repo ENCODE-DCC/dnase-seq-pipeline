@@ -3,9 +3,9 @@
     - unit
     - unit_machine_1
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_bedops_unstarch.wdl \
-      tests/unit/json/test_bedops_unstarch.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_bedops_unstarch.wdl \
+    tests/unit/json/test_bedops_unstarch.json
   stdout:
     contains:
       - "unstarch"
@@ -17,9 +17,9 @@
     - unit
     - unit_machine_1
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_bedops_starch.wdl \
-      tests/unit/json/test_bedops_starch.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_bedops_starch.wdl \
+    tests/unit/json/test_bedops_starch.json
   stdout:
     contains:
       - "starch"
@@ -31,9 +31,9 @@
     - unit
     - unit_machine_1
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_bedops_sort_bed.wdl \
-      tests/unit/json/test_bedops_sort_bed.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_bedops_sort_bed.wdl \
+    tests/unit/json/test_bedops_sort_bed.json
   stdout:
     contains:
       - "sort-bed"
@@ -46,9 +46,9 @@
     - unit
     - unit_machine_1
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_bedops_bam2bed.wdl \
-      tests/unit/json/test_bedops_bam2bed.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_bedops_bam2bed.wdl \
+    tests/unit/json/test_bedops_bam2bed.json
   stdout:
     contains:
       - "bam2bed"
@@ -61,9 +61,9 @@
     - unit
     - unit_machine_1
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_bedops_bedmap.wdl \
-      tests/unit/json/test_bedops_bedmap.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_bedops_bedmap.wdl \
+    tests/unit/json/test_bedops_bedmap.json
   stdout:
     contains:
       - "bedmap"

@@ -2,9 +2,9 @@
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.wdl \
-      tests/integration/json/test_flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.wdl \
+    tests/integration/json/test_flag_qc_fail_improper_pair_and_nonnuclear_bam_reads.json
   stdout:
     contains:
       - "python3"
@@ -35,9 +35,9 @@
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_get_hotspot2_info.wdl \
-      tests/integration/json/test_get_hotspot2_info.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_hotspot2_info.wdl \
+    tests/integration/json/test_get_hotspot2_info.json
   stdout:
     contains:
       - "info.sh"
@@ -51,9 +51,9 @@
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_get_random_sample_from_bam.wdl \
-      tests/integration/json/test_get_random_sample_from_bam.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_random_sample_from_bam.wdl \
+    tests/integration/json/test_get_random_sample_from_bam.json
   stdout:
     contains:
       - "random_sample.sh"

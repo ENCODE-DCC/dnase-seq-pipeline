@@ -3,9 +3,9 @@
     - unit
     - unit_machine_1
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_bwa_index.wdl \
-      tests/unit/json/test_bwa_index.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_bwa_index.wdl \
+    tests/unit/json/test_bwa_index.json
   stdout:
     contains:
       - "bwa index dummy.txt"
@@ -15,9 +15,9 @@
     - unit
     - unit_machine_1
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_bwa_aln.wdl \
-      tests/unit/json/test_bwa_aln.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_bwa_aln.wdl \
+    tests/unit/json/test_bwa_aln.json
   stdout:
     contains:
       - "bwa aln"
@@ -33,9 +33,9 @@
     - unit
     - unit_machine_1
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_bwa_aln.wdl \
-      tests/unit/json/test_bwa_aln_no_params.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_bwa_aln.wdl \
+    tests/unit/json/test_bwa_aln_no_params.json
   stdout:
     contains:
       - "bwa aln"
@@ -52,9 +52,9 @@
     - unit
     - unit_machine_1
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_bwa_aln.wdl \
-      tests/unit/json/test_bwa_aln_filter_casava_true.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_bwa_aln.wdl \
+    tests/unit/json/test_bwa_aln_filter_casava_true.json
   stdout:
     contains:
       - "bwa aln"
@@ -71,9 +71,9 @@
     - unit
     - unit_machine_1
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_bwa_sampe.wdl \
-      tests/unit/json/test_bwa_sampe.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_bwa_sampe.wdl \
+    tests/unit/json/test_bwa_sampe.json
   stdout:
     contains:
       - "bwa sampe"
@@ -87,9 +87,9 @@
     - unit
     - unit_machine_1
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_bwa_sampe.wdl \
-      tests/unit/json/test_bwa_sampe_no_params.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_bwa_sampe.wdl \
+    tests/unit/json/test_bwa_sampe_no_params.json
   stdout:
     contains:
       - "bwa sampe"
@@ -104,9 +104,9 @@
     - unit
     - unit_machine_1
   command: >-
-      tests/caper_run.sh \
-      tests/unit/wdl/test_bwa_samse.wdl \
-      tests/unit/json/test_bwa_samse.json
+    tests/caper_run.sh \
+    tests/unit/wdl/test_bwa_samse.wdl \
+    tests/unit/json/test_bwa_samse.json
   stdout:
     contains:
       - "bwa samse"

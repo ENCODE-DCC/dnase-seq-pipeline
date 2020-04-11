@@ -2,25 +2,25 @@
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_build_fasta_index.wdl \
-      tests/integration/json/test_build_fasta_index.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_build_fasta_index.wdl \
+    tests/integration/json/test_build_fasta_index.json
   stdout:
     contains:
       - "samtools faidx chr22.fa"
   files:
-      - path: "test-output/chr22.fa.fai"
-        md5sum: d89b1fd70e1fe59b329a8346a59ffc03
-      - path: "test-output/chr22.fa"
-        md5sum: 69a750d5ed9490e0d1e707a43368ba86
+    - path: "test-output/chr22.fa.fai"
+      md5sum: d89b1fd70e1fe59b329a8346a59ffc03
+    - path: "test-output/chr22.fa"
+      md5sum: 69a750d5ed9490e0d1e707a43368ba86
 
 - name: test_convert_sam_to_bam
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_convert_sam_to_bam.wdl \
-      tests/integration/json/test_convert_sam_to_bam.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_convert_sam_to_bam.wdl \
+    tests/integration/json/test_convert_sam_to_bam.json
   stdout:
     contains:
       - "samtools view"
@@ -29,15 +29,15 @@
       - "chr22.fa.fai"
       - "out.bam"
   files:
-      - path: "test-output/out.bam"
+    - path: "test-output/out.bam"
 
 - name: test_sort_bam_by_coordinate
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_sort_bam_by_coordinate.wdl \
-      tests/integration/json/test_sort_bam_by_coordinate.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_sort_bam_by_coordinate.wdl \
+    tests/integration/json/test_sort_bam_by_coordinate.json
   stdout:
     contains:
       - "samtools sort"
@@ -47,15 +47,15 @@
     must_not_contain:
       - " -n "
   files:
-      - path: "test-output/sorted.bam"
+    - path: "test-output/sorted.bam"
 
 - name: test_sort_bam_by_name
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_sort_bam_by_name.wdl \
-      tests/integration/json/test_sort_bam_by_name.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_sort_bam_by_name.wdl \
+    tests/integration/json/test_sort_bam_by_name.json
   stdout:
     contains:
       - "samtools sort"
@@ -64,45 +64,45 @@
       - "out.bam"
       - "sorted.bam"
   files:
-      - path: "test-output/sorted.bam"
+    - path: "test-output/sorted.bam"
 
 - name: test_filter_bam_reads_with_qc_fail_flag
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_filter_bam_reads_with_qc_fail_flag.wdl \
-      tests/integration/json/test_filter_bam_reads_with_qc_fail_flag.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_filter_bam_reads_with_qc_fail_flag.wdl \
+    tests/integration/json/test_filter_bam_reads_with_qc_fail_flag.json
   stdout:
     contains:
       - "samtools view"
       - "-b"
       - "-F 512"
   files:
-      - path: "test-output/qc_fail_flag_filtered.bam"
+    - path: "test-output/qc_fail_flag_filtered.bam"
 
 - name: test_filter_bam_reads_with_nonnuclear_flag
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_filter_bam_reads_with_nonnuclear_flag.wdl \
-      tests/integration/json/test_filter_bam_reads_with_nonnuclear_flag.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_filter_bam_reads_with_nonnuclear_flag.wdl \
+    tests/integration/json/test_filter_bam_reads_with_nonnuclear_flag.json
   stdout:
     contains:
       - "samtools view"
       - "-b"
       - "-F 4096"
   files:
-      - path: "test-output/nuclear.bam"
+    - path: "test-output/nuclear.bam"
 
 - name: test_get_first_read_in_pair_from_bam
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_get_first_read_in_pair_from_bam.wdl \
-      tests/integration/json/test_get_first_read_in_pair_from_bam.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_first_read_in_pair_from_bam.wdl \
+    tests/integration/json/test_get_first_read_in_pair_from_bam.json
   stdout:
     contains:
       - "samtools view"
@@ -115,9 +115,9 @@
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_merge_name_sorted_bams.wdl \
-      tests/integration/json/test_merge_name_sorted_bams.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_merge_name_sorted_bams.wdl \
+    tests/integration/json/test_merge_name_sorted_bams.json
   stdout:
     contains:
       - "samtools merge"
@@ -130,9 +130,9 @@
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_get_stats_from_bam.wdl \
-      tests/integration/json/test_get_stats_from_bam.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_stats_from_bam.wdl \
+    tests/integration/json/test_get_stats_from_bam.json
   stdout:
     contains:
       - "samtools stats"
@@ -145,9 +145,9 @@
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_get_flagstats_from_bam.wdl \
-      tests/integration/json/test_get_flagstats_from_bam.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_flagstats_from_bam.wdl \
+    tests/integration/json/test_get_flagstats_from_bam.json
   stdout:
     contains:
       - "samtools flagstats"
@@ -161,9 +161,9 @@
   tags:
     - integration
   command: >-
-      tests/caper_run.sh \
-      tests/integration/wdl/test_get_number_of_reads_from_bam.wdl \
-      tests/integration/json/test_get_number_of_reads_from_bam.json
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_number_of_reads_from_bam.wdl \
+    tests/integration/json/test_get_number_of_reads_from_bam.json
   stdout:
     contains:
       - "samtools view"
