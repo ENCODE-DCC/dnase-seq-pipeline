@@ -12,7 +12,7 @@ workflow get_random_sample_from_bam {
         String? out
     }
 
-    call stampipes.random_sample {
+    call stampipes.random_sample_read1 {
         input:
             bam=bam,
             sample_number=sample_number,
@@ -21,6 +21,6 @@ workflow get_random_sample_from_bam {
     }
 
     output {
-        File subsampled_bam = random_sample.subsampled_bam
+        File subsampled_bam = random_sample_read1.subsampled_bam
     }
 }

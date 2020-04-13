@@ -56,7 +56,7 @@
     tests/integration/json/test_get_random_sample_from_bam.json
   stdout:
     contains:
-      - "random_sample.sh"
+      - "random_sample_read1.sh"
       - "5000000"
       - "subsample.bam"
   files:
