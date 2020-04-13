@@ -62,11 +62,11 @@
   stdout:
     contains:
       - "hotspot2.sh"
-      - "random_sample.sh"
+      - "random_sample_read1.sh"
       - "samtools view"
       - "runhotspot.bash"
   files:
-    - path: "test-output/first_in_pair.spot.out"
+    - path: "test-output/subsample.spot.out"
       md5sum: b86f89d7c2778558a336ed9112913d46
     - path: "test-output/nuclear.0.001.density.bw"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.starch"

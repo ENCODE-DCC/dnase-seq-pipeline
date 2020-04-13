@@ -91,11 +91,10 @@
     tests/functional/json/test_mixed_score.json
   stdout:
     contains:
-      - "random_sample.sh"
-      - "samtools view"
+      - "random_sample_read1.sh"
       - "runhotspot.bash"
   files:
-    - path: "test-output/first_in_pair.spot.out"
+    - path: "test-output/subsample.spot.out"
       md5sum: b86f89d7c2778558a336ed9112913d46
 
 - name: test_mixed_normalize
