@@ -123,7 +123,7 @@ ENV PATH="/software/hotspot2/bin:${PATH}"
 ENV PATH="/software/hotspot2/scripts:${PATH}"
 
 # Pull bwa_2.6.0-rc tag of stampipes
-RUN git clone -b 'bwa_2.6.0-rc' --single-branch --depth 1 https://github.com/StamLab/stampipes.git
+RUN git clone -b 'bwa_2.6.0' --single-branch --depth 1 https://github.com/StamLab/stampipes.git
 
 ENV STAMPIPES="/software/stampipes"
 
@@ -139,6 +139,7 @@ RUN apt-get install -y bowtie
 RUN chmod 755 /software/stampipes/scripts/bwa/bamcounts.py
 RUN chmod 755 /software/stampipes/scripts/bwa/aggregate/basic/cutfragments.awk
 RUN chmod 755 /software/stampipes/scripts/bam/random_sample.sh
+RUN chmod 755 /software/stampipes/scripts/bam/random_sample_read1.sh
 RUN chmod 755 /software/stampipes/scripts/SPOT/runhotspot.bash
 RUN chmod 755 /software/stampipes/scripts/utility/picard_inserts_process.py
 RUN chmod 755 /software/stampipes/scripts/utility/preseq_targets.sh
