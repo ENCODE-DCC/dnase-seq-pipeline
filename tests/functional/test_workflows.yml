@@ -63,7 +63,6 @@
     contains:
       - "hotspot2.sh"
       - "random_sample_read1.sh"
-      - "samtools view"
       - "runhotspot.bash"
   files:
     - path: "test-output/subsample.spot.out"
