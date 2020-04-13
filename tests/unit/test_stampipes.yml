@@ -57,6 +57,21 @@
       - "subsample.bam"
       - "5000000"
 
+- name: test_stampipes_random_sample_read1
+  tags:
+    - unit
+    - unit_machine_2
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_stampipes_random_sample_read1.wdl \
+    tests/unit/json/test_stampipes_random_sample_read1.json
+  stdout:
+    contains:
+      - "random_sample_read1.sh"
+      - "dummy.txt"
+      - "subsample.bam"
+      - "5000000"
+
 - name: test_stampipes_starch_to_bigwig
   tags:
     - unit

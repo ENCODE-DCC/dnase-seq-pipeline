@@ -1,0 +1,9 @@
+{
+    "test_stampipes_random_sample_read1.bam": "tests/data/dummy.txt",
+    "test_stampipes_random_sample_read1.sample_number": 5000000,
+    "test_stampipes_random_sample_read1.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
