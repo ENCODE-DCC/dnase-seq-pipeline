@@ -112,6 +112,33 @@ task random_sample {
 }
 
 
+task random_sample_read1 {
+    input {
+        File bam
+        Int sample_number
+        Resources resources
+        String out = "subsample.bam"
+    }
+
+    command {
+        random_sample_read1.sh \
+            ~{bam} \
+            ~{out} \
+            ~{sample_number}
+    }
+
+    output {
+        File subsampled_bam = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
+
+
 task starch_to_bigwig {
     input {
         File starch
