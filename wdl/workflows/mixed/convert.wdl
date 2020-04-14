@@ -15,6 +15,8 @@ workflow convert {
         String machine_size
     }
 
+    Machines compute = read_json("wdl/runtimes.json")
+
     call unstarch.make_bed_from_starch as allcalls_unstarch {
         input:
             starch=five_percent_allcalls_starch,
@@ -45,11 +47,7 @@ workflow convert {
             chrom_sizes=chrom_sizes,
             auto_sql=narrow_peak_auto_sql,
             resources=compute.runtimes[machine_size],
-            
     }
-
-    Machines compute = read_json("wdl/runtimes.json")
-
 
     output {
         File five_percent_allcalls_bed_gz = allcalls_pigz.gz_bed
