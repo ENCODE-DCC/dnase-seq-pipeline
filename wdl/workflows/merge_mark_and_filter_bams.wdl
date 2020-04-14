@@ -33,6 +33,7 @@ workflow merge_mark_and_filter_bams {
     }
 
     output {
+        File unfiltered_bam = merge.merged_bam
         File flagged_and_marked_bam = mark.flagged_and_marked_bam
         File duplication_metrics = mark.duplication_metrics
         File filtered_bam = filter.filtered
