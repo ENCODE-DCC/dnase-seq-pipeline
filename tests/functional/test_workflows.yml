@@ -47,6 +47,7 @@
       - "RevertOriginalBaseQualitiesAndAddMateCigar"
       - "MarkDuplicatesWithMateCigar"
   files:
+    - path: "test-output/merged.bam"
     - path: "test-output/qc_fail_flag_filtered.bam"
     - path: "test-output/marked.bam"
     - path: "test-output/nuclear.bam"
