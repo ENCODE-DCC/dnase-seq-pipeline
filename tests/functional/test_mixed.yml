@@ -149,3 +149,20 @@
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
       md5sum: 2787fe8fac4200725fb06f414bde8c84
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
+
+- name: test_mixed_convert
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/mixed/convert.wdl \
+    tests/functional/json/test_mixed_convert.json
+  stdout:
+    contains:
+      - "unstarch"
+      - "pigz"
+      - "bedToBigBed"
+  files:
+    - path: "test-output/nuclear.allcalls.bed.gz"
+    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bed.gz"
+    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
