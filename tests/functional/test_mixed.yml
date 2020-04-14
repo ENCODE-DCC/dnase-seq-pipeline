@@ -127,7 +127,7 @@
       - "bamcounts.py"
       - "samtools stats"
       - "samtools flagstats"
-      - "picard CollectInsertSizeMetrics"
+      - "CollectInsertSizeMetrics"
       - "preseq lc_extrap"
   files:
     - path: "test-output/tests/data/dnase/trimming/trimstats.txt"
@@ -137,7 +137,7 @@
     - path: "test-output/nuclear.stats.txt"
     - path: "test-output/nuclear.flagstats.txt"
     - path: "test-output/tests/data/dnase/hotspot1/subsample.spot.out"
-      md5sum: 565eeacc5094f8ec00242d062e0e4453
+      md5sum: 09e71419a7c0023634359f3e6a30a155
     - path: "test-output/tests/data/dnase/hotspot2/expected/filtered.0.05.SPOT.txt"
       md5sum: d5c0602308fc750da6630ea52ef8b058
     - path: "test-output/tests/data/dnase/aggregation/expected/MarkDuplicates.picard"
