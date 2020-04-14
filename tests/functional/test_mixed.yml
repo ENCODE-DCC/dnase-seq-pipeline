@@ -130,16 +130,17 @@
       - "picard CollectInsertSizeMetrics"
       - "preseq lc_extrap"
   files:
-    - path: "test-output/trimstats.txt"
+    - path: "test-output/tests/data/dnase/trimming/trimstats.txt"
+    - path: "test-output/tagcounts.txt"
     - path: "test-output/merged.stats.txt"
     - path: "test-output/merged.flagstats.txt"
     - path: "test-output/nuclear.stats.txt"
     - path: "test-output/nuclear.flagstats.txt"
-    - path: "test-output/subsample.spot.out"
+    - path: "test-output/tests/data/dnase/hotspot1/subsample.spot.out"
       md5sum: 565eeacc5094f8ec00242d062e0e4453
-    - path: "test-output/filtered.0.05.SPOT.txt"
+    - path: "test-output/tests/data/dnase/hotspot2/expected/filtered.0.05.SPOT.txt"
       md5sum: d5c0602308fc750da6630ea52ef8b058
-    - path: "test-output/MarkDuplicates.picard"
+    - path: "test-output/tests/data/dnase/aggregation/expected/MarkDuplicates.picard"
     - path: "test-output/nuclear.preseq_targets.txt"
       md5sum: 1c2f55280daae80307bfda6e2d726712
     - path: "test-output/nuclear.preseq.txt"
