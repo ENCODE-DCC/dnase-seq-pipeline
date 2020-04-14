@@ -12,7 +12,7 @@ workflow qc {
     input {
         File unfiltered_bam
         File nuclear_bam
-        File trimstats
+        File? trimstats
         File duplication_metrics
         File hotspot1
         File hotspot2
