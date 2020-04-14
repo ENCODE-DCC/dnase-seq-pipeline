@@ -169,3 +169,22 @@
       - "samtools view"
       - "-c"
       - "174806"
+
+- name: test_get_stats_and_flagstats_from_bam
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_stats_and_flagstats_from_bam.wdl \
+    tests/integration/json/test_get_stats_and_flagstats_from_bam.json
+  stdout:
+    contains:
+      - "samtools stats"
+      - "samtools flagstats"
+      - "-@ 1"
+      - "nuclear.flagstats.txt"
+      - "nuclear.stats.txt"
+  files:
+    - path: "test-output/nuclear.flagstats.txt"
+      md5sum: 59aa22deb9a314e2b26e26ff79b25d01
+    - path: "test-output/nuclear.stats.txt"
