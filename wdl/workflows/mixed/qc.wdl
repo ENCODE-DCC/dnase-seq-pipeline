@@ -52,13 +52,13 @@ workflow qc {
     }
 
     output {
-        UnfilteredBamQC unfiltered_qc = {
+        UnfilteredBamQC unfiltered_bam_qc = {
             "stats": unfiltered_samtools.stats,
             "flagstats": unfiltered_samtools.flagstats,
             "trimstats": trimstats,
             "bamcounts": unfiltered_bamcounts.counts
         }
-        NuclearBamQC nuclear_qc = {
+        NuclearBamQC nuclear_bam_qc = {
             "stats": nuclear_samtools.stats,
             "flagstats": nuclear_samtools.flagstats,
             "hotspot1": hotspot1,

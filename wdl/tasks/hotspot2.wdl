@@ -34,7 +34,7 @@ task hotspot2 {
             "allcalls": "~{prefix}.allcalls.starch",
             "cleavage": "~{prefix}.cleavage.total",
             "cutcounts": "~{prefix}.cutcounts.starch",
-            "density_bed": "~{prefix}.density.starch",
+            "density_starch": "~{prefix}.density.starch",
             "density_bw": "~{prefix}.density.bw",
             "fragments": "~{prefix}.fragments.sorted.starch",
             "hotspots": "~{prefix}.hotspots.fdr~{fdr}.starch",
