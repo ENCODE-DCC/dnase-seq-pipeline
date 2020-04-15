@@ -1,7 +1,6 @@
 - name: test_preseq_lc_extrap_no_defects
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_preseq_lc_extrap.wdl \
@@ -18,7 +17,6 @@
 - name: test_preseq_lc_extrap_defects
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_preseq_lc_extrap.wdl \

@@ -1,7 +1,6 @@
 - name: test_sed_remove_trailing_whitespaces
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_sed_remove_trailing_whitespaces.wdl \
@@ -15,7 +14,6 @@
 - name: test_sed_remove_first_n_lines
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_sed_remove_first_n_lines.wdl \

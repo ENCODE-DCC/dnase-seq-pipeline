@@ -1,7 +1,6 @@
 - name: test_bwa_index
   tags:
     - unit
-    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_bwa_index.wdl \
@@ -13,7 +12,6 @@
 - name: test_bwa_aln
   tags:
     - unit
-    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_bwa_aln.wdl \
@@ -31,7 +29,6 @@
 - name: test_bwa_aln_no_params
   tags:
     - unit
-    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_bwa_aln.wdl \
@@ -50,7 +47,6 @@
 - name: test_bwa_aln_filter_casava_true
   tags:
     - unit
-    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_bwa_aln.wdl \
@@ -69,7 +65,6 @@
 - name: test_bwa_sampe
   tags:
     - unit
-    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_bwa_sampe.wdl \
@@ -85,7 +80,6 @@
 - name: test_bwa_sampe_no_params
   tags:
     - unit
-    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_bwa_sampe.wdl \
@@ -102,7 +96,6 @@
 - name: test_bwa_samse
   tags:
     - unit
-    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_bwa_samse.wdl \

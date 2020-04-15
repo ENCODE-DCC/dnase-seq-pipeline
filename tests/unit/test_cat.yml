@@ -1,7 +1,6 @@
 - name: test_cat_cat
   tags:
     - unit
-    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_cat_cat.wdl \

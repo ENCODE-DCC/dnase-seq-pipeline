@@ -1,7 +1,6 @@
 - name: test_hotspot2_hotspot2
   tags:
     - unit
-    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_hotspot2_hotspot2.wdl \
@@ -20,7 +19,6 @@
 - name: test_hotspot2_extract_center_sites
   tags:
     - unit
-    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_hotspot2_extract_center_sites.wdl \

@@ -1,7 +1,6 @@
 - name: test_hotspot1_runhotspot
   tags:
     - unit
-    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_hotspot1_runhotspot.wdl \
@@ -18,7 +17,6 @@
 - name: test_hotspot1_enumerate_uniquely_mappable_space 
   tags:
     - unit
-    - unit_machine_1
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_hotspot1_enumerate_uniquely_mappable_space.wdl \
