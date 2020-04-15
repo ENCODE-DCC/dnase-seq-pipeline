@@ -128,17 +128,7 @@ jobs:
       - prepare_pytest_environment
       - install_git_lfs_and_get_data
       - run_test_tag:
-          tag: "unit_machine_1"
-          wt: "4"
-
-  wdl_unit_tests_overflow:
-    <<: *machine_defaults
-    steps:
-      - checkout
-      - prepare_pytest_environment
-      - install_git_lfs_and_get_data
-      - run_test_tag:
-          tag: "unit_machine_2"
+          tag: "unit"
           wt: "4"
 
   wdl_integration_tests:
@@ -169,9 +159,6 @@ workflows:
       - wdl_unit_tests:
           requires:
             - build
-      - wdl_unit_tests_overflow:
-          requires:
-            - build
       - wdl_integration_tests:
           requires:
             - build
@@ -181,5 +168,5 @@ workflows:
       - push_template:
           requires:
             - wdl_unit_tests
-            - wdl_unit_tests_overflow
             - wdl_integration_tests
+            - wdl_functional_tests
