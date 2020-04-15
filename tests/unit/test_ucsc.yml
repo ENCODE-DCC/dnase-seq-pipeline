@@ -1,7 +1,6 @@
 - name: test_ucsc_bed_to_big_bed
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_ucsc_bed_to_big_bed.wdl \

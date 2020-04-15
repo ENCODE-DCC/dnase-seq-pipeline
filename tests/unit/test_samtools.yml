@@ -1,7 +1,6 @@
 - name: test_samtools_faidx
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit//wdl/test_samtools_faidx.wdl \
@@ -13,7 +12,6 @@
 - name: test_samtools_view
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_samtools_view.wdl \
@@ -34,7 +32,6 @@
 - name: test_samtools_view_no_params
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_samtools_view.wdl \
@@ -56,7 +53,6 @@
 - name: test_samtools_sort
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_samtools_sort.wdl \
@@ -72,7 +68,6 @@
 - name: test_samtools_sort_no_params
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_samtools_sort.wdl \
@@ -89,7 +84,6 @@
 - name: test_samtools_merge
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_samtools_merge.wdl \
@@ -105,7 +99,6 @@
 - name: test_samtools_stats
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_samtools_stats.wdl \
@@ -119,7 +112,6 @@
 - name: test_samtools_flagstats
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_samtools_flagstats.wdl \

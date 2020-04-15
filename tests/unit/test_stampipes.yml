@@ -1,7 +1,6 @@
 - name: test_stampipes_filter_reads
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_stampipes_filter_reads.wdl \
@@ -16,7 +15,6 @@
 - name: test_stampipes_bamcounts 
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_stampipes_bamcounts.wdl \
@@ -30,7 +28,6 @@
 - name: test_stampipes_info
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_stampipes_info.wdl \
@@ -45,7 +42,6 @@
 - name: test_stampipes_random_sample
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_stampipes_random_sample.wdl \
@@ -60,7 +56,6 @@
 - name: test_stampipes_random_sample_read1
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_stampipes_random_sample_read1.wdl \
@@ -75,7 +70,6 @@
 - name: test_stampipes_starch_to_bigwig
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_stampipes_starch_to_bigwig.wdl \
@@ -90,7 +84,6 @@
 - name: test_stampipes_cutfragments
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_stampipes_cutfragments.wdl \
@@ -106,7 +99,6 @@
 - name: test_stampipes_chrom_buckets
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_stampipes_chrom_buckets.wdl \
@@ -125,7 +117,6 @@
 - name: test_stampipes_picard_inserts_process
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_stampipes_picard_inserts_process.wdl \
@@ -139,7 +130,6 @@
 - name: test_stampipes_mark_dups
   tags:
     - unit 
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_stampipes_mark_dups.wdl \
@@ -155,7 +145,6 @@
 - name: test_stampipes_get_preseq_targets
   tags:
     - unit
-    - unit_machine_2
   command: >-
     tests/caper_run.sh \
     tests/unit/wdl/test_stampipes_get_preseq_targets.wdl \
