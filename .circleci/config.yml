@@ -31,7 +31,6 @@ commands:
     steps:
       - run: pyenv global 3.7.0
       - run: pip install --upgrade pip
-      - run: pip install pytest-workflow
       - run: pip install -r requirements.txt
 
   install_bedops:
@@ -72,7 +71,7 @@ commands:
         type: string
     steps:
       - run:
-          command: pytest -v --tag <<parameters.tag>> --wt <<parameters.wt>>
+          command: pytest -v --tag <<parameters.tag>> --wt <<parameters.wt>> --symlink
           no_output_timeout: 30m
 
   install_git_lfs_and_get_data:
