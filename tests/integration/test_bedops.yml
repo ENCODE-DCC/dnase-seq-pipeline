@@ -1,0 +1,14 @@
+- name: test_make_bed_from_starch
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_make_bed_from_starch.wdl \
+    tests/integration/json/test_make_bed_from_starch.json
+  stdout:
+    contains:
+      - "unstarch"
+      - "nuclear.allcalls.starch"
+  files:
+    - path: "test-output/nuclear.allcalls.bed"
+      md5sum: 848c262cf4bde6aeefc27ef0c73ac1cc
