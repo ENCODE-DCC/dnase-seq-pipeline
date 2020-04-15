@@ -20,7 +20,7 @@ struct HotSpot2Peaks {
     File allcalls
     File cleavage
     File cutcounts
-    File density_bed
+    File density_starch
     File density_bw
     File fragments
     File hotspots
