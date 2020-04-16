@@ -22,7 +22,7 @@ workflow calculate_qc_and_normalize_and_convert_files {
         MachineSizes machine_sizes
     }
 
-    IndexedFasta indexed_fasta = select_first([
+    IndexedFastaRequired indexed_fasta = select_first([
         references.indexed_fasta
     ])
 
@@ -30,9 +30,7 @@ workflow calculate_qc_and_normalize_and_convert_files {
         input:
             density_starch=five_percent_peaks.density_starch,
             nuclear_bam=nuclear_bam,
-            fai=select_first([
-                indexed_fasta.fai
-            ]),
+            fai=indexed_fasta.fai,
             machine_size=machine_sizes.normalize,
     }
 
@@ -54,9 +52,7 @@ workflow calculate_qc_and_normalize_and_convert_files {
             narrow_peak_auto_sql=select_first([
                 references.narrow_peak_auto_sql
             ]),
-            chrom_sizes=select_first([
-                indexed_fasta.fai
-            ]),
+            chrom_sizes=indexed_fasta.fai,
             machine_size=machine_sizes.convert,   
     }
 

@@ -21,7 +21,7 @@ struct Replicate {
 
 struct References {
     String? genome_name
-    IndexedFasta? indexed_fasta
+    IndexedFastaRequired? indexed_fasta
     BwaIndex? bwa_index
     HotSpot1Reference? hotspot1
     HotSpot2Reference? hotspot2
