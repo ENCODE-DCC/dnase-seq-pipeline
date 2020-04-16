@@ -13,7 +13,7 @@
             "file": "tests/data/dnase/alignment/adapters.txt",
             "adapter1": "P5",
             "adapter2": "P7"
-        },
+        }
     },
     "dnase_replicate.references": {
         "genome_name": "chr22",
