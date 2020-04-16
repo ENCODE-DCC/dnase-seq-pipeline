@@ -1,0 +1,13 @@
+- name: test_make_references
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/references/make_references.wdl \
+    tests/functional/json/test_make_references.json
+  stdout:
+    contains:
+      - "bwa index"
+      - "samtools faidx chr22"
+      - "ln"
+      - "bowtie-build chr22.fa chr22.fa"

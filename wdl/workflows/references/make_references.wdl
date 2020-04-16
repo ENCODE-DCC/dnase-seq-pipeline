@@ -13,18 +13,32 @@ import "../../subworkflows/get_chrom_sizes.wdl" as chr_sizes
 
 workflow make_references {
     input {
-        File reference_genome
+        File reference_fasta
+        String machine_size_bwa = "large"
+        String machine_size_fai = "large"
+        String machine_size_bowtie = "large"
     }
+
+    Machines compute = read_json("wdl/runtimes.json")
 
     call bwa.build_bwa_index {
+        input:
+            fasta=reference_fasta,
+            resources=compute.runtimes[machine_size_bwa],
     }
 
-#    call fai.build_fasta_index {
-#    }
-#
-#    call bowtie.build_bowtie_index {
-#    }
-#
+    call fai.build_fasta_index {
+        input:
+            fasta=reference_fasta,
+            resources=compute.runtimes[machine_size_fai],
+    }
+
+    call bowtie.build_bowtie_index {
+        input:
+            fasta=reference_fasta,
+            resources=compute.runtimes[machine_size_bowtie]
+    }
+
 #    call mappable.build_mappable_only_bed {
 #    }
 #
@@ -41,6 +55,8 @@ workflow make_references {
 #    }
 
     output {
+        BowtieIndex bowtie_index = build_bowtie_index.bowtie_index
         BwaIndex bwa_index = build_bwa_index.bwa_index
+        File? fasta_index = build_fasta_index.indexed_fasta.fai
     }
 }
