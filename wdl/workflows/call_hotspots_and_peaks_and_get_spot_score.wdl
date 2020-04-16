@@ -18,17 +18,21 @@ workflow call_hotspots_and_peaks_and_get_spot_score {
     call nuclear_bam_for_peaks.peaks {
         input:
             nuclear_bam=nuclear_bam,
-            reference=references.hotspot2,
+            reference=select_first([
+                references.hotspot2
+            ]),
             machine_size=machine_sizes.peaks,
     }
 
     call nuclear_bam_for_score.score {
         input:
             nuclear_bam=nuclear_bam,
-            reference=references.hotspot1,
+            reference=select_first([
+                references.hotspot1
+            ]),
             params=object {
                 genome_name: references.genome_name,
-                read_length: replicate.info.read_length
+                read_length: replicate.read_length
             },
             machine_size=machine_sizes.score,
     }

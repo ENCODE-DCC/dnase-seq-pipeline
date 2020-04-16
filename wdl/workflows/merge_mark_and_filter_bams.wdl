@@ -24,7 +24,9 @@ workflow merge_mark_and_filter_bams {
     call merged_bam.mark {
         input:
             merged_bam=merge.merged_bam,
-            nuclear_chroms=references.nuclear_chroms,
+            nuclear_chroms=select_first([
+                references.nuclear_chroms
+            ]),
             machine_size=machine_sizes.mark,
     }
 

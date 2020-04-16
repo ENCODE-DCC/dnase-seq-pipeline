@@ -26,15 +26,19 @@ workflow concatenate_trim_and_align_pe_fastqs {
         input:
             concatenated_fastqs=concatenate.concatenated_fastqs,
             adapters=replicate.adapters,
-            trim_length=replicate.info.read_length,
+            trim_length=replicate.read_length,
             machine_size=machine_sizes.trim,
     }
 
     call trimmed_fastqs.align {
         input:
-            bwa_index=references.bwa_index,
+            bwa_index=select_first([
+                references.bwa_index
+            ]),
             trimmed_fastqs=trim.trimmed_fastqs,
-            indexed_fasta=references.indexed_fasta,
+            indexed_fasta=select_first([
+                references.indexed_fasta
+            ]),
             machine_size=machine_sizes.align,
     }
 
