@@ -14,6 +14,7 @@
     "concatenate_trim_and_align_se_fastqs.raw_fastqs": [
         "tests/data/dnase/alignment/r1.fastq.gz"
     ],
+    "concatenate_trim_and_align_se_fastqs.trim_length": 101,
     "concatenate_trim_and_align_se_fastqs.machine_size_concatenate": "small",
     "concatenate_trim_and_align_se_fastqs.machine_size_trim": "small",
     "concatenate_trim_and_align_se_fastqs.machine_size_align": "small"
