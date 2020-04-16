@@ -16,7 +16,7 @@ workflow qc {
         File duplication_metrics
         File hotspot1
         File hotspot2
-        String machine_size
+        String machine_size = "medium"
     }
 
     Machines compute = read_json("wdl/runtimes.json")

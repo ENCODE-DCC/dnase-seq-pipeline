@@ -9,13 +9,18 @@ import "illumina.wdl"
 import "samtools.wdl"
 
 
+struct ReplicateInfo {
+    Int read_length
+    Int number
+    String? accession
+}
+
+
 struct Replicate {
     Array[FastqPair]? pe_fastqs
     Array[File]? se_fastqs
     Adapters? adapters
-    Int read_length
-    Int number
-    String? accession
+    ReplicateInfo info
 }
 
 

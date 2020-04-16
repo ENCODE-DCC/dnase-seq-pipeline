@@ -1,6 +1,8 @@
 version 1.0
 
 
+import "../../wdl/structs/dnase.wdl"
+import "../../wdl/structs/sizes.wdl"
 import "../../wdl/workflows/mixed/peaks.wdl" as nuclear_bam_for_peaks
 import "../../wdl/workflows/mixed/score.wdl" as nuclear_bam_for_score
 
@@ -8,20 +10,27 @@ import "../../wdl/workflows/mixed/score.wdl" as nuclear_bam_for_score
 workflow call_hotspots_and_peaks_and_get_spot_score {
     input {
         File nuclear_bam
-        String machine_size_peaks = "medium"
-        String machine_size_score = "medium"
+        Replicate replicate
+        References references
+        MachineSizes machine_sizes
     }
 
     call nuclear_bam_for_peaks.peaks {
         input:
             nuclear_bam=nuclear_bam,
-            machine_size=machine_size_peaks,
+            reference=references.hotspot2,
+            machine_size=machine_sizes.peaks,
     }
 
     call nuclear_bam_for_score.score {
         input:
             nuclear_bam=nuclear_bam,
-            machine_size=machine_size_score,
+            reference=references.hotspot1,
+            params=object {
+                genome_name: references.genome_name,
+                read_length: replicate.info.read_length
+            },
+            machine_size=machine_sizes.score,
     }
 
     output {

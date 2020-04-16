@@ -1,6 +1,8 @@
 version 1.0
 
 
+import "../../wdl/structs/dnase.wdl"
+import "../../wdl/structs/sizes.wdl"
 import "../../wdl/workflows/se/concatenate.wdl" as raw_fastqs
 import "../../wdl/workflows/se/trim.wdl" as concatenated_fastq
 import "../../wdl/workflows/se/align.wdl" as trimmed_fastq
@@ -9,33 +11,30 @@ import "../../wdl/workflows/se/align.wdl" as trimmed_fastq
 workflow concatenate_trim_and_align_se_fastqs {
     input {
         Array[File] raw_fastqs = []
-        BwaIndex bwa_index
-        IndexedFasta indexed_fasta
-        Int trim_length
-        String machine_size_concatenate = "medium"
-        String machine_size_trim = "medium"
-        String machine_size_align = "medium"
+        Replicate replicate
+        References references
+        MachineSizes machine_sizes
     }
 
     call raw_fastqs.concatenate {
         input:
             raw_fastqs=raw_fastqs,
-            machine_size=machine_size_concatenate,
+            machine_size=machine_sizes.concatenate,
     }
 
     call concatenated_fastq.trim {
         input:
             concatenated_fastq=concatenate.concatenated_fastq,
-            trim_length=trim_length,
-            machine_size=machine_size_trim,
+            trim_length=replicate.info.read_length,
+            machine_size=machine_sizes.trim,
     }
 
     call trimmed_fastq.align {
         input:
-            bwa_index=bwa_index,
+            bwa_index=references.bwa_index,
             trimmed_fastq=trim.trimmed_fastq,
-            indexed_fasta=indexed_fasta,
-            machine_size=machine_size_align,
+            indexed_fasta=references.indexed_fasta,
+            machine_size=machine_sizes.align,
     }
 
     output {

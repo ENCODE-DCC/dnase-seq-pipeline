@@ -10,7 +10,7 @@ workflow normalize {
         File density_starch
         File nuclear_bam
         File fai
-        String machine_size
+        String machine_size = "medium"
     }
 
     Machines compute = read_json("wdl/runtimes.json")

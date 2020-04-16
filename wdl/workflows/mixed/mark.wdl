@@ -12,7 +12,7 @@ workflow mark {
     input {
         File merged_bam
         File nuclear_chroms
-        String machine_size
+        String machine_size = "medium"
     }
 
     Machines compute = read_json("wdl/runtimes.json")
