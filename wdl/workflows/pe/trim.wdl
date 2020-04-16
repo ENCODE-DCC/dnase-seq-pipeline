@@ -1,6 +1,7 @@
 version 1.0
 
 
+import "../../../wdl/structs/illumina.wdl"
 import "../../../wdl/subworkflows/trim_adapters_on_fastq_pair.wdl" as concatenated_fastqs
 import "../../../wdl/subworkflows/trim_fastq_pair_to_length.wdl" as adapter_trimmed_fastqs
 

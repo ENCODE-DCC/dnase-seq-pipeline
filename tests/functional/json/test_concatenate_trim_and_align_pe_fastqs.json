@@ -1,9 +1,9 @@
 {
-    "concatenate_trim_and_align_pe_fastqs.align.indexed_fasta": {
+    "concatenate_trim_and_align_pe_fastqs.indexed_fasta": {
         "fasta": "tests/data/ref/chr22.fa",
         "fai": "tests/data/ref/chr22.fa.fai"
     },
-    "concatenate_trim_and_align_pe_fastqs.align.bwa_index": {
+    "concatenate_trim_and_align_pe_fastqs.bwa_index": {
         "bwt": "tests/data/ref/chr22.fa.bwt",
         "fasta": "tests/data/ref/chr22.fa",
         "pac": "tests/data/ref/chr22.fa.pac",
