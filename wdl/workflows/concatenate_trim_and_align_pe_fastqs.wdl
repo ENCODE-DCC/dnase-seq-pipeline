@@ -15,20 +15,20 @@ workflow concatenate_trim_and_align_pe_fastqs {
         MachineSizes machine_sizes
     }
 
-    Array[FastqPair] raw_fastqs = select_first([
-        replicate.pe_fastqs
-    ])
-
     call raw_fastqs.concatenate {
         input:
-            raw_fastqs=raw_fastqs,
+            raw_fastqs=select_first([
+                replicate.pe_fastqs
+            ]),
             machine_size=machine_sizes.concatenate,
     }
 
     call concatenated_fastqs.trim {
         input:
             concatenated_fastqs=concatenate.concatenated_fastqs,
-            adapters=replicate.adapters,
+            adapters=select_first([
+                replicate.adapters
+            ]),
             trim_length=replicate.read_length,
             machine_size=machine_sizes.trim,
     }

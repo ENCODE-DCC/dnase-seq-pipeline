@@ -15,13 +15,11 @@ workflow concatenate_trim_and_align_se_fastqs {
         MachineSizes machine_sizes
     }
 
-    Array[File] raw_fastqs = select_first([
-        replicate.se_fastqs
-    ])
-
     call raw_fastqs.concatenate {
         input:
-            raw_fastqs=raw_fastqs,
+            raw_fastqs=select_first([
+                replicate.se_fastqs
+            ]),
             machine_size=machine_sizes.concatenate,
     }
 

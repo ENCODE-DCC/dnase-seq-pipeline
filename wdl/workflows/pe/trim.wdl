@@ -9,7 +9,7 @@ import "../../../wdl/subworkflows/trim_fastq_pair_to_length.wdl" as adapter_trim
 workflow trim {
     input {
         FastqPair concatenated_fastqs
-        Adapters adapters = {}
+        Adapters adapters
         Int trim_length
         String machine_size = "medium"
     }
