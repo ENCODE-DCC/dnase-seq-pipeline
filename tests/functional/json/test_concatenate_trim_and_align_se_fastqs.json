@@ -13,11 +13,11 @@
             "sa": "tests/data/ref/chr22.fa.sa"
         }
     },
-    "concatenate_trim_and_align_se_fastqs.raw_fastqs": [
-        "tests/data/dnase/alignment/r1.fastq.gz"
-    ],
     "concatenate_trim_and_align_se_fastqs.replicate": {
-        "read_length": 101
+        "read_length": 101,
+        "se_fastqs": [
+            "tests/data/dnase/alignment/r1.fastq.gz"
+        ]
     },
     "concatenate_trim_and_align_se_fastqs.machine_sizes": {
         "concatenate": "small",

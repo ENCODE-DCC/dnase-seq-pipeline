@@ -10,11 +10,14 @@ import "../../wdl/workflows/pe/align.wdl" as trimmed_fastqs
 
 workflow concatenate_trim_and_align_pe_fastqs {
     input {
-        Array[FastqPair] raw_fastqs = []
         Replicate replicate
         References references
         MachineSizes machine_sizes
     }
+
+    Array[FastqPair] raw_fastqs = select_first([
+        replicate.pe_fastqs
+    ])
 
     call raw_fastqs.concatenate {
         input:

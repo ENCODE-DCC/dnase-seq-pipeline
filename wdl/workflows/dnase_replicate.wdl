@@ -19,7 +19,6 @@ workflow dnase_replicate {
     if (defined(replicate.pe_fastqs)) {
         call pe_fastqs.concatenate_trim_and_align_pe_fastqs {
             input:
-                raw_fastqs=replicate.pe_fastqs,
                 replicate=replicate,
                 references=references,
                 machine_sizes=machine_sizes,
@@ -29,7 +28,6 @@ workflow dnase_replicate {
     if (defined(replicate.se_fastqs)) {
         call se_fastqs.concatenate_trim_and_align_se_fastqs {
             input:
-                raw_fastqs=replicate.se_fastqs,
                 replicate=replicate,
                 references=references,
                 machine_sizes=machine_sizes,
