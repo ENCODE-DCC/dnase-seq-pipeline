@@ -17,9 +17,12 @@
             "R2": "tests/data/dnase/alignment/r2.fastq.gz"
         }
     ],
-    "concatenate_trim_and_align_pe_fastqs.trim.adapters": "tests/data/dnase/alignment/adapters.txt",
-    "concatenate_trim_and_align_pe_fastqs.trim.adapter1": "P5",
-    "concatenate_trim_and_align_pe_fastqs.trim.adapter2": "P7",
+    "concatenate_trim_and_align_pe_fastqs.adapters": {
+        "file": "tests/data/dnase/alignment/adapters.txt",
+        "adapter1": "P5",
+        "adapter2": "P7"
+    },
+    "concatenate_trim_and_align_pe_fastqs.trim_length": 101,
     "concatenate_trim_and_align_pe_fastqs.machine_size_concatenate": "small",
     "concatenate_trim_and_align_pe_fastqs.machine_size_trim": "small",
     "concatenate_trim_and_align_pe_fastqs.machine_size_align": "small"

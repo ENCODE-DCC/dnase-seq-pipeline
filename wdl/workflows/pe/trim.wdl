@@ -9,10 +9,8 @@ import "../../../wdl/subworkflows/trim_fastq_pair_to_length.wdl" as adapter_trim
 workflow trim {
     input {
         FastqPair concatenated_fastqs
-        File adapters
-        String adapter1
-        String adapter2
-        Int trim_length = 101
+        Adapters adapters
+        Int trim_length
         String machine_size
     }
 
@@ -21,9 +19,9 @@ workflow trim {
     call concatenated_fastqs.trim_adapters_on_fastq_pair {
         input:
             fastqs=concatenated_fastqs,
-            adapters=adapters,
-            adapter1=adapter1,
-            adapter2=adapter2,
+            adapters=adapters.file,
+            adapter1=adapters.adapter1,
+            adapter2=adapters.adapter2,
             resources=compute.runtimes[machine_size],
     }
 
