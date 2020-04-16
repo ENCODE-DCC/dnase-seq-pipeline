@@ -25,4 +25,6 @@ struct References {
     BwaIndex bwa_index
     HotSpot1Reference hotspot1
     HotSpot2Reference hotspot2
+    File nuclear_chroms
+    File narrow_peak_auto_sql
 }

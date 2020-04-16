@@ -1,5 +1,5 @@
 {
-    "merge_mark_and_filter_bams.mark.nuclear_chroms": "tests/data/ref/chr22.fa.nuclear.txt",
+    "merge_mark_and_filter_bams.nuclear_chroms": "tests/data/ref/chr22.fa.nuclear.txt",
     "merge_mark_and_filter_bams.name_sorted_bams": [
         "tests/data/dnase/merging/name_sorted_1.bam",        
         "tests/data/dnase/merging/name_sorted_2.bam"

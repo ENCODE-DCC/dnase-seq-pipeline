@@ -9,6 +9,7 @@ import "../../wdl/workflows/mixed/filter.wdl" as flagged_and_marked_bam
 workflow merge_mark_and_filter_bams {
     input {
         Array[File] name_sorted_bams
+        File nuclear_chroms
         String machine_size_merge = "medium"
         String machine_size_mark = "medium"
         String machine_size_filter = "medium"
@@ -23,6 +24,7 @@ workflow merge_mark_and_filter_bams {
     call merged_bam.mark {
         input:
             merged_bam=merge.merged_bam,
+            nuclear_chroms=nuclear_chroms,
             machine_size=machine_size_mark,
     }
 
