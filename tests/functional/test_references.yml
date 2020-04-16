@@ -21,6 +21,8 @@
       - "FAI"
       - "GENOME"
       - "BUCKETS_DIR"
+      - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
+      - "chr22.fa.chrom_sizes.bed"
   files:
     - path: "test-output/chr22.fa"
       md5sum: 69a750d5ed9490e0d1e707a43368ba86
@@ -51,3 +53,5 @@
     - path: "test-output/chr22.K9.mappable_only.bed"
       md5sum: 85724d06d7ceddded0129c120f258e75
     - path: "test-output/chrom-buckets.chr22.75_20.bed.starch"
+    - path: "test-output/chr22.fa.chrom_sizes.bed"
+      md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
