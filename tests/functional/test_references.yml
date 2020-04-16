@@ -11,6 +11,11 @@
       - "samtools faidx chr22.fa"
       - "ln"
       - "bowtie-build chr22.fa chr22.fa"
+      - "awk"
+      - "perl $(which enumerateUniquelyMappableSpace.pl)"
+      - "merge_adjacent_bed.awk"
+      - "s/[[:blank:]]*$//"
+      - "sort-bed"
   files:
     - path: "test-output/chr22.fa"
       md5sum: 69a750d5ed9490e0d1e707a43368ba86
@@ -38,3 +43,5 @@
       md5sum: 3113d59e930dd96e02d43895de8de9a0
     - path: "test-output/chr22.fa.rev.2.ebwt"
       md5sum: f28c064e9c10c7dae2eaf76e1737a0b6
+    - path: "test-output/chr22.K9.mappable_only.bed"
+      md5sum: 85724d06d7ceddded0129c120f258e75

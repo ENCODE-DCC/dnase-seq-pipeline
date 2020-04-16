@@ -1,6 +1,8 @@
 {
+    "make_references.mappability_kmer_length": 9,
     "make_references.reference_fasta": "tests/data/ref/chr22.fa",
     "make_references.machine_size_bwa": "small",
     "make_references.machine_size_fai": "small",
-    "make_references.machine_size_bowtie": "small"
+    "make_references.machine_size_bowtie": "small",
+    "make_references.machine_size_mappable": "small"
 }
