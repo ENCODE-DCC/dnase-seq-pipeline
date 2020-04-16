@@ -1,6 +1,8 @@
 version 1.0
 
 
+import "../../wdl/structs/dnase.wdl"
+import "../../wdl/structs/sizes.wdl"
 import "../../wdl/structs/hotspot2.wdl"
 import "../../wdl/workflows/mixed/normalize.wdl" as density_starch
 import "../../wdl/workflows/mixed/qc.wdl" as bams_and_peaks
@@ -12,23 +14,24 @@ workflow calculate_qc_and_normalize_and_convert_files {
     input {
         File unfiltered_bam
         File nuclear_bam
-        File fai
-        File narrow_peak_auto_sql
         File duplication_metrics        
         File spot_score
         File? trimstats
         HotSpot2Peaks five_percent_peaks
-        String machine_size_normalize = "medium"
-        String machine_size_qc = "medium"
-        String machine_size_convert = "medium"
+        References references
+        MachineSizes machine_sizes
     }
+
+    IndexedFasta indexed_fasta = select_first([
+        references.indexed_fasta
+    ])
 
     call density_starch.normalize {
         input:
             density_starch=five_percent_peaks.density_starch,
             nuclear_bam=nuclear_bam,
-            fai=fai,
-            machine_size=machine_size_normalize,
+            fai=indexed_fasta.fai,
+            machine_size=machine_sizes.normalize,
     }
 
     call bams_and_peaks.qc {
@@ -39,16 +42,18 @@ workflow calculate_qc_and_normalize_and_convert_files {
             duplication_metrics=duplication_metrics,
             hotspot1=spot_score,
             hotspot2=five_percent_peaks.spot_score,
-            machine_size=machine_size_qc,
+            machine_size=machine_sizes.qc,
     }
 
     call starches.convert {
         input:
             five_percent_allcalls_starch=five_percent_peaks.allcalls,
             five_percent_narrow_peaks_starch=five_percent_peaks.narrowpeaks,
-            narrow_peak_auto_sql=narrow_peak_auto_sql,
-            chrom_sizes=fai,
-            machine_size=machine_size_convert,            
+            narrow_peak_auto_sql=select_first([
+                references.narrow_peak_auto_sql
+            ]),
+            chrom_sizes=indexed_fasta.fai,
+            machine_size=machine_sizes.convert,   
     }
 
     output {
