@@ -16,6 +16,11 @@
       - "merge_adjacent_bed.awk"
       - "s/[[:blank:]]*$//"
       - "sort-bed"
+      - "make all"
+      - "-f"
+      - "FAI"
+      - "GENOME"
+      - "BUCKETS_DIR"
   files:
     - path: "test-output/chr22.fa"
       md5sum: 69a750d5ed9490e0d1e707a43368ba86
@@ -45,3 +50,4 @@
       md5sum: f28c064e9c10c7dae2eaf76e1737a0b6
     - path: "test-output/chr22.K9.mappable_only.bed"
       md5sum: 85724d06d7ceddded0129c120f258e75
+    - path: "test-output/chrom-buckets.chr22.75_20.bed.starch"

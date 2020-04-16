@@ -16,12 +16,14 @@ workflow make_references {
         File reference_fasta
         Int mappability_kmer_length
         String machine_size_bwa = "large"
+        String machine_size_chr_buckets = "large"
         String machine_size_fai = "large"
         String machine_size_bowtie = "large"
         String machine_size_mappable = "large"
     }
 
     Machines compute = read_json("wdl/runtimes.json")
+    String genome_name = basename(reference_fasta, ".fa")
 
     call bwa.build_bwa_index {
         input:
@@ -48,9 +50,13 @@ workflow make_references {
             reference_genome=reference_fasta,
             resources=compute.runtimes[machine_size_mappable],
     }
-#
-#    call chr_buckets.get_chrombuckets {
-#    }
+
+    call chr_buckets.get_chrombuckets {
+        input:
+            fai=select_first([build_fasta_index.indexed_fasta.fai]),
+            genome_name=genome_name,
+            resources=compute.runtimes[machine_size_chr_buckets],
+    }
 #
 #    call chr_sizes.get_chrom_sizes {
 #    }
@@ -64,6 +70,7 @@ workflow make_references {
     output {
         BowtieIndex bowtie_index = build_bowtie_index.bowtie_index
         BwaIndex bwa_index = build_bwa_index.bwa_index
+        File chrom_buckets = get_chrombuckets.chrombuckets
         File? fasta_index = build_fasta_index.indexed_fasta.fai
         File mappable_regions = build_mappable_only_bed.mappable_regions
     }
