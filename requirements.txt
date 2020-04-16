@@ -1,5 +1,6 @@
+autouri==0.1.3
 attrs==19.3.0
-caper==0.8.2
+caper==0.8.2.1
 certifi==2019.11.28
 cffi==1.13.2
 chardet==3.0.4
