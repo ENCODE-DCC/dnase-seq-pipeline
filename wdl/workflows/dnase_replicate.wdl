@@ -67,4 +67,16 @@ workflow dnase_replicate {
             machine_sizes=machine_sizes,
     }
 
+    output {
+        File unfiltered_bam = merge_mark_and_filter_bams.unfiltered_bam
+        File nuclear_bam = merge_mark_and_filter_bams.nuclear_bam
+        File normalized_density_bw = calculate_qc_and_normalize_and_convert_files.normalized_density_bw
+        File five_percent_allcalls_bed_gz = calculate_qc_and_normalize_and_convert_files.five_percent_allcalls_bed_gz
+        File five_percent_narrowpeaks_bed_gz = calculate_qc_and_normalize_and_convert_files.five_percent_narrowpeaks_bed_gz
+        File five_percent_narrowpeaks_bigbed = calculate_qc_and_normalize_and_convert_files.five_percent_narrowpeaks_bigbed
+        UnfilteredBamQC unfiltered_bam_qc = calculate_qc_and_normalize_and_convert_files.unfiltered_bam_qc
+        NuclearBamQC nuclear_bam_qc = calculate_qc_and_normalize_and_convert_files.nuclear_bam_qc
+        PeaksQC peaks_qc = calculate_qc_and_normalize_and_convert_files.peaks_qc
+
+    }
 }
