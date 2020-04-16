@@ -4,9 +4,10 @@
         "R1": "tests/data/dnase/trimming/trim.R1.fastq.gz",
         "R2": "tests/data/dnase/trimming/trim.R2.fastq.gz"
     },
+    "trim.trim_length": 101,
     "trim.adapters": {
         "file": "tests/data/dnase/alignment/adapters.txt",
-        "trim.adapter1": "P5",
-        "trim.adapter2": "P7"
+        "adapter1": "P5",
+        "adapter2": "P7"
     }
 }
