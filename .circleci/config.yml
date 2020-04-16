@@ -69,8 +69,6 @@ commands:
         type: string
       wt:
         type: string
-      symlink:
-        type: string
     steps:
       - run:
           command: pytest -v --tag <<parameters.tag>> --wt <<parameters.wt>> --symlink --kwd
