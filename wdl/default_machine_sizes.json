@@ -1,0 +1,15 @@
+{
+    "concatenate": "medium",
+    "trim": "medium",
+    "align": "medium",
+    "merge": "medium",
+    "align": "medium",
+    "merge": "medium",
+    "mark": "medium",
+    "filter": "medium",
+    "peaks": "medium",
+    "score": "medium",
+    "normalize": "medium",
+    "qc": "medium",
+    "convert": "medium"
+}

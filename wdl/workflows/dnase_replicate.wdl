@@ -13,7 +13,7 @@ workflow dnase_replicate {
     input {
         Replicate replicate
         References references
-        MachineSizes machine_sizes
+        MachineSizes machine_sizes = read_json("wdl/default_machine_sizes.json")
     }
 
     if (defined(replicate.pe_fastqs)) {
