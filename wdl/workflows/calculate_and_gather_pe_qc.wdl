@@ -9,14 +9,15 @@ import "../../wdl/workflows/pe/qc.wdl" as pe_qc
 
 workflow calculate_and_gather_pe_qc {
     input {
-        QCFiles files_to_gather
+        QCFilesCalculate files_for_calculation
+        QCFilesGather files_to_gather
         MachineSizes machine_sizes
     }
 
     call pe_qc.qc {
         input:
-            unfiltered_bam=files_to_gather.unfiltered_bam,
-            nuclear_bam=files_to_gather.nuclear_bam,
+            unfiltered_bam=files_for_calculation.unfiltered_bam,
+            nuclear_bam=files_for_calculation.nuclear_bam,
             trimstats=files_to_gather.trimstats,
             duplication_metrics=files_to_gather.duplication_metrics,
             hotspot1=files_to_gather.spot_score,

@@ -30,9 +30,12 @@ struct PeaksQC {
 }
 
 
-struct QCFiles {
+struct QCFilesCalculate {
     File unfiltered_bam
     File nuclear_bam
+}
+
+struct QCFilesGather {
     File duplication_metrics
     File spot_score
     File? trimstats

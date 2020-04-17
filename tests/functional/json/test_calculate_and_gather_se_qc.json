@@ -13,9 +13,11 @@
             "cleavage": "tests/data/dnase/aggregation/expected/peaks/nuclear.cleavage.total",
             "allcalls": "tests/data/dnase/aggregation/expected/peaks/nuclear.allcalls.starch"
         },
-        "nuclear_bam": "tests/data/dnase/se/nuclear.bam",
-        "unfiltered_bam": "tests/data/dnase/se/merged.bam",
         "duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard"
+    },
+    "calculate_and_gather_se_qc.files_for_calculation": {
+        "nuclear_bam": "tests/data/dnase/se/nuclear.bam",
+        "unfiltered_bam": "tests/data/dnase/se/merged.bam"
     },
     "calculate_and_gather_se_qc.machine_sizes": {
         "qc": "small"

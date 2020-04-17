@@ -41,9 +41,11 @@ workflow dnase_replicate {
 
     call qc_files.run_pe_or_se_calculate_and_gather_qc {
         input:
+            files_for_calculation={
+               "unfiltered_bam": merge_mark_and_filter_bams.unfiltered_bam,
+               "nuclear_bam": merge_mark_and_filter_bams.nuclear_bam
+            },
             files_to_gather={
-                "unfiltered_bam": merge_mark_and_filter_bams.unfiltered_bam,
-                "nuclear_bam": merge_mark_and_filter_bams.nuclear_bam,
                 "duplication_metrics": merge_mark_and_filter_bams.duplication_metrics,
                 "spot_score": call_hotspots_and_peaks_and_get_spot_score.spot_score,
                 "trimstats": run_pe_or_se_concatenate_trim_and_align_fastqs.trimstats,

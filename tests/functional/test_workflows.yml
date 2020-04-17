@@ -238,7 +238,7 @@
   command: >-
     tests/caper_run.sh \
     wdl/workflows/normalize_and_convert_files.wdl \
-    tests/functional/json/normalize_and_convert_files.json
+    tests/functional/json/test_normalize_and_convert_files.json
   stdout:
     contains:
       - "unstarch"
