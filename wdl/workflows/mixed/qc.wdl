@@ -10,13 +10,8 @@ import "../../../wdl/subworkflows/get_insert_size_metrics.wdl" as picard
 
 workflow qc {
     input {
-        Boolean paired_only
         File unfiltered_bam
         File nuclear_bam
-        File? trimstats
-        File duplication_metrics
-        File hotspot1
-        File hotspot2
         String machine_size = "medium"
     }
 
@@ -46,34 +41,17 @@ workflow qc {
             resources=compute.runtimes[machine_size],
     }
 
-    if (paired_only) {
-        call picard.get_insert_size_metrics as nuclear_insert_size {
-            input:
-                nuclear_bam=nuclear_bam,
-                resources=compute.runtimes[machine_size],
-        }
-    }
-
     output {
         UnfilteredBamQC unfiltered_bam_qc = {
             "stats": unfiltered_samtools.stats,
             "flagstats": unfiltered_samtools.flagstats,
-            "trimstats": trimstats,
             "bamcounts": unfiltered_bamcounts.counts
         }
         NuclearBamQC nuclear_bam_qc = {
             "stats": nuclear_samtools.stats,
             "flagstats": nuclear_samtools.flagstats,
-            "hotspot1": hotspot1,
-            "duplication_metrics": duplication_metrics,
             "preseq": nuclear_preseq.preseq,
-            "preseq_targets": nuclear_preseq.preseq_targets,
-            "insert_size_metrics": nuclear_insert_size.insert_size_metrics,
-            "insert_size_info": nuclear_insert_size.insert_size_info,
-            "insert_size_histogram_pdf": nuclear_insert_size.insert_size_histogram_pdf
-        }
-        PeaksQC peaks_qc = {
-            "hotspot2": hotspot2
+            "preseq_targets": nuclear_preseq.preseq_targets
         }
     }
 }
