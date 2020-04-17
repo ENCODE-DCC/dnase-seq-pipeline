@@ -27,7 +27,6 @@
       - 'BEGIN{OFS="\t"} {print $1, $2, $3, $1}'
       - "extractCenterSites.sh"
       - "-c" 
-      - "chr22.chrom_sizes.bed"
       - "-M" 
       - "chr22.K9.mappable_only.bed"
       - "-o chr22.K9.center_sites.n100.starch"
