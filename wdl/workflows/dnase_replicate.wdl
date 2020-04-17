@@ -17,11 +17,6 @@ workflow dnase_replicate {
         MachineSizes machine_sizes = read_json("wdl/default_machine_sizes.json")
     }
 
-    Boolean paired_only = (
-        defined(replicate.pe_fastqs)
-        && !defined(replicate.se_fastqs)
-    )
-
     call raw_fastqs.run_pe_or_se_concatenate_trim_and_align_fastqs {
         input:
             replicate=replicate,
@@ -46,15 +41,15 @@ workflow dnase_replicate {
 
     call qc_files.run_pe_or_se_calculate_and_gather_qc {
         input:
-            paired_only=paired_only,
             files_to_gather={
-                "unfiltered_bam":merge_mark_and_filter_bams.unfiltered_bam,
+                "unfiltered_bam": merge_mark_and_filter_bams.unfiltered_bam,
                 "nuclear_bam": merge_mark_and_filter_bams.nuclear_bam,
                 "duplication_metrics": merge_mark_and_filter_bams.duplication_metrics,
                 "spot_score": call_hotspots_and_peaks_and_get_spot_score.spot_score,
                 "trimstats": run_pe_or_se_concatenate_trim_and_align_fastqs.trimstats,
                 "five_percent_peaks": call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks
             },
+            replicate=replicate,
             machine_sizes=machine_sizes,
     }
 

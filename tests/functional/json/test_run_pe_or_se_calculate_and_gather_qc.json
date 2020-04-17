@@ -1,5 +1,13 @@
 {
-    "run_pe_or_se_calcualte_and_gather_qc.paired_only": true,
+    "run_pe_or_se_calcualte_and_gather_qc.replicate.replicate": {
+        "read_length": 36,
+        "pe_fastqs": [
+            {
+                "R1": "tests/data/dnase/alignment/r1.fastq.gz",
+                "R2": "tests/data/dnase/alignment/r2.fastq.gz"
+            }
+        ]
+    },
     "run_pe_or_se_calcualte_and_gather_qc.files_to_gather": {
         "spot_score": "tests/data/dnase/hotspot1/subsample.spot.out",
         "five_percent_peaks": {

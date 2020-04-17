@@ -10,10 +10,15 @@ import "calculate_and_gather_se_qc.wdl" as se_bams_and_peaks
 
 workflow run_pe_or_se_calculate_and_gather_qc {
     input {
-        Boolean paired_only
         QCFiles files_to_gather
+        Replicate replicate
         MachineSizes machine_sizes
     }
+
+    Boolean paired_only = (
+        defined(replicate.pe_fastqs)
+        && !defined(replicate.se_fastqs)
+    )
 
     if (paired_only) {
         call pe_bams_and_peaks.calculate_and_gather_pe_qc {
