@@ -1,6 +1,6 @@
 {
     "merge_mark_and_filter_bams.name_sorted_bams": [
-        "tests/data/dnase/pe/name_sorted_se.bam"
+        "tests/data/dnase/se/name_sorted_se.bam"
     ],
     "merge_mark_and_filter_bams.machine_sizes": {
         "filter": "small",
