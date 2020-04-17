@@ -23,6 +23,15 @@
       - "BUCKETS_DIR"
       - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
       - "chr22.fa.chrom_sizes.bed"
+      - "awk"
+      - 'BEGIN{OFS="\t"} {print $1, $2, $3, $1}'
+      - "extractCenterSites.sh"
+      - "-c" 
+      - "chr22.chrom_sizes.bed"
+      - "-M" 
+      - "chr22.K9.mappable_only.bed"
+      - "-o chr22.K9.center_sites.n100.starch"
+      - "-n 100"
   files:
     - path: "test-output/chr22.fa"
       md5sum: 69a750d5ed9490e0d1e707a43368ba86
@@ -57,3 +66,4 @@
       md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
     - path: "test-output/chr22.fa.chromInfo.bed"
       md5sum: 59cc5e7f4dc1a611bc75eceb0ca27697
+    - path: "test-output/chr22.K9.center_sites.n100.starch"

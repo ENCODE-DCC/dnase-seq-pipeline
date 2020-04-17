@@ -5,5 +5,6 @@
     "make_references.machine_size_fai": "small",
     "make_references.machine_size_bowtie": "small",
     "make_references.machine_size_mappable": "small",
-    "make_references.machine_size_chr_buckets": "small"
+    "make_references.machine_size_chr_buckets": "small",
+    "make_references.machine_size_center": "small"
 }
