@@ -17,6 +17,7 @@ workflow make_references {
         Int mappability_kmer_length
         String machine_size_bwa = "large"
         String machine_size_chr_buckets = "large"
+        String machine_size_chr_info = "medium"
         String machine_size_chr_sizes = "large"
         String machine_size_fai = "large"
         String machine_size_bowtie = "large"
@@ -64,9 +65,12 @@ workflow make_references {
             fai=select_first([build_fasta_index.indexed_fasta.fai]),
             resources=compute.runtimes[machine_size_chr_sizes],
     }
-#
-#    call chr_info.get_chrom_info {
-#    }
+
+    call chr_info.get_chrom_info {
+        input:
+            chrom_sizes=get_chrom_sizes.chrom_sizes,
+            resources=compute.runtimes[machine_size_chr_info],
+    }
 #
 #    call center.get_center_sites {
 #    }
@@ -75,6 +79,7 @@ workflow make_references {
         BowtieIndex bowtie_index = build_bowtie_index.bowtie_index
         BwaIndex bwa_index = build_bwa_index.bwa_index
         File chrom_buckets = get_chrombuckets.chrombuckets
+        File chrom_info = get_chrom_info.chrom_info
         File chrom_sizes = get_chrom_sizes.chrom_sizes
         File? fasta_index = build_fasta_index.indexed_fasta.fai
         File mappable_regions = build_mappable_only_bed.mappable_regions
