@@ -32,7 +32,7 @@
             "sa": "tests/data/ref/chr22.fa.sa"
         },
         "nuclear_chroms": "tests/data/ref/chr22.fa.nuclear.txt",
-         "hotspot1": {
+        "hotspot1": {
             "chrom_info": "tests/data/dnase/hotspot1/chr22.chromInfo.bed",
             "mappable_regions": "tests/data/dnase/hotspot1/chr22.K36.mappable_only.bed"
         },
