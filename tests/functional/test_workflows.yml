@@ -182,7 +182,6 @@
     must_not_contain:
      - "CollectInsertSizeMetrics"
   files:
-    - path: "test-output/normalized.nuclear.density.bw"
     - path: "test-output/tagcounts.txt"
     - path: "test-output/merged.stats.txt"
     - path: "test-output/merged.flagstats.txt"
@@ -197,10 +196,6 @@
       md5sum: 8c385c9306d412ec0c07cf0c8094c4b9
     - path: "test-output/nuclear.preseq.txt"
       md5sum: fbcfd649f906ad8a66c8d7b044cd3921
-    - path: "test-output/nuclear.allcalls.bed.gz"
-    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bed.gz"
-    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
-      md5sum: 5b6209d28a8afa848b69c2b18cc69ab6
 
 - name: test_run_pe_or_se_calculate_and_gather_qc
   tags:
