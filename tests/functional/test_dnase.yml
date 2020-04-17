@@ -51,3 +51,57 @@
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
       md5sum: 2787fe8fac4200725fb06f414bde8c84
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
+
+- name: test_base_dnase
+  tags:
+    - full
+  command: >-
+    tests/caper_run.sh \
+    dnase.wdl \
+    tests/functional/json/test_base_dnase.json
+  stdout:
+    contains:
+      - "cat"
+      - "awk"
+      - "bwa aln"
+      - "bwa sampe"
+      - "samtools sort"
+      - "filter_reads.py"
+      - "RevertOriginalBaseQualitiesAndAddMateCigar"
+      - "MarkDuplicatesWithMateCigar"
+      - "hotspot2.sh"
+      - "random_sample_read1.sh"
+      - "runhotspot.bash"
+      - "starch_to_bigwig.bash"
+      - "bamcounts.py"
+      - "samtools stats"
+      - "samtools flagstats"
+      - "CollectInsertSizeMetrics"
+      - "preseq lc_extrap"
+      - "pigz"
+      - "bedToBigBed"
+  files:
+    - path: "test-output/merged.bam"
+    - path: "test-output/merged.stats.txt"
+    - path: "test-output/merged.flagstats.txt"
+    - path: "test-output/nuclear.bam"
+    - path: "test-output/nuclear.stats.txt"
+    - path: "test-output/nuclear.flagstats.txt"
+    - path: "test-output/normalized.nuclear.density.bw"
+    - path: "test-output/nuclear.allcalls.bed.gz"
+    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bed.gz"
+    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
+      md5sum: 5b6209d28a8afa848b69c2b18cc69ab6
+    - path: "test-output/nuclear.0.05.SPOT.txt"
+      md5sum: d5c0602308fc750da6630ea52ef8b058
+    - path: "test-output/subsample.spot.out"
+      md5sum: b86f89d7c2778558a336ed9112913d46
+    - path: "test-output/trimstats.txt"
+    - path: "test-output/nuclear.preseq_targets.txt"
+      md5sum: 1c2f55280daae80307bfda6e2d726712
+    - path: "test-output/nuclear.preseq.txt"
+      md5sum: 4bbc21653c28e21c1b09be846a57e5de
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard"
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
+      md5sum: 2787fe8fac4200725fb06f414bde8c84
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
