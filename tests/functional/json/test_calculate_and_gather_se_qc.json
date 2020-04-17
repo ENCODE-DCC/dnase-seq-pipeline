@@ -1,0 +1,21 @@
+{
+    "calculate_and_gather_se_qc.spot_score": "tests/data/dnase/hotspot1/subsample.spot.out",
+    "calculate_and_gather_se_qc.five_percent_peaks": {
+        "density_bw": "tests/data/dnase/aggregation/expected/peaks/nuclear.density.bw",
+        "density_starch": "tests/data/dnase/aggregation/expected/peaks/nuclear.density.starch",
+        "narrowpeaks": "tests/data/dnase/aggregation/expected/peaks/nuclear.peaks.narrowpeaks.fdr0.05.starch",
+        "fragments": "tests/data/dnase/aggregation/expected/peaks/nuclear.fragments.sorted.starch",
+        "spot_score": "tests/data/dnase/hotspot2/expected/filtered.0.05.SPOT.txt",
+        "cutcounts": "tests/data/dnase/aggregation/expected/peaks/nuclear.cutcounts.starch",
+        "hotspots": "tests/data/dnase/aggregation/expected/peaks/nuclear.hotspots.fdr0.05.starch",
+        "peaks": "tests/data/dnase/aggregation/expected/peaks/nuclear.peaks.fdr0.05.starch",
+        "cleavage": "tests/data/dnase/aggregation/expected/peaks/nuclear.cleavage.total",
+        "allcalls": "tests/data/dnase/aggregation/expected/peaks/nuclear.allcalls.starch"
+    },
+    "calculate_and_gather_se_qc.nuclear_bam": "tests/data/dnase/se/nuclear.bam",
+    "calculate_and_gather_se_qc.unfiltered_bam": "tests/data/dnase/se/merged.bam",
+    "calculate_and_gather_se_qc.machine_sizes": {
+        "qc": "small"
+    },
+    "calculate_and_gather_se_qc.duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard"
+}

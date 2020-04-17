@@ -1,6 +1,5 @@
 {
-    "calculate_qc_and_normalize_and_convert_files.spot_score": "tests/data/dnase/hotspot1/subsample.spot.out",
-    "calculate_qc_and_normalize_and_convert_files.five_percent_peaks": {
+    "normalize_and_convert_files.five_percent_peaks": {
         "density_bw": "tests/data/dnase/aggregation/expected/peaks/nuclear.density.bw",
         "density_starch": "tests/data/dnase/aggregation/expected/peaks/nuclear.density.starch",
         "narrowpeaks": "tests/data/dnase/aggregation/expected/peaks/nuclear.peaks.narrowpeaks.fdr0.05.starch",
@@ -12,26 +11,16 @@
         "cleavage": "tests/data/dnase/aggregation/expected/peaks/nuclear.cleavage.total",
         "allcalls": "tests/data/dnase/aggregation/expected/peaks/nuclear.allcalls.starch"
     },
-    "calculate_qc_and_normalize_and_convert_files.references": {
+    "normalize_and_convert_files.references": {
         "narrow_peak_auto_sql": "tests/data/ref/bigbed/narrowPeak.as",
         "indexed_fasta": {
             "fai": "tests/data/ref/chr22.fa.fai",
             "fasta": "tests/data/ref/chr22.fa."
         }
     },
-    "calculate_qc_and_normalize_and_convert_files.nuclear_bam": "tests/data/dnase/se/nuclear.bam",
-    "calculate_qc_and_normalize_and_convert_files.unfiltered_bam": "tests/data/dnase/se/merged.bam",
-    "calculate_qc_and_normalize_and_convert_files.machine_sizes": {
+    "normalize_and_convert_files.nuclear_bam": "tests/data/dnase/filtering/nuclear.bam",
+    "normalize_and_convert_files.machine_sizes": {
         "convert": "small",
-        "normalize": "small",
-        "qc": "small"
-    },
-    "calculate_qc_and_normalize_and_convert_files.trimstats": null,
-    "calculate_qc_and_normalize_and_convert_files.duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard",
-    "calculate_qc_and_normalize_and_convert_files.replicate": {
-        "se_fastqs": [
-            "tests/data/dnase/alignment/r1.fastq.gz"
-        ],
-        "read_length": 36
+        "normalize": "small"
     }
 }

@@ -113,27 +113,21 @@
     - path: "test-output/nuclear.0.05.density.starch"
     - path: "test-output/nuclear.0.05.allcalls.starch"
 
-- name: test_calculate_qc_and_normalize_and_convert_files_pe
+- name: test_calculate_and_gather_pe_qc
   tags:
     - functional
   command: >-
     tests/caper_run.sh \
-    wdl/workflows/calculate_qc_and_normalize_and_convert_files.wdl \
-    tests/functional/json/test_calculate_qc_and_normalize_and_convert_files_pe.json
+    wdl/workflows/calculate_and_gather_pe_qc.wdl \
+    tests/functional/json/test_calculate_and_gather_pe_qc.json
   stdout:
     contains:
-      - "unstarch"
-      - "awk"
-      - "starch_to_bigwig.bash"
       - "bamcounts.py"
       - "samtools stats"
       - "samtools flagstats"
       - "CollectInsertSizeMetrics"
       - "preseq lc_extrap"
-      - "pigz"
-      - "bedToBigBed"
   files:
-    - path: "test-output/normalized.nuclear.density.bw"
     - path: "test-output/tests/data/dnase/trimming/trimstats.txt"
     - path: "test-output/tagcounts.txt"
     - path: "test-output/merged.stats.txt"
@@ -153,29 +147,20 @@
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
       md5sum: 2787fe8fac4200725fb06f414bde8c84
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
-    - path: "test-output/nuclear.allcalls.bed.gz"
-    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bed.gz"
-    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
-      md5sum: 5b6209d28a8afa848b69c2b18cc69ab6
 
-- name: test_calculate_qc_and_normalize_and_convert_files_se
+- name: test_calculate_and_gather_se_qc
   tags:
     - functional
   command: >-
     tests/caper_run.sh \
-    wdl/workflows/calculate_qc_and_normalize_and_convert_files.wdl \
-    tests/functional/json/test_calculate_qc_and_normalize_and_convert_files_se.json
+    wdl/workflows/calculate_and_gather_se_qc.wdl \
+    tests/functional/json/test_calculate_and_gather_se_qc.json
   stdout:
     contains:
-      - "unstarch"
-      - "awk"
-      - "starch_to_bigwig.bash"
       - "bamcounts.py"
       - "samtools stats"
       - "samtools flagstats"
       - "preseq lc_extrap"
-      - "pigz"
-      - "bedToBigBed"
     must_not_contain:
      - "CollectInsertSizeMetrics"
   files:
@@ -194,6 +179,27 @@
       md5sum: 8c385c9306d412ec0c07cf0c8094c4b9
     - path: "test-output/nuclear.preseq.txt"
       md5sum: fbcfd649f906ad8a66c8d7b044cd3921
+    - path: "test-output/nuclear.allcalls.bed.gz"
+    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bed.gz"
+    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
+      md5sum: 5b6209d28a8afa848b69c2b18cc69ab6
+
+- name: test_normalize_and_convert_files
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/normalize_and_convert_files.wdl \
+    tests/functional/json/normalize_and_convert_files.json
+  stdout:
+    contains:
+      - "unstarch"
+      - "awk"
+      - "starch_to_bigwig.bash"
+      - "pigz"
+      - "bedToBigBed"
+  files:
+    - path: "test-output/normalized.nuclear.density.bw"
     - path: "test-output/nuclear.allcalls.bed.gz"
     - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bed.gz"
     - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
