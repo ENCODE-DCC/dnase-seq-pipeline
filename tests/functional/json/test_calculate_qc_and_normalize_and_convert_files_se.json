@@ -31,6 +31,7 @@
     "calculate_qc_and_normalize_and_convert_files.replicate": {
         "se_fastqs": [
             "tests/data/dnase/alignment/r1.fastq.gz"
-        ]
+        ],
+        "read_length": 36
     }
 }

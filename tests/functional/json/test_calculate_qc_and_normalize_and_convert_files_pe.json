@@ -34,6 +34,7 @@
                 "R1": "tests/data/dnase/alignment/r1.fastq.gz",
                 "R2": "tests/data/dnase/alignment/r2.fastq.gz"
             }
-        ]
+        ],
+        "read_length": 36
     }
 }
