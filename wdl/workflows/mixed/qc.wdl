@@ -45,10 +45,12 @@ workflow qc {
             resources=compute.runtimes[machine_size],
     }
 
-    call picard.get_insert_size_metrics as nuclear_insert_size {
-        input:
-            nuclear_bam=nuclear_bam,
-            resources=compute.runtimes[machine_size],
+    if (defined(trimstats)) {
+        call picard.get_insert_size_metrics as nuclear_insert_size {
+            input:
+                nuclear_bam=nuclear_bam,
+                resources=compute.runtimes[machine_size],
+        }
     }
 
     output {
