@@ -1,5 +1,5 @@
 {
     "qc.nuclear_bam": "tests/data/dnase/filtering/nuclear.bam",
     "qc.machine_size": "small",
-    "qc.unfiltered_bam": "tests/data/dnase/merging/merged.bam",
+    "qc.unfiltered_bam": "tests/data/dnase/merging/merged.bam"
 }
