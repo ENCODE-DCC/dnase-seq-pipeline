@@ -76,7 +76,6 @@
       - "bamcounts.py"
       - "samtools stats"
       - "samtools flagstats"
-      - "CollectInsertSizeMetrics"
       - "preseq lc_extrap"
       - "pigz"
       - "bedToBigBed"
