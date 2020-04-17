@@ -10,23 +10,13 @@ import "../../wdl/workflows/mixed/convert.wdl" as starches
 
 
 
-workflow calculate_qc_and_normalize_and_convert_files {
+workflow normalize_and_convert_files {
     input {
-        File unfiltered_bam
         File nuclear_bam
-        File duplication_metrics        
-        File spot_score
-        File? trimstats
         HotSpot2Peaks five_percent_peaks
-        Replicate replicate
         References references
         MachineSizes machine_sizes
     }
-
-    Boolean paired_only = (
-        defined(replicate.pe_fastqs)
-        && !defined(replicate.se_fastqs)
-    )
 
     IndexedFastaRequired indexed_fasta = select_first([
         references.indexed_fasta
@@ -38,18 +28,6 @@ workflow calculate_qc_and_normalize_and_convert_files {
             nuclear_bam=nuclear_bam,
             fai=indexed_fasta.fai,
             machine_size=machine_sizes.normalize,
-    }
-
-    call bams_and_peaks.qc {
-        input:
-            paired_only=paired_only,
-            unfiltered_bam=unfiltered_bam,
-            nuclear_bam=nuclear_bam,
-            trimstats=trimstats,
-            duplication_metrics=duplication_metrics,
-            hotspot1=spot_score,
-            hotspot2=five_percent_peaks.spot_score,
-            machine_size=machine_sizes.qc,
     }
 
     call starches.convert {
@@ -68,8 +46,5 @@ workflow calculate_qc_and_normalize_and_convert_files {
         File five_percent_allcalls_bed_gz = convert.five_percent_allcalls_bed_gz
         File five_percent_narrowpeaks_bed_gz = convert.five_percent_narrowpeaks_bed_gz
         File five_percent_narrowpeaks_bigbed = convert.five_percent_narrowpeaks_bigbed
-        UnfilteredBamQC unfiltered_bam_qc = qc.unfiltered_bam_qc
-        NuclearBamQC nuclear_bam_qc = qc.nuclear_bam_qc
-        PeaksQC peaks_qc = qc.peaks_qc
     }
 }
