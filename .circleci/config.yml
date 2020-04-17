@@ -71,7 +71,7 @@ commands:
         type: string
     steps:
       - run:
-          command: pytest -v --tag <<parameters.tag>> --wt <<parameters.wt>> --symlink
+          command: pytest -v --tag <<parameters.tag>> --wt <<parameters.wt>> --symlink --kwd
           no_output_timeout: 30m
 
   install_git_lfs_and_get_data:
