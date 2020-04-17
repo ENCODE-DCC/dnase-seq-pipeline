@@ -5,5 +5,6 @@
     "qc.hotspot1": "tests/data/dnase/hotspot1/subsample.spot.out",
     "qc.trimstats": "tests/data/dnase/trimming/trimstats.txt",
     "qc.duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard",
-    "qc.unfiltered_bam": "tests/data/dnase/merging/merged.bam"
+    "qc.unfiltered_bam": "tests/data/dnase/merging/merged.bam",
+    "qc.paired_only": true
 }

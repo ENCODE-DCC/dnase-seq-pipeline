@@ -10,6 +10,7 @@ import "../../../wdl/subworkflows/get_insert_size_metrics.wdl" as picard
 
 workflow qc {
     input {
+        Boolean paired_only
         File unfiltered_bam
         File nuclear_bam
         File? trimstats
@@ -45,7 +46,7 @@ workflow qc {
             resources=compute.runtimes[machine_size],
     }
 
-    if (defined(trimstats)) {
+    if (paired_only) {
         call picard.get_insert_size_metrics as nuclear_insert_size {
             input:
                 nuclear_bam=nuclear_bam,

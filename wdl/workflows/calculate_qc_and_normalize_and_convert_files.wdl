@@ -18,9 +18,15 @@ workflow calculate_qc_and_normalize_and_convert_files {
         File spot_score
         File? trimstats
         HotSpot2Peaks five_percent_peaks
+        Replicate replicate
         References references
         MachineSizes machine_sizes
     }
+
+    Boolean paired_only = (
+        defined(replicate.pe_fastqs)
+        && !defined(replicate.se_fastqs)
+    )
 
     IndexedFastaRequired indexed_fasta = select_first([
         references.indexed_fasta
@@ -36,6 +42,7 @@ workflow calculate_qc_and_normalize_and_convert_files {
 
     call bams_and_peaks.qc {
         input:
+            paired_only=paired_only,
             unfiltered_bam=unfiltered_bam,
             nuclear_bam=nuclear_bam,
             trimstats=trimstats,

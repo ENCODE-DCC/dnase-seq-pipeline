@@ -27,5 +27,13 @@
         "qc": "small"
     },
     "calculate_qc_and_normalize_and_convert_files.trimstats": "tests/data/dnase/trimming/trimstats.txt",
-    "calculate_qc_and_normalize_and_convert_files.duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard"
+    "calculate_qc_and_normalize_and_convert_files.duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard",
+    "calculate_qc_and_normalize_and_convert_files.replicate": {
+        "pe_fastqs": [
+            {
+                "R1": "tests/data/dnase/alignment/r1.fastq.gz",
+                "R2": "tests/data/dnase/alignment/r2.fastq.gz"
+            }
+        ]
+    }
 }

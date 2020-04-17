@@ -27,5 +27,10 @@
         "qc": "small"
     },
     "calculate_qc_and_normalize_and_convert_files.trimstats": null,
-    "calculate_qc_and_normalize_and_convert_files.duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard"
+    "calculate_qc_and_normalize_and_convert_files.duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard",
+    "calculate_qc_and_normalize_and_convert_files.replicate": {
+        "se_fastqs": [
+            "tests/data/dnase/alignment/r1.fastq.gz"
+        ]
+    }
 }

@@ -63,6 +63,7 @@ workflow dnase_replicate {
             spot_score=call_hotspots_and_peaks_and_get_spot_score.spot_score,
             trimstats=concatenate_trim_and_align_pe_fastqs.trimstats,
             five_percent_peaks=call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks,
+            replicate=replicate,
             references=references,
             machine_sizes=machine_sizes,
     }
