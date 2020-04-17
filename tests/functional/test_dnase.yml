@@ -33,10 +33,10 @@
     - path: "test-output/nuclear.bam"
     - path: "test-output/nuclear.stats.txt"
     - path: "test-output/nuclear.flagstats.txt"
-    - path: "test-output/normalized.nuclear.density.bw"
-    - path: "test-output/nuclear.allcalls.bed.gz"
-    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bed.gz"
-    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
+    - path: "test-output/normalized.nuclear.0.05.density.bw"
+    - path: "test-output/nuclear.0.05.allcalls.bed.gz"
+    - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
+    - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
       md5sum: 5b6209d28a8afa848b69c2b18cc69ab6
     - path: "test-output/nuclear.0.05.SPOT.txt"
       md5sum: d5c0602308fc750da6630ea52ef8b058
@@ -87,10 +87,10 @@
     - path: "test-output/nuclear.bam"
     - path: "test-output/nuclear.stats.txt"
     - path: "test-output/nuclear.flagstats.txt"
-    - path: "test-output/normalized.nuclear.density.bw"
-    - path: "test-output/nuclear.allcalls.bed.gz"
-    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bed.gz"
-    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
+    - path: "test-output/normalized.nuclear.0.05.density.bw"
+    - path: "test-output/nuclear.0.05.allcalls.bed.gz"
+    - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
+    - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
       md5sum: 5b6209d28a8afa848b69c2b18cc69ab6
     - path: "test-output/nuclear.0.05.SPOT.txt"
       md5sum: d5c0602308fc750da6630ea52ef8b058
