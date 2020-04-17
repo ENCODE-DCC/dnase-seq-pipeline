@@ -25,8 +25,8 @@ workflow dnase_replicate {
     call raw_fastqs.run_pe_or_se_concatenate_trim_and_align_fastqs {
         input:
             replicate=replicate,
-            references=referenecs,
-            machine_sizes_machine_sizes,
+            references=references,
+            machine_sizes=machine_sizes,
     }
 
     call name_sorted_bams.merge_mark_and_filter_bams {
@@ -52,7 +52,7 @@ workflow dnase_replicate {
                 "nuclear_bam": merge_mark_and_filter_bams.nuclear_bam,
                 "duplication_metrics": merge_mark_and_filter_bams.duplication_metrics,
                 "spot_score": call_hotspots_and_peaks_and_get_spot_score.spot_score,
-                "trimstats": run_pe_or_se_concatenate_trim_and_align_fastq.trimstats,
+                "trimstats": run_pe_or_se_concatenate_trim_and_align_fastqs.trimstats,
                 "five_percent_peaks": call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks
             },
             machine_sizes=machine_sizes,
@@ -70,9 +70,9 @@ workflow dnase_replicate {
         File unfiltered_bam = merge_mark_and_filter_bams.unfiltered_bam
         File nuclear_bam = merge_mark_and_filter_bams.nuclear_bam
         File normalized_density_bw = normalize_and_convert_files.normalized_density_bw
-        File five_percent_allcalls_bed_gz = calculate_qc_and_normalize_and_convert_files.five_percent_allcalls_bed_gz
-        File five_percent_narrowpeaks_bed_gz = calculate_qc_and_normalize_and_convert_files.five_percent_narrowpeaks_bed_gz
-        File five_percent_narrowpeaks_bigbed = calculate_qc_and_normalize_and_convert_files.five_percent_narrowpeaks_bigbed
+        File five_percent_allcalls_bed_gz = normalize_and_convert_files.five_percent_allcalls_bed_gz
+        File five_percent_narrowpeaks_bed_gz = normalize_and_convert_files.five_percent_narrowpeaks_bed_gz
+        File five_percent_narrowpeaks_bigbed = normalize_and_convert_files.five_percent_narrowpeaks_bigbed
         QC qc = run_pe_or_se_calculate_and_gather_qc.out
     }
 }
