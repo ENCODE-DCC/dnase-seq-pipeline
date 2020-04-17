@@ -59,7 +59,7 @@
     - path: "test-output/chr22.fa.rev.2.ebwt"
       md5sum: f28c064e9c10c7dae2eaf76e1737a0b6
     - path: "test-output/chr22.K12.mappable_only.bed"
-      md5sum: 834dd1ec4452b8159a8af2802d591c5 
+      md5sum: 834dd1ec4452b8159a8af2802d591c59
     - path: "test-output/chrom-buckets.chr22.75_20.bed.starch"
     - path: "test-output/chr22.fa.chrom_sizes.bed"
       md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
