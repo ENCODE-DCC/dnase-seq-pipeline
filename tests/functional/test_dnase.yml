@@ -102,6 +102,51 @@
     - path: "test-output/nuclear.preseq.txt"
       md5sum: fbcfd649f906ad8a66c8d7b044cd3921
 
+- name: test_dnase_replicate_mixed
+  tags:
+    - full
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/dnase_replicate.wdl \
+    tests/functional/json/test_dnase_replicate_mixed.json
+  stdout:
+    contains:
+      - "cat"
+      - "awk"
+      - "bwa aln"
+      - "bwa sampe"
+      - "samtools sort"
+      - "filter_reads.py"
+      - "RevertOriginalBaseQualitiesAndAddMateCigar"
+      - "MarkDuplicatesWithMateCigar"
+      - "hotspot2.sh"
+      - "random_sample_read1.sh"
+      - "runhotspot.bash"
+      - "starch_to_bigwig.bash"
+      - "bamcounts.py"
+      - "samtools stats"
+      - "samtools flagstats"
+      - "preseq lc_extrap"
+      - "pigz"
+      - "bedToBigBed"
+    must_not_contain:
+      - "CollectInsertSizeMetrics"
+  files:
+    - path: "test-output/merged.bam"
+    - path: "test-output/merged.stats.txt"
+    - path: "test-output/merged.flagstats.txt"
+    - path: "test-output/nuclear.bam"
+    - path: "test-output/nuclear.stats.txt"
+    - path: "test-output/nuclear.flagstats.txt"
+    - path: "test-output/normalized.nuclear.0.05.density.bw"
+    - path: "test-output/nuclear.0.05.allcalls.bed.gz"
+    - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
+    - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
+    - path: "test-output/nuclear.0.05.SPOT.txt"
+    - path: "test-output/subsample.spot.out"
+    - path: "test-output/nuclear.preseq_targets.txt"
+    - path: "test-output/nuclear.preseq.txt"
+
 - name: test_base_dnase
   tags:
     - full
