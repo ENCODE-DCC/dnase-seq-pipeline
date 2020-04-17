@@ -3,7 +3,9 @@
         "accession": "TEST123ABC",
         "number": "0",
         "read_length": "36",
-        "se_fastqs": "tests/data/dnase/alignment/r1.fastq.gz",
+        "se_fastqs": [
+            "tests/data/dnase/alignment/r1.fastq.gz"
+        ],
         "adapters": {
             "file": "tests/data/dnase/alignment/adapters.txt",
             "adapter1": "P5",
