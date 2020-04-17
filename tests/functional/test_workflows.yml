@@ -33,6 +33,24 @@
     - path: "test-output/name_sorted_pe.bam"
     - path: "test-output/trimstats.txt"
 
+- name: test_run_pe_or_se_concatenate_trim_and_align_fastqs
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/run_pe_or_se_concatenate_trim_and_align_fastqs.wdl \
+    tests/functional/json/test_run_pe_or_se_concatenate_trim_and_align_fastqs.json
+  stdout:
+    contains:
+      - "cat"
+      - "awk"
+      - "bwa aln"
+      - "bwa sampe"
+      - "samtools sort"
+  files:
+    - path: "test-output/name_sorted_pe.bam"
+    - path: "test-output/trimstats.txt"
+
 - name: test_merge_mark_and_filter_bams_pe
   tags:
     - functional
@@ -183,6 +201,41 @@
     - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bed.gz"
     - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
       md5sum: 5b6209d28a8afa848b69c2b18cc69ab6
+
+- name: test_run_pe_or_se_calculate_and_gather_qc
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/run_pe_or_se_calculate_and_gather_qc.wdl \
+    tests/functional/json/test_run_pe_or_se_calculate_and_gather_qc.json
+  stdout:
+    contains:
+      - "bamcounts.py"
+      - "samtools stats"
+      - "samtools flagstats"
+      - "CollectInsertSizeMetrics"
+      - "preseq lc_extrap"
+  files:
+    - path: "test-output/tests/data/dnase/trimming/trimstats.txt"
+    - path: "test-output/tagcounts.txt"
+    - path: "test-output/merged.stats.txt"
+    - path: "test-output/merged.flagstats.txt"
+    - path: "test-output/nuclear.stats.txt"
+    - path: "test-output/nuclear.flagstats.txt"
+    - path: "test-output/tests/data/dnase/hotspot1/subsample.spot.out"
+      md5sum: 09e71419a7c0023634359f3e6a30a155
+    - path: "test-output/tests/data/dnase/hotspot2/expected/filtered.0.05.SPOT.txt"
+      md5sum: d5c0602308fc750da6630ea52ef8b058
+    - path: "test-output/tests/data/dnase/aggregation/expected/MarkDuplicates.picard"
+    - path: "test-output/nuclear.preseq_targets.txt"
+      md5sum: 1c2f55280daae80307bfda6e2d726712
+    - path: "test-output/nuclear.preseq.txt"
+      md5sum: 4bbc21653c28e21c1b09be846a57e5de
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard"
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
+      md5sum: 2787fe8fac4200725fb06f414bde8c84
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
 
 - name: test_normalize_and_convert_files
   tags:

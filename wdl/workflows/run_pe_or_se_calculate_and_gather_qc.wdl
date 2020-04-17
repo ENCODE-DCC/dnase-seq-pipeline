@@ -8,7 +8,7 @@ import "calculate_and_gather_pe_qc.wdl" as pe_bams_and_peaks
 import "calculate_and_gather_se_qc.wdl" as se_bams_and_peaks
 
 
-workflow calculate_and_gather_qc {
+workflow run_pe_or_se_calculate_and_gather_qc {
     input {
         Boolean paired_only
         QCFiles files_to_gather
