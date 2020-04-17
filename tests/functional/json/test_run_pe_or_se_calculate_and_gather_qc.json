@@ -1,6 +1,6 @@
 {
-    "calculate_and_gather_qc.paired_only": true,
-    "calculate_and_gather_qc.files_to_gather": {
+    "run_pe_or_se_calcualte_and_gather_qc.paired_only": true,
+    "run_pe_or_se_calcualte_and_gather_qc.files_to_gather": {
         "spot_score": "tests/data/dnase/hotspot1/subsample.spot.out",
         "five_percent_peaks": {
             "density_bw": "tests/data/dnase/aggregation/expected/peaks/nuclear.density.bw",
@@ -19,7 +19,7 @@
         "trimstats": "tests/data/dnase/trimming/trimstats.txt",
         "duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard"
     },
-    "calculate_and_gather_qc.machine_sizes": {
+    "run_pe_or_se_calcualte_and_gather_qc.machine_sizes": {
         "qc": "small"
     }
 }
