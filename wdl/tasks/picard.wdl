@@ -76,9 +76,12 @@ task collect_insert_size_metrics {
         String pdf_out = "CollectInsertSizeMetrics.picard.pdf"
     }
 
+    String linked_bam = basename(bam)
+
     command {
+        ln ~{bam} .
         java -jar $(which picard.jar) CollectInsertSizeMetrics \
-            ~{"INPUT=" + bam} \
+            ~{"INPUT=" + linked_bam} \
             ~{"OUTPUT=" + out} \
             ~{"HISTOGRAM_FILE=" + pdf_out} \
             ~{"VALIDATION_STRINGENCY=" + params.validation_stringency} \
