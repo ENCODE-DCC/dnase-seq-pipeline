@@ -26,10 +26,10 @@ workflow calculate_and_gather_pe_qc {
     }
 
     output {
-        QC out = {
-            "unfiltered_bam_qc": qc.unfiltered_bam_qc,
-            "nuclear_bam_qc": qc.nuclear_bam_qc,
-            "peaks_qc": qc.peaks_qc
+        QC out = object {
+            unfiltered_bam_qc: qc.unfiltered_bam_qc,
+            nuclear_bam_qc: qc.nuclear_bam_qc,
+            peaks_qc: qc.peaks_qc
         }
     }
 }
