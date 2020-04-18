@@ -153,13 +153,14 @@ jobs:
 
   wdl_full_tests:
     <<: *machine_defaults
+    resource_class: xlarge
     steps:
       - checkout
       - prepare_pytest_environment
       - install_git_lfs_and_get_data
       - run_test_tag:
           tag: "full"
-          wt: "4"
+          wt: "8"
 
 # Workflow
 workflows:
