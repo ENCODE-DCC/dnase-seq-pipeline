@@ -12,7 +12,7 @@ workflow align {
         BwaIndex bwa_index
         File trimmed_fastq
         IndexedFasta indexed_fasta
-        String machine_size
+        String machine_size = "medium"
         String out = "name_sorted_se.bam"
     }
 

@@ -33,13 +33,51 @@
     - path: "test-output/name_sorted_pe.bam"
     - path: "test-output/trimstats.txt"
 
-- name: test_merge_mark_and_filter_bams
+- name: test_run_pe_or_se_concatenate_trim_and_align_fastqs
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/run_pe_or_se_concatenate_trim_and_align_fastqs.wdl \
+    tests/functional/json/test_run_pe_or_se_concatenate_trim_and_align_fastqs.json
+  stdout:
+    contains:
+      - "cat"
+      - "awk"
+      - "bwa aln"
+      - "bwa sampe"
+      - "samtools sort"
+  files:
+    - path: "test-output/name_sorted_pe.bam"
+    - path: "test-output/trimstats.txt"
+
+- name: test_merge_mark_and_filter_bams_pe
   tags:
     - functional
   command: >-
     tests/caper_run.sh \
     wdl/workflows/merge_mark_and_filter_bams.wdl \
-    tests/functional/json/test_merge_mark_and_filter_bams.json
+    tests/functional/json/test_merge_mark_and_filter_bams_pe.json
+  stdout:
+    contains:
+      - "samtools sort"
+      - "filter_reads.py"
+      - "RevertOriginalBaseQualitiesAndAddMateCigar"
+      - "MarkDuplicatesWithMateCigar"
+  files:
+    - path: "test-output/merged.bam"
+    - path: "test-output/qc_fail_flag_filtered.bam"
+    - path: "test-output/marked.bam"
+    - path: "test-output/nuclear.bam"
+    - path: "test-output/MarkDuplicates.picard"
+
+- name: test_merge_mark_and_filter_bams_se
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/merge_mark_and_filter_bams.wdl \
+    tests/functional/json/test_merge_mark_and_filter_bams_se.json
   stdout:
     contains:
       - "samtools sort"
@@ -92,3 +130,125 @@
       md5sum: 757eda3362817896475725c6e4020d99
     - path: "test-output/nuclear.0.05.density.starch"
     - path: "test-output/nuclear.0.05.allcalls.starch"
+
+- name: test_calculate_and_gather_pe_qc
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/calculate_and_gather_pe_qc.wdl \
+    tests/functional/json/test_calculate_and_gather_pe_qc.json
+  stdout:
+    contains:
+      - "bamcounts.py"
+      - "samtools stats"
+      - "samtools flagstats"
+      - "CollectInsertSizeMetrics"
+      - "preseq lc_extrap"
+  files:
+    - path: "test-output/tests/data/dnase/trimming/trimstats.txt"
+    - path: "test-output/tagcounts.txt"
+    - path: "test-output/merged.stats.txt"
+    - path: "test-output/merged.flagstats.txt"
+    - path: "test-output/nuclear.stats.txt"
+    - path: "test-output/nuclear.flagstats.txt"
+    - path: "test-output/tests/data/dnase/hotspot1/subsample.spot.out"
+      md5sum: 09e71419a7c0023634359f3e6a30a155
+    - path: "test-output/tests/data/dnase/hotspot2/expected/filtered.0.05.SPOT.txt"
+      md5sum: d5c0602308fc750da6630ea52ef8b058
+    - path: "test-output/tests/data/dnase/aggregation/expected/MarkDuplicates.picard"
+    - path: "test-output/nuclear.preseq_targets.txt"
+      md5sum: 1c2f55280daae80307bfda6e2d726712
+    - path: "test-output/nuclear.preseq.txt"
+      md5sum: 4bbc21653c28e21c1b09be846a57e5de
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard"
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
+      md5sum: 2787fe8fac4200725fb06f414bde8c84
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
+
+- name: test_calculate_and_gather_se_qc
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/calculate_and_gather_se_qc.wdl \
+    tests/functional/json/test_calculate_and_gather_se_qc.json
+  stdout:
+    contains:
+      - "bamcounts.py"
+      - "samtools stats"
+      - "samtools flagstats"
+      - "preseq lc_extrap"
+    must_not_contain:
+     - "CollectInsertSizeMetrics"
+  files:
+    - path: "test-output/tagcounts.txt"
+    - path: "test-output/merged.stats.txt"
+    - path: "test-output/merged.flagstats.txt"
+    - path: "test-output/nuclear.stats.txt"
+    - path: "test-output/nuclear.flagstats.txt"
+    - path: "test-output/tests/data/dnase/hotspot1/subsample.spot.out"
+      md5sum: 09e71419a7c0023634359f3e6a30a155
+    - path: "test-output/tests/data/dnase/hotspot2/expected/filtered.0.05.SPOT.txt"
+      md5sum: d5c0602308fc750da6630ea52ef8b058
+    - path: "test-output/tests/data/dnase/aggregation/expected/MarkDuplicates.picard"
+    - path: "test-output/nuclear.preseq_targets.txt"
+      md5sum: 8c385c9306d412ec0c07cf0c8094c4b9
+    - path: "test-output/nuclear.preseq.txt"
+      md5sum: fbcfd649f906ad8a66c8d7b044cd3921
+
+- name: test_run_pe_or_se_calculate_and_gather_qc
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/run_pe_or_se_calculate_and_gather_qc.wdl \
+    tests/functional/json/test_run_pe_or_se_calculate_and_gather_qc.json
+  stdout:
+    contains:
+      - "bamcounts.py"
+      - "samtools stats"
+      - "samtools flagstats"
+      - "CollectInsertSizeMetrics"
+      - "preseq lc_extrap"
+  files:
+    - path: "test-output/tests/data/dnase/trimming/trimstats.txt"
+    - path: "test-output/tagcounts.txt"
+    - path: "test-output/merged.stats.txt"
+    - path: "test-output/merged.flagstats.txt"
+    - path: "test-output/nuclear.stats.txt"
+    - path: "test-output/nuclear.flagstats.txt"
+    - path: "test-output/tests/data/dnase/hotspot1/subsample.spot.out"
+      md5sum: 09e71419a7c0023634359f3e6a30a155
+    - path: "test-output/tests/data/dnase/hotspot2/expected/filtered.0.05.SPOT.txt"
+      md5sum: d5c0602308fc750da6630ea52ef8b058
+    - path: "test-output/tests/data/dnase/aggregation/expected/MarkDuplicates.picard"
+    - path: "test-output/nuclear.preseq_targets.txt"
+      md5sum: 1c2f55280daae80307bfda6e2d726712
+    - path: "test-output/nuclear.preseq.txt"
+      md5sum: 4bbc21653c28e21c1b09be846a57e5de
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard"
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
+      md5sum: 2787fe8fac4200725fb06f414bde8c84
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
+
+- name: test_normalize_and_convert_files
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/normalize_and_convert_files.wdl \
+    tests/functional/json/test_normalize_and_convert_files.json
+  stdout:
+    contains:
+      - "unstarch"
+      - "awk"
+      - "starch_to_bigwig.bash"
+      - "pigz"
+      - "bedToBigBed"
+  files:
+    - path: "test-output/normalized.nuclear.density.bw"
+    - path: "test-output/nuclear.allcalls.bed.gz"
+    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bed.gz"
+    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
+      md5sum: 5b6209d28a8afa848b69c2b18cc69ab6

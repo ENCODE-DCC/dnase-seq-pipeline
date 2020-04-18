@@ -8,7 +8,7 @@ workflow trim {
     input {
         File concatenated_fastq
         Int trim_length = 101
-        String machine_size
+        String machine_size = "medium"
     }
 
     Machines compute = read_json("wdl/runtimes.json")

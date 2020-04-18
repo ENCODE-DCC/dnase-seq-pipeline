@@ -12,11 +12,7 @@ workflow qc {
     input {
         File unfiltered_bam
         File nuclear_bam
-        File? trimstats
-        File duplication_metrics
-        File hotspot1
-        File hotspot2
-        String machine_size
+        String machine_size = "medium"
     }
 
     Machines compute = read_json("wdl/runtimes.json")
@@ -45,32 +41,17 @@ workflow qc {
             resources=compute.runtimes[machine_size],
     }
 
-    call picard.get_insert_size_metrics as nuclear_insert_size {
-        input:
-            nuclear_bam=nuclear_bam,
-            resources=compute.runtimes[machine_size],
-    }
-
     output {
-        UnfilteredBamQC unfiltered_qc = {
+        UnfilteredBamQC unfiltered_bam_qc = {
             "stats": unfiltered_samtools.stats,
             "flagstats": unfiltered_samtools.flagstats,
-            "trimstats": trimstats,
             "bamcounts": unfiltered_bamcounts.counts
         }
-        NuclearBamQC nuclear_qc = {
+        NuclearBamQC nuclear_bam_qc = {
             "stats": nuclear_samtools.stats,
             "flagstats": nuclear_samtools.flagstats,
-            "hotspot1": hotspot1,
-            "duplication_metrics": duplication_metrics,
             "preseq": nuclear_preseq.preseq,
-            "preseq_targets": nuclear_preseq.preseq_targets,
-            "insert_size_metrics": nuclear_insert_size.insert_size_metrics,
-            "insert_size_info": nuclear_insert_size.insert_size_info,
-            "insert_size_histogram_pdf": nuclear_insert_size.insert_size_histogram_pdf
-        }
-        PeaksQC peaks_qc = {
-            "hotspot2": hotspot2
+            "preseq_targets": nuclear_preseq.preseq_targets
         }
     }
 }

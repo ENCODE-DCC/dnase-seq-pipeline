@@ -8,7 +8,7 @@ workflow peaks {
     input {
         File nuclear_bam
         HotSpot2Reference reference
-        String machine_size
+        String machine_size = "medium"
     }
 
     Machines compute = read_json("wdl/runtimes.json")

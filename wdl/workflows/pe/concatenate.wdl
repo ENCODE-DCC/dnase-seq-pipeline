@@ -7,7 +7,7 @@ import "../../../wdl/subworkflows/concatenate_fastq_pairs.wdl" as raw_fastqs
 workflow concatenate {
     input {
         Array[FastqPair] raw_fastqs
-        String machine_size
+        String machine_size = "medium"
     }
 
     Machines compute = read_json("wdl/runtimes.json")

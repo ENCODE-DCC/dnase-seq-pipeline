@@ -1,26 +1,35 @@
 {
-    "concatenate_trim_and_align_pe_fastqs.align.indexed_fasta": {
-        "fasta": "tests/data/ref/chr22.fa",
-        "fai": "tests/data/ref/chr22.fa.fai"
-    },
-    "concatenate_trim_and_align_pe_fastqs.align.bwa_index": {
-        "bwt": "tests/data/ref/chr22.fa.bwt",
-        "fasta": "tests/data/ref/chr22.fa",
-        "pac": "tests/data/ref/chr22.fa.pac",
-        "ann": "tests/data/ref/chr22.fa.ann",
-        "amb": "tests/data/ref/chr22.fa.amb",
-        "sa": "tests/data/ref/chr22.fa.sa"
-    },
-    "concatenate_trim_and_align_pe_fastqs.raw_fastqs": [
-        {
-            "R1": "tests/data/dnase/alignment/r1.fastq.gz",
-            "R2": "tests/data/dnase/alignment/r2.fastq.gz"
+    "concatenate_trim_and_align_pe_fastqs.references": {
+        "indexed_fasta": {
+            "fasta": "tests/data/ref/chr22.fa",
+            "fai": "tests/data/ref/chr22.fa.fai"
+        },
+        "bwa_index": {
+            "bwt": "tests/data/ref/chr22.fa.bwt",
+            "fasta": "tests/data/ref/chr22.fa",
+            "pac": "tests/data/ref/chr22.fa.pac",
+            "ann": "tests/data/ref/chr22.fa.ann",
+            "amb": "tests/data/ref/chr22.fa.amb",
+            "sa": "tests/data/ref/chr22.fa.sa"
         }
-    ],
-    "concatenate_trim_and_align_pe_fastqs.trim.adapters": "tests/data/dnase/alignment/adapters.txt",
-    "concatenate_trim_and_align_pe_fastqs.trim.adapter1": "P5",
-    "concatenate_trim_and_align_pe_fastqs.trim.adapter2": "P7",
-    "concatenate_trim_and_align_pe_fastqs.machine_size_concatenate": "small",
-    "concatenate_trim_and_align_pe_fastqs.machine_size_trim": "small",
-    "concatenate_trim_and_align_pe_fastqs.machine_size_align": "small"
+    },
+    "concatenate_trim_and_align_pe_fastqs.replicate": {
+        "adapters": {
+            "file": "tests/data/dnase/alignment/adapters.txt",
+            "adapter1": "P5",
+            "adapter2": "P7"
+        },
+        "read_length": 101,
+        "pe_fastqs": [
+            {
+                "R1": "tests/data/dnase/alignment/r1.fastq.gz",
+                "R2": "tests/data/dnase/alignment/r2.fastq.gz"
+            }
+        ]
+    },
+    "concatenate_trim_and_align_pe_fastqs.machine_sizes": {
+        "concatenate": "small",
+        "trim": "small",
+        "align": "small"
+    }
 }

@@ -12,7 +12,7 @@ workflow align {
         BwaIndex bwa_index
         FastqPair trimmed_fastqs
         IndexedFasta indexed_fasta
-        String machine_size
+        String machine_size = "medium"
     }
 
     Machines compute = read_json("wdl/runtimes.json")

@@ -71,8 +71,8 @@ commands:
         type: string
     steps:
       - run:
-          command: pytest -v --tag <<parameters.tag>> --wt <<parameters.wt>> --symlink
-          no_output_timeout: 30m
+          command: pytest -v --tag <<parameters.tag>> --wt <<parameters.wt>> --symlink --kwd
+          no_output_timeout: 60m
 
   install_git_lfs_and_get_data:
     steps:
@@ -151,6 +151,16 @@ jobs:
           tag: "functional"
           wt: "4"
 
+  wdl_full_tests:
+    <<: *machine_defaults
+    steps:
+      - checkout
+      - prepare_pytest_environment
+      - install_git_lfs_and_get_data
+      - run_test_tag:
+          tag: "full"
+          wt: "4"
+
 # Workflow
 workflows:
   build_workflow:
@@ -165,8 +175,12 @@ workflows:
       - wdl_functional_tests:
           requires:
             - build
+      - wdl_full_tests:
+          requires:
+            - build
       - push_template:
           requires:
             - wdl_unit_tests
             - wdl_integration_tests
             - wdl_functional_tests
+            - wdl_full_tests            

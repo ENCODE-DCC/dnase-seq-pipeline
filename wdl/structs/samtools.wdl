@@ -7,6 +7,12 @@ struct IndexedFasta {
 }
 
 
+struct IndexedFastaRequired {
+    File fasta
+    File fai
+}
+
+
 struct IndexedBam {
     File bam
     File bai

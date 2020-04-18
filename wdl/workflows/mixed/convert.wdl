@@ -12,7 +12,7 @@ workflow convert {
         File five_percent_narrow_peaks_starch
         File narrow_peak_auto_sql
         File chrom_sizes
-        String machine_size
+        String machine_size = "medium"
     }
 
     Machines compute = read_json("wdl/runtimes.json")

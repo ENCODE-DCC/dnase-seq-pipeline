@@ -7,7 +7,7 @@ import "../../../wdl/subworkflows/merge_name_sorted_bams.wdl" as name_sorted_bam
 workflow merge {
     input {
         Array[File] name_sorted_bams
-        String machine_size
+        String machine_size = "medium"
     }
 
     Machines compute = read_json("wdl/runtimes.json")

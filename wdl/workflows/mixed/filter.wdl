@@ -7,7 +7,7 @@ import "../../../wdl/subworkflows/filter_bam_reads_with_nonnuclear_flag.wdl" as 
 workflow filter {
     input {
         File flagged_and_marked_bam
-        String machine_size
+        String machine_size = "medium"
     }
 
     Machines compute = read_json("wdl/runtimes.json")

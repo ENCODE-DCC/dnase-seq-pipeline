@@ -1,0 +1,35 @@
+{
+    "run_pe_or_se_concatenate_trim_and_align_fastqs.references": {
+        "indexed_fasta": {
+            "fasta": "tests/data/ref/chr22.fa",
+            "fai": "tests/data/ref/chr22.fa.fai"
+        },
+        "bwa_index": {
+            "bwt": "tests/data/ref/chr22.fa.bwt",
+            "fasta": "tests/data/ref/chr22.fa",
+            "pac": "tests/data/ref/chr22.fa.pac",
+            "ann": "tests/data/ref/chr22.fa.ann",
+            "amb": "tests/data/ref/chr22.fa.amb",
+            "sa": "tests/data/ref/chr22.fa.sa"
+        }
+    },
+    "run_pe_or_se_concatenate_trim_and_align_fastqs.replicate": {
+        "adapters": {
+            "file": "tests/data/dnase/alignment/adapters.txt",
+            "adapter1": "P5",
+            "adapter2": "P7"
+        },
+        "read_length": 36,
+        "pe_fastqs": [
+            {
+                "R1": "tests/data/dnase/alignment/r1.fastq.gz",
+                "R2": "tests/data/dnase/alignment/r2.fastq.gz"
+            }
+        ]
+    },
+    "run_pe_or_se_concatenate_trim_and_align_fastqs.machine_sizes": {
+        "concatenate": "small",
+        "trim": "small",
+        "align": "small"
+    }
+}
