@@ -76,10 +76,7 @@ task collect_insert_size_metrics {
         String pdf_out = "CollectInsertSizeMetrics.picard.pdf"
     }
 
-    String linked_bam = basename(bam)
-
     command {
-        ln ~{bam} .
         java -jar $(which picard.jar) CollectInsertSizeMetrics \
             ~{"INPUT=" + linked_bam} \
             ~{"OUTPUT=" + out} \
