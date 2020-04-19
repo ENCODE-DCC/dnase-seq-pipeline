@@ -1,5 +1,5 @@
 {
-    "run_pe_or_se_calculate_and_gather_qc.replicate": {
+    "calculate_and_gather_qc.replicate": {
         "read_length": 36,
         "pe_fastqs": [
             {
@@ -8,7 +8,7 @@
             }
         ]
     },
-    "run_pe_or_se_calculate_and_gather_qc.files_to_gather": {
+    "calculate_and_gather_qc.files_to_gather": {
         "spot_score": "tests/data/dnase/hotspot1/subsample.spot.out",
         "five_percent_peaks": {
             "density_bw": "tests/data/dnase/aggregation/expected/peaks/nuclear.density.bw",
@@ -25,11 +25,11 @@
         "trimstats": "tests/data/dnase/trimming/trimstats.txt",
         "duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard"
     },
-    "run_pe_or_se_calculate_and_gather_qc.files_for_calculation": {
+    "calculate_and_gather_qc.files_for_calculation": {
         "nuclear_bam": "tests/data/dnase/filtering/nuclear.bam",
         "unfiltered_bam": "tests/data/dnase/merging/merged.bam"
     },
-    "run_pe_or_se_calculate_and_gather_qc.machine_sizes": {
+    "calculate_and_gather_qc.machine_sizes": {
         "qc": "small"
     }
 }

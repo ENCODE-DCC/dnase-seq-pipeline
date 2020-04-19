@@ -5,7 +5,6 @@ import "../../../wdl/structs/qc.wdl"
 import "../../../wdl/subworkflows/get_stats_and_flagstats_from_bam.wdl" as samtools
 import "../../../wdl/subworkflows/get_bamcounts.wdl" as bamcounts
 import "../../../wdl/subworkflows/get_preseq_metrics.wdl" as preseq
-import "../../../wdl/subworkflows/get_insert_size_metrics.wdl" as picard
 
 
 workflow qc {

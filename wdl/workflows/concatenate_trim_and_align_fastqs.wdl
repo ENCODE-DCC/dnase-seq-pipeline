@@ -7,7 +7,7 @@ import "concatenate_trim_and_align_pe_fastqs.wdl" as pe_fastqs
 import "concatenate_trim_and_align_se_fastqs.wdl" as se_fastqs
 
 
-workflow run_pe_or_se_concatenate_trim_and_align_fastqs {
+workflow concatenate_trim_and_align_fastqs {
     input {
         Replicate replicate
         References references
