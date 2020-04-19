@@ -33,13 +33,13 @@
     - path: "test-output/name_sorted_pe.bam"
     - path: "test-output/trimstats.txt"
 
-- name: test_run_pe_or_se_concatenate_trim_and_align_fastqs
+- name: test_concatenate_trim_and_align_fastqs
   tags:
     - functional
   command: >-
     tests/caper_run.sh \
-    wdl/workflows/run_pe_or_se_concatenate_trim_and_align_fastqs.wdl \
-    tests/functional/json/test_run_pe_or_se_concatenate_trim_and_align_fastqs.json
+    wdl/workflows/concatenate_trim_and_align_fastqs.wdl \
+    tests/functional/json/concatenate_trim_and_align_fastqs.json
   stdout:
     contains:
       - "cat"

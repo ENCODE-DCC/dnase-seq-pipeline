@@ -3,7 +3,7 @@ version 1.0
 
 import "../../wdl/structs/dnase.wdl"
 import "../../wdl/structs/sizes.wdl"
-import "run_pe_or_se_concatenate_trim_and_align_fastqs.wdl" as raw_fastqs
+import "concatenate_trim_and_align_fastqs.wdl" as raw_fastqs
 import "merge_mark_and_filter_bams.wdl" as name_sorted_bams
 import "call_hotspots_and_peaks_and_get_spot_score.wdl" as nuclear_bam
 import "calculate_and_gather_qc.wdl" as qc_files 
@@ -17,7 +17,7 @@ workflow dnase_replicate {
         MachineSizes machine_sizes = read_json("wdl/default_machine_sizes.json")
     }
 
-    call raw_fastqs.run_pe_or_se_concatenate_trim_and_align_fastqs {
+    call raw_fastqs.concatenate_trim_and_align_fastqs {
         input:
             replicate=replicate,
             references=references,
@@ -26,7 +26,7 @@ workflow dnase_replicate {
 
     call name_sorted_bams.merge_mark_and_filter_bams {
         input:
-            name_sorted_bams=run_pe_or_se_concatenate_trim_and_align_fastqs.name_sorted_bams,
+            name_sorted_bams=concatenate_trim_and_align_fastqs.name_sorted_bams,
             references=references,
             machine_sizes=machine_sizes,
     }
@@ -48,7 +48,7 @@ workflow dnase_replicate {
             files_to_gather=object {
                 duplication_metrics: merge_mark_and_filter_bams.duplication_metrics,
                 spot_score: call_hotspots_and_peaks_and_get_spot_score.spot_score,
-                trimstats: run_pe_or_se_concatenate_trim_and_align_fastqs.trimstats,
+                trimstats: concatenate_trim_and_align_fastqs.trimstats,
                 five_percent_peaks: call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks
             },
             replicate=replicate,
