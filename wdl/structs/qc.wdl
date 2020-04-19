@@ -13,8 +13,8 @@ struct UnfilteredBamQC {
 
 
 struct NuclearBamQC {
-    File stats
-    File flagstats
+    File? stats
+    File? flagstats
     File? hotspot1
     File? duplication_metrics
     File? preseq

@@ -50,3 +50,19 @@
       - "-n"
   files:
     - path: "test-output/name_sorted_pe.bam"
+
+- name: test_pe_qc
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/pe/qc.wdl \
+    tests/functional/json/test_pe_qc.json
+  stdout:
+    contains:
+      - "CollectInsertSizeMetrics"
+  files:
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard"
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
+      md5sum: 2787fe8fac4200725fb06f414bde8c84
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"

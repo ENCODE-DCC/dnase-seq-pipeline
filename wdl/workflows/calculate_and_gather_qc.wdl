@@ -4,8 +4,7 @@ version 1.0
 import "../../wdl/structs/dnase.wdl"
 import "../../wdl/structs/sizes.wdl"
 import "../..//wdl/workflows/mixed/qc.wdl" as mixed_qc
-import "../..//wdl/subworkflows/get_insert_size_metrics.wdl" as picard
-
+import "../..//wdl/workflows/pe/qc.wdl" as pe_qc
 
 
 workflow calculate_and_gather_qc {
@@ -15,8 +14,6 @@ workflow calculate_and_gather_qc {
         Replicate replicate
         MachineSizes machine_sizes
     }
-
-    Machines compute = read_json("wdl/runtimes.json")
 
     Boolean paired_only = (
         defined(replicate.pe_fastqs)
@@ -31,12 +28,10 @@ workflow calculate_and_gather_qc {
     }
 
     if (paired_only) {
-        call picard.get_insert_size_metrics as nuclear_insert_size {
+        call pe_qc.qc as pe {
             input:
                 nuclear_bam=files_for_calculation.nuclear_bam,
-                resources=compute.runtimes[(
-                    select_first([machine_sizes.qc])
-                )],
+                machine_size=machine_sizes.qc,
         }
     }
 
@@ -54,9 +49,9 @@ workflow calculate_and_gather_qc {
             duplication_metrics: files_to_gather.duplication_metrics,
             preseq: mixed.nuclear_bam_qc.preseq,
             preseq_targets: mixed.nuclear_bam_qc.preseq_targets,
-            insert_size_metrics: nuclear_insert_size.insert_size_metrics,
-            insert_size_info: nuclear_insert_size.insert_size_info,
-            insert_size_histogram_pdf: nuclear_insert_size.insert_size_histogram_pdf
+            insert_size_metrics: pe.nuclear_bam_qc.insert_size_metrics,
+            insert_size_info: pe.nuclear_bam_qc.insert_size_info,
+            insert_size_histogram_pdf: pe.nuclear_bam_qc.insert_size_histogram_pdf
         }
         PeaksQC peaks_qc = object {
             hotspot2: files_to_gather.five_percent_peaks.spot_score
