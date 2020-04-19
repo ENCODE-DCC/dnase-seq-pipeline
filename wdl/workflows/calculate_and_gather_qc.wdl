@@ -49,9 +49,9 @@ workflow calculate_and_gather_qc {
             duplication_metrics: files_to_gather.duplication_metrics,
             preseq: mixed.nuclear_bam_qc.preseq,
             preseq_targets: mixed.nuclear_bam_qc.preseq_targets,
-            insert_size_metrics: pe.nuclear_bam_qc.insert_size_metrics,
-            insert_size_info: pe.nuclear_bam_qc.insert_size_info,
-            insert_size_histogram_pdf: pe.nuclear_bam_qc.insert_size_histogram_pdf
+            insert_size_metrics: pe.insert_size_metrics,
+            insert_size_info: pe.insert_size_info,
+            insert_size_histogram_pdf: pe.insert_size_histogram_pdf
         }
         PeaksQC peaks_qc = object {
             hotspot2: files_to_gather.five_percent_peaks.spot_score
