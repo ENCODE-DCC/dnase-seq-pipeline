@@ -23,6 +23,5 @@ workflow qc {
         File insert_size_metrics = nuclear_insert_size.insert_size_metrics
         File insert_size_info = nuclear_insert_size.insert_size_info
         File insert_size_histogram_pdf = nuclear_insert_size.insert_size_histogram_pdf
-        }
     }
 }
