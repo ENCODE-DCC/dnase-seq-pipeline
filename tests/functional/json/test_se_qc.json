@@ -1,8 +1,0 @@
-{
-    "qc.nuclear_bam": "tests/data/dnase/filtering/nuclear.bam",
-    "qc.machine_size": "small",
-    "qc.hotspot2": "tests/data/dnase/hotspot2/expected/filtered.0.05.SPOT.txt",
-    "qc.hotspot1": "tests/data/dnase/hotspot1/subsample.spot.out",
-    "qc.duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard",
-    "qc.unfiltered_bam": "tests/data/dnase/merging/merged.bam"
-}
