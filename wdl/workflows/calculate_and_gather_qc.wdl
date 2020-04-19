@@ -17,9 +17,6 @@ workflow calculate_and_gather_qc {
     }
 
     Machines compute = read_json("wdl/runtimes.json")
-    String machine_size_qc = select_first([
-        machine_sizes.qc
-    ])
 
     Boolean paired_only = (
         defined(replicate.pe_fastqs)
@@ -37,7 +34,9 @@ workflow calculate_and_gather_qc {
         call picard.get_insert_size_metrics as nuclear_insert_size {
             input:
                 nuclear_bam=files_for_calculation.nuclear_bam,
-                resources=compute.runtimes[machine_size_qc],
+                resources=compute.runtimes[(
+                    select_first([machine_sizes.qc])
+                )],
         }
     }
 
