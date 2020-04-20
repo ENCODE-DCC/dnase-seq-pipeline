@@ -28,8 +28,8 @@
       - "extractCenterSites.sh"
       - "-c" 
       - "-M" 
-      - "chr22.K9.mappable_only.bed"
-      - "-o chr22.K9.center_sites.n100.starch"
+      - "chr22.K12.mappable_only.bed"
+      - "-o chr22.K12.center_sites.n100.starch"
       - "-n 100"
   files:
     - path: "test-output/chr22.fa"
