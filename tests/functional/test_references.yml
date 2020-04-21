@@ -67,18 +67,84 @@
       md5sum: 59cc5e7f4dc1a611bc75eceb0ca27697
     - path: "test-output/chr22.K12.center_sites.n100.starch"
 
-- name: test_make_references_bwa_index_passed
+- name: test_make_references_bwa_defined
   tags:
     - functional
   command: >-
     tests/caper_run.sh \
     wdl/workflows/references/make_references.wdl \
-    tests/functional/json/test_make_references_bwa_index_passed.json
+    tests/functional/json/test_make_references_bwa_defined.json
   stdout:
     contains:
       - "samtools faidx chr22.fa"
       - "ln"
       - "bowtie-build chr22.fa chr22.fa"
+      - "awk"
+      - "perl $(which enumerateUniquelyMappableSpace.pl)"
+      - "merge_adjacent_bed.awk"
+      - "s/[[:blank:]]*$//"
+      - "sort-bed"
+      - "make all"
+      - "-f"
+      - "FAI"
+      - "GENOME"
+      - "BUCKETS_DIR"
+      - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
+      - "chr22.fa.chrom_sizes.bed"
+      - "awk"
+      - 'BEGIN{OFS="\t"} {print $1, $2, $3, $1}'
+      - "extractCenterSites.sh"
+      - "-c" 
+      - "-M" 
+      - "chr22.K12.mappable_only.bed"
+      - "-o chr22.K12.center_sites.n100.starch"
+      - "-n 100"
+  files:
+    - path: "test-output/chr22.fa"
+      md5sum: 69a750d5ed9490e0d1e707a43368ba86
+    - path: "test-output/chr22.fa.amb"
+      md5sum: 24d28e70f4a7333073ade6cb41c3478a
+    - path: "test-output/chr22.fa.ann"
+      md5sum: 8c08281c99ac4d49d9b32e06f0475b65
+    - path: "test-output/chr22.fa.bwt"
+      md5sum: 12a40328a31dcb84b8a4af33a58ec47f
+    - path: "test-output/chr22.fa.pac"
+      md5sum: 366896466b5889c16b79ca98be32360f
+    - path: "test-output/chr22.fa.sa"
+      md5sum: bec836ed0158792031e4529ca53debdd
+    - path: "test-output/chr22.fa.fai"
+      md5sum: d89b1fd70e1fe59b329a8346a59ffc03
+    - path: "test-output/chr22.fa.1.ebwt"
+      md5sum: a9d5a182919303a57114b63aedb59cbc
+    - path: "test-output/chr22.fa.2.ebwt"
+      md5sum: 393803d15dfa6894c2110bd475a6dff1
+    - path: "test-output/chr22.fa.3.ebwt"
+      md5sum: 4378a8405e028dd307624716d17925fe
+    - path: "test-output/chr22.fa.4.ebwt"
+      md5sum: 7f94c1f50d9df40c43a4e2a70b972157
+    - path: "test-output/chr22.fa.rev.1.ebwt"
+      md5sum: 3113d59e930dd96e02d43895de8de9a0
+    - path: "test-output/chr22.fa.rev.2.ebwt"
+      md5sum: f28c064e9c10c7dae2eaf76e1737a0b6
+    - path: "test-output/chr22.K12.mappable_only.bed"
+      md5sum: 834dd1ec4452b8159a8af2802d591c59
+    - path: "test-output/chrom-buckets.chr22.75_20.bed.starch"
+    - path: "test-output/chr22.fa.chrom_sizes.bed"
+      md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
+    - path: "test-output/chr22.fa.chromInfo.bed"
+      md5sum: 59cc5e7f4dc1a611bc75eceb0ca27697
+    - path: "test-output/chr22.K12.center_sites.n100.starch"
+
+- name: test_make_references_bwa_bowtie_defined
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/references/make_references.wdl \
+    tests/functional/json/test_make_references_bwa_bowtie_defined.json
+  stdout:
+    contains:
+      - "samtools faidx chr22.fa"
       - "awk"
       - "perl $(which enumerateUniquelyMappableSpace.pl)"
       - "merge_adjacent_bed.awk"

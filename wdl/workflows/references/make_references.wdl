@@ -46,15 +46,19 @@ workflow make_references {
             resources=compute.runtimes[machine_size_fai],
     }
 
-    call bowtie.build_bowtie_index {
-        input:
-            fasta=reference_fasta,
-            resources=compute.runtimes[machine_size_bowtie]
+    if (!defined(bowtie_index)) {
+        call bowtie.build_bowtie_index {
+            input:
+                fasta=reference_fasta,
+                resources=compute.runtimes[machine_size_bowtie]
+        }
     }
+
+    BowtieIndex bowtie_index_output = select_first([bowtie_index, build_bowtie_index.bowtie_index])
 
     call mappable.build_mappable_only_bed {
         input:
-            bowtie_index=build_bowtie_index.bowtie_index,
+            bowtie_index=bowtie_index_output,
             kmer_length=mappability_kmer_length,
             reference_genome=reference_fasta,
             resources=compute.runtimes[machine_size_mappable],
@@ -88,7 +92,7 @@ workflow make_references {
     }
 
     output {
-        BowtieIndex bowtie_index = build_bowtie_index.bowtie_index
+        BowtieIndex bowtie_index_out = bowtie_index_output
         BwaIndex bwa_index_out = bwa_index_output
         File center_sites_starch = get_center_sites.center_sites_starch
         File chrom_buckets = get_chrombuckets.chrombuckets
