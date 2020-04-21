@@ -13,6 +13,8 @@ import "../../subworkflows/get_chrom_sizes.wdl" as chr_sizes
 
 workflow make_references {
     input {
+        BowtieIndex? bowtie_index
+        BwaIndex? bwa_index
         File reference_fasta
         Int mappability_kmer_length
         String machine_size_bwa = "large"
@@ -27,12 +29,16 @@ workflow make_references {
 
     Machines compute = read_json("wdl/runtimes.json")
     String genome_name = basename(reference_fasta, ".fa")
-
-    call bwa.build_bwa_index {
-        input:
-            fasta=reference_fasta,
-            resources=compute.runtimes[machine_size_bwa],
+    
+    if (!defined(bwa_index)) {
+        call bwa.build_bwa_index {
+            input:
+                fasta=reference_fasta,
+                resources=compute.runtimes[machine_size_bwa],
+        }
     }
+
+    BwaIndex bwa_index_output = select_first([bwa_index, build_bwa_index.bwa_index])
 
     call fai.build_fasta_index {
         input:
@@ -83,7 +89,7 @@ workflow make_references {
 
     output {
         BowtieIndex bowtie_index = build_bowtie_index.bowtie_index
-        BwaIndex bwa_index = build_bwa_index.bwa_index
+        BwaIndex bwa_index_out = bwa_index_output
         File center_sites_starch = get_center_sites.center_sites_starch
         File chrom_buckets = get_chrombuckets.chrombuckets
         File chrom_info = get_chrom_info.chrom_info
