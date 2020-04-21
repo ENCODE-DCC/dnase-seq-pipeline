@@ -15,6 +15,7 @@ workflow make_references {
     input {
         BowtieIndex? bowtie_index
         BwaIndex? bwa_index
+        File? mappable_regions
         File reference_fasta
         Int mappability_kmer_length
         String machine_size_bwa = "large"
@@ -56,13 +57,17 @@ workflow make_references {
 
     BowtieIndex bowtie_index_output = select_first([bowtie_index, build_bowtie_index.bowtie_index])
 
-    call mappable.build_mappable_only_bed {
-        input:
-            bowtie_index=bowtie_index_output,
-            kmer_length=mappability_kmer_length,
-            reference_genome=reference_fasta,
-            resources=compute.runtimes[machine_size_mappable],
+    if (!defined(mappable_regions)) {
+        call mappable.build_mappable_only_bed {
+            input:
+                bowtie_index=bowtie_index_output,
+                kmer_length=mappability_kmer_length,
+                reference_genome=reference_fasta,
+                resources=compute.runtimes[machine_size_mappable],
+        }
     }
+
+    File mappable_regions_output = select_first([mappable_regions, build_mappable_only_bed.mappable_regions])
 
     call chr_buckets.get_chrombuckets {
         input:
@@ -86,7 +91,7 @@ workflow make_references {
     call center.get_center_sites {
         input:
             chrom_sizes=get_chrom_sizes.chrom_sizes,
-            mappable_regions=build_mappable_only_bed.mappable_regions,
+            mappable_regions=mappable_regions_output,
             resources=compute.runtimes[machine_size_center],
 
     }
@@ -99,6 +104,6 @@ workflow make_references {
         File chrom_info = get_chrom_info.chrom_info
         File chrom_sizes = get_chrom_sizes.chrom_sizes
         File? fasta_index = build_fasta_index.indexed_fasta.fai
-        File mappable_regions = build_mappable_only_bed.mappable_regions
+        File mappable_regions_out = mappable_regions_output
     }
 }
