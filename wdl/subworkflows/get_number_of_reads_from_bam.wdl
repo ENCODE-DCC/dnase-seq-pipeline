@@ -1,6 +1,7 @@
 version 1.0
 
 
+import "../tasks/cat.wdl"
 import "../tasks/samtools.wdl"
 
 
@@ -20,7 +21,13 @@ workflow get_number_of_reads_from_bam {
             resources=resources,
     }
 
+    call cat.get_int_from_file {
+        input:
+            in=view.out,
+            resources=resources,
+    }
+
     output {
-        Int count = read_int(view.out)
+        Int count = get_int_from_file.out
     }
 }

@@ -1,0 +1,8 @@
+{
+    "test_cat_get_int_from_file.in": "tests/data/dnase/normalizing/nuclear.count",
+    "test_cat_get_int_from_file.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}

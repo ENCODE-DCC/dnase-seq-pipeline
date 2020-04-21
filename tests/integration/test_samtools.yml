@@ -168,6 +168,7 @@
     contains:
       - "samtools view"
       - "-c"
+      - "cat"
       - "174806"
 
 - name: test_get_stats_and_flagstats_from_bam

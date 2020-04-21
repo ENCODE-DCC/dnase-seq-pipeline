@@ -27,3 +27,26 @@ task cat {
         disks: resources.disks
     }
 }
+
+
+task get_int_from_file {
+    input {
+        File in
+        Resources resources
+    }
+
+    command {
+        cat \
+            ~{in}
+    }
+
+    output {
+        Int out = read_int(stdout())
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
