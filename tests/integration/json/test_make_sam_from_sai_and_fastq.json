@@ -9,9 +9,6 @@
         "pac": "tests/data/ref/chr22.fa.pac",
         "sa": "tests/data/ref/chr22.fa.sa"
     },
-    "test_make_sam_from_sai_and_fastq.make_sam_from_sai_and_fastq.params": {
-        "max_paired_hits": 10
-    },
     "test_make_sam_from_sai_and_fastq.make_sam_from_sai_and_fastq.resources": {
         "cpu": 1,
         "memory_gb": 1,
