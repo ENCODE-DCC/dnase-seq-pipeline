@@ -9,8 +9,8 @@ workflow make_sam_from_sai_and_fastq {
         File fastq
         File sai
         BwaIndex bwa_index
-        BwaSamseParams params = {
-            "max_paired_hits": 10
+        BwaSamseParams params = object {
+            max_paired_hits: 10
         }
         Resources resources
     }
