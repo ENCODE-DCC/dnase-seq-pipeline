@@ -15,7 +15,10 @@ workflow make_references {
     input {
         BowtieIndex? bowtie_index
         BwaIndex? bwa_index
+        File? center_sites
         File? chrom_buckets
+        File? chrom_info
+        File? chrom_sizes
         File? mappable_regions
         File reference_fasta
         Int mappability_kmer_length
@@ -81,33 +84,44 @@ workflow make_references {
 
     File chrom_buckets_output = select_first([chrom_buckets, get_chrombuckets.chrombuckets])
 
-    call chr_sizes.get_chrom_sizes {
-        input:
-            fai=select_first([build_fasta_index.indexed_fasta.fai]),
-            resources=compute.runtimes[machine_size_chr_sizes],
+    if (!defined(chrom_sizes)) {
+        call chr_sizes.get_chrom_sizes {
+            input:
+                fai=select_first([build_fasta_index.indexed_fasta.fai]),
+                resources=compute.runtimes[machine_size_chr_sizes],
+        }
     }
 
-    call chr_info.get_chrom_info {
-        input:
-            chrom_sizes=get_chrom_sizes.chrom_sizes,
-            resources=compute.runtimes[machine_size_chr_info],
+    File chrom_sizes_output = select_first([chrom_sizes, get_chrom_sizes.chrom_sizes])
+
+    if (!defined(chrom_info)) {
+        call chr_info.get_chrom_info {
+            input:
+                chrom_sizes=chrom_sizes_output,
+                resources=compute.runtimes[machine_size_chr_info],
+        }
     }
 
-    call center.get_center_sites {
-        input:
-            chrom_sizes=get_chrom_sizes.chrom_sizes,
-            mappable_regions=mappable_regions_output,
-            resources=compute.runtimes[machine_size_center],
+    File chrom_info_output = select_first([chrom_info, get_chrom_info.chrom_info])
 
+    if (!defined(center_sites)) {
+        call center.get_center_sites {
+            input:
+                chrom_sizes=chrom_sizes_output,
+                mappable_regions=mappable_regions_output,
+                resources=compute.runtimes[machine_size_center],
+        }
     }
+
+    File center_sites_output = select_first([center_sites, get_center_sites.center_sites_starch])
 
     output {
         BowtieIndex bowtie_index_out = bowtie_index_output
         BwaIndex bwa_index_out = bwa_index_output
-        File center_sites_starch = get_center_sites.center_sites_starch
+        File center_sites_out = center_sites_output
         File chrom_buckets_out = chrom_buckets_output
-        File chrom_info = get_chrom_info.chrom_info
-        File chrom_sizes = get_chrom_sizes.chrom_sizes
+        File chrom_info_out = chrom_info_output
+        File chrom_sizes_out = chrom_sizes_output
         File? fasta_index = build_fasta_index.indexed_fasta.fai
         File mappable_regions_out = mappable_regions_output
     }
