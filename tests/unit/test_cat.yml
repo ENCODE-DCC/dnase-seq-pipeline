@@ -10,3 +10,15 @@
       - "cat"
       - "dummy.txt"
       - "> concatenated"
+
+- name: test_cat_get_int_from_file
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit//wdl/test_cat_get_int_from_file.wdl \
+    tests/unit/json/test_cat_get_int_from_file.json
+  stdout:
+    contains:
+      - "cat"
+      - "174806"
