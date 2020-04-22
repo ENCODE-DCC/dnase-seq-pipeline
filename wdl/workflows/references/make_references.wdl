@@ -15,6 +15,7 @@ workflow make_references {
     input {
         BowtieIndex? bowtie_index
         BwaIndex? bwa_index
+        File? chrom_buckets
         File? mappable_regions
         File reference_fasta
         Int mappability_kmer_length
@@ -68,13 +69,17 @@ workflow make_references {
     }
 
     File mappable_regions_output = select_first([mappable_regions, build_mappable_only_bed.mappable_regions])
-
-    call chr_buckets.get_chrombuckets {
-        input:
-            fai=select_first([build_fasta_index.indexed_fasta.fai]),
-            genome_name=genome_name,
-            resources=compute.runtimes[machine_size_chr_buckets],
+    
+    if (!defined(chrom_buckets)) {
+        call chr_buckets.get_chrombuckets {
+            input:
+                fai=select_first([build_fasta_index.indexed_fasta.fai]),
+                genome_name=genome_name,
+                resources=compute.runtimes[machine_size_chr_buckets],
+        }
     }
+
+    File chrom_buckets_output = select_first([chrom_buckets, get_chrombuckets.chrombuckets])
 
     call chr_sizes.get_chrom_sizes {
         input:
@@ -100,7 +105,7 @@ workflow make_references {
         BowtieIndex bowtie_index_out = bowtie_index_output
         BwaIndex bwa_index_out = bwa_index_output
         File center_sites_starch = get_center_sites.center_sites_starch
-        File chrom_buckets = get_chrombuckets.chrombuckets
+        File chrom_buckets_out = chrom_buckets_output
         File chrom_info = get_chrom_info.chrom_info
         File chrom_sizes = get_chrom_sizes.chrom_sizes
         File? fasta_index = build_fasta_index.indexed_fasta.fai
