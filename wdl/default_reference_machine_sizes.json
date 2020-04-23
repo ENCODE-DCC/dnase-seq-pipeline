@@ -1,0 +1,10 @@
+{
+    "bowtie": "medium",
+    "bwa": "medium",
+    "center": "medium",
+    "chr_buckets": "medium",
+    "chr_info": "medium",
+    "chr_sizes": "medium",
+    "fai": "medium",
+    "mappable": "medium"
+}

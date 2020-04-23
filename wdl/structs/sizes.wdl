@@ -12,5 +12,16 @@ struct MachineSizes {
     String? score
     String? normalize
     String? qc
-    String? convert    
+    String? convert
+}
+
+struct ReferenceMachineSizes {
+    String? bwa
+    String? center
+    String? chr_buckets
+    String? chr_info
+    String? chr_sizes
+    String? fai
+    String? bowtie
+    String? mappable
 }
