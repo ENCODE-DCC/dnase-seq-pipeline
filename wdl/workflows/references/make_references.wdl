@@ -6,7 +6,6 @@ import "../../subworkflows/build_bwa_index.wdl" as bwa
 import "../../subworkflows/build_fasta_index.wdl" as fai
 import "../../subworkflows/build_mappable_only_bed.wdl" as mappable
 import "../../subworkflows/get_center_sites.wdl" as center
-import "../../subworkflows/get_chrombuckets.wdl" as chr_buckets
 import "../../subworkflows/get_chrom_info.wdl" as chr_info
 import "../../subworkflows/get_chrom_sizes.wdl" as chr_sizes
 import "../../structs/sizes.wdl"
@@ -16,7 +15,6 @@ workflow make_references {
         BowtieIndex? bowtie_index
         BwaIndex? bwa_index
         File? center_sites
-        File? chrom_buckets
         File? chrom_info
         File? chrom_sizes
         File? mappable_regions
@@ -66,17 +64,6 @@ workflow make_references {
 
     File mappable_regions_output = select_first([mappable_regions, build_mappable_only_bed.mappable_regions])
 
-    if (!defined(chrom_buckets)) {
-        call chr_buckets.get_chrombuckets {
-            input:
-                fai=select_first([build_fasta_index.indexed_fasta.fai]),
-                genome_name=genome_name,
-                resources=compute.runtimes[machine_sizes.chr_buckets],
-        }
-    }
-
-    File chrom_buckets_output = select_first([chrom_buckets, get_chrombuckets.chrombuckets])
-
     if (!defined(chrom_sizes)) {
         call chr_sizes.get_chrom_sizes {
             input:
@@ -111,7 +98,6 @@ workflow make_references {
     output {
         BwaIndex bwa_index_out = bwa_index_output
         File center_sites_out = center_sites_output
-        File chrom_buckets_out = chrom_buckets_output
         File chrom_info_out = chrom_info_output
         File chrom_sizes_out = chrom_sizes_output
         File? fasta_index = build_fasta_index.indexed_fasta.fai

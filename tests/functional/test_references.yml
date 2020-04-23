@@ -16,11 +16,6 @@
       - "merge_adjacent_bed.awk"
       - "s/[[:blank:]]*$//"
       - "sort-bed"
-      - "make all"
-      - "-f"
-      - "FAI"
-      - "GENOME"
-      - "BUCKETS_DIR"
       - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
       - "chr22.fa.chrom_sizes.bed"
       - "awk"
@@ -48,7 +43,6 @@
       md5sum: d89b1fd70e1fe59b329a8346a59ffc03
     - path: "test-output/chr22.K12.mappable_only.bed"
       md5sum: 834dd1ec4452b8159a8af2802d591c59
-    - path: "test-output/chrom-buckets.chr22.75_20.bed.starch"
     - path: "test-output/chr22.fa.chrom_sizes.bed"
       md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
     - path: "test-output/chr22.fa.chromInfo.bed"
@@ -72,11 +66,6 @@
       - "merge_adjacent_bed.awk"
       - "s/[[:blank:]]*$//"
       - "sort-bed"
-      - "make all"
-      - "-f"
-      - "FAI"
-      - "GENOME"
-      - "BUCKETS_DIR"
       - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
       - "chr22.fa.chrom_sizes.bed"
       - 'BEGIN{OFS="\t"} {print $1, $2, $3, $1}'
@@ -103,7 +92,6 @@
       md5sum: d89b1fd70e1fe59b329a8346a59ffc03
     - path: "test-output/chr22.K12.mappable_only.bed"
       md5sum: 834dd1ec4452b8159a8af2802d591c59
-    - path: "test-output/chrom-buckets.chr22.75_20.bed.starch"
     - path: "test-output/chr22.fa.chrom_sizes.bed"
       md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
     - path: "test-output/chr22.fa.chromInfo.bed"
@@ -125,11 +113,6 @@
       - "merge_adjacent_bed.awk"
       - "s/[[:blank:]]*$//"
       - "sort-bed"
-      - "make all"
-      - "-f"
-      - "FAI"
-      - "GENOME"
-      - "BUCKETS_DIR"
       - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
       - "chr22.fa.chrom_sizes.bed"
       - 'BEGIN{OFS="\t"} {print $1, $2, $3, $1}'
@@ -156,7 +139,6 @@
       md5sum: d89b1fd70e1fe59b329a8346a59ffc03
     - path: "test-output/chr22.K12.mappable_only.bed"
       md5sum: 834dd1ec4452b8159a8af2802d591c59
-    - path: "test-output/chrom-buckets.chr22.75_20.bed.starch"
     - path: "test-output/chr22.fa.chrom_sizes.bed"
       md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
     - path: "test-output/chr22.fa.chromInfo.bed"
@@ -173,11 +155,6 @@
   stdout:
     contains:
       - "samtools faidx chr22.fa"
-      - "make all"
-      - "-f"
-      - "FAI"
-      - "GENOME"
-      - "BUCKETS_DIR"
       - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
       - "chr22.fa.chrom_sizes.bed"
       - "awk"
@@ -205,7 +182,6 @@
       md5sum: d89b1fd70e1fe59b329a8346a59ffc03
     - path: "test-output/tests/data/dnase/references/chr22.K12.mappable_only.bed"
       md5sum: 834dd1ec4452b8159a8af2802d591c59
-    - path: "test-output/chrom-buckets.chr22.75_20.bed.starch"
     - path: "test-output/chr22.fa.chrom_sizes.bed"
       md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
     - path: "test-output/chr22.fa.chromInfo.bed"
