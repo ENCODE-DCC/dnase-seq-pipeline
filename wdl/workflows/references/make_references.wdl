@@ -109,7 +109,6 @@ workflow make_references {
     File center_sites_output = select_first([center_sites, get_center_sites.center_sites_starch])
 
     output {
-        BowtieIndex bowtie_index_out = bowtie_index_output
         BwaIndex bwa_index_out = bwa_index_output
         File center_sites_out = center_sites_output
         File chrom_buckets_out = chrom_buckets_output
