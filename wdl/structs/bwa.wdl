@@ -27,6 +27,7 @@ struct BwaAlnParams {
 struct BwaSampeParams {
     Int? max_insert_size
     Int? max_paired_hits
+    Boolean? keep_index_in_ram
 }
 
 

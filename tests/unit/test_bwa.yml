@@ -74,6 +74,7 @@
       - "bwa sampe"
       - "-a 750"
       - "-n 10"
+      - "-P "
       - "dummy.txt"
       - "> out.sam"
 
@@ -92,6 +93,7 @@
     must_not_contain:
       - "-a 750"
       - "-n 10"
+      - "-P "
 
 - name: test_bwa_samse
   tags:

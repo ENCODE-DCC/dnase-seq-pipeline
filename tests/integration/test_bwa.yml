@@ -65,6 +65,9 @@
   stdout:
     contains:
       - "bwa sampe"
+      - "-a 750"
+      - "-n 10"
+      - "-P "
   files:
     - path: "test-output/out.sam"
 
@@ -78,6 +81,7 @@
   stdout:
     contains:
       - "bwa samse"
+    must_not_contain:
+      - "-P "
   files:
     - path: "test-output/out.sam"
-        

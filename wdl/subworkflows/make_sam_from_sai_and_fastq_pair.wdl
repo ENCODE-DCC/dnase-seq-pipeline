@@ -9,9 +9,10 @@ workflow make_sam_from_sai_and_fastq_pair {
         FastqPair fastqs
         SaiPair sais
         BwaIndex bwa_index
-        BwaSampeParams params = {
-            "max_insert_size": 750,
-            "max_paired_hits": 10
+        BwaSampeParams params = object {
+            max_insert_size: 750,
+            max_paired_hits: 10,
+            keep_index_in_ram: true
         }
         Resources resources
     }
