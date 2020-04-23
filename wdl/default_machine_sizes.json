@@ -1,15 +1,13 @@
 {
+    "align": "large2x",
     "concatenate": "medium",
-    "trim": "medium",
-    "align": "medium",
-    "merge": "medium",
-    "align": "medium",
-    "merge": "medium",
-    "mark": "medium",
-    "filter": "medium",
-    "peaks": "medium",
-    "score": "medium",
+    "convert": "medium",
+    "filter": "large",
+    "mark": "large",
+    "merge": "large",
     "normalize": "medium",
+    "peaks": "medium",
     "qc": "medium",
-    "convert": "medium"
+    "score": "medium",
+    "trim": "large2x"
 }
