@@ -97,10 +97,15 @@ workflow make_references {
 
     output {
         BwaIndex bwa_index_out = bwa_index_output
-        File center_sites_out = center_sites_output
-        File chrom_info_out = chrom_info_output
-        File chrom_sizes_out = chrom_sizes_output
-        File? fasta_index = build_fasta_index.indexed_fasta.fai
-        File mappable_regions_out = mappable_regions_output
+        HotSpot1Reference hotspot1_reference = {
+            "chrom_info": chrom_info_output,
+            "mappable_regions": mappable_regions_output
+        }
+        HotSpot2Reference hotspot2_reference = {
+            "chrom_sizes": chrom_sizes_output,
+            "center_sites": center_sites_output,
+            "mappable_regions": mappable_regions_output
+        }
+        IndexedFasta indexed_fasta = build_fasta_index.indexed_fasta
     }
 }
