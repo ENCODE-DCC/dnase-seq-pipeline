@@ -1,14 +1,14 @@
 version 1.0
 
 
-import "../../subworkflows/build_bowtie_index.wdl" as fasta_for_bowtie_index
-import "../../subworkflows/build_bwa_index.wdl" as fasta_for_bwa_index
-import "../../subworkflows/build_fasta_index.wdl" as fasta_for_fasta_index
-import "../../subworkflows/build_mappable_only_bed.wdl" as mappable
-import "../../subworkflows/get_center_sites.wdl" as center
-import "../../subworkflows/get_chrom_info.wdl" as chrom_sizes
-import "../../subworkflows/get_chrom_sizes.wdl" as fasta_index
-import "../../structs/sizes.wdl"
+import "wdl/subworkflows/build_bowtie_index.wdl" as fasta_for_bowtie_index
+import "wdl/subworkflows/build_bwa_index.wdl" as fasta_for_bwa_index
+import "wdl/subworkflows/build_fasta_index.wdl" as fasta_for_fasta_index
+import "wdl/subworkflows/build_mappable_only_bed.wdl" as mappable
+import "wdl/subworkflows/get_center_sites.wdl" as center
+import "wdl/subworkflows/get_chrom_info.wdl" as chrom_sizes
+import "wdl/subworkflows/get_chrom_sizes.wdl" as fasta_index
+import "wdl/structs/sizes.wdl"
 
 workflow references {
     input {

@@ -3,7 +3,7 @@
     - functional
   command: >-
     tests/caper_run.sh \
-    wdl/workflows/references/references.wdl \
+    references.wdl \
     tests/functional/json/test_references.json
   stdout:
     contains:
@@ -53,7 +53,7 @@
     - functional
   command: >-
     tests/caper_run.sh \
-    wdl/workflows/references/references.wdl \
+    references.wdl \
     tests/functional/json/test_references_bwa_defined.json
   stdout:
     contains:
@@ -102,7 +102,7 @@
     - functional
   command: >-
     tests/caper_run.sh \
-    wdl/workflows/references/references.wdl \
+    references.wdl \
     tests/functional/json/test_references_bwa_bowtie_defined.json
   stdout:
     contains:
@@ -149,7 +149,7 @@
     - functional
   command: >-
     tests/caper_run.sh \
-    wdl/workflows/references/references.wdl \
+    references.wdl \
     tests/functional/json/test_references_bwa_bowtie_mappable_defined.json
   stdout:
     contains:
