@@ -18,7 +18,6 @@
       - "sort-bed"
       - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
       - "chr22.fa.chrom_sizes.bed"
-      - "awk"
       - 'BEGIN{OFS="\t"} {print $1, $2, $3, $1}'
       - "extractCenterSites.sh"
       - "-c" 

@@ -18,7 +18,6 @@ struct MachineSizes {
 struct ReferenceMachineSizes {
     String bwa
     String center
-    String chr_buckets
     String chr_info
     String chr_sizes
     String fai

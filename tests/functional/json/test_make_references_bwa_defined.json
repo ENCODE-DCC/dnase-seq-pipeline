@@ -7,14 +7,13 @@
         "amb": "tests/data/ref/chr22.fa.amb",
         "sa": "tests/data/ref/chr22.fa.sa"
     },
-    "make_references.mappability_kmer_length": 12,
-    "make_references.reference_fasta": "tests/data/ref/chr22.fa",
+    "make_references.kmer_length": 12,
+    "make_references.fasta": "tests/data/ref/chr22.fa",
     "make_references.machine_sizes": {
         "bwa": "small",
         "fai": "small",
         "bowtie": "small",
         "mappable": "small",
-        "chr_buckets": "small",
         "chr_info": "small",
         "chr_sizes": "small",
         "center": "small"

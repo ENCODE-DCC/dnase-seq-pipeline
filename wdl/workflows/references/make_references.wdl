@@ -18,18 +18,18 @@ workflow make_references {
         File? chrom_info
         File? chrom_sizes
         File? mappable_regions
-        File reference_fasta
-        Int mappability_kmer_length
+        File fasta
+        Int kmer_length
         ReferenceMachineSizes machine_sizes = read_json("wdl/default_reference_machine_sizes.json")
     }
 
     Machines compute = read_json("wdl/runtimes.json")
-    String genome_name = basename(reference_fasta, ".fa")
+    String genome_name = basename(fasta, ".fa")
     
     if (!defined(bwa_index)) {
         call bwa.build_bwa_index {
             input:
-                fasta=reference_fasta,
+                fasta=fasta,
                 resources=compute.runtimes[machine_sizes.bwa],
         }
     }
@@ -38,14 +38,16 @@ workflow make_references {
 
     call fai.build_fasta_index {
         input:
-            fasta=reference_fasta,
+            fasta=fasta,
             resources=compute.runtimes[machine_sizes.fai],
     }
+
+    File fasta_index_output = select_first([build_fasta_index.indexed_fasta.fai])
 
     if (!defined(bowtie_index)) {
         call bowtie.build_bowtie_index {
             input:
-                fasta=reference_fasta,
+                fasta=fasta,
                 resources=compute.runtimes[machine_sizes.bowtie]
         }
     }
@@ -56,8 +58,8 @@ workflow make_references {
         call mappable.build_mappable_only_bed {
             input:
                 bowtie_index=bowtie_index_output,
-                kmer_length=mappability_kmer_length,
-                reference_genome=reference_fasta,
+                kmer_length=kmer_length,
+                reference_genome=fasta,
                 resources=compute.runtimes[machine_sizes.mappable],
         }
     }
@@ -97,15 +99,17 @@ workflow make_references {
 
     output {
         BwaIndex bwa_index_out = bwa_index_output
-        HotSpot1Reference hotspot1_reference = {
-            "chrom_info": chrom_info_output,
-            "mappable_regions": mappable_regions_output
+        HotSpot1Reference hotspot1_reference = object {
+            chrom_info: chrom_info_output,
+            mappable_regions: mappable_regions_output
         }
-        HotSpot2Reference hotspot2_reference = {
-            "chrom_sizes": chrom_sizes_output,
-            "center_sites": center_sites_output,
-            "mappable_regions": mappable_regions_output
+        HotSpot2Reference hotspot2_reference = object {
+            chrom_sizes: chrom_sizes_output,
+            center_sites: center_sites_output,
+            mappable_regions: mappable_regions_output
         }
-        IndexedFasta indexed_fasta = build_fasta_index.indexed_fasta
+        IndexedFasta fasta_index = object {
+                                      fai: fasta_index_output
+                                   }
     }
 }
