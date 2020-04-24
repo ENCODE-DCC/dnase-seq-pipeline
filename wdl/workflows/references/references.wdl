@@ -30,7 +30,7 @@ workflow references {
         call fasta_for_bwa_index.build_bwa_index {
             input:
                 fasta=fasta,
-                resources=compute.runtimes[machine_sizes.bwa],
+                resources=compute.runtimes[machine_sizes.build_bwa_index],
         }
     }
 
@@ -42,7 +42,7 @@ workflow references {
     call fasta_for_fasta_index.build_fasta_index {
         input:
             fasta=fasta,
-            resources=compute.runtimes[machine_sizes.fai],
+            resources=compute.runtimes[machine_sizes.build_fasta_index],
     }
 
     File fasta_index_output = select_first([
@@ -53,7 +53,7 @@ workflow references {
         call fasta_for_bowtie_index.build_bowtie_index {
             input:
                 fasta=fasta,
-                resources=compute.runtimes[machine_sizes.bowtie]
+                resources=compute.runtimes[machine_sizes.build_bowtie_index]
         }
     }
 
@@ -68,7 +68,7 @@ workflow references {
                 bowtie_index=bowtie_index_output,
                 kmer_length=kmer_length,
                 reference_genome=fasta,
-                resources=compute.runtimes[machine_sizes.mappable],
+                resources=compute.runtimes[machine_sizes.build_mappable_only_bed],
         }
     }
 
@@ -83,7 +83,7 @@ workflow references {
                 fai=select_first([
                         build_fasta_index.indexed_fasta.fai
                     ]),
-                resources=compute.runtimes[machine_sizes.chr_sizes],
+                resources=compute.runtimes[machine_sizes.get_chrom_sizes],
         }
     }
 
@@ -96,7 +96,7 @@ workflow references {
         call chrom_sizes.get_chrom_info {
             input:
                 chrom_sizes=chrom_sizes_output,
-                resources=compute.runtimes[machine_sizes.chr_info],
+                resources=compute.runtimes[machine_sizes.get_chrom_info],
         }
     }
 
@@ -110,7 +110,7 @@ workflow references {
             input:
                 chrom_sizes=chrom_sizes_output,
                 mappable_regions=mappable_regions_output,
-                resources=compute.runtimes[machine_sizes.center],
+                resources=compute.runtimes[machine_sizes.get_center_sites],
         }
     }
 

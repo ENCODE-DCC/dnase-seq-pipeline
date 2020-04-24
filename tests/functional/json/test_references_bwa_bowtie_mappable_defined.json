@@ -19,12 +19,12 @@
     "references.mappable_regions": "tests/data/dnase/references/chr22.K12.mappable_only.bed",
     "references.fasta": "tests/data/ref/chr22.fa",
     "references.machine_sizes": {
-        "bwa": "small",
-        "fai": "small",
-        "bowtie": "small",
-        "mappable": "small",
-        "chr_info": "small",
-        "chr_sizes": "small",
-        "center": "small"
+        "build_bwa_index": "small",
+        "build_fasta_index": "small",
+        "build_bowtie_index": "small",
+        "build_mappable_only_bed": "small",
+        "get_chrom_info": "small",
+        "get_chrom_sizes": "small",
+        "get_center_sites": "small"
     }
 }

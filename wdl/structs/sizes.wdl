@@ -16,11 +16,11 @@ struct MachineSizes {
 }
 
 struct ReferenceMachineSizes {
-    String bwa
-    String center
-    String chr_info
-    String chr_sizes
-    String fai
-    String bowtie
-    String mappable
+    String build_bwa_index
+    String get_center_sites
+    String get_chrom_info
+    String get_chrom_sizes
+    String build_fasta_index
+    String build_bowtie_index
+    String build_mappable_only_bed
 }
