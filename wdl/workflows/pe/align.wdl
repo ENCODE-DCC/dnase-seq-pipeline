@@ -13,9 +13,11 @@ workflow align {
         FastqPair trimmed_fastqs
         IndexedFasta indexed_fasta
         String machine_size = "medium"
+        String out = "name_sorted_pe.bam"
     }
 
     Machines compute = read_json("wdl/runtimes.json")
+    String machine_size_low_cpu = machine_size + "-low-cpu"
 
     call trimmed_fastqs.align_fastq_pair_with_bwa {
         input:
@@ -29,7 +31,7 @@ workflow align {
             bwa_index=bwa_index,
             fastqs=trimmed_fastqs,
             sais=align_fastq_pair_with_bwa.sais,
-            resources=compute.runtimes[machine_size],
+            resources=compute.runtimes[machine_size_low_cpu],
     }
 
     call sam.convert_sam_to_bam {
@@ -42,7 +44,7 @@ workflow align {
     call unsorted_bam.sort_bam_by_name {
         input:
             bam=convert_sam_to_bam.unsorted_bam,
-            out="name_sorted_pe.bam",
+            out=out,
             resources=compute.runtimes[machine_size],
     }
 
