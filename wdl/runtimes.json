@@ -46,8 +46,8 @@
             "disks": "local-disk 250 SSD"
         },
         "large2x-low-cpu": {
-            "cpu": 2,
-            "memory_gb": 16,
+            "cpu": 1,
+            "memory_gb": 8,
             "disks": "local-disk 250 SSD"
         },
          "xlarge": {
