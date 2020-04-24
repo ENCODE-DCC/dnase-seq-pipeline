@@ -1,6 +1,5 @@
 {
-    "runtimes":
-    {
+    "runtimes": {
         "small": {
             "cpu": 1,
             "memory_gb": 2,
