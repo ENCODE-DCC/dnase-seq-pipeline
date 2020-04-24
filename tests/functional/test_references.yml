@@ -1,10 +1,10 @@
-- name: test_make_references
+- name: test_references
   tags:
     - functional
   command: >-
     tests/caper_run.sh \
-    wdl/workflows/references/make_references.wdl \
-    tests/functional/json/test_make_references.json
+    wdl/workflows/references/references.wdl \
+    tests/functional/json/test_references.json
   stdout:
     contains:
       - "bwa index chr22.fa"
@@ -48,13 +48,13 @@
       md5sum: 59cc5e7f4dc1a611bc75eceb0ca27697
     - path: "test-output/chr22.K12.center_sites.n100.starch"
 
-- name: test_make_references_bwa_defined
+- name: test_references_bwa_defined
   tags:
     - functional
   command: >-
     tests/caper_run.sh \
-    wdl/workflows/references/make_references.wdl \
-    tests/functional/json/test_make_references_bwa_defined.json
+    wdl/workflows/references/references.wdl \
+    tests/functional/json/test_references_bwa_defined.json
   stdout:
     contains:
       - "samtools faidx chr22.fa"
@@ -97,13 +97,13 @@
       md5sum: 59cc5e7f4dc1a611bc75eceb0ca27697
     - path: "test-output/chr22.K12.center_sites.n100.starch"
 
-- name: test_make_references_bwa_bowtie_defined
+- name: test_references_bwa_bowtie_defined
   tags:
     - functional
   command: >-
     tests/caper_run.sh \
-    wdl/workflows/references/make_references.wdl \
-    tests/functional/json/test_make_references_bwa_bowtie_defined.json
+    wdl/workflows/references/references.wdl \
+    tests/functional/json/test_references_bwa_bowtie_defined.json
   stdout:
     contains:
       - "samtools faidx chr22.fa"
@@ -144,13 +144,13 @@
       md5sum: 59cc5e7f4dc1a611bc75eceb0ca27697
     - path: "test-output/chr22.K12.center_sites.n100.starch"
 
-- name: test_make_references_bwa_bowtie_mappable_defined
+- name: test_references_bwa_bowtie_mappable_defined
   tags:
     - functional
   command: >-
     tests/caper_run.sh \
-    wdl/workflows/references/make_references.wdl \
-    tests/functional/json/test_make_references_bwa_bowtie_mappable_defined.json
+    wdl/workflows/references/references.wdl \
+    tests/functional/json/test_references_bwa_bowtie_mappable_defined.json
   stdout:
     contains:
       - "samtools faidx chr22.fa"
