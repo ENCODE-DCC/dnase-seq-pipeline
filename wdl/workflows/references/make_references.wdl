@@ -34,7 +34,10 @@ workflow make_references {
         }
     }
 
-    BwaIndex bwa_index_output = select_first([bwa_index, build_bwa_index.bwa_index])
+    BwaIndex bwa_index_output = select_first([
+                                    bwa_index,
+                                    build_bwa_index.bwa_index
+                                ])
 
     call fai.build_fasta_index {
         input:
@@ -42,7 +45,9 @@ workflow make_references {
             resources=compute.runtimes[machine_sizes.fai],
     }
 
-    File fasta_index_output = select_first([build_fasta_index.indexed_fasta.fai])
+    File fasta_index_output = select_first([
+                                  build_fasta_index.indexed_fasta.fai
+                              ])
 
     if (!defined(bowtie_index)) {
         call bowtie.build_bowtie_index {
@@ -52,7 +57,10 @@ workflow make_references {
         }
     }
 
-    BowtieIndex bowtie_index_output = select_first([bowtie_index, build_bowtie_index.bowtie_index])
+    BowtieIndex bowtie_index_output = select_first([
+                                          bowtie_index,
+                                          build_bowtie_index.bowtie_index
+                                      ])
 
     if (!defined(mappable_regions)) {
         call mappable.build_mappable_only_bed {
@@ -64,17 +72,25 @@ workflow make_references {
         }
     }
 
-    File mappable_regions_output = select_first([mappable_regions, build_mappable_only_bed.mappable_regions])
+    File mappable_regions_output = select_first([
+                                      mappable_regions,
+                                      build_mappable_only_bed.mappable_regions
+                                   ])
 
     if (!defined(chrom_sizes)) {
         call chr_sizes.get_chrom_sizes {
             input:
-                fai=select_first([build_fasta_index.indexed_fasta.fai]),
+                fai=select_first([
+                        build_fasta_index.indexed_fasta.fai
+                    ]),
                 resources=compute.runtimes[machine_sizes.chr_sizes],
         }
     }
 
-    File chrom_sizes_output = select_first([chrom_sizes, get_chrom_sizes.chrom_sizes])
+    File chrom_sizes_output = select_first([
+                                  chrom_sizes,
+                                  get_chrom_sizes.chrom_sizes
+                              ])
 
     if (!defined(chrom_info)) {
         call chr_info.get_chrom_info {
@@ -84,7 +100,10 @@ workflow make_references {
         }
     }
 
-    File chrom_info_output = select_first([chrom_info, get_chrom_info.chrom_info])
+    File chrom_info_output = select_first([
+                                chrom_info,
+                                get_chrom_info.chrom_info
+                             ])
 
     if (!defined(center_sites)) {
         call center.get_center_sites {
@@ -95,19 +114,22 @@ workflow make_references {
         }
     }
 
-    File center_sites_output = select_first([center_sites, get_center_sites.center_sites_starch])
+    File center_sites_output = select_first([
+                                  center_sites,
+                                  get_center_sites.center_sites_starch
+                               ])
 
     output {
         BwaIndex bwa_index_out = bwa_index_output
         HotSpot1Reference hotspot1_reference = object {
-            chrom_info: chrom_info_output,
-            mappable_regions: mappable_regions_output
-        }
+                                                  chrom_info: chrom_info_output,
+                                                  mappable_regions: mappable_regions_output
+                                               }
         HotSpot2Reference hotspot2_reference = object {
-            chrom_sizes: chrom_sizes_output,
-            center_sites: center_sites_output,
-            mappable_regions: mappable_regions_output
-        }
+                                                  chrom_sizes: chrom_sizes_output,
+                                                  center_sites: center_sites_output,
+                                                  mappable_regions: mappable_regions_output
+                                               }
         IndexedFasta fasta_index = object {
                                       fai: fasta_index_output
                                    }
