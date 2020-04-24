@@ -1,13 +1,13 @@
 version 1.0
 
 
-import "../../subworkflows/build_bowtie_index.wdl" as bowtie
-import "../../subworkflows/build_bwa_index.wdl" as bwa
-import "../../subworkflows/build_fasta_index.wdl" as fai
+import "../../subworkflows/build_bowtie_index.wdl" as fasta_for_bowtie_index
+import "../../subworkflows/build_bwa_index.wdl" as fasta_for_bwa_index
+import "../../subworkflows/build_fasta_index.wdl" as fasta_for_fasta_index
 import "../../subworkflows/build_mappable_only_bed.wdl" as mappable
 import "../../subworkflows/get_center_sites.wdl" as center
-import "../../subworkflows/get_chrom_info.wdl" as chr_info
-import "../../subworkflows/get_chrom_sizes.wdl" as chr_sizes
+import "../../subworkflows/get_chrom_info.wdl" as chrom_sizes
+import "../../subworkflows/get_chrom_sizes.wdl" as fasta_index
 import "../../structs/sizes.wdl"
 
 workflow make_references {
@@ -27,7 +27,7 @@ workflow make_references {
     String genome_name = basename(fasta, ".fa")
     
     if (!defined(bwa_index)) {
-        call bwa.build_bwa_index {
+        call fasta_for_bwa_index.build_bwa_index {
             input:
                 fasta=fasta,
                 resources=compute.runtimes[machine_sizes.bwa],
@@ -39,7 +39,7 @@ workflow make_references {
                                     build_bwa_index.bwa_index
                                 ])
 
-    call fai.build_fasta_index {
+    call fasta_for_fasta_index.build_fasta_index {
         input:
             fasta=fasta,
             resources=compute.runtimes[machine_sizes.fai],
@@ -50,7 +50,7 @@ workflow make_references {
                               ])
 
     if (!defined(bowtie_index)) {
-        call bowtie.build_bowtie_index {
+        call fasta_for_bowtie_index.build_bowtie_index {
             input:
                 fasta=fasta,
                 resources=compute.runtimes[machine_sizes.bowtie]
@@ -78,7 +78,7 @@ workflow make_references {
                                    ])
 
     if (!defined(chrom_sizes)) {
-        call chr_sizes.get_chrom_sizes {
+        call fasta_index.get_chrom_sizes {
             input:
                 fai=select_first([
                         build_fasta_index.indexed_fasta.fai
@@ -93,7 +93,7 @@ workflow make_references {
                               ])
 
     if (!defined(chrom_info)) {
-        call chr_info.get_chrom_info {
+        call chrom_sizes.get_chrom_info {
             input:
                 chrom_sizes=chrom_sizes_output,
                 resources=compute.runtimes[machine_sizes.chr_info],
