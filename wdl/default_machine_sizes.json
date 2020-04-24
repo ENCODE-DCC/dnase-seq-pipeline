@@ -5,7 +5,7 @@
     "filter": "large",
     "mark": "large",
     "merge": "large",
-    "normalize": "medium",
+    "normalize": "medium2x",
     "peaks": "medium",
     "qc": "medium",
     "score": "medium",
