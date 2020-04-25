@@ -169,9 +169,9 @@ The sizes are defined in [wdl/runtimes.json](wdl/runtimes.json). For example `me
     "disks": "local-disk 50 SSD"
 }
 ```
-Note that specifying `dnase.machine_sizes` is optional and default values from [wdl/default_machine_sizes.json](wdl/default_machine_sizes.json) will be used if it is not specified in input.
+Note that specifying `dnase.machine_sizes` is optional and default values from [wdl/default_machine_sizes.json](wdl/default_machine_sizes.json) will be used if it is not specified in the input JSON.
 
-You can use the dnase_template.json for GRCh38 with [76bp](templates/json/GRCh38/76/dnase_template.json) or [36bp](templates/json/GRCh38/36/dnase_template.json) references and machine_sizes already specified.
+You can use the 76bp [dnase_template.json](templates/json/GRCh38/76/dnase_template.json) or the 36bp [dnase_template.json](templates/json/GRCh38/36/dnase_template.json) for GRCh38 to avoid having to fill in the references and machine_size sections.
 
 ### Steps
 The pipelines can be roughly split up into these steps:
