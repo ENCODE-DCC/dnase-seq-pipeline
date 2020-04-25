@@ -1,10 +1,10 @@
 # ENCODE DNase-seq pipeline
 
 ### Introduction
-This is the uniform processing pipeline for [ENCODE DNase-seq experiments](https://www.encodeproject.org/search/?type=Experiment&assay_title=DNase-seq). It uses [WDL](https://github.com/openwdl/wdl) and [Caper](https://github.com/ENCODE-DCC/caper) (a thin wrapper over [Cromwell](https://github.com/broadinstitute/cromwell)) to specify and run the processing steps, and [Docker](https://www.docker.com/) to ensure a reproducible and portable compute environment. The same inputs should produce the same outputs regardless of computational platform (local, Cloud, etc.). The benefits of having a reproducible workflow include generating processed results that are comparable between ENCODE experiments and providing outside users an easy way to process their own DNAse-seq data for comparison with ENCODE data.
+This is the uniform processing pipeline for [ENCODE DNase-seq experiments](https://www.encodeproject.org/search/?type=Experiment&assay_title=DNase-seq). It uses [WDL](https://github.com/openwdl/wdl) and [Caper](https://github.com/ENCODE-DCC/caper) (a wrapper over [Cromwell](https://github.com/broadinstitute/cromwell)) to specify and run the processing steps, and [Docker](https://www.docker.com/) to ensure a reproducible and portable compute environment. The same inputs should produce the same outputs regardless of computational platform (local, Cloud, etc.). The benefits of having a reproducible workflow include generating processed results that are comparable between ENCODE experiments and providing outside users an easy way to process their own DNAse-seq data for comparison with ENCODE data.
 
 ### Quickstart
-Assuming the requirements are installed you must create a JSON file specifying the inputs of the pipeline. These include the raw FASTQs from the DNase-seq experiment as well as reference files specific to an assembly (e.g. GRCh38) and read length (e.g. 76bp). There are three sections in the input JSON (example (dnase_template.json)[templates/json/GRCh38/76/dnase_template.json] for 76bp GRCh38 experiments with references specified):
+Assuming the requirements are installed you must create a JSON file specifying the inputs of the pipeline. These include the raw FASTQs from the DNase-seq experiment as well as reference files specific to an assembly (e.g. GRCh38) and read length (e.g. 76bp). There are three sections in the input JSON:
 
 ```
 {
@@ -170,6 +170,8 @@ The sizes are defined in (wdl/runtimes.json)[wdl/runtimes.json]. For example `me
 }
 ```
 Note that specifying `dnase.machine_sizes` is optional and default values from [wdl/default_machine_sizes.json](wdl/default_machine_sizes.json) will be used if it is not specified in input.
+
+You can use the dnase_template.json for GRCh38 with [76bp](templates/json/GRCh38/76/dnase_template.json) or [36bp](templates/json/GRCh38/36/dnase_template.json) references and machine_sizes already specified.
 
 ### Steps
 The pipelines can be roughly split up into these steps:
