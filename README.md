@@ -142,7 +142,7 @@ Here's how to specify the input for a 36bp mixed single-end/paired-end experimen
         "mappable_regions": "gs://dnase/ref/36/GRCh38.K36.mappable_only.bed"
     }
 ```
-In most cases these should already exist for a given assembly/read length, though the `references.wdl` workflow can be used to generate most of these for a new assembly/read length. Note that it is important for the `genome_name` to corresponds to the prefix of your references/indices.
+In most cases references should already exist for a given assembly/read length, though the `references.wdl` workflow can be used to generate most of these for a new assembly/read length. Note that it is important for the `genome_name` to corresponds to the prefix of your references/indices.
 
 `dnase.machine_sizes` specifies the desired compute size for specific steps of the pipeline (when custom instances can be specified).
 ```
@@ -161,7 +161,7 @@ In most cases these should already exist for a given assembly/read length, thoug
 }
 ```
 
-The sizes are defined in (wdl/runtimes.json)[wdl/runtimes.json]. For example `medium` corresponds to these resources:
+The sizes are defined in [wdl/runtimes.json](wdl/runtimes.json). For example `medium` corresponds to these resources:
 ```
 "medium": {
     "cpu": 2,
