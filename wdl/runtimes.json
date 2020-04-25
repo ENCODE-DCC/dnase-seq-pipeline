@@ -1,7 +1,11 @@
 {
-    "runtimes":
-    {
+    "runtimes": {
         "small": {
+            "cpu": 1,
+            "memory_gb": 2,
+            "disks": "local-disk 10 SSD"
+        },
+        "small-low-cpu": {
             "cpu": 1,
             "memory_gb": 2,
             "disks": "local-disk 10 SSD"
@@ -9,22 +13,52 @@
         "medium": {
             "cpu": 2,
             "memory_gb": 4,
-            "disks": "local-disk 50 SSD"
+            "disks": "local-disk 200 SSD"
+        },
+        "medium-low-cpu": {
+            "cpu": 1,
+            "memory_gb": 4,
+            "disks": "local-disk 200 SSD"
         },
         "medium2x": {
             "cpu": 4,
             "memory_gb": 8,
-            "disks": "local-disk 100 SSD"
+            "disks": "local-disk 200 SSD"
         },
-        "large":  {
+        "medium2x-low-cpu": {
+            "cpu": 1,
+            "memory_gb": 8,
+            "disks": "local-disk 200 SSD"
+        },
+        "large": {
             "cpu": 8,
             "memory_gb": 16,
-            "disks": "local-disk 100 SSD"
+            "disks": "local-disk 200 SSD"
         },
-        "large2x":  {
+        "large-low-cpu": {
+            "cpu": 1,
+            "memory_gb": 8,
+            "disks": "local-disk 200 SSD"
+        },
+        "large2x": {
             "cpu": 16,
             "memory_gb": 32,
-            "disks": "local-disk 200 SSD"
+            "disks": "local-disk 250 SSD"
+        },
+        "large2x-low-cpu": {
+            "cpu": 1,
+            "memory_gb": 8,
+            "disks": "local-disk 250 SSD"
+        },
+         "xlarge": {
+            "cpu": 24,
+            "memory_gb": 32,
+            "disks": "local-disk 400 SSD"
+        },
+        "xlarge-low-cpu": {
+            "cpu": 4,
+            "memory_gb": 32,
+            "disks": "local-disk 400 SSD"
         }
     }
 }

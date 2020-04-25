@@ -12,12 +12,13 @@ workflow trim {
     }
 
     Machines compute = read_json("wdl/runtimes.json")
+    String machine_size_low_cpu = machine_size + "-low-cpu"
 
     call concatenated_fastq.trim_fastq_to_length {
         input:
             fastq=concatenated_fastq,
             trim_length=trim_length,
-            resources=compute.runtimes[machine_size],
+            resources=compute.runtimes[machine_size_low_cpu],
     }
 
     output {

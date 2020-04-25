@@ -17,6 +17,7 @@ workflow align {
     }
 
     Machines compute = read_json("wdl/runtimes.json")
+    String machine_size_low_cpu = machine_size + "-low-cpu"
 
     call trimmed_fastq.align_fastq_with_bwa {
         input:
@@ -30,7 +31,7 @@ workflow align {
             bwa_index=bwa_index,
             fastq=trimmed_fastq,
             sai=align_fastq_with_bwa.sai,
-            resources=compute.runtimes[machine_size],
+            resources=compute.runtimes[machine_size_low_cpu],
     }
 
     call sam.convert_sam_to_bam {
