@@ -179,6 +179,21 @@ The pipelines can be roughly split up into these steps:
 * Calculate and gather QC - Various quality metrics such as `samtools flagstats` are collected.
 * Normalize and convert files - The `density starch` from Hotspot2 is normalized and converted to a `bigWig`, peak `starches` are converted to `bed` and `bigBed` format.
 
+
+### Running with Caper
+
+Once the input JSON has been specified and placed somewhere accessible (e.g in a Google Cloud bucket) you can launch the workflow:
+
+```
+caper submit dnase.wdl --inputs gs://dnase/json/ENCSR426IEA.json --docker $DNASE_DOCKER_IMAGE_TAG
+```
+Note that `$DNASE_DOCKER_IMAGE_TAG` is an environment variable specifying a link to our Docker image on Quay.
+
+You can check on the status of the workflow with:
+```
+caper list --hide-subworkflow
+```
+
 ### Outputs
 **Files**
 * unfiltered_bam
@@ -214,9 +229,9 @@ nuclear_bam:
 peaks:
 * hotspot2 spot_score
 
-### Organization
+### Repository Organization
 The *wdl* folder is split up into:
-* taskst
+* tasks
 * subworkflows
 * workflows
 * structs
