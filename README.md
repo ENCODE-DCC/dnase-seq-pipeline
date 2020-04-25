@@ -197,7 +197,9 @@ caper list --hide-subworkflow
 ```
 
 ### Outputs
-**Files**
+** Files**
+
+| ----- |
 | unfiltered bam |
 | nuclear bam |
 | normalized density bw |
@@ -228,11 +230,11 @@ caper list --hide-subworkflow
 | insert size info |
 | insertsize histogram pdf |
 
-(Note that insert sizes and trimstats only included for PE data.)
-
 | peaks |
 | ----- |
 | hotspot2 spot score |
+
+*(Note that insert sizes and trimstats only included for PE data.)*
 
 ### Repository Organization
 The *wdl* folder is split up into:
