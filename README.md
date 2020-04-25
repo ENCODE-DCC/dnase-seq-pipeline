@@ -147,17 +147,17 @@ In most cases references should already exist for a given assembly/read length, 
 `dnase.machine_sizes` specifies the desired compute size for specific steps of the pipeline (when custom instances can be specified).
 ```
 "dnase.machine_sizes": {
-    "qc": "medium2x",
-    "normalize": "medium2x",
-    "align": "large",
-    "score": "medium2x",
+    "align": "large2x",
+    "concatenate": "medium",
+    "convert": "medium",
     "filter": "large",
-    "merge": "large",
-    "peaks": "medium2x",
-    "concatenate": "medium2x",
-    "trim": "large",
     "mark": "large",
-    "convert": "medium2x"
+    "merge": "large",
+    "normalize": "medium2x",
+    "peaks": "medium",
+    "qc": "medium",
+    "score": "medium",
+    "trim": "large2x"
 }
 ```
 
