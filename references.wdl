@@ -10,6 +10,7 @@ import "wdl/subworkflows/get_chrom_info.wdl" as chrom_sizes
 import "wdl/subworkflows/get_chrom_sizes.wdl" as fasta_index
 import "wdl/structs/sizes.wdl"
 
+
 workflow references {
     input {
         BowtieIndex? bowtie_index
