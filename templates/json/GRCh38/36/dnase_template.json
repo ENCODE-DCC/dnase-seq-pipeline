@@ -1,0 +1,50 @@
+{
+    "dnase.replicates": [
+        {
+            "accession": "",
+            "number": "",
+            "read_length": "36",
+            "se_fastqs": [
+            ]
+        }
+    ],
+    "dnase.references": {
+        "genome_name": "GRCh38",
+        "indexed_fasta": {
+            "fasta": "gs://dnase/ref/GRCh38.fa",
+            "fai": "gs://dnase/ref/GRCh38.fa.fai"
+        },
+        "bwa_index": {
+            "bwt": "gs://dnase/ref/GRCh38.fa.bwt",
+            "fasta": "gs://dnase/ref/GRCh38.fa",
+            "pac": "gs://dnase/ref/GRCh38.fa.pac",
+            "ann": "gs://dnase/ref/GRCh38.fa.ann",
+            "amb": "gs://dnase/ref/GRCh38.fa.amb",
+            "sa": "gs://dnase/ref/GRCh38.fa.sa"
+        },
+        "nuclear_chroms": "gs://dnase/ref/nuclear_chroms.txt",
+        "narrow_peak_auto_sql": "gs://dnase/ref/bigbed/narrowPeak.as",
+         "hotspot1": {
+             "chrom_info": "gs://dnase/ref/GRCh38.chromInfo.bed",
+             "mappable_regions": "gs://dnase/ref/36/GRCh38.K36.mappable_only.bed"
+        },
+        "hotspot2": {
+            "chrom_sizes": "gs://dnase/ref/GRCh38.chrom_sizes.bed",
+            "center_sites": "gs://dnase/ref/36/GRCh38.K36.center_sites.n100.starch",
+            "mappable_regions": "gs://dnase/ref/36/GRCh38.K36.mappable_only.bed"
+        }
+    },
+    "dnase.machine_sizes": {
+        "align": "large2x",
+        "concatenate": "medium",
+        "convert": "medium",
+        "filter": "large",
+        "mark": "large",
+        "merge": "large",
+        "normalize": "medium2x",
+        "peaks": "medium",
+        "qc": "medium",
+        "score": "medium",
+        "trim": "large2x"
+    }
+}
