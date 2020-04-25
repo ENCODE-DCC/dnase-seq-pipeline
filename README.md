@@ -175,11 +175,11 @@ You can use the 76bp [dnase_template.json](templates/json/GRCh38/76/dnase_templa
 
 ### Steps
 The pipelines can be roughly split up into these steps:
-* *Concatenate, trim, and align fastqs* - This step concatenates raw FASTQs, trims adapters and read lengths, and aligns with BWA (single-end and paired-end data are kept separate).
-* Merge, mark, and filter BAMs - The aligned PE/SE BAMs are merged, duplicates, low-quality, and non-nuclear reads are marked and filtered out.
-* Call hotspots and peaks and get spot score - The BAM is passed to Hotspots1 and Hotspot2 in order to get peaks and SPOT score.
-* Calculate and gather QC - Various quality metrics such as `samtools flagstats` are collected.
-* Normalize and convert files - The `density starch` from Hotspot2 is normalized and converted to a `bigWig`, peak `starches` are converted to `bed` and `bigBed` format.
+* *Concatenate, trim, and align fastqs* - The raw FASTQs are concatenated, trimmed for adapters and length, and aligned with BWA (single-end and paired-end data are kept separate).
+* *Merge, mark, and filter BAMs* - The aligned PE/SE BAMs are merged, duplicates, low-quality, and non-nuclear reads are marked and filtered out.
+* *Call hotspots and peaks and get SPOT score* - The BAM is passed to Hotspots1 and Hotspot2 in order to get peaks and SPOT score.
+* *Calculate and gather QC* - Various quality metrics such as `samtools flagstats` are collected.
+* *Normalize and convert files* - The `density starch` from Hotspot2 is normalized and converted to a `bigWig`, peak `starches` are converted to `bed` and `bigBed` format.
 
 
 ### Running with Caper
