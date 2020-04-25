@@ -35,9 +35,9 @@ workflow references {
     }
 
     BwaIndex bwa_index_output = select_first([
-                                    bwa_index,
-                                    build_bwa_index.bwa_index
-                                ])
+        bwa_index,
+        build_bwa_index.bwa_index
+    ])
 
     call fasta_for_fasta_index.build_fasta_index {
         input:
@@ -46,8 +46,8 @@ workflow references {
     }
 
     File fasta_index_output = select_first([
-                                  build_fasta_index.indexed_fasta.fai
-                              ])
+        build_fasta_index.indexed_fasta.fai
+    ])
 
     if (!defined(bowtie_index)) {
         call fasta_for_bowtie_index.build_bowtie_index {
@@ -58,9 +58,9 @@ workflow references {
     }
 
     BowtieIndex bowtie_index_output = select_first([
-                                          bowtie_index,
-                                          build_bowtie_index.bowtie_index
-                                      ])
+        bowtie_index,
+        build_bowtie_index.bowtie_index
+    ])
 
     if (!defined(mappable_regions)) {
         call mappable.build_mappable_only_bed {
@@ -73,9 +73,9 @@ workflow references {
     }
 
     File mappable_regions_output = select_first([
-                                      mappable_regions,
-                                      build_mappable_only_bed.mappable_regions
-                                   ])
+        mappable_regions,
+        build_mappable_only_bed.mappable_regions
+    ])
 
     if (!defined(chrom_sizes)) {
         call fasta_index.get_chrom_sizes {
@@ -88,9 +88,9 @@ workflow references {
     }
 
     File chrom_sizes_output = select_first([
-                                  chrom_sizes,
-                                  get_chrom_sizes.chrom_sizes
-                              ])
+        chrom_sizes,
+        get_chrom_sizes.chrom_sizes
+    ])
 
     if (!defined(chrom_info)) {
         call chrom_sizes.get_chrom_info {
@@ -101,9 +101,9 @@ workflow references {
     }
 
     File chrom_info_output = select_first([
-                                chrom_info,
-                                get_chrom_info.chrom_info
-                             ])
+        chrom_info,
+        get_chrom_info.chrom_info
+    ])
 
     if (!defined(center_sites)) {
         call center.get_center_sites {
@@ -115,23 +115,23 @@ workflow references {
     }
 
     File center_sites_output = select_first([
-                                  center_sites,
-                                  get_center_sites.center_sites_starch
-                               ])
+        center_sites,
+        get_center_sites.center_sites_starch
+    ])
 
     output {
         BwaIndex bwa_index_out = bwa_index_output
         HotSpot1Reference hotspot1_reference = object {
-                                                  chrom_info: chrom_info_output,
-                                                  mappable_regions: mappable_regions_output
-                                               }
+            chrom_info: chrom_info_output,
+            mappable_regions: mappable_regions_output
+        }
         HotSpot2Reference hotspot2_reference = object {
-                                                  chrom_sizes: chrom_sizes_output,
-                                                  center_sites: center_sites_output,
-                                                  mappable_regions: mappable_regions_output
-                                               }
+            chrom_sizes: chrom_sizes_output,
+            center_sites: center_sites_output,
+            mappable_regions: mappable_regions_output
+        }
         IndexedFasta fasta_index = object {
-                                      fai: fasta_index_output
-                                   }
+            fai: fasta_index_output
+        }
     }
 }
