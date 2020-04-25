@@ -14,7 +14,7 @@ Assuming the requirements are installed you must create a JSON file specifying t
 }
 ```
 
-`dnase.replicates` takes a list of biological replicates. For example in order to specify [ENCSR693UHT](https://www.encodeproject.org/experiments/ENCSR693UHT/) which has a single replicate and two paired-end FASTQs (where `R1` and `R2` specify the pair):
+`dnase.replicates` takes a list of biological replicates. Here's an example of how to specify [ENCSR693UHT](https://www.encodeproject.org/experiments/ENCSR693UHT/), which has a single replicate and two paired-end FASTQs (where `R1` and `R2` specify the pair):
 
 ```
 "dnase.replicates": [
@@ -40,9 +40,9 @@ Assuming the requirements are installed you must create a JSON file specifying t
     }
 ]
 ```
-Note that the adapter prefix (i.e. `N707`) usually corresponds to the flowcell barcode of the FASTQs and usually has `_P5` or `_P7` appended.
+Note that the adapter prefix (i.e. `N707`) corresponds to the flowcell barcode of the FASTQs and usually has `_P5` or `_P7` appended.
 
-To specify a 36bp single-end experiment with one replicate like [ENCSR420RWU](https://www.encodeproject.org/experiments/ENCSR420RWU/):
+Here's how to specify a 36bp single-end experiment with one replicate like [ENCSR420RWU](https://www.encodeproject.org/experiments/ENCSR420RWU/):
 ```
 "dnase.replicates": [
     {
@@ -58,7 +58,7 @@ To specify a 36bp single-end experiment with one replicate like [ENCSR420RWU](ht
 ```
 Note that `adapters` aren't required for single-end experiments.
 
-To specify a 36bp mixed single-end/paired-end experiment with two replicates like [ENCSR426IEA](https://www.encodeproject.org/experiments/ENCSR426IEA/):
+Here's how to specify a 36bp mixed single-end/paired-end experiment with two replicates like [ENCSR426IEA](https://www.encodeproject.org/experiments/ENCSR426IEA/):
 ```
 "dnase.replicates": [
     {
