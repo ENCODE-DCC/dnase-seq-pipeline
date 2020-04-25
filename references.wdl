@@ -82,8 +82,8 @@ workflow references {
         call fasta_index.get_chrom_sizes {
             input:
                 fai=select_first([
-                        build_fasta_index.indexed_fasta.fai
-                    ]),
+                    build_fasta_index.indexed_fasta.fai
+                ]),
                 resources=compute.runtimes[machine_sizes.get_chrom_sizes],
         }
     }
