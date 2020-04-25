@@ -198,38 +198,41 @@ caper list --hide-subworkflow
 
 ### Outputs
 **Files**
-* unfiltered_bam
-* nuclear_bam
-* normalized_density_bw
-* five_percent_allcalls_bed_gz
-* five_percent_allcalls_bed_bigbed
-* five_percent_narrowpeaks_bed_gz
-* five_percent_narrowpeaks_bigbed
-* tenth_of_one_percent_narrowpeaks_bed_gz
-* tenth_of_one_percent_narrowpeaks_bigbed
+| unfiltered bam |
+| nuclear bam |
+| normalized density bw |
+| five percent allcalls bed gz |
+| five percent allcalls bed bigbed |
+| five percent narrowpeaks bed gz |
+| five percent narrowpeaks bigbed | 
+| tenth of one percent narrowpeaks bed gz |
+| tenth of one percent narrowpeaks bigbed |
 
 **Quality Metrics**
-unfiltered_bam:
-* trimstats
-* stats
-* flagstats
-* bamcounts
+| unfiltered_bam |
+| -------------- |
+| trimstats |
+| stats |
+| flagstats |
+| bamcounts |
 
-nuclear_bam:
-* stats
-* flagstats
-* hotspot1 spot_score
-* duplication_metrics
-* preseq
-* preseq_targets
-* insert_size_metrics
-* insert_size_info
-* insert_size_histogram_pdf
+| nuclear_bam |
+| ----------- |
+| stats |
+| flagstats |
+| hotspot1 spot score |
+| duplication metrics |
+| preseq |
+| preseq targets |
+| insert size metrics |
+| insert size info |
+| insertsize histogram pdf |
 
 (Note that insert sizes and trimstats only included for PE data.)
 
-peaks:
-* hotspot2 spot_score
+| peaks |
+| ----- |
+| hotspot2 spot score |
 
 ### Repository Organization
 The *wdl* folder is split up into:
