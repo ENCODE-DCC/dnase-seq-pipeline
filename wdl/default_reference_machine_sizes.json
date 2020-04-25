@@ -1,0 +1,9 @@
+{
+    "build_bowtie_index": "medium",
+    "build_bwa_index": "medium",
+    "get_center_sites": "medium",
+    "get_chrom_info": "medium",
+    "get_chrom_sizes": "medium",
+    "build_fasta_index": "medium",
+    "build_mappable_only_bed": "medium"
+}

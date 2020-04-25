@@ -1,0 +1,21 @@
+{
+    "references.bwa_index": {
+        "bwt": "tests/data/ref/chr22.fa.bwt",
+        "fasta": "tests/data/ref/chr22.fa",
+        "pac": "tests/data/ref/chr22.fa.pac",
+        "ann": "tests/data/ref/chr22.fa.ann",
+        "amb": "tests/data/ref/chr22.fa.amb",
+        "sa": "tests/data/ref/chr22.fa.sa"
+    },
+    "references.kmer_length": 12,
+    "references.fasta": "tests/data/ref/chr22.fa",
+    "references.machine_sizes": {
+        "build_bwa_index": "small",
+        "build_fasta_index": "small",
+        "build_bowtie_index": "small",
+        "build_mappable_only_bed": "small",
+        "get_chrom_info": "small",
+        "get_chrom_sizes": "small",
+        "get_center_sites": "small"
+    }
+}

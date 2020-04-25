@@ -1,0 +1,188 @@
+- name: test_references
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    references.wdl \
+    tests/functional/json/test_references.json
+  stdout:
+    contains:
+      - "bwa index chr22.fa"
+      - "samtools faidx chr22.fa"
+      - "ln"
+      - "bowtie-build chr22.fa chr22.fa"
+      - "awk"
+      - "perl $(which enumerateUniquelyMappableSpace.pl)"
+      - "merge_adjacent_bed.awk"
+      - "s/[[:blank:]]*$//"
+      - "sort-bed"
+      - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
+      - "chr22.fa.chrom_sizes.bed"
+      - 'BEGIN{OFS="\t"} {print $1, $2, $3, $1}'
+      - "extractCenterSites.sh"
+      - "-c" 
+      - "-M" 
+      - "chr22.K12.mappable_only.bed"
+      - "-o chr22.K12.center_sites.n100.starch"
+      - "-n 100"
+  files:
+    - path: "test-output/chr22.fa"
+      md5sum: 69a750d5ed9490e0d1e707a43368ba86
+    - path: "test-output/chr22.fa.amb"
+      md5sum: 24d28e70f4a7333073ade6cb41c3478a
+    - path: "test-output/chr22.fa.ann"
+      md5sum: 8c08281c99ac4d49d9b32e06f0475b65
+    - path: "test-output/chr22.fa.bwt"
+      md5sum: 12a40328a31dcb84b8a4af33a58ec47f
+    - path: "test-output/chr22.fa.pac"
+      md5sum: 366896466b5889c16b79ca98be32360f
+    - path: "test-output/chr22.fa.sa"
+      md5sum: bec836ed0158792031e4529ca53debdd
+    - path: "test-output/chr22.fa.fai"
+      md5sum: d89b1fd70e1fe59b329a8346a59ffc03
+    - path: "test-output/chr22.K12.mappable_only.bed"
+      md5sum: 834dd1ec4452b8159a8af2802d591c59
+    - path: "test-output/chr22.fa.chrom_sizes.bed"
+      md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
+    - path: "test-output/chr22.fa.chromInfo.bed"
+      md5sum: 59cc5e7f4dc1a611bc75eceb0ca27697
+    - path: "test-output/chr22.K12.center_sites.n100.starch"
+
+- name: test_references_bwa_defined
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    references.wdl \
+    tests/functional/json/test_references_bwa_defined.json
+  stdout:
+    contains:
+      - "samtools faidx chr22.fa"
+      - "ln"
+      - "bowtie-build chr22.fa chr22.fa"
+      - "awk"
+      - "perl $(which enumerateUniquelyMappableSpace.pl)"
+      - "merge_adjacent_bed.awk"
+      - "s/[[:blank:]]*$//"
+      - "sort-bed"
+      - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
+      - "chr22.fa.chrom_sizes.bed"
+      - 'BEGIN{OFS="\t"} {print $1, $2, $3, $1}'
+      - "extractCenterSites.sh"
+      - "-c" 
+      - "-M" 
+      - "chr22.K12.mappable_only.bed"
+      - "-o chr22.K12.center_sites.n100.starch"
+      - "-n 100"
+  files:
+    - path: "test-output/tests/data/ref/chr22.fa"
+      md5sum: 69a750d5ed9490e0d1e707a43368ba86
+    - path: "test-output/tests/data/ref/chr22.fa.amb"
+      md5sum: 24d28e70f4a7333073ade6cb41c3478a
+    - path: "test-output/tests/data/ref/chr22.fa.ann"
+      md5sum: 8c08281c99ac4d49d9b32e06f0475b65
+    - path: "test-output/tests/data/ref/chr22.fa.bwt"
+      md5sum: 12a40328a31dcb84b8a4af33a58ec47f
+    - path: "test-output/tests/data/ref/chr22.fa.pac"
+      md5sum: 366896466b5889c16b79ca98be32360f
+    - path: "test-output/tests/data/ref/chr22.fa.sa"
+      md5sum: bec836ed0158792031e4529ca53debdd
+    - path: "test-output/chr22.fa.fai"
+      md5sum: d89b1fd70e1fe59b329a8346a59ffc03
+    - path: "test-output/chr22.K12.mappable_only.bed"
+      md5sum: 834dd1ec4452b8159a8af2802d591c59
+    - path: "test-output/chr22.fa.chrom_sizes.bed"
+      md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
+    - path: "test-output/chr22.fa.chromInfo.bed"
+      md5sum: 59cc5e7f4dc1a611bc75eceb0ca27697
+    - path: "test-output/chr22.K12.center_sites.n100.starch"
+
+- name: test_references_bwa_bowtie_defined
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    references.wdl \
+    tests/functional/json/test_references_bwa_bowtie_defined.json
+  stdout:
+    contains:
+      - "samtools faidx chr22.fa"
+      - "awk"
+      - "perl $(which enumerateUniquelyMappableSpace.pl)"
+      - "merge_adjacent_bed.awk"
+      - "s/[[:blank:]]*$//"
+      - "sort-bed"
+      - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
+      - "chr22.fa.chrom_sizes.bed"
+      - 'BEGIN{OFS="\t"} {print $1, $2, $3, $1}'
+      - "extractCenterSites.sh"
+      - "-c" 
+      - "-M" 
+      - "chr22.K12.mappable_only.bed"
+      - "-o chr22.K12.center_sites.n100.starch"
+      - "-n 100"
+  files:
+    - path: "test-output/tests/data/ref/chr22.fa"
+      md5sum: 69a750d5ed9490e0d1e707a43368ba86
+    - path: "test-output/tests/data/ref/chr22.fa.amb"
+      md5sum: 24d28e70f4a7333073ade6cb41c3478a
+    - path: "test-output/tests/data/ref/chr22.fa.ann"
+      md5sum: 8c08281c99ac4d49d9b32e06f0475b65
+    - path: "test-output/tests/data/ref/chr22.fa.bwt"
+      md5sum: 12a40328a31dcb84b8a4af33a58ec47f
+    - path: "test-output/tests/data/ref/chr22.fa.pac"
+      md5sum: 366896466b5889c16b79ca98be32360f
+    - path: "test-output/tests/data/ref/chr22.fa.sa"
+      md5sum: bec836ed0158792031e4529ca53debdd
+    - path: "test-output/chr22.fa.fai"
+      md5sum: d89b1fd70e1fe59b329a8346a59ffc03
+    - path: "test-output/chr22.K12.mappable_only.bed"
+      md5sum: 834dd1ec4452b8159a8af2802d591c59
+    - path: "test-output/chr22.fa.chrom_sizes.bed"
+      md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
+    - path: "test-output/chr22.fa.chromInfo.bed"
+      md5sum: 59cc5e7f4dc1a611bc75eceb0ca27697
+    - path: "test-output/chr22.K12.center_sites.n100.starch"
+
+- name: test_references_bwa_bowtie_mappable_defined
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    references.wdl \
+    tests/functional/json/test_references_bwa_bowtie_mappable_defined.json
+  stdout:
+    contains:
+      - "samtools faidx chr22.fa"
+      - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
+      - "chr22.fa.chrom_sizes.bed"
+      - "awk"
+      - 'BEGIN{OFS="\t"} {print $1, $2, $3, $1}'
+      - "extractCenterSites.sh"
+      - "-c" 
+      - "-M" 
+      - "chr22.K12.mappable_only.bed"
+      - "-o chr22.K12.center_sites.n100.starch"
+      - "-n 100"
+  files:
+    - path: "test-output/tests/data/ref/chr22.fa"
+      md5sum: 69a750d5ed9490e0d1e707a43368ba86
+    - path: "test-output/tests/data/ref/chr22.fa.amb"
+      md5sum: 24d28e70f4a7333073ade6cb41c3478a
+    - path: "test-output/tests/data/ref/chr22.fa.ann"
+      md5sum: 8c08281c99ac4d49d9b32e06f0475b65
+    - path: "test-output/tests/data/ref/chr22.fa.bwt"
+      md5sum: 12a40328a31dcb84b8a4af33a58ec47f
+    - path: "test-output/tests/data/ref/chr22.fa.pac"
+      md5sum: 366896466b5889c16b79ca98be32360f
+    - path: "test-output/tests/data/ref/chr22.fa.sa"
+      md5sum: bec836ed0158792031e4529ca53debdd
+    - path: "test-output/chr22.fa.fai"
+      md5sum: d89b1fd70e1fe59b329a8346a59ffc03
+    - path: "test-output/tests/data/dnase/references/chr22.K12.mappable_only.bed"
+      md5sum: 834dd1ec4452b8159a8af2802d591c59
+    - path: "test-output/chr22.fa.chrom_sizes.bed"
+      md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
+    - path: "test-output/chr22.fa.chromInfo.bed"
+      md5sum: 59cc5e7f4dc1a611bc75eceb0ca27697
+    - path: "test-output/chr22.K12.center_sites.n100.starch"
