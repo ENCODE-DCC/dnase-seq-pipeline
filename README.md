@@ -1,10 +1,10 @@
 # ENCODE DNase-seq pipeline
 
 ### Introduction
-This is the uniform processing pipeline for ENCODE DNase-seq experiments. It uses [WDL](https://github.com/openwdl/wdl) and [Caper](https://github.com/ENCODE-DCC/caper) (a thin wrapper over (Cromwell)[https://github.com/broadinstitute/cromwell]) to specify and run the processing steps, and (Docker)[https://www.docker.com/] to ensure a reproducible and portable compute environment. The same inputs should produce the same outputs regardless of computational platform (local, Cloud, etc.). The benefits of having a reproducible workflow include generating processed results that are comparable between ENCODE experiments and providing outside users an easy way to process their DNAse-seq data in exactly the same way.
+This is the uniform processing pipeline for (ENCODE DNase-seq experiments)[https://www.encodeproject.org/search/?type=Experiment&assay_title=DNase-seq]. It uses (WDL)[https://github.com/openwdl/wdl] and (Caper)[https://github.com/ENCODE-DCC/caper] (a thin wrapper over [Cromwell](https://github.com/broadinstitute/cromwell)) to specify and run the processing steps, and [Docker](https://www.docker.com/) to ensure a reproducible and portable compute environment. The same inputs should produce the same outputs regardless of computational platform (local, Cloud, etc.). The benefits of having a reproducible workflow include generating processed results that are comparable between ENCODE experiments and providing outside users an easy way to process their DNAse-seq data in exactly the same way.
 
 ### Quickstart
-Assuming the requirements are installed you must create a JSON file specifying the inputs of the pipeline. These include the raw FASTQs from the DNase-seq experiment as well as reference files specific to an assembly (e.g. GRCh38) and read length (e.g. 76bp). There are three sections in the input JSON (example [dnase_template.json](templates/json/GRCh38/76/dnase_template.json) for 76bp GRCh38 experiments with references specified):
+Assuming the requirements are installed you must create a JSON file specifying the inputs of the pipeline. These include the raw FASTQs from the DNase-seq experiment as well as reference files specific to an assembly (e.g. GRCh38) and read length (e.g. 76bp). There are three sections in the input JSON (example (dnase_template.json)[templates/json/GRCh38/76/dnase_template.json] for 76bp GRCh38 experiments with references specified):
 
 ```
 {
@@ -14,7 +14,7 @@ Assuming the requirements are installed you must create a JSON file specifying t
 }
 ```
 
-`dnase.replicates` takes a list of biological replicates. For example in order to specify [ENCSR693UHT](https://www.encodeproject.org/experiments/ENCSR693UHT/) which has a single replicate and two paired-end FASTQs (where `R1` and `R2` specify the pair):
+`dnase.replicates` takes a list of biological replicates. For example in order to specify (ENCSR693UHT)[https://www.encodeproject.org/experiments/ENCSR693UHT/] which has a single replicate and two paired-end FASTQs (where `R1` and `R2` specify the pair):
 
 ```
 "dnase.replicates": [
@@ -42,7 +42,7 @@ Assuming the requirements are installed you must create a JSON file specifying t
 ```
 Note that the adapter prefix (i.e. `N707`) usually corresponds to the flowcell barcode of the FASTQs and usually has `_P5` or `_P7` appended.
 
-To specify a 36bp single-end experiment with one replicate like [ENCSR420RWU] (https://www.encodeproject.org/experiments/ENCSR420RWU/):
+To specify a 36bp single-end experiment with one replicate like (ENCSR420RWU)[https://www.encodeproject.org/experiments/ENCSR420RWU/]:
 ```
 "dnase.replicates": [
     {
@@ -144,7 +144,7 @@ To specify a 36bp mixed single-end/paired-end experiment with two replicates lik
 ```
 In most cases these should already exist for a given assembly/read length, though the `references.wdl` workflow can be used to generate most of these for a new assembly/read length. Note that it is important for the `genome_name` to corresponds to the prefix of your references/indices.
 
-`dnase.machine_sizes` specifies the desired compute size for specific steps of the pipeline (when run on platforms where custom instances can be specified like Google Cloud).
+`dnase.machine_sizes` specifies the desired compute size for specific steps of the pipeline (when custom instances can be specified).
 ```
 "dnase.machine_sizes": {
     "qc": "medium2x",
@@ -160,7 +160,8 @@ In most cases these should already exist for a given assembly/read length, thoug
     "convert": "medium2x"
 }
 ```
-The sizes are defined in [wdl/runtimes.json](wdl/runtimes.json). For example `medium` corresponds to these resources:
+
+The sizes are defined in (wdl/runtimes.json)[wdl/runtimes.json]. For example `medium` corresponds to these resources:
 ```
 "medium": {
     "cpu": 2,
@@ -168,7 +169,7 @@ The sizes are defined in [wdl/runtimes.json](wdl/runtimes.json). For example `me
     "disks": "local-disk 50 SSD"
 }
 ```
-Note that specifying `dnase.machine_sizes` is optional and default values from [wdl/default_machine_sizes.json](wdl/default_machine_sizes.json) will be used if it is not specified in input.
+Note that specifying `dnase.machine_sizes` is optional and default values from (wdl/default_machine_sizes.json)[wdl/default_machine_sizes.json] will be used if it is not specified in input.
 
 ### Steps
 The pipelines can be roughly split up into these steps:
