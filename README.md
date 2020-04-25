@@ -198,7 +198,8 @@ caper list --hide-subworkflow
 
 ### Outputs
 
-| Files |
+**Files**
+||
 | ----- |
 | unfiltered bam |
 | nuclear bam |
