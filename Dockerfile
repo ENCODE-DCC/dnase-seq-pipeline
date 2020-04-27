@@ -139,7 +139,16 @@ ENV STAMPIPES="/software/stampipes"
 RUN pip install \
     cython \
     numpy \
-    scipy \
+    scipy
+
+RUN pip3 install \
+    biopython==1.76 \
+    pysam==0.15.0 \
+    numpy==1.18.1 \
+    scipy==1.4.1 \
+    scikit-learn==0.22.1
+
+RUN pip install \
     biopython \
     pysam \
     scikit-learn \
@@ -148,13 +157,6 @@ RUN pip install \
     matplotlib \
     git+https://github.com/jvierstra/genome-tools@dfa1a35ac7a59da175d521f24e73f8d6fd79e6e3 \
     git+https://github.com/jvierstra/footprint-tools@eb6a172e51ab19cd7c16699bd4755975ae8b72f7
-
-RUN pip3 install \
-    biopython==1.76 \
-    pysam==0.15.0 \
-    numpy==1.18.1 \
-    scipy==1.4.1 \
-    scikit-learn==0.22.1
 
 RUN apt-get install -y bowtie
 
