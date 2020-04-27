@@ -115,23 +115,46 @@ RUN git clone https://github.com/StamLab/modwt.git \
 ENV PATH="/software/modwt/bin:${PATH}"
 
 # Install hotspots2 v2.1
-RUN git clone -b 'v2.1' --single-branch --depth 1 https://github.com/Altius/hotspot2.git \
-     && cd hotspot2 \
-     && make
+RUN git clone \
+    -b 'v2.1' \
+    --single-branch \
+    --depth 1 \
+    https://github.com/Altius/hotspot2.git \
+    && cd hotspot2 \
+    && make
 
 ENV PATH="/software/hotspot2/bin:${PATH}"
 ENV PATH="/software/hotspot2/scripts:${PATH}"
 
 # Pull bwa_2.6.0-rc tag of stampipes
-RUN git clone -b 'bwa_2.6.0' --single-branch --depth 1 https://github.com/StamLab/stampipes.git
+RUN git clone \
+    -b 'bwa_2.6.0' \
+    --single-branch \
+    --depth 1 \
+    https://github.com/StamLab/stampipes.git
 
 ENV STAMPIPES="/software/stampipes"
 
 # Install stampipes requirements
-RUN pip install cython numpy scipy
-RUN pip3 install biopython==1.76 pysam==0.15.0 numpy==1.18.1 scipy==1.4.1 scikit-learn==0.22.1
+RUN pip install \
+    cython \
+    numpy \
+    scipy
+    biopython \
+    pysam \
+    scikit-learn \
+    statsmodels \
+    multiprocessing \
+    matplotlib \
+    git+https://github.com/jvierstra/genome-tools@dfa1a35ac7a59da175d521f24e73f8d6fd79e6e3 \
+    git+https://github.com/jvierstra/footprint-tools@eb6a172e51ab19cd7c16699bd4755975ae8b72f7
 
-RUN pip install biopython pysam scikit-learn statsmodels multiprocessing matplotlib git+https://github.com/jvierstra/genome-tools@5e3cc51 git+https://github.com/jvierstra/footprint-tools@914923e
+RUN pip3 install \
+    biopython==1.76 \
+    pysam==0.15.0 \
+    numpy==1.18.1 \
+    scipy==1.4.1 \
+    scikit-learn==0.22.1
 
 RUN apt-get install -y bowtie
 
