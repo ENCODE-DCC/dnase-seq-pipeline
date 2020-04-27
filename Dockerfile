@@ -139,7 +139,7 @@ ENV STAMPIPES="/software/stampipes"
 RUN pip install \
     cython \
     numpy \
-    scipy
+    scipy \
     biopython \
     pysam \
     scikit-learn \
