@@ -1,0 +1,37 @@
+- name: test_ftd_learn_dispersion_model
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit//wdl/test_ftd_learn_dispersion_model.wdl \
+    tests/unit/json/test_ftd_learn_dispersion_model.json
+  stdout:
+    contains:
+      - "ftd-learn-dispersion-model"
+      - "--bm "
+      - "--half-win-width 5"
+      - "--seed 12345"
+      - "--processors 1"
+      - "dummy.txt"
+      - "> dispersion_model.json"
+
+- name: test_ftd_compute_deviation
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit//wdl/test_ftd_compute_deviation.wdl \
+    tests/unit/json/test_ftd_compute_deviation.json
+  stdout:
+    contains:
+      - "ftd-compute-deviation"
+      - "--bm "
+      - "--dm "
+      - "--half-win-width 5"
+      - "--smooth-half-win-width 50"
+      - "--smooth-clip 0.01"
+      - "--fdr-shuffle-n 50"
+      - "--seed 12345"
+      - "--processors 1"
+      - "dummy.txt"
+      - "> deviation.bedgraph"

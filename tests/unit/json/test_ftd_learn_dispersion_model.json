@@ -1,0 +1,21 @@
+{
+    "test_ftd_learn_dispersion_model.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_ftd_learn_dispersion_model.interval_bed": "tests/data/dummy.txt",
+    "test_ftd_learn_dispersion_model.indexed_fasta": {
+        "fasta": "tests/data/dummy.txt",
+        "fai": "tests/data/dummy.txt"
+    },
+    "test_ftd_learn_dispersion_model.params": {
+        "half_window_width": 5,
+        "seed": 12345
+    },
+    "test_ftd_learn_dispersion_model.bias_model": "tests/data/dummy.txt",
+    "test_ftd_learn_dispersion_model.indexed_bam": {
+        "bam": "tests/data/dummy.txt",
+        "bai": "tests/data/dummy.txt"
+    }
+}
