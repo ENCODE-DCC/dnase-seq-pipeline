@@ -8,5 +8,36 @@
   stdout:
     contains:
       - "ftd-learn-dispersion-model"
+      - "--bm "
+      - "--half-win-width 5"
+      - "--seed 12345"
+      - "--processors 1"
+      - "nuclear.bam"
+      - "> dispersion_model.json"
   files:
     - path: "test-output/dispersion_model.json"
+
+- name: test_find_significant_footprints
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_find_significant_footprints.wdl \
+    tests/integration/json/test_find_significant_footprints.json
+  stdout:
+    contains:
+      - "ftd-compute-deviation"
+      - "--bm "
+      - "--dm "
+      - "dispersion_model.json"
+      - "--half-win-width 5"
+      - "--smooth-half-win-width 50"
+      - "--smooth-clip 0.01"
+      - "--fdr-shuffle-n 50"
+      - "--seed 12345"
+      - "--processors 1"
+      - "nuclear.bam"
+      - "> deviation.bedgraph"
+  files:
+    - path: "test-output/deviation.bedgraph"
+      md5sum: faae6b4d85035a445ae4f831e3b215fe
