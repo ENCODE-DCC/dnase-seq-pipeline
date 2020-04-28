@@ -1,0 +1,13 @@
+- name: test_fit_footprint_model
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_fit_footprint_model.wdl \
+    tests/integration/json/test_fit_footprint_model.json
+  stdout:
+    contains:
+      - "ftd-learn-dispersion-model"
+  files:
+    - path: "test-output/dispersion_model.json"
+      md5sum: 75124a944d7b036dbb8aedaa1975bf7e
