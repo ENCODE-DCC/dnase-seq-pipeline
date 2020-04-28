@@ -1,0 +1,8 @@
+{
+    "test_samtools_index.bam": "tests/data/dummy.txt",
+    "test_samtools_index.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}
