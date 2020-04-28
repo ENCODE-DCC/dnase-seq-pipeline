@@ -1,0 +1,8 @@
+{
+    "test_build_bam_index.build_bam_index.bam": "tests/data/dnase/filtering/nuclear.bam",
+    "test_build_bam_index.build_bam_index.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}

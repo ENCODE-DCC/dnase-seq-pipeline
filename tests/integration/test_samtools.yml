@@ -189,3 +189,19 @@
     - path: "test-output/nuclear.flagstats.txt"
       md5sum: 59aa22deb9a314e2b26e26ff79b25d01
     - path: "test-output/nuclear.stats.txt"
+
+- name: test_build_bam_index
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_build_bam_index.wdl \
+    tests/integration/json/test_build_bam_index.json
+  stdout:
+    contains:
+      - "samtools index"
+      - "nuclear.bam"
+  files:
+    - path: "test-output/nuclear.bam"
+    - path: "test-output/nuclear.bam.bai"
+      md5sum: 4dc2ee5da3d127b6d49d97367ca131f5
