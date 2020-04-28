@@ -10,4 +10,3 @@
       - "ftd-learn-dispersion-model"
   files:
     - path: "test-output/dispersion_model.json"
-      md5sum: 75124a944d7b036dbb8aedaa1975bf7e
