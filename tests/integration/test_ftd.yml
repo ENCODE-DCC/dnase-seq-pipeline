@@ -41,3 +41,27 @@
   files:
     - path: "test-output/deviation.bedgraph"
       md5sum: faae6b4d85035a445ae4f831e3b215fe
+
+- name: test_threshold_footprints_and_make_bed
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_threshold_footprints_and_make_bed.wdl \
+    tests/integration/json/test_threshold_footprints_and_make_bed.json
+  stdout:
+    contains:
+      - "awk"
+      - "-v threshold=0.01"
+      - "-v window=3"
+      - "$8 <= threshold {print $1, $2 - window, $3 + window;}"
+      - '-v OFS="\t"'
+      - "-v threshold=0.01"
+      - '{$4="."; $5=threshold; print;}'
+      - "footprints.fps.0.01.bed"
+      - "sort-bed"
+      - "--max-mem 1G"
+      - "--merge"
+  files:
+    - path: "test-output/footprints.fps.0.01.bed"
+      md5sum: 09d6b81abb2da696352383a0ad14b2f0

@@ -1,0 +1,8 @@
+{
+    "test_threshold_footprints_and_make_bed.threshold_footprints_and_make_bed.deviation_bedgraph": "tests/data/dnase/footprinting/deviation.bedgraph",
+    "test_threshold_footprints_and_make_bed.threshold_footprints_and_make_bed.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
