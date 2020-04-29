@@ -27,4 +27,5 @@ struct References {
     HotSpot2Reference? hotspot2
     File? nuclear_chroms
     File? narrow_peak_auto_sql
+    File? bias_model
 }
