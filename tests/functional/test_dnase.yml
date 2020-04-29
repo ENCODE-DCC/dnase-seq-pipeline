@@ -51,6 +51,8 @@
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
       md5sum: 2787fe8fac4200725fb06f414bde8c84
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
+    - path: "test-output/footprints.fps.0.01.bed"
+      md5sum: 09d6b81abb2da696352383a0ad14b2f0
 
 - name: test_dnase_replicate_se
   tags:
@@ -101,6 +103,7 @@
       md5sum: 8c385c9306d412ec0c07cf0c8094c4b9
     - path: "test-output/nuclear.preseq.txt"
       md5sum: fbcfd649f906ad8a66c8d7b044cd3921
+    - path: "test-output/footprints.fps.0.01.bed"
 
 - name: test_dnase_replicate_mixed
   tags:
@@ -146,6 +149,7 @@
     - path: "test-output/subsample.spot.out"
     - path: "test-output/nuclear.preseq_targets.txt"
     - path: "test-output/nuclear.preseq.txt"
+    - path: "test-output/footprints.fps.0.01.bed"
 
 - name: test_base_dnase_se
   tags:
@@ -196,6 +200,7 @@
       md5sum: 8c385c9306d412ec0c07cf0c8094c4b9
     - path: "test-output/nuclear.preseq.txt"
       md5sum: fbcfd649f906ad8a66c8d7b044cd3921
+    - path: "test-output/footprints.fps.0.01.bed"
 
 - name: test_base_dnase_mixed
   tags:
@@ -241,6 +246,7 @@
     - path: "test-output/subsample.spot.out"
     - path: "test-output/nuclear.preseq_targets.txt"
     - path: "test-output/nuclear.preseq.txt"
+    - path: "test-output/footprints.fps.0.01.bed"
 
 - name: test_base_dnase_pe
   tags:
@@ -295,3 +301,5 @@
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
       md5sum: 2787fe8fac4200725fb06f414bde8c84
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
+    - path: "test-output/footprints.fps.0.01.bed"
+      md5sum: 09d6b81abb2da696352383a0ad14b2f0

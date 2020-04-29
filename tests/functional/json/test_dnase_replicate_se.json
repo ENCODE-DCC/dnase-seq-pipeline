@@ -39,6 +39,7 @@
         "align": "small",
         "score": "small",
         "filter": "small",
+        "footprint": "small",
         "merge": "small",
         "peaks": "small",
         "concatenate": "small",
