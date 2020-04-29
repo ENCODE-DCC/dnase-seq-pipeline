@@ -153,6 +153,7 @@ task merge {
             --merge \
             ~{sorted_bed} \
             > ~{out}
+    }
 
     output {
         File merged_bed = out
