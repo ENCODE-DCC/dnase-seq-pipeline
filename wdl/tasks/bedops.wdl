@@ -13,7 +13,9 @@ task unstarch {
     }
 
     command {
-        unstarch ~{starch} > ~{out}
+        unstarch \
+            ~{starch} \
+            > ~{out}
     }
 
     output {
@@ -36,7 +38,9 @@ task starch {
     }
 
     command {
-        starch ~{sorted_bed} > ~{out}
+        starch \
+            ~{sorted_bed} \
+            > ~{out}
     }
 
     output {
@@ -61,9 +65,9 @@ task sort_bed {
 
     command {
         sort-bed \
-        ~{"--max-mem " + params.max_memory} \
-        ~{unsorted_bed} \
-        > ~{out}
+            ~{"--max-mem " + params.max_memory} \
+            ~{unsorted_bed} \
+            > ~{out}
     }
 
     output {
@@ -88,9 +92,9 @@ task bam2bed {
 
     command {
         bam2bed \
-        ~{true="--do-not-sort" false="" params.do_not_sort} \
-        < ~{bam} \
-        > ~{out}
+            ~{true="--do-not-sort" false="" params.do_not_sort} \
+            < ~{bam} \
+            > ~{out}
     }
 
     output {
@@ -116,13 +120,13 @@ task bedmap {
 
     command {
         bedmap \
-        ~{true="--count" false="" params.count} \
-        ~{true="--echo" false="" params.echo} \
-        ~{true="--faster" false="" params.faster} \
-        ~{"--delim " + params.delimiter} \
-        ~{sorted_reference_bed_or_starch} \
-        ~{sorted_map_bed_or_starch} \
-        > ~{out}
+            ~{true="--count" false="" params.count} \
+            ~{true="--echo" false="" params.echo} \
+            ~{true="--faster" false="" params.faster} \
+            ~{"--delim " + params.delimiter} \
+            ~{sorted_reference_bed_or_starch} \
+            ~{sorted_map_bed_or_starch} \
+            > ~{out}
     }
 
     output {
