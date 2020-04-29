@@ -152,3 +152,43 @@
     - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bed.gz"
     - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
       md5sum: 5b6209d28a8afa848b69c2b18cc69ab6
+
+- name: test_mixed_footprint
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/mixed/footprint.wdl \
+    tests/functional/json/test_mixed_footprint.json
+  stdout:
+    contains:
+      - "ftd-learn-dispersion-model"
+      - "--bm "
+      - "--half-win-width 5"
+      - "--seed 12345"
+      - "--processors 1"
+      - "nuclear.bam"
+      - "> dispersion_model.json"
+      - "ftd-compute-deviation"
+      - "--dm "
+      - "dispersion_model.json"
+      - "--half-win-width 5"
+      - "--smooth-half-win-width 50"
+      - "--smooth-clip 0.01"
+      - "--fdr-shuffle-n 50"
+      - "--seed 12345"
+      - "> deviation.bedgraph"
+      - "awk"
+      - "-v threshold=0.01"
+      - "-v window=3"
+      - "$8 <= threshold {print $1, $2 - window, $3 + window;}"
+      - '-v OFS="\t"'
+      - "-v threshold=0.01"
+      - '{$4="."; $5=threshold; print;}'
+      - "footprints.fps.0.01.bed"
+      - "sort-bed"
+      - "--max-mem 1G"
+      - "--merge"
+  files:
+    - path: "test-output/footprints.fps.0.01.bed"
+      md5sum: 09d6b81abb2da696352383a0ad14b2f0
