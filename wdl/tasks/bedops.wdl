@@ -139,3 +139,28 @@ task bedmap {
         disks: resources.disks
     }
 }
+
+
+task merge {
+    input {
+        File sorted_bed
+        Resources resources
+        String out = basename(sorted_bed, ".bed") + "_merged.bed"
+    }
+
+    command {
+        bedops \
+            --merge \
+            ~{sorted_bed} \
+            > ~{out}
+
+    output {
+        File merged_bed = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}

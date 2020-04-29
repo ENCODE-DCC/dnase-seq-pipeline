@@ -68,3 +68,17 @@
       - '--delim "\t"'
       - "dummy.txt"
       - "mapped.bed"
+
+- name: test_bedops_merge
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_bedops_merge.wdl \
+    tests/unit/json/test_bedops_merge.json
+  stdout:
+    contains:
+      - "bedops"
+      - "--merge"
+      - "dummy.txt"
+      - "dummy.txt_merged.bed"
