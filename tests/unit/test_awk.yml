@@ -103,3 +103,34 @@
       - "awk"
       - "'/## HISTOGRAM/{x=1;next}x'"
       - "> histogram.tsv"
+
+- name: test_awk_filter_and_window_footprints_bedgraph
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_awk_filter_and_window_footprints_bedgraph.wdl \
+    tests/unit/json/test_awk_filter_and_window_footprints_bedgraph.json
+  stdout:
+    contains:
+      - "awk"
+      - '-v OFS="\t"'
+      - "-v threshold=0.01"
+      - "-v window=3"
+      - "$8 <= threshold {print $1, $2 - window, $3 + window;}"
+      - "dummy.txt.fps.0.01.bedgraph"
+
+- name: test_awk_add_name_and_score_to_footprints_bed
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_awk_add_name_and_score_to_footprints_bed.wdl \
+    tests/unit/json/test_awk_add_name_and_score_to_footprints_bed.json
+  stdout:
+    contains:
+      - "awk"
+      - '-v OFS="\t"'
+      - "-v threshold=0.01"
+      - '{$4="."; $5=threshold; print;}'
+      - "footprints.fps.0.01.bed"
