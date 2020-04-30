@@ -4,7 +4,7 @@
         "number": "0",
         "read_length": "36",
         "se_fastqs": [
-            "tests/data/dnase/alignment/r1.fastq.gz"
+            "tests/data/dnase/se/ENCFF501IRE_chr22.fastq.gz"
         ]
     },
     "dnase_replicate.references": {
