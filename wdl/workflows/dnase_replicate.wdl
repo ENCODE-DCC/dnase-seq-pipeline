@@ -80,7 +80,7 @@ workflow dnase_replicate {
         File five_percent_allcalls_bed_gz = normalize_and_convert_files.five_percent_allcalls_bed_gz
         File five_percent_narrowpeaks_bed_gz = normalize_and_convert_files.five_percent_narrowpeaks_bed_gz
         File five_percent_narrowpeaks_bigbed = normalize_and_convert_files.five_percent_narrowpeaks_bigbed
-        File one_percent_footprints_bed_gz = normalize_and_convert_files.one_percent_footprints_bed
+        File one_percent_footprints_bed_gz = normalize_and_convert_files.one_percent_footprints_bed_gz
         File one_percent_footprints_bigbed = normalize_and_convert_files.one_percent_footprints_bigbed
         QC qc = object {
             unfiltered_bam_qc: calculate_and_gather_qc.unfiltered_bam_qc,
