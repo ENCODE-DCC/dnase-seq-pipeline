@@ -67,6 +67,7 @@ workflow dnase_replicate {
     call bams_and_peaks.normalize_and_convert_files {
         input:
             nuclear_bam=merge_mark_and_filter_bams.nuclear_bam,
+            one_percent_footprints_bed=call_footprints.one_percent_footprints_bed,
             five_percent_peaks=call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks,
             references=references,
             machine_sizes=machine_sizes,
@@ -79,7 +80,8 @@ workflow dnase_replicate {
         File five_percent_allcalls_bed_gz = normalize_and_convert_files.five_percent_allcalls_bed_gz
         File five_percent_narrowpeaks_bed_gz = normalize_and_convert_files.five_percent_narrowpeaks_bed_gz
         File five_percent_narrowpeaks_bigbed = normalize_and_convert_files.five_percent_narrowpeaks_bigbed
-        File one_percent_footprints_bed = call_footprints.one_percent_footprints_bed
+        File one_percent_footprints_bed_gz = normalize_and_convert_files.one_percent_footprints_bed
+        File one_percent_footprints_bigbed = normalize_and_convert_files.one_percent_footprints_bigbed
         QC qc = object {
             unfiltered_bam_qc: calculate_and_gather_qc.unfiltered_bam_qc,
             nuclear_bam_qc: calculate_and_gather_qc.nuclear_bam_qc,

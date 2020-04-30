@@ -13,6 +13,7 @@ import "../../wdl/workflows/mixed/convert.wdl" as starches
 workflow normalize_and_convert_files {
     input {
         File nuclear_bam
+        File one_percent_footprints_bed
         HotSpot2Peaks five_percent_peaks
         References references
         MachineSizes machine_sizes
@@ -32,6 +33,7 @@ workflow normalize_and_convert_files {
 
     call starches.convert {
         input:
+            one_percent_footprints_bed=one_percent_footprints_bed,
             five_percent_allcalls_starch=five_percent_peaks.allcalls,
             five_percent_narrow_peaks_starch=five_percent_peaks.narrowpeaks,
             narrow_peak_auto_sql=select_first([
@@ -46,5 +48,7 @@ workflow normalize_and_convert_files {
         File five_percent_allcalls_bed_gz = convert.five_percent_allcalls_bed_gz
         File five_percent_narrowpeaks_bed_gz = convert.five_percent_narrowpeaks_bed_gz
         File five_percent_narrowpeaks_bigbed = convert.five_percent_narrowpeaks_bigbed
+        File one_percent_footprints_bed_gz = convert.one_percent_footprints_bed
+        File one_percent_footprints_bigbed = convert.one_percent_footprints_bigbed
     }
 }

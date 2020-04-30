@@ -152,6 +152,9 @@
     - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bed.gz"
     - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
       md5sum: 5b6209d28a8afa848b69c2b18cc69ab6
+    - path: "test-output/footprints.fps.0.01.bed.gz"
+    - path: "test-output/footprints.fps.0.01.bb"
+      md5sum: 16631a79f6a6c3f66faca1eee7962e41
 
 - name: test_mixed_footprint
   tags:

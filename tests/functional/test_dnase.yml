@@ -51,8 +51,9 @@
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
       md5sum: 2787fe8fac4200725fb06f414bde8c84
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
-    - path: "test-output/footprints.fps.0.01.bed"
-      md5sum: 09d6b81abb2da696352383a0ad14b2f0
+    - path: "test-output/footprints.fps.0.01.bed.gz"
+    - path: "test-output/footprints.fps.0.01.bb"
+      md5sum: 16631a79f6a6c3f66faca1eee7962e41
 
 - name: test_dnase_replicate_se
   tags:
@@ -103,7 +104,8 @@
       md5sum: 8c385c9306d412ec0c07cf0c8094c4b9
     - path: "test-output/nuclear.preseq.txt"
       md5sum: fbcfd649f906ad8a66c8d7b044cd3921
-    - path: "test-output/footprints.fps.0.01.bed"
+    - path: "test-output/footprints.fps.0.01.bed.gz"
+    - path: "test-output/footprints.fps.0.01.bb"
 
 - name: test_dnase_replicate_mixed
   tags:
@@ -149,7 +151,8 @@
     - path: "test-output/subsample.spot.out"
     - path: "test-output/nuclear.preseq_targets.txt"
     - path: "test-output/nuclear.preseq.txt"
-    - path: "test-output/footprints.fps.0.01.bed"
+    - path: "test-output/footprints.fps.0.01.bed.gz"
+    - path: "test-output/footprints.fps.0.01.bb"
 
 - name: test_base_dnase_se
   tags:
@@ -200,7 +203,8 @@
       md5sum: 8c385c9306d412ec0c07cf0c8094c4b9
     - path: "test-output/nuclear.preseq.txt"
       md5sum: fbcfd649f906ad8a66c8d7b044cd3921
-    - path: "test-output/footprints.fps.0.01.bed"
+    - path: "test-output/footprints.fps.0.01.bed.gz"
+    - path: "test-output/footprints.fps.0.01.bb"
 
 - name: test_base_dnase_mixed
   tags:
@@ -246,7 +250,8 @@
     - path: "test-output/subsample.spot.out"
     - path: "test-output/nuclear.preseq_targets.txt"
     - path: "test-output/nuclear.preseq.txt"
-    - path: "test-output/footprints.fps.0.01.bed"
+    - path: "test-output/footprints.fps.0.01.bed.gz"
+    - path: "test-output/footprints.fps.0.01.bb"
 
 - name: test_base_dnase_pe
   tags:
@@ -301,5 +306,6 @@
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
       md5sum: 2787fe8fac4200725fb06f414bde8c84
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
-    - path: "test-output/footprints.fps.0.01.bed"
-      md5sum: 09d6b81abb2da696352383a0ad14b2f0
+    - path: "test-output/footprints.fps.0.01.bed.gz"
+    - path: "test-output/footprints.fps.0.01.bb"
+      md5sum: 16631a79f6a6c3f66faca1eee7962e41
