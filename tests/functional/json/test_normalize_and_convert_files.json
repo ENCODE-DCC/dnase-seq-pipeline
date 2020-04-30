@@ -19,6 +19,7 @@
         }
     },
     "normalize_and_convert_files.nuclear_bam": "tests/data/dnase/filtering/nuclear.bam",
+    "normalize_and_convert_files.one_percent_footprints_bed": "tests/data/dnase/footprinting/footprints.fps.0.01.bed",
     "normalize_and_convert_files.machine_sizes": {
         "convert": "small",
         "normalize": "small"

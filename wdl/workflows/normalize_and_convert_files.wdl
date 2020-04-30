@@ -48,7 +48,7 @@ workflow normalize_and_convert_files {
         File five_percent_allcalls_bed_gz = convert.five_percent_allcalls_bed_gz
         File five_percent_narrowpeaks_bed_gz = convert.five_percent_narrowpeaks_bed_gz
         File five_percent_narrowpeaks_bigbed = convert.five_percent_narrowpeaks_bigbed
-        File one_percent_footprints_bed_gz = convert.one_percent_footprints_bed
+        File one_percent_footprints_bed_gz = convert.one_percent_footprints_bed_gz
         File one_percent_footprints_bigbed = convert.one_percent_footprints_bigbed
     }
 }
