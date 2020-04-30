@@ -5,7 +5,7 @@
             "number": "0",
             "read_length": "36",
             "se_fastqs": [
-                "tests/data/dnase/se/ENCFF501IRE_chr22_all.fastq.gz"
+                "tests/data/dnase/se/ENCFF501IRE_chr22_30.fastq.gz"
             ]
         }
     ],
