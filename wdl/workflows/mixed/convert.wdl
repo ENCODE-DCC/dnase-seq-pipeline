@@ -4,7 +4,7 @@ version 1.0
 import "../../../wdl/subworkflows/make_bed_from_starch.wdl" as unstarch
 import "../../../wdl/subworkflows/make_gz_bed_from_bed.wdl" as pigz
 import "../../../wdl/subworkflows/make_big_bed_from_narrow_peak_bed.wdl" as ucsc_narrow
-import "../../../wdl/subworkflows/make_big_bed_from_three_plus_two_bed.wdl" ucsc_three_plus_two
+import "../../../wdl/subworkflows/make_big_bed_from_three_plus_two_bed.wdl" as ucsc_three_plus_two
 
 
 workflow convert {
