@@ -1,0 +1,9 @@
+{
+    "test_make_big_bed_from_three_plus_two_bed.make_big_bed_from_three_plus_two_bed.three_plus_two_bed": "tests/data/dnase/footprinting/footprints.fps.0.01.bed",
+    "test_make_big_bed_from_three_plus_two_bed.make_big_bed_from_three_plus_two_bed.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_make_big_bed_from_three_plus_two_bed.make_big_bed_from_three_plus_two_bed.chrom_sizes": "tests/data/ref/chr22.fa.fai"
+}
