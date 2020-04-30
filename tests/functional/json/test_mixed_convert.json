@@ -4,5 +4,6 @@
     "convert.five_percent_allcalls_starch": "tests/data/dnase/aggregation/expected/peaks/nuclear.allcalls.starch",
     "convert.narrow_peak_auto_sql": "tests/data/ref/bigbed/narrowPeak.as",
     "convert.five_percent_narrow_peaks_starch": "tests/data/dnase/aggregation/expected/peaks/nuclear.peaks.narrowpeaks.fdr0.05.starch",
+    "convert.tenth_of_one_percent_narrow_peaks_starch": "tests/data/dnase/aggregation/expected/peaks/nuclear.0.001.peaks.narrowpeaks.starch",
     "convert.one_percent_footprints_bed": "tests/data/dnase/footprinting/footprints.fps.0.01.bed"
 }

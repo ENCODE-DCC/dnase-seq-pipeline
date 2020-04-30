@@ -14,6 +14,7 @@ workflow normalize_and_convert_files {
     input {
         File nuclear_bam
         File one_percent_footprints_bed
+        HotSpot2Peaks tenth_of_one_percent_peaks
         HotSpot2Peaks five_percent_peaks
         References references
         MachineSizes machine_sizes
@@ -35,6 +36,7 @@ workflow normalize_and_convert_files {
         input:
             one_percent_footprints_bed=one_percent_footprints_bed,
             five_percent_allcalls_starch=five_percent_peaks.allcalls,
+            tenth_of_one_percent_narrow_peaks_starch=tenth_of_one_percent_peaks.narrowpeaks,
             five_percent_narrow_peaks_starch=five_percent_peaks.narrowpeaks,
             narrow_peak_auto_sql=select_first([
                 references.narrow_peak_auto_sql
@@ -46,6 +48,8 @@ workflow normalize_and_convert_files {
     output {
         File normalized_density_bw = normalize.normalized_density_bw
         File five_percent_allcalls_bed_gz = convert.five_percent_allcalls_bed_gz
+        File tenth_of_one_percent_narrowpeaks_bed_gz = convert.tenth_of_one_percent_narrowpeaks_bed_gz
+        File tenth_of_one_percent_narrowpeaks_bigbed = convert.tenth_of_one_percent_narrowpeaks_bigbed
         File five_percent_narrowpeaks_bed_gz = convert.five_percent_narrowpeaks_bed_gz
         File five_percent_narrowpeaks_bigbed = convert.five_percent_narrowpeaks_bigbed
         File one_percent_footprints_bed_gz = convert.one_percent_footprints_bed_gz

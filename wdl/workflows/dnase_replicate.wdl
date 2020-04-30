@@ -68,6 +68,7 @@ workflow dnase_replicate {
         input:
             nuclear_bam=merge_mark_and_filter_bams.nuclear_bam,
             one_percent_footprints_bed=call_footprints.one_percent_footprints_bed,
+            tenth_of_one_percent_peaks=call_hotspots_and_peaks_and_get_spot_score.tenth_of_one_percent_peaks,
             five_percent_peaks=call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks,
             references=references,
             machine_sizes=machine_sizes,
