@@ -1,0 +1,25 @@
+{
+    "test_ftd_compute_deviation.interval_bed": "tests/data/dummy.txt",
+    "test_ftd_compute_deviation.indexed_fasta": {
+        "fasta": "tests/data/dummy.txt",
+        "fai": "tests/data/dummy.txt"
+    },
+    "test_ftd_compute_deviation.indexed_bam": {
+        "bam": "tests/data/dummy.txt",
+        "bai": "tests/data/dummy.txt"
+    },
+    "test_ftd_compute_deviation.params": {
+        "seed": 12345,
+        "fdr_shuffle_n": 50,
+        "smooth_half_window_width": 50,
+        "half_window_width": 5,
+        "smooth_clip": 0.01
+    },
+    "test_ftd_compute_deviation.bias_model": "tests/data/dummy.txt",
+    "test_ftd_compute_deviation.dispersion_model": "tests/data/dummy.txt",
+    "test_ftd_compute_deviation.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}

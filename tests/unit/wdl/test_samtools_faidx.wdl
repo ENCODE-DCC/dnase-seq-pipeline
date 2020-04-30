@@ -4,7 +4,7 @@ version 1.0
 import "../../../wdl/tasks/samtools.wdl"
 
 
-workflow test_faidx {
+workflow test_samtools_faidx {
     input {
         File fasta
         Resources resources

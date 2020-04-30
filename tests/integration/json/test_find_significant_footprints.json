@@ -1,0 +1,18 @@
+{
+    "test_find_significant_footprints.find_significant_footprints.indexed_nuclear_bam": {
+        "bam": "tests/data/dnase/filtering/nuclear.bam",
+        "bai": "tests/data/dnase/filtering/nuclear.bam.bai"
+    },
+    "test_find_significant_footprints.find_significant_footprints.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_find_significant_footprints.find_significant_footprints.five_percent_hotspot_bed": "tests/data/dnase/aggregation/expected/peaks/nuclear.hotspots.fdr0.05.bed",
+    "test_find_significant_footprints.find_significant_footprints.indexed_fasta": {
+        "fasta": "tests/data/ref/chr22.fa",
+        "fai": "tests/data/ref/chr22.fa.fai"
+    },
+    "test_find_significant_footprints.find_significant_footprints.bias_model": "tests/data/dnase/footprinting/vierstra_et_al.txt",
+    "test_find_significant_footprints.find_significant_footprints.dispersion_model": "tests/data/dnase/footprinting/dispersion_model.json"
+}

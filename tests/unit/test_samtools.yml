@@ -121,3 +121,16 @@
       - "samtools flagstats"
       - "-@ 2"
       - "dummy.txt.flagstats.txt"
+
+- name: test_samtools_index
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit//wdl/test_samtools_index.wdl \
+    tests/unit/json/test_samtools_index.json
+  stdout:
+    contains:
+      - "samtools index"
+      - "-@ 1"
+      - "dummy.txt"

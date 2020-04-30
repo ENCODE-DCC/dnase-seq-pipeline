@@ -1,0 +1,10 @@
+{
+    "footprint.five_percent_hotspots_starch": "tests/data/dnase/aggregation/expected/peaks/nuclear.hotspots.fdr0.05.starch",
+    "footprint.indexed_fasta": {
+        "fasta": "tests/data/ref/chr22.fa",
+        "fai": "tests/data/ref/chr22.fa.fai"
+    },
+    "footprint.bias_model": "tests/data/dnase/footprinting/vierstra_et_al.txt",
+    "footprint.nuclear_bam": "tests/data/dnase/filtering/nuclear.bam",
+    "footprint.machine_size": "small"
+}

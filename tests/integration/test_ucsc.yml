@@ -29,3 +29,18 @@
   files:
     - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
       md5sum: 5b6209d28a8afa848b69c2b18cc69ab6
+
+- name: test_make_big_bed_from_three_plus_two_bed
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_make_big_bed_from_three_plus_two_bed.wdl \
+    tests/integration/json/test_make_big_bed_from_three_plus_two_bed.json
+  stdout:
+    contains:
+      - "bedToBigBed"
+      - "bed3+2"
+  files:
+    - path: "test-output/footprints.fps.0.01.bb"
+      md5sum: 16631a79f6a6c3f66faca1eee7962e41

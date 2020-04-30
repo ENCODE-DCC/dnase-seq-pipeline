@@ -6,6 +6,7 @@ import "../../wdl/structs/sizes.wdl"
 import "concatenate_trim_and_align_fastqs.wdl" as raw_fastqs
 import "merge_mark_and_filter_bams.wdl" as name_sorted_bams
 import "call_hotspots_and_peaks_and_get_spot_score.wdl" as nuclear_bam
+import "call_footprints.wdl" as hotspots
 import "calculate_and_gather_qc.wdl" as qc_files 
 import "normalize_and_convert_files.wdl" as bams_and_peaks
 
@@ -39,6 +40,14 @@ workflow dnase_replicate {
             machine_sizes=machine_sizes,
     }
 
+    call hotspots.call_footprints {
+        input:
+            five_percent_hotspots_starch=call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks.hotspots,
+            nuclear_bam=merge_mark_and_filter_bams.nuclear_bam,
+            references=references,
+            machine_sizes=machine_sizes,
+    }
+
     call qc_files.calculate_and_gather_qc {
         input:
             files_for_calculation=object {
@@ -58,6 +67,7 @@ workflow dnase_replicate {
     call bams_and_peaks.normalize_and_convert_files {
         input:
             nuclear_bam=merge_mark_and_filter_bams.nuclear_bam,
+            one_percent_footprints_bed=call_footprints.one_percent_footprints_bed,
             five_percent_peaks=call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks,
             references=references,
             machine_sizes=machine_sizes,
@@ -70,6 +80,8 @@ workflow dnase_replicate {
         File five_percent_allcalls_bed_gz = normalize_and_convert_files.five_percent_allcalls_bed_gz
         File five_percent_narrowpeaks_bed_gz = normalize_and_convert_files.five_percent_narrowpeaks_bed_gz
         File five_percent_narrowpeaks_bigbed = normalize_and_convert_files.five_percent_narrowpeaks_bigbed
+        File one_percent_footprints_bed_gz = normalize_and_convert_files.one_percent_footprints_bed_gz
+        File one_percent_footprints_bigbed = normalize_and_convert_files.one_percent_footprints_bigbed
         QC qc = object {
             unfiltered_bam_qc: calculate_and_gather_qc.unfiltered_bam_qc,
             nuclear_bam_qc: calculate_and_gather_qc.nuclear_bam_qc,

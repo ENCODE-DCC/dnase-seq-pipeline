@@ -1,6 +1,6 @@
 {
-    "test_faidx.fasta": "tests/data/dummy.txt",
-    "test_faidx.resources": {
+    "test_samtools_faidx.fasta": "tests/data/dummy.txt",
+    "test_samtools_faidx.resources": {
         "cpu": 1,
         "memory_gb": 2,
         "disks": "local-disk 10 SSD"

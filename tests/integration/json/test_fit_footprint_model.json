@@ -1,0 +1,17 @@
+{
+    "test_fit_footprint_model.fit_footprint_model.indexed_nuclear_bam": {
+        "bam": "tests/data/dnase/filtering/nuclear.bam",
+        "bai": "tests/data/dnase/filtering/nuclear.bam.bai"
+    },
+    "test_fit_footprint_model.fit_footprint_model.five_percent_hotspot_bed": "tests/data/dnase/aggregation/expected/peaks/nuclear.hotspots.fdr0.05.bed",
+    "test_fit_footprint_model.fit_footprint_model.indexed_fasta": {
+        "fasta": "tests/data/ref/chr22.fa",
+        "fai": "tests/data/ref/chr22.fa.fai"
+    },
+    "test_fit_footprint_model.fit_footprint_model.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_fit_footprint_model.fit_footprint_model.bias_model": "tests/data/dnase/footprinting/vierstra_et_al.txt"
+}

@@ -223,3 +223,65 @@ task extract_histogram_from_picard_insert_size_metrics {
         disks: resources.disks
     }
 }
+
+
+task filter_and_window_footprints_bedgraph {
+    input {
+        File bedgraph
+        Float threshold
+        Int window
+        Resources resources
+    }
+
+    String out = basename(bedgraph, "bedgraph") + ".fps." + threshold + ".bedgraph"
+
+    command <<<
+        awk \
+            -v OFS="\t" \
+            -v threshold=~{threshold} \
+            -v window=~{window} \
+            '$8 <= threshold {print $1, $2 - window, $3 + window;}' \
+            ~{bedgraph} \
+            > ~{out}
+    >>>
+
+    output {
+        File footprints_bedgraph = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
+
+
+task add_name_and_score_to_footprints_bed {
+    input {
+        File bed
+        Float threshold
+        Resources resources
+    }
+
+    String out = "footprints.fps." + threshold + ".bed"
+
+    command <<<
+        awk \
+            -v OFS="\t" \
+            -v threshold=~{threshold} \
+            '{$4="."; $5=threshold; print;}' \
+            ~{bed} \
+            > ~{out}
+    >>>
+
+    output {
+        File footprints_bed = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}

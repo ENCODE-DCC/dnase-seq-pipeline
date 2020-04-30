@@ -1,10 +1,10 @@
 {
-  "test_make_big_bed_from_narrow_peak_bed.make_big_bed_from_narrow_peak_bed.auto_sql": "tests/data/ref/bigbed/narrowPeak.as",
-  "test_make_big_bed_from_narrow_peak_bed.make_big_bed_from_narrow_peak_bed.narrow_peak_bed": "tests/data/dnase/aggregation/expected/peaks/nuclear.peaks.narrowpeaks.fdr0.05.bed",
-  "test_make_big_bed_from_narrow_peak_bed.make_big_bed_from_narrow_peak_bed.resources": {
+    "test_make_big_bed_from_narrow_peak_bed.make_big_bed_from_narrow_peak_bed.auto_sql": "tests/data/ref/bigbed/narrowPeak.as",
+    "test_make_big_bed_from_narrow_peak_bed.make_big_bed_from_narrow_peak_bed.narrow_peak_bed": "tests/data/dnase/aggregation/expected/peaks/nuclear.peaks.narrowpeaks.fdr0.05.bed",
+    "test_make_big_bed_from_narrow_peak_bed.make_big_bed_from_narrow_peak_bed.resources": {
         "cpu": 1,
         "memory_gb": 1,
         "disks": "local-disk 10 SSD"
-  },
-  "test_make_big_bed_from_narrow_peak_bed.make_big_bed_from_narrow_peak_bed.chrom_sizes": "tests/data/ref/chr22.fa.fai"
+    },
+    "test_make_big_bed_from_narrow_peak_bed.make_big_bed_from_narrow_peak_bed.chrom_sizes": "tests/data/ref/chr22.fa.fai"
 }

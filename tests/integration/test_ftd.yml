@@ -1,0 +1,67 @@
+- name: test_fit_footprint_model
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_fit_footprint_model.wdl \
+    tests/integration/json/test_fit_footprint_model.json
+  stdout:
+    contains:
+      - "ftd-learn-dispersion-model"
+      - "--bm "
+      - "--half-win-width 5"
+      - "--seed 12345"
+      - "--processors 1"
+      - "nuclear.bam"
+      - "> dispersion_model.json"
+  files:
+    - path: "test-output/dispersion_model.json"
+
+- name: test_find_significant_footprints
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_find_significant_footprints.wdl \
+    tests/integration/json/test_find_significant_footprints.json
+  stdout:
+    contains:
+      - "ftd-compute-deviation"
+      - "--bm "
+      - "--dm "
+      - "dispersion_model.json"
+      - "--half-win-width 5"
+      - "--smooth-half-win-width 50"
+      - "--smooth-clip 0.01"
+      - "--fdr-shuffle-n 50"
+      - "--seed 12345"
+      - "--processors 1"
+      - "nuclear.bam"
+      - "> deviation.bedgraph"
+  files:
+    - path: "test-output/deviation.bedgraph"
+      md5sum: faae6b4d85035a445ae4f831e3b215fe
+
+- name: test_threshold_footprints_and_make_bed
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_threshold_footprints_and_make_bed.wdl \
+    tests/integration/json/test_threshold_footprints_and_make_bed.json
+  stdout:
+    contains:
+      - "awk"
+      - "-v threshold=0.01"
+      - "-v window=3"
+      - "$8 <= threshold {print $1, $2 - window, $3 + window;}"
+      - '-v OFS="\t"'
+      - "-v threshold=0.01"
+      - '{$4="."; $5=threshold; print;}'
+      - "footprints.fps.0.01.bed"
+      - "sort-bed"
+      - "--max-mem 1G"
+      - "--merge"
+  files:
+    - path: "test-output/footprints.fps.0.01.bed"
+      md5sum: 09d6b81abb2da696352383a0ad14b2f0

@@ -42,7 +42,8 @@
             "center_sites": "tests/data/dnase/hotspot2/chr22.K36.center_sites.n100.starch",
             "mappable_regions": "tests/data/dnase/hotspot2/chr22.K36.mappable_only.bed"
         },
-        "narrow_peak_auto_sql": "tests/data/ref/bigbed/narrowPeak.as"
+        "narrow_peak_auto_sql": "tests/data/ref/bigbed/narrowPeak.as",
+        "bias_model": "tests/data/dnase/footprinting/vierstra_et_al.txt"
     },
     "dnase.machine_sizes": {
         "qc": "small",
@@ -50,6 +51,7 @@
         "align": "small",
         "score": "small",
         "filter": "small",
+        "footprint": "small",
         "merge": "small",
         "peaks": "small",
         "concatenate": "small",

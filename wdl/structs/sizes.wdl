@@ -8,6 +8,7 @@ struct MachineSizes {
     String? merge
     String? mark
     String? filter
+    String? footprint
     String? peaks
     String? score
     String? normalize

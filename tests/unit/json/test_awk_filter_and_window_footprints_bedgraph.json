@@ -1,0 +1,10 @@
+{
+    "test_awk_filter_and_window_footprints_bedgraph.bedgraph": "tests/data/dummy.txt",
+    "test_awk_filter_and_window_footprints_bedgraph.threshold": 0.01,
+    "test_awk_filter_and_window_footprints_bedgraph.window": 3,
+    "test_awk_filter_and_window_footprints_bedgraph.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

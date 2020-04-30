@@ -178,3 +178,33 @@ task flagstats {
         disks: resources.disks
     }
 }
+
+
+task index {
+    input {
+        File bam
+        Resources resources
+    }
+
+    String prefix = basename(bam)
+
+    command {
+        ln ~{bam} .
+        samtools index \
+            ~{"-@ " + resources.cpu} \
+            ~{prefix}
+    }
+
+    output {
+        IndexedBam indexed_bam = object {
+            bam: prefix,
+            bai: "~{prefix}.bai"
+        }
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
