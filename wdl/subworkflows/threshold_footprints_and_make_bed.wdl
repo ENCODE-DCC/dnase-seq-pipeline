@@ -25,7 +25,7 @@ workflow threshold_footprints_and_make_bed {
         input:
             unsorted_bed=filter_and_window_footprints_bedgraph.footprints_bedgraph,
             params=object {
-                max_memory: "~{resources.cpu}G"
+                max_memory: "~{resources.memory_gb}G"
             },
             resources=resources,
     }
