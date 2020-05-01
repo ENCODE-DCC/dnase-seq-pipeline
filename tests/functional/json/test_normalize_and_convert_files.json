@@ -11,6 +11,18 @@
         "cleavage": "tests/data/dnase/aggregation/expected/peaks/nuclear.cleavage.total",
         "allcalls": "tests/data/dnase/aggregation/expected/peaks/nuclear.allcalls.starch"
     },
+    "normalize_and_convert_files.tenth_of_one_percent_peaks": {
+        "density_bw": "tests/data/dummy.txt",
+        "density_starch": "tests/data/dummy.txt",
+        "narrowpeaks": "tests/data/dnase/aggregation/expected/peaks/nuclear.0.001.peaks.narrowpeaks.starch",
+        "fragments": "tests/data/dummy.txt",
+        "spot_score": "tests/data/dummy.txt",
+        "cutcounts": "tests/data/dummy.txt",
+        "hotspots": "tests/data/dnase/aggregation/expected/peaks/nuclear.hotspots.fdr0.001.starch",
+        "peaks": "tests/data/dummy.txt",
+        "cleavage": "tests/data/dummy.txt",
+        "allcalls": "tests/data/dummy.txt"
+    },
     "normalize_and_convert_files.references": {
         "narrow_peak_auto_sql": "tests/data/ref/bigbed/narrowPeak.as",
         "indexed_fasta": {

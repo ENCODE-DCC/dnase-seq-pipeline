@@ -11,6 +11,7 @@ workflow convert {
     input {
         File one_percent_footprints_bed
         File five_percent_allcalls_starch
+        File tenth_of_one_percent_narrow_peaks_starch
         File five_percent_narrow_peaks_starch
         File narrow_peak_auto_sql
         File chrom_sizes
@@ -25,7 +26,13 @@ workflow convert {
             resources=compute.runtimes[machine_size],
     }
 
-    call unstarch.make_bed_from_starch as narrow_peaks_unstarch {
+    call unstarch.make_bed_from_starch as tenth_of_one_percent_narrow_peaks_unstarch {
+        input:
+            starch=tenth_of_one_percent_narrow_peaks_starch,
+            resources=compute.runtimes[machine_size],
+    }
+
+    call unstarch.make_bed_from_starch as five_percent_narrow_peaks_unstarch {
         input:
             starch=five_percent_narrow_peaks_starch,
             resources=compute.runtimes[machine_size],
@@ -37,9 +44,15 @@ workflow convert {
             resources=compute.runtimes[machine_size],
     }
 
-    call pigz.make_gz_bed_from_bed as narrow_peaks_pigz {
+    call pigz.make_gz_bed_from_bed as tenth_of_one_percent_narrow_peaks_pigz {
         input:
-            bed=narrow_peaks_unstarch.bed,
+            bed=tenth_of_one_percent_narrow_peaks_unstarch.bed,
+            resources=compute.runtimes[machine_size],
+    }
+
+    call pigz.make_gz_bed_from_bed as five_percent_narrow_peaks_pigz {
+        input:
+            bed=five_percent_narrow_peaks_unstarch.bed,
             resources=compute.runtimes[machine_size],
     }
 
@@ -49,9 +62,17 @@ workflow convert {
             resources=compute.runtimes[machine_size],
     }
 
-    call ucsc_narrow.make_big_bed_from_narrow_peak_bed as narrow_peaks_ucsc {
+    call ucsc_narrow.make_big_bed_from_narrow_peak_bed as tenth_of_one_percent_narrow_peaks_ucsc {
         input:
-            narrow_peak_bed=narrow_peaks_unstarch.bed,
+            narrow_peak_bed=tenth_of_one_percent_narrow_peaks_unstarch.bed,
+            chrom_sizes=chrom_sizes,
+            auto_sql=narrow_peak_auto_sql,
+            resources=compute.runtimes[machine_size],
+    }
+
+    call ucsc_narrow.make_big_bed_from_narrow_peak_bed as five_percent_narrow_peaks_ucsc {
+        input:
+            narrow_peak_bed=five_percent_narrow_peaks_unstarch.bed,
             chrom_sizes=chrom_sizes,
             auto_sql=narrow_peak_auto_sql,
             resources=compute.runtimes[machine_size],
@@ -66,8 +87,10 @@ workflow convert {
 
     output {
         File five_percent_allcalls_bed_gz = allcalls_pigz.gz_bed
-        File five_percent_narrowpeaks_bed_gz = narrow_peaks_pigz.gz_bed
-        File five_percent_narrowpeaks_bigbed = narrow_peaks_ucsc.big_bed
+        File tenth_of_one_percent_narrowpeaks_bed_gz = tenth_of_one_percent_narrow_peaks_pigz.gz_bed
+        File tenth_of_one_percent_narrowpeaks_bigbed = tenth_of_one_percent_narrow_peaks_ucsc.big_bed
+        File five_percent_narrowpeaks_bed_gz = five_percent_narrow_peaks_pigz.gz_bed
+        File five_percent_narrowpeaks_bigbed = five_percent_narrow_peaks_ucsc.big_bed
         File one_percent_footprints_bed_gz = one_percent_footprints_pigz.gz_bed
         File one_percent_footprints_bigbed = one_percent_footprints_ucsc.big_bed
     }

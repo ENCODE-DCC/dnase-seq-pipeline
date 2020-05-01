@@ -68,6 +68,7 @@ workflow dnase_replicate {
         input:
             nuclear_bam=merge_mark_and_filter_bams.nuclear_bam,
             one_percent_footprints_bed=call_footprints.one_percent_footprints_bed,
+            tenth_of_one_percent_peaks=call_hotspots_and_peaks_and_get_spot_score.tenth_of_one_percent_peaks,
             five_percent_peaks=call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks,
             references=references,
             machine_sizes=machine_sizes,
@@ -78,6 +79,8 @@ workflow dnase_replicate {
         File nuclear_bam = merge_mark_and_filter_bams.nuclear_bam
         File normalized_density_bw = normalize_and_convert_files.normalized_density_bw
         File five_percent_allcalls_bed_gz = normalize_and_convert_files.five_percent_allcalls_bed_gz
+        File tenth_of_one_percent_narrowpeaks_bed_gz = normalize_and_convert_files.tenth_of_one_percent_narrowpeaks_bed_gz
+        File tenth_of_one_percent_narrowpeaks_bigbed = normalize_and_convert_files.tenth_of_one_percent_narrowpeaks_bigbed
         File five_percent_narrowpeaks_bed_gz = normalize_and_convert_files.five_percent_narrowpeaks_bed_gz
         File five_percent_narrowpeaks_bigbed = normalize_and_convert_files.five_percent_narrowpeaks_bigbed
         File one_percent_footprints_bed_gz = normalize_and_convert_files.one_percent_footprints_bed_gz
