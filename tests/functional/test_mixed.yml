@@ -149,6 +149,8 @@
       - "bedToBigBed"
   files:
     - path: "test-output/nuclear.allcalls.bed.gz"
+    - path: "test-output/nuclear.allcalls.bb"
+      md5sum: ce7c4af2b1bc2f143549727f18f27a03
     - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bed.gz"
     - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
       md5sum: 5b6209d28a8afa848b69c2b18cc69ab6

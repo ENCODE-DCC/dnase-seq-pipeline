@@ -85,8 +85,16 @@ workflow convert {
             resources=compute.runtimes[machine_size],
     }
 
+    call ucsc_three_plus_two.make_big_bed_from_three_plus_two_bed as allcalls_ucsc {
+        input:
+            three_plus_two_bed=allcalls_unstarch.bed,
+            chrom_sizes=chrom_sizes,
+            resources=compute.runtimes[machine_size],
+    }
+
     output {
         File five_percent_allcalls_bed_gz = allcalls_pigz.gz_bed
+        File five_percent_allcalls_bigbed = allcalls_ucsc.big_bed
         File tenth_of_one_percent_narrowpeaks_bed_gz = tenth_of_one_percent_narrow_peaks_pigz.gz_bed
         File tenth_of_one_percent_narrowpeaks_bigbed = tenth_of_one_percent_narrow_peaks_ucsc.big_bed
         File five_percent_narrowpeaks_bed_gz = five_percent_narrow_peaks_pigz.gz_bed
