@@ -154,6 +154,7 @@ In most cases references should already exist for a given assembly/read length, 
     "concatenate": "medium",
     "convert": "medium",
     "filter": "large",
+    "footprint": "large",
     "mark": "large",
     "merge": "large",
     "normalize": "medium2x",
@@ -169,7 +170,7 @@ The sizes are defined in [wdl/runtimes.json](wdl/runtimes.json). For example `me
 "medium": {
     "cpu": 2,
     "memory_gb": 4,
-    "disks": "local-disk 50 SSD"
+    "disks": "local-disk 200 SSD"
 }
 ```
 Note that specifying `dnase.machine_sizes` is optional and default values from [wdl/default_machine_sizes.json](wdl/default_machine_sizes.json) will be used if it is not specified in the input JSON.
