@@ -1,7 +1,7 @@
 # ENCODE DNase-seq pipeline
 
 ### Introduction
-This is the uniform processing pipeline for [ENCODE DNase-seq experiments](https://www.encodeproject.org/search/?type=Experiment&assay_title=DNase-seq). It uses [WDL](https://github.com/openwdl/wdl) and [Caper](https://github.com/ENCODE-DCC/caper) (a wrapper over [Cromwell](https://github.com/broadinstitute/cromwell)) to specify and run the processing steps, and [Docker](https://www.docker.com/) to ensure a reproducible and portable compute environment. The same inputs should produce the same outputs regardless of computational platform (local, Cloud, etc.). The benefits of having a reproducible workflow include generating processed results that are comparable between ENCODE experiments and providing outside users an easy way to process their own DNAse-seq data for comparison with ENCODE data.
+This is the uniform processing pipeline for [ENCODE DNase-seq experiments](https://www.encodeproject.org/search/?type=Experiment&assay_title=DNase-seq). It uses [WDL](https://github.com/openwdl/wdl) and [Caper](https://github.com/ENCODE-DCC/caper) (a wrapper over [Cromwell](https://github.com/broadinstitute/cromwell)) to specify and run the processing steps, and [Docker](https://www.docker.com/) to ensure a reproducible and portable compute environment. The same inputs should produce the same outputs regardless of computational platform (local, Cloud, etc.). The benefits of having a reproducible workflow include generating processed results that are comparable between ENCODE experiments and providing outside users an easy way to process their own DNAse-seq data for comparison with ENCODE data. See ENCODE's [ChIP-seq](https://github.com/ENCODE-DCC/chip-seq-pipeline2) and [ATAC-seq](https://github.com/ENCODE-DCC/atac-seq-pipeline) pipelines for other examples of reproducible workflows.
 
 ### Requirements
 Follow the instructions for installing [Caper](https://github.com/ENCODE-DCC/caper#installation).
@@ -266,7 +266,7 @@ In general unit tests ensure proper wrapping of command-line utilities by tasks.
 
 
 ### Testing
-All tasks, suboworkflows, and workflows are tested with unit, integration, and functional tests, respectively. We use pytest-workflow and Caper to run Cromwell and compare outputs. Usually we can compare md5sums using the pytest-workflow yml. For example in *tests/integration/test_samtools.yml* the *test_build_fasta_index.wdl* is run and we can assert *chr22.fa.fai* is returned with a certain md5sum:
+All tasks, subworkflows, and workflows are tested with unit, integration, and functional tests, respectively. We use pytest-workflow and Caper to run Cromwell and compare outputs. Usually we can compare md5sums using the pytest-workflow yml. For example in *tests/integration/test_samtools.yml* the *test_build_fasta_index.wdl* is run and we can assert *chr22.fa.fai* is returned with a certain md5sum:
 ```
 - name: test_build_fasta_index
   tags:
