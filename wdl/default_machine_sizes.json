@@ -3,7 +3,7 @@
     "concatenate": "medium",
     "convert": "medium",
     "filter": "large",
-    "footprint": "large",
+    "footprint": "medium2x",
     "mark": "large",
     "merge": "large",
     "normalize": "medium2x",
