@@ -182,7 +182,7 @@ The pipelines can be roughly split up into these parts:
 * *Concatenate, trim, and align fastqs* - The raw FASTQs are concatenated, trimmed for adapters and length, and aligned with BWA (single-end and paired-end data are kept separate).
 * *Merge, mark, and filter BAMs* - The aligned PE/SE BAMs are merged and duplicates are marked. Low-quality and non-nuclear reads are filtered out.
 * *Call hotspots and peaks and get SPOT score* - The nuclear BAM is passed to Hotspots1 and Hotspot2 for peaks and SPOT score.
-* *Call footprints* - A footprint model is fit from Hotspot regions and statistical deviations from expected cleavage rates are called and thresholded.
+* *Call footprints* - A footprint model is fit and statistical deviations from expected cleavage rates within Hotspot regions are called and thresholded.
 * *Calculate and gather QC* - Quality metrics such as `samtools flagstats` are collected.
 * *Normalize and convert files* - The `density starch` from Hotspot2 is normalized and converted to a `bigWig`, peak `starches` are converted to `bed` and `bigBed` format.
 
