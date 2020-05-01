@@ -242,10 +242,6 @@ caper list --hide-subworkflow
 | ----- |
 | hotspot2 spot score |
 
-| footprints |
-| ----- |
-| dispersion pdf |
-
 *(Note that insert sizes and trimstats only included for PE data.)*
 
 ### Development and Repository Organization
