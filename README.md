@@ -3,6 +3,9 @@
 ### Introduction
 This is the uniform processing pipeline for [ENCODE DNase-seq experiments](https://www.encodeproject.org/search/?type=Experiment&assay_title=DNase-seq). It uses [WDL](https://github.com/openwdl/wdl) and [Caper](https://github.com/ENCODE-DCC/caper) (a wrapper over [Cromwell](https://github.com/broadinstitute/cromwell)) to specify and run the processing steps, and [Docker](https://www.docker.com/) to ensure a reproducible and portable compute environment. The same inputs should produce the same outputs regardless of computational platform (local, Cloud, etc.). The benefits of having a reproducible workflow include generating processed results that are comparable between ENCODE experiments and providing outside users an easy way to process their own DNAse-seq data for comparison with ENCODE data.
 
+### Requirements
+Follow the instructions for installing [Caper](https://github.com/ENCODE-DCC/caper#installation).
+
 ### Quickstart
 Assuming the requirements are installed you must create a JSON file specifying the inputs of the pipeline. These include the raw FASTQs from the DNase-seq experiment as well as reference files specific to an assembly (e.g. GRCh38) and read length (e.g. 76bp). There are three sections in the input JSON:
 
@@ -178,6 +181,7 @@ The pipelines can be roughly split up into these parts:
 * *Concatenate, trim, and align fastqs* - The raw FASTQs are concatenated, trimmed for adapters and length, and aligned with BWA (single-end and paired-end data are kept separate).
 * *Merge, mark, and filter BAMs* - The aligned PE/SE BAMs are merged and duplicates are marked. Low-quality and non-nuclear reads are filtered out.
 * *Call hotspots and peaks and get SPOT score* - The nuclear BAM is passed to Hotspots1 and Hotspot2 for peaks and SPOT score.
+* *Call footprints* - A footprint model is fit from Hotspot regions and statistical deviations from expected cleavage rates are called and thresholded.
 * *Calculate and gather QC* - Quality metrics such as `samtools flagstats` are collected.
 * *Normalize and convert files* - The `density starch` from Hotspot2 is normalized and converted to a `bigWig`, peak `starches` are converted to `bed` and `bigBed` format.
 
@@ -205,11 +209,13 @@ caper list --hide-subworkflow
 | nuclear bam |
 | normalized density bw |
 | five percent allcalls bed gz |
-| five percent allcalls bed bigbed |
+| five percent allcalls bigbed |
 | five percent narrowpeaks bed gz |
 | five percent narrowpeaks bigbed | 
 | tenth of one percent narrowpeaks bed gz |
 | tenth of one percent narrowpeaks bigbed |
+| one percent footprints bed gz |
+| one percent footprints bigbed |
 
 **Quality Metrics**
 | unfiltered_bam |
@@ -234,6 +240,10 @@ caper list --hide-subworkflow
 | peaks |
 | ----- |
 | hotspot2 spot score |
+
+| footprints |
+| ----- |
+| dispersion pdf |
 
 *(Note that insert sizes and trimstats only included for PE data.)*
 
