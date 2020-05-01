@@ -248,7 +248,7 @@ caper list --hide-subworkflow
 
 *(Note that insert sizes and trimstats only included for PE data.)*
 
-### Repository Organization
+### Development and Repository Organization
 The *wdl* folder is split up into:
 * tasks
 * subworkflows
@@ -266,7 +266,7 @@ In general unit tests ensure proper wrapping of command-line utilities by tasks.
 
 
 ### Testing
-We use pytest-workflow and Caper to run Cromwell and compare outputs. Usually we can compare md5sums using the pytest-workflow yml. For example in *tests/integration/test_samtools.yml* the *test_build_fasta_index.wdl* is run and we can assert *chr22.fa.fai* is returned with a certain md5sum:
+All tasks, suboworkflows, and workflows are tested with unit, integration, and functional tests, respectively. We use pytest-workflow and Caper to run Cromwell and compare outputs. Usually we can compare md5sums using the pytest-workflow yml. For example in *tests/integration/test_samtools.yml* the *test_build_fasta_index.wdl* is run and we can assert *chr22.fa.fai* is returned with a certain md5sum:
 ```
 - name: test_build_fasta_index
   tags:
