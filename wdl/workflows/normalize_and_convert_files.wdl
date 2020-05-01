@@ -48,6 +48,7 @@ workflow normalize_and_convert_files {
     output {
         File normalized_density_bw = normalize.normalized_density_bw
         File five_percent_allcalls_bed_gz = convert.five_percent_allcalls_bed_gz
+        File five_percent_allcalls_bigbed = convert.five_percent_allcalls_bigbed
         File tenth_of_one_percent_narrowpeaks_bed_gz = convert.tenth_of_one_percent_narrowpeaks_bed_gz
         File tenth_of_one_percent_narrowpeaks_bigbed = convert.tenth_of_one_percent_narrowpeaks_bigbed
         File five_percent_narrowpeaks_bed_gz = convert.five_percent_narrowpeaks_bed_gz

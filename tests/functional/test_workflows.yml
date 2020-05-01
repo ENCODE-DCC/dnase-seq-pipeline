@@ -183,6 +183,8 @@
   files:
     - path: "test-output/normalized.nuclear.density.bw"
     - path: "test-output/nuclear.allcalls.bed.gz"
+    - path: "test-output/nuclear.allcalls.bb"
+      md5sum: ce7c4af2b1bc2f143549727f18f27a03
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
       md5sum: 5c8f635ceed83ed049851e118f1221ad
