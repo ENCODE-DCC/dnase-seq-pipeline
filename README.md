@@ -143,7 +143,8 @@ Here's how to specify the input for a 36bp mixed single-end/paired-end experimen
         "chrom_sizes": "gs://dnase/ref/GRCh38.chrom_sizes.bed",
         "center_sites": "gs://dnase/ref/36/GRCh38.K36.center_sites.n100.starch",
         "mappable_regions": "gs://dnase/ref/36/GRCh38.K36.mappable_only.bed"
-    }
+    },
+    "bias_model": "gs://dnase/ref/vierstra_et_al.txt"
 ```
 In most cases references should already exist for a given assembly/read length, though the `references.wdl` workflow can be used to generate most of these for a new assembly/read length. Note that it is important for the `genome_name` to corresponds to the prefix of your references/indices.
 

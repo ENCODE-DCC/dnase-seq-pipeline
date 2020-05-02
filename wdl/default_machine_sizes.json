@@ -7,8 +7,8 @@
     "mark": "large",
     "merge": "large",
     "normalize": "medium2x",
-    "peaks": "medium",
-    "qc": "medium",
+    "peaks": "medium2x",
+    "qc": "medium2x",
     "score": "medium",
     "trim": "large2x"
 }

@@ -12,9 +12,10 @@
             "pe_fastqs": [
                 {
                     "R1": "",
-                    "R2":
+                    "R2": ""
                 }
-            ]
+            ],
+            "se_fastqs": null
         }
     ],
     "dnase.references": {
@@ -33,15 +34,16 @@
         },
         "nuclear_chroms": "gs://dnase/ref/nuclear_chroms.txt",
         "narrow_peak_auto_sql": "gs://dnase/ref/bigbed/narrowPeak.as",
-         "hotspot1": {
-             "chrom_info": "gs://dnase/ref/GRCh38.chromInfo.bed",
-             "mappable_regions": "gs://dnase/ref/76/GRCh38.K76.mappable_only.bed"
+        "hotspot1": {
+            "chrom_info": "gs://dnase/ref/GRCh38.chromInfo.bed",
+            "mappable_regions": "gs://dnase/ref/76/GRCh38.K76.mappable_only.bed"
         },
         "hotspot2": {
             "chrom_sizes": "gs://dnase/ref/GRCh38.chrom_sizes.bed",
             "center_sites": "gs://dnase/ref/76/GRCh38.K76.center_sites.n100.starch",
             "mappable_regions": "gs://dnase/ref/76/GRCh38.K76.mappable_only.bed"
-        }
+        },
+        "bias_model": "gs://dnase/ref/vierstra_et_al.txt"
     },
     "dnase.machine_sizes": {
         "align": "large2x",
