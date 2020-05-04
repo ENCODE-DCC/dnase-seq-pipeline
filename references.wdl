@@ -21,7 +21,7 @@ workflow references {
         File? mappable_regions
         File fasta
         Int kmer_length
-        ReferenceMachineSizes machine_sizes = read_json("wdl/default_reference_machine_sizes.json")
+        ReferenceMachineSizes machine_sizes
     }
 
     Machines compute = read_json("wdl/runtimes.json")

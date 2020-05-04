@@ -1,0 +1,13 @@
+{
+    "references.kmer_length": 36,
+    "references.fasta": "gs://dnase/ref/GRCh38.fa",
+    "references.machine_sizes": {
+        "build_bwa_index": "large",
+        "build_fasta_index": "large",
+        "build_bowtie_index": "large",
+        "build_mappable_only_bed": "large",
+        "get_chrom_info": "large",
+        "get_chrom_sizes": "large",
+        "get_center_sites": "large"
+    }
+}
