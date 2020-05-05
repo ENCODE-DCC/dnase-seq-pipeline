@@ -8,18 +8,20 @@ import "../structs/resources.wdl"
 task unstarch {
     input {
         File starch
+        BedopsUnstarchParams params = {}
         Resources resources
-        String out = "out.bed"
+        String out_path = "out.bed"
     }
 
     command {
         unstarch \
+            ~{true="--elements" false="" params.elements} \
             ~{starch} \
             > ~{out}
     }
 
     output {
-        File bed = out
+        File out = out_path
     }
 
     runtime {

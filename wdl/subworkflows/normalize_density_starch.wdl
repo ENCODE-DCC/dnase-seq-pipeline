@@ -30,7 +30,7 @@ workflow normalize_density_starch {
 
     call awk.normalize_bed_values {
         input:
-            bed=unstarch.bed,
+            bed=unstarch.out,
             number_of_reads=get_number_of_reads_from_bam.count,
             scale=scale,
             resources=resources,

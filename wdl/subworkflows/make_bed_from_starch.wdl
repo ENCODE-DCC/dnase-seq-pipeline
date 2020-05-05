@@ -20,6 +20,6 @@ workflow make_bed_from_starch {
     }
 
     output {
-        File bed = unstarch.bed
+        File bed = unstarch.out
     }
 }
