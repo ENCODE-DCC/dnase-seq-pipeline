@@ -30,17 +30,17 @@ task hotspot2 {
     }
 
     output {
-        HotSpot2Peaks peaks = {
-            "allcalls": "~{prefix}.allcalls.starch",
-            "cleavage": "~{prefix}.cleavage.total",
-            "cutcounts": "~{prefix}.cutcounts.starch",
-            "density_starch": "~{prefix}.density.starch",
-            "density_bw": "~{prefix}.density.bw",
-            "fragments": "~{prefix}.fragments.sorted.starch",
-            "hotspots": "~{prefix}.hotspots.fdr~{fdr}.starch",
-            "peaks": "~{prefix}.peaks.starch",
-            "narrowpeaks": "~{prefix}.peaks.narrowpeaks.starch",
-            "spot_score": "~{prefix}.SPOT.txt"
+        HotSpot2Peaks peaks = object {
+            allcalls: "~{prefix}.allcalls.starch",
+            cleavage: "~{prefix}.cleavage.total",
+            cutcounts: "~{prefix}.cutcounts.starch",
+            density_starch: "~{prefix}.density.starch",
+            density_bw: "~{prefix}.density.bw",
+            fragments: "~{prefix}.fragments.sorted.starch",
+            hotspots: "~{prefix}.hotspots.fdr~{fdr}.starch",
+            peaks: "~{prefix}.peaks.starch",
+            narrowpeaks: "~{prefix}.peaks.narrowpeaks.starch",
+            spot_score: "~{prefix}.SPOT.txt"
         }
     }
 
