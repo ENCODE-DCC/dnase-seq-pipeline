@@ -17,7 +17,7 @@ task unstarch {
         unstarch \
             ~{true="--elements" false="" params.elements} \
             ~{starch} \
-            > ~{out}
+            > ~{out_path}
     }
 
     output {
