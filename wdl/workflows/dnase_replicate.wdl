@@ -59,7 +59,8 @@ workflow dnase_replicate {
                 spot_score: call_hotspots_and_peaks_and_get_spot_score.spot_score,
                 trimstats: concatenate_trim_and_align_fastqs.trimstats,
                 five_percent_peaks: call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks,
-                tenth_of_one_percent_peaks: call_hotspots_and_peaks_and_get_spot_score.tenth_of_one_percent_peaks
+                tenth_of_one_percent_peaks: call_hotspots_and_peaks_and_get_spot_score.tenth_of_one_percent_peaks,
+                one_percent_footprints_count: call_footprints.one_percent_footprints_count
             },
             replicate=replicate,
             machine_sizes=machine_sizes,

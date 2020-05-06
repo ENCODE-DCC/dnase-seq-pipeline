@@ -31,6 +31,7 @@ struct PeaksQC {
     Int five_percent_hotspots_count
     Int five_percent_narrowpeaks_count
     Int tenth_of_one_percent_narrowpeaks_count
+    Int one_percent_footprints_count
 }
 
 
@@ -45,6 +46,7 @@ struct QCFilesGather {
     File? trimstats
     HotSpot2Peaks five_percent_peaks
     HotSpot2Peaks tenth_of_one_percent_peaks
+    Int one_percent_footprints_count
 }
 
 struct QC {

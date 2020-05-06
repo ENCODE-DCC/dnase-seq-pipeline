@@ -6,6 +6,7 @@ import "../../../wdl/subworkflows/make_bed_from_starch.wdl" as hotspots_starch
 import "../../../wdl/subworkflows/fit_footprint_model.wdl" as hotspots_bed
 import "../../../wdl/subworkflows/find_significant_footprints.wdl" as dispersion_model
 import "../../../wdl/subworkflows/threshold_footprints_and_make_bed.wdl" as deviation_bedgraph
+import "../../../wdl/tasks/wc.wdl"
 
 
 workflow footprint {
@@ -56,8 +57,15 @@ workflow footprint {
             deviation_bedgraph=find_significant_footprints.deviation_bedgraph,
             resources=compute.runtimes[machine_size],
     }
+
+    call wc.count_lines {
+        input:
+            in=threshold_footprints_and_make_bed.footprints_bed,
+            resources=compute.runtimes[machine_size],
+    }
     
     output {
         File footprints_bed = threshold_footprints_and_make_bed.footprints_bed
+        Int footprints_count = count_lines.out
     }
 }
