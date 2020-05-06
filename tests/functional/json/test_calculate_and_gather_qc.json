@@ -41,7 +41,8 @@
             "allcalls_count": 68
         },
         "trimstats": "tests/data/dnase/trimming/trimstats.txt",
-        "duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard"
+        "duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard",
+        "one_percent_footprints_count": 123
     },
     "calculate_and_gather_qc.files_for_calculation": {
         "nuclear_bam": "tests/data/dnase/filtering/nuclear.bam",
