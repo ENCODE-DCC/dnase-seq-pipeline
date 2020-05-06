@@ -242,6 +242,11 @@ caper list --hide-subworkflow
 | peaks |
 | ----- |
 | hotspot2 spot score |
+| five percent allcalls count |
+| five percent hotspots count |
+| five percent narrowpeaks count |
+| tenth of one percent narrowpeaks count |
+| one percent footprints count |
 
 *(Note that insert sizes and trimstats only included for PE data.)*
 
