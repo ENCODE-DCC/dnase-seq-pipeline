@@ -15,6 +15,13 @@
       - "-F 0.5"
       - "-p varWidth_20_default"
       - "filtered"
+      - "unstarch"
+      - "--elements"
+      - "starch"
+      - "cat"
+      - "545"
+      - "539"
+      - "61949"
   files:
     - path: "test-output/filtered.0.05.hotspots.fdr0.05.starch"
     - path: "test-output/filtered.0.05.cleavage.total"

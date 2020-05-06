@@ -12,3 +12,35 @@
   files:
     - path: "test-output/nuclear.allcalls.bed"
       md5sum: 848c262cf4bde6aeefc27ef0c73ac1cc
+
+- name: test_get_number_of_elements_from_starch
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_number_of_elements_from_starch.wdl \
+    tests/integration/json/test_get_number_of_elements_from_starch.json
+  stdout:
+    contains:
+      - "unstarch"
+      - "--elements"
+      - "starch"
+      - "cat"
+      - "545"
+
+- name: test_get_counts_from_hotspot2_peaks
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_counts_from_hotspot2_peaks.wdl \
+    tests/integration/json/test_get_counts_from_hotspot2_peaks.json
+  stdout:
+    contains:
+      - "unstarch"
+      - "--elements"
+      - "starch"
+      - "cat"
+      - "545"
+      - "539"
+      - "61962"

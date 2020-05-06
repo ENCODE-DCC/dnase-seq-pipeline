@@ -1,0 +1,10 @@
+{
+    "test_get_counts_from_hotspot2_peaks.get_counts_from_hotspot2_peaks.narrowpeaks": "tests/data/dnase/aggregation/expected/peaks/nuclear.peaks.narrowpeaks.fdr0.05.starch",
+    "test_get_counts_from_hotspot2_peaks.get_counts_from_hotspot2_peaks.hotspots": "tests/data/dnase/aggregation/expected/peaks/nuclear.hotspots.fdr0.05.starch",
+    "test_get_counts_from_hotspot2_peaks.get_counts_from_hotspot2_peaks.allcalls": "tests/data/dnase/aggregation/expected/peaks/nuclear.allcalls.starch",
+    "test_get_counts_from_hotspot2_peaks.get_counts_from_hotspot2_peaks.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

@@ -17,3 +17,8 @@ struct BedopsBedMapParams {
     Boolean? faster
     String? delimiter
 }
+
+
+struct BedopsUnstarchParams {
+    Boolean? elements
+}

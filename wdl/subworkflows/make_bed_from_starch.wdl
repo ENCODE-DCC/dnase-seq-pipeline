@@ -10,16 +10,16 @@ workflow make_bed_from_starch {
         Resources resources
     }
 
-    String out = basename(starch, ".starch") + ".bed"
+    String out_path = basename(starch, ".starch") + ".bed"
 
     call bedops.unstarch {
         input:
              starch=starch,
-             out=out,
+             out_path=out_path,
              resources=resources,
     }
 
     output {
-        File bed = unstarch.bed
+        File bed = unstarch.out
     }
 }

@@ -1,0 +1,13 @@
+- name: test_wc_count_lines
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit//wdl/test_wc_count_lines.wdl \
+    tests/unit/json/test_wc_count_lines.json
+  stdout:
+    contains:
+      - "wc"
+      - "-1"
+      - "dummy.txt"
+      - "0"

@@ -18,13 +18,16 @@ struct HotSpot2Params {
 
 struct HotSpot2Peaks {
     File allcalls
+    Int? allcalls_count
     File cleavage
     File cutcounts
     File density_starch
     File density_bw
     File fragments
     File hotspots
+    Int? hotspots_count
     File peaks
     File narrowpeaks
+    Int? narrowpeaks_count
     File spot_score
 }

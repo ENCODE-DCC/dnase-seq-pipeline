@@ -1,0 +1,8 @@
+{
+    "test_get_number_of_elements_from_starch.get_number_of_elements_from_starch.starch": "tests/data/dnase/aggregation/expected/peaks/nuclear.peaks.narrowpeaks.fdr0.05.starch",
+    "test_get_number_of_elements_from_starch.get_number_of_elements_from_starch.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

@@ -10,6 +10,8 @@
       - "unstarch"
       - "dummy.txt"
       - "> out.bed"
+    must_not_contain:
+      - "--elements"
 
 - name: test_bedops_starch
   tags:
