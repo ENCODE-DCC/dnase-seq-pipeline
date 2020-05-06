@@ -77,21 +77,24 @@ workflow dnase_replicate {
     }
 
     output {
-        File unfiltered_bam = merge_mark_and_filter_bams.unfiltered_bam
-        File nuclear_bam = merge_mark_and_filter_bams.nuclear_bam
-        File normalized_density_bw = normalize_and_convert_files.normalized_density_bw
-        File five_percent_allcalls_bed_gz = normalize_and_convert_files.five_percent_allcalls_bed_gz
-        File five_percent_allcalls_bigbed = normalize_and_convert_files.five_percent_allcalls_bigbed
-        File tenth_of_one_percent_narrowpeaks_bed_gz = normalize_and_convert_files.tenth_of_one_percent_narrowpeaks_bed_gz
-        File tenth_of_one_percent_narrowpeaks_bigbed = normalize_and_convert_files.tenth_of_one_percent_narrowpeaks_bigbed
-        File five_percent_narrowpeaks_bed_gz = normalize_and_convert_files.five_percent_narrowpeaks_bed_gz
-        File five_percent_narrowpeaks_bigbed = normalize_and_convert_files.five_percent_narrowpeaks_bigbed
-        File one_percent_footprints_bed_gz = normalize_and_convert_files.one_percent_footprints_bed_gz
-        File one_percent_footprints_bigbed = normalize_and_convert_files.one_percent_footprints_bigbed
-        QC qc = object {
-            unfiltered_bam_qc: calculate_and_gather_qc.unfiltered_bam_qc,
-            nuclear_bam_qc: calculate_and_gather_qc.nuclear_bam_qc,
-            peaks_qc: calculate_and_gather_qc.peaks_qc
+        Analysis analysis = object {
+            replicate=replicate,
+            unfiltered_bam=merge_mark_and_filter_bams.unfiltered_bam,
+            nuclear_bam=merge_mark_and_filter_bams.nuclear_bam,
+            normalized_density_bw=normalize_and_convert_files.normalized_density_bw,
+            five_percent_allcalls_bed_gz=normalize_and_convert_files.five_percent_allcalls_bed_gz,
+            five_percent_allcalls_bigbed=normalize_and_convert_files.five_percent_allcalls_bigbed,
+            tenth_of_one_percent_narrowpeaks_bed_gz=normalize_and_convert_files.tenth_of_one_percent_narrowpeaks_bed_gz,
+            tenth_of_one_percent_narrowpeaks_bigbed=normalize_and_convert_files.tenth_of_one_percent_narrowpeaks_bigbed,
+            five_percent_narrowpeaks_bed_gz=normalize_and_convert_files.five_percent_narrowpeaks_bed_gz,
+            five_percent_narrowpeaks_bigbed=normalize_and_convert_files.five_percent_narrowpeaks_bigbed,
+            one_percent_footprints_bed_gz=normalize_and_convert_files.one_percent_footprints_bed_gz,
+            one_percent_footprints_bigbed=normalize_and_convert_files.one_percent_footprints_bigbed,
+            qc=object {
+                unfiltered_bam_qc: calculate_and_gather_qc.unfiltered_bam_qc,
+                nuclear_bam_qc: calculate_and_gather_qc.nuclear_bam_qc,
+                peaks_qc: calculate_and_gather_qc.peaks_qc
+            }
         }
     }
 }
