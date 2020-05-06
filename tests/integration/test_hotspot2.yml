@@ -21,7 +21,7 @@
       - "cat"
       - "545"
       - "539"
-      - "61962"
+      - "61949"
   files:
     - path: "test-output/filtered.0.05.hotspots.fdr0.05.starch"
     - path: "test-output/filtered.0.05.cleavage.total"

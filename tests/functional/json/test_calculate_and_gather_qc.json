@@ -14,13 +14,31 @@
             "density_bw": "tests/data/dnase/aggregation/expected/peaks/nuclear.density.bw",
             "density_starch": "tests/data/dnase/aggregation/expected/peaks/nuclear.density.starch",
             "narrowpeaks": "tests/data/dnase/aggregation/expected/peaks/nuclear.peaks.narrowpeaks.fdr0.05.starch",
+            "narrowpeaks_count": 44,
             "fragments": "tests/data/dnase/aggregation/expected/peaks/nuclear.fragments.sorted.starch",
             "spot_score": "tests/data/dnase/hotspot2/expected/filtered.0.05.SPOT.txt",
             "cutcounts": "tests/data/dnase/aggregation/expected/peaks/nuclear.cutcounts.starch",
             "hotspots": "tests/data/dnase/aggregation/expected/peaks/nuclear.hotspots.fdr0.05.starch",
+            "hotspots_count": 83,
             "peaks": "tests/data/dnase/aggregation/expected/peaks/nuclear.peaks.fdr0.05.starch",
             "cleavage": "tests/data/dnase/aggregation/expected/peaks/nuclear.cleavage.total",
-            "allcalls": "tests/data/dnase/aggregation/expected/peaks/nuclear.allcalls.starch"
+            "allcalls": "tests/data/dnase/aggregation/expected/peaks/nuclear.allcalls.starch",
+            "allcalls_count": 123
+        },
+        "tenth_of_one_percent_peaks": {
+            "density_bw": "tests/data/dummy.txt",
+            "density_starch": "tests/data/dummy.txt",
+            "narrowpeaks": "tests/data/dnase/aggregation/expected/peaks/nuclear.peaks.fdr0.001.narrowpeaks.starch",
+            "narrowpeaks_count": 32,
+            "fragments": "tests/data/dummy.txt",
+            "spot_score": "tests/data/dummy.txt",
+            "cutcounts": "tests/data/dummy.txt",
+            "hotspots": "tests/data/dnase/aggregation/expected/peaks/nuclear.hotspots.fdr0.001.starch",
+            "hotspots_count": 58,
+            "peaks": "tests/data/dnase/aggregation/expected/peaks/nuclear.peaks.fdr0.001.starch",
+            "cleavage": "tests/data/dummy.txt",
+            "allcalls": "tests/data/dnase/aggregation/expected/peaks/nuclear.allcalls.starch",
+            "allcalls_count": 68
         },
         "trimstats": "tests/data/dnase/trimming/trimstats.txt",
         "duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard"

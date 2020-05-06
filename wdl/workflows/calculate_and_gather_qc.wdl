@@ -54,7 +54,11 @@ workflow calculate_and_gather_qc {
             insert_size_histogram_pdf: pe.insert_size_histogram_pdf
         }
         PeaksQC peaks_qc = object {
-            hotspot2: files_to_gather.five_percent_peaks.spot_score
+            hotspot2: files_to_gather.five_percent_peaks.spot_score,
+            five_percent_allcalls_count: files_to_gather.five_percent_peaks.allcalls_count,
+            five_percent_hotspots_count: files_to_gather.five_percent_peaks.hotspots_count,
+            five_percent_narrowpeaks_count: files_to_gather.five_percent_peaks.narrowpeaks_count,
+            tenth_of_one_percent_narrowpeaks_count: files_to_gather.tenth_of_one_percent_peaks.narrowpeaks_count
         }
     }
 }

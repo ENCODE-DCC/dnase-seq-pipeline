@@ -27,6 +27,10 @@ struct NuclearBamQC {
 
 struct PeaksQC {
     File hotspot2
+    Int five_percent_allcalls_count
+    Int five_percent_hotspots_count
+    Int five_percent_narrowpeaks_count
+    Int tenth_of_one_percent_narrowpeaks_count
 }
 
 
@@ -40,6 +44,7 @@ struct QCFilesGather {
     File spot_score
     File? trimstats
     HotSpot2Peaks five_percent_peaks
+    HotSpot2Peaks tenth_of_one_percent_peaks
 }
 
 struct QC {
