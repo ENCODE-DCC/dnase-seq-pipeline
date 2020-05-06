@@ -1,0 +1,8 @@
+{
+    "test_wc_count_lines.in": "tests/data/dummy.txt",
+    "test_wc_count_lines.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    }
+}
