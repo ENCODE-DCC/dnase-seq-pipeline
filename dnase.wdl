@@ -19,4 +19,9 @@ workflow dnase {
                 machine_sizes=machine_sizes,
         }
     }
+
+    meta {
+        version: "v3.0.0-alpha",
+        caper_docker: "quay.io/encode-dcc/dnase-seq-pipeline:v3.0.0-alpha"
+    }
 }
