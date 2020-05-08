@@ -195,7 +195,7 @@
       - '{$4="."; $5=threshold; print;}'
       - "footprints.fps.0.01.bed"
       - "sort-bed"
-      - "--max-mem 2G"
+      - "--max-mem 6G"
       - "--merge"
   files:
     - path: "test-output/footprints.fps.0.01.bed"
