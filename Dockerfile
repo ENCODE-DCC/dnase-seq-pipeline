@@ -126,9 +126,9 @@ RUN git clone \
 ENV PATH="/software/hotspot2/bin:${PATH}"
 ENV PATH="/software/hotspot2/scripts:${PATH}"
 
-# Pull bwa_2.6.0-rc tag of stampipes
+# Pull bwa_2.6.0-rc-2 tag of stampipes
 RUN git clone \
-    -b 'bwa_2.6.0' \
+    -b 'bwa_2.6.0-rc-2' \
     --single-branch \
     --depth 1 \
     https://github.com/StamLab/stampipes.git
