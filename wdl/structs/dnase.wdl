@@ -23,9 +23,13 @@ struct Replicate {
 struct References {
     String? genome_name
     IndexedFastaRequired? indexed_fasta
+    File? indexed_fasta_tar_gz
     BwaIndex? bwa_index
+    File? bwa_index_tar_gz
     HotSpot1Reference? hotspot1
+    File? hotspot1_tar_gz
     HotSpot2Reference? hotspot2
+    File? hotspot2_tar_gz
     File? nuclear_chroms
     File? narrow_peak_auto_sql
     File? bias_model
