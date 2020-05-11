@@ -1,0 +1,15 @@
+- name: test_tar_untar_and_map_files
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_tar_untar_and_map_files.wdl \
+    tests/unit/json/test_tar_untar_and_map_files.json
+  stdout:
+    contains:
+      - "untar"
+      - "-xvzf"
+      - "dummy.tar.gz"
+      - "-C ."
+  files:
+    - path: "test-output/dummy.txt"
