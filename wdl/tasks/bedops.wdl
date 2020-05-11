@@ -168,6 +168,7 @@ task merge {
     }
 }
 
+
 task difference {
     input {
         Array[File] subtrahends
