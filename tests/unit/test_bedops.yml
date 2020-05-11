@@ -84,3 +84,18 @@
       - "--merge"
       - "dummy.txt"
       - "dummy.txt_merged.bed"
+
+- name: test_bedops_difference
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_bedops_difference.wdl \
+    tests/unit/json/test_bedops_difference.json
+  stdout:
+    contains:
+      - "bedops"
+      - "--difference"
+      - "dummy.txt"
+      - "difference.bed"
+

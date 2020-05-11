@@ -167,3 +167,31 @@ task merge {
         disks: resources.disks
     }
 }
+
+task difference {
+    input {
+        Array[File] subtrahends
+        File minuend
+        Resources resources
+        String out = "difference.bed"
+    }
+
+    command {
+        bedops
+            --difference \
+            ~{minuend} \
+            ~{sep=" " subtrahends} \
+            > ~{out}
+
+    }
+
+    output {
+        File difference = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
