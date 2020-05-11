@@ -44,3 +44,22 @@
       - "545"
       - "539"
       - "61962"
+
+- name: test_subtract_blacklists_from_mappable_regions
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_subtract_blacklists_from_mappable_regions.wdl \
+    tests/integration/json/test_subtract_blacklists_from_mappable_regions.json
+
+  stdout:
+    contains:
+      - "bedops"
+      - "--difference"
+      - "chr22.K12.mappable_only.bed"
+      - "GRCh38.blacklist_new.bed"
+      - "GRCh38.blacklist_old.bed"
+  files:
+    - path: "test-output/chr22.K12.mappable_only.bed"
+      md5sum: d8c4912e66f33469148b92abf47a1d52

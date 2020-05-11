@@ -1,0 +1,9 @@
+{
+    "test_subtract_blacklists_from_mappable_regions.subtract_blacklists_from_mappable_regions.blacklists": ["tests/data/ref/GRCh38.blacklist_new.bed", "tests/data/ref/GRCh38.blacklist_old.bed"],
+    "test_subtract_blacklists_from_mappable_regions.subtract_blacklists_from_mappable_regions.mappable_regions": "tests/data/dnase/references/chr22.K12.mappable_only.bed",
+    "test_subtract_blacklists_from_mappable_regions.subtract_blacklists_from_mappable_regions.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

@@ -177,7 +177,7 @@ task difference {
     }
 
     command {
-        bedops
+        bedops \
             --difference \
             ~{minuend} \
             ~{sep=" " subtrahends} \
