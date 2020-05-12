@@ -56,7 +56,7 @@ workflow references {
         call fasta_for_bowtie_index.build_bowtie_index {
             input:
                 fasta=fasta,
-                resources=compute.runtimes[machine_sizes.build_bowtie_index]
+                resources=compute.runtimes[machine_sizes.build_bowtie_index],
         }
     }
 
@@ -92,9 +92,9 @@ workflow references {
     }
 
     File mappable_regions_processed = select_first([
-                                          subtract_blacklists_from_mappable_regions.mappable_regions_subtracted,
-                                          mappable_regions_output
-                                      ])
+        subtract_blacklists_from_mappable_regions.mappable_regions_subtracted,
+        mappable_regions_output
+    ])
 
     if (!defined(chrom_sizes)) {
         call fasta_index.get_chrom_sizes {

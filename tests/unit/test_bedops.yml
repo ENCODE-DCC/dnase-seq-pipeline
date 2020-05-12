@@ -98,4 +98,3 @@
       - "--difference"
       - "dummy.txt"
       - "difference.bed"
-

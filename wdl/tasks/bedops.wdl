@@ -183,7 +183,6 @@ task difference {
             ~{minuend} \
             ~{sep=" " subtrahends} \
             > ~{out}
-
     }
 
     output {
