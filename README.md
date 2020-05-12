@@ -162,7 +162,8 @@ In most cases references should already exist for a given assembly/read length, 
     "peaks": "medium",
     "qc": "medium",
     "score": "medium",
-    "trim": "large2x"
+    "trim": "large2x",
+    "unpack": "medium"
 }
 ```
 
@@ -170,7 +171,7 @@ The sizes are defined in [wdl/runtimes.json](wdl/runtimes.json). For example `me
 ```
 "medium": {
     "cpu": 2,
-    "memory_gb": 4,
+    "memory_gb": 13,
     "disks": "local-disk 200 SSD"
 }
 ```
