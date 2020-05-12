@@ -1,0 +1,9 @@
+{
+    "test_unpack_bwa_index_tar_gz_to_struct.unpack_bwa_index_tar_gz_to_struct.prefix": "chr22",
+    "test_unpack_bwa_index_tar_gz_to_struct.unpack_bwa_index_tar_gz_to_struct.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_unpack_bwa_index_tar_gz_to_struct.unpack_bwa_index_tar_gz_to_struct.bwa_index_tar_gz": "tests/data/ref/bwa_index.tar.gz"
+}

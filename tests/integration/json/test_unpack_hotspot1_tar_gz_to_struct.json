@@ -1,0 +1,10 @@
+{
+    "test_unpack_hotspot1_tar_gz_to_struct.unpack_hotspot1_tar_gz_to_struct.hotspot1_tar_gz": "tests/data/dnase/hotspot1/hotspot1.tar.gz",
+    "test_unpack_hotspot1_tar_gz_to_struct.unpack_hotspot1_tar_gz_to_struct.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_unpack_hotspot1_tar_gz_to_struct.unpack_hotspot1_tar_gz_to_struct.prefix": "chr22",
+    "test_unpack_hotspot1_tar_gz_to_struct.unpack_hotspot1_tar_gz_to_struct.read_length": 36
+}
