@@ -47,6 +47,7 @@
         "peaks": "medium",
         "qc": "medium",
         "score": "medium",
-        "trim": "large2x"
+        "trim": "large2x",
+        "unpack": "medium"
     }
 }

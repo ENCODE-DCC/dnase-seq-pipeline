@@ -10,5 +10,6 @@
     "peaks": "medium2x",
     "qc": "medium2x",
     "score": "medium",
-    "trim": "large2x"
+    "trim": "large2x",
+    "unpack": "medium"
 }
