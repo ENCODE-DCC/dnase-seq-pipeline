@@ -3,6 +3,7 @@ version 1.0
 
 import "../../wdl/structs/dnase.wdl"
 import "../../wdl/structs/sizes.wdl"
+import "maybe_unpack_references.wdl" as references
 import "concatenate_trim_and_align_fastqs.wdl" as raw_fastqs
 import "merge_mark_and_filter_bams.wdl" as name_sorted_bams
 import "call_hotspots_and_peaks_and_get_spot_score.wdl" as nuclear_bam
@@ -18,17 +19,24 @@ workflow dnase_replicate {
         MachineSizes machine_sizes = read_json("wdl/default_machine_sizes.json")
     }
 
+    call references.maybe_unpack_references as unpacked {
+         input:
+             replicate=replicate,
+             packed_references=references,
+             machine_sizes=machine_sizes,
+    }
+
     call raw_fastqs.concatenate_trim_and_align_fastqs {
         input:
             replicate=replicate,
-            references=references,
+            references=unpacked.references,
             machine_sizes=machine_sizes,
     }
 
     call name_sorted_bams.merge_mark_and_filter_bams {
         input:
             name_sorted_bams=concatenate_trim_and_align_fastqs.name_sorted_bams,
-            references=references,
+            references=unpacked.references,
             machine_sizes=machine_sizes,
     }
 
@@ -36,7 +44,7 @@ workflow dnase_replicate {
         input:
             nuclear_bam=merge_mark_and_filter_bams.nuclear_bam,
             replicate=replicate,
-            references=references,
+            references=unpacked.references,
             machine_sizes=machine_sizes,
     }
 
@@ -44,7 +52,7 @@ workflow dnase_replicate {
         input:
             five_percent_hotspots_starch=call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks.hotspots,
             nuclear_bam=merge_mark_and_filter_bams.nuclear_bam,
-            references=references,
+            references=unpacked.references,
             machine_sizes=machine_sizes,
     }
 
@@ -72,7 +80,7 @@ workflow dnase_replicate {
             one_percent_footprints_bed=call_footprints.one_percent_footprints_bed,
             tenth_of_one_percent_peaks=call_hotspots_and_peaks_and_get_spot_score.tenth_of_one_percent_peaks,
             five_percent_peaks=call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks,
-            references=references,
+            references=unpacked.references,
             machine_sizes=machine_sizes,
     }
 

@@ -231,3 +231,20 @@
   files:
     - path: "test-output/footprints.fps.0.01.bed"
       md5sum: 09d6b81abb2da696352383a0ad14b2f0
+
+- name: test_maybe_unpack_references
+  tags:
+    - functional
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows/maybe_unpack_references.wdl \
+    tests/functional/json/test_maybe_unpack_references.json
+  stdout:
+    contains:
+      - "tar"
+      - "-xvzf"
+      - "indexed_fasta.tar.gz"
+      - "bwa_index.tar.gz"
+      - "hotspot1.tar.gz"
+      - "hotspot2.tar.gz"
+      - "-C ."
