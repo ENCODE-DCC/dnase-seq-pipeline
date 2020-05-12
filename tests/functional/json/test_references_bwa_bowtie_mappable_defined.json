@@ -18,6 +18,7 @@
     "references.kmer_length": 12,
     "references.mappable_regions": "tests/data/dnase/references/chr22.K12.mappable_only.bed",
     "references.fasta": "tests/data/ref/chr22.fa",
+    "references.blacklists": ["tests/data/ref/GRCh38.blacklist_new.bed", "tests/data/ref/GRCh38.blacklist_old.bed"],
     "references.machine_sizes": {
         "build_bwa_index": "small",
         "build_fasta_index": "small",
@@ -25,6 +26,7 @@
         "build_mappable_only_bed": "small",
         "get_chrom_info": "small",
         "get_chrom_sizes": "small",
-        "get_center_sites": "small"
+        "get_center_sites": "small",
+        "subtract_blacklists_from_mappable_regions": "small"
     }
 }

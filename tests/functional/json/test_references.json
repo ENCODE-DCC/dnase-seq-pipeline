@@ -8,6 +8,7 @@
         "build_mappable_only_bed": "small",
         "get_chrom_info": "small",
         "get_chrom_sizes": "small",
-        "get_center_sites": "small"
+        "get_center_sites": "small",
+        "subtract_blacklists_from_mappable_regions": "small"
     }
 }

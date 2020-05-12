@@ -1,0 +1,9 @@
+{
+    "test_bedops_difference.minuend": "tests/data/dummy.txt",
+    "test_bedops_difference.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_bedops_difference.subtrahends": ["tests/data/dummy.txt", "tests/data/dummy.txt"]
+}

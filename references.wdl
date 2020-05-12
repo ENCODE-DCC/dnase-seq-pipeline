@@ -8,11 +8,13 @@ import "wdl/subworkflows/build_mappable_only_bed.wdl" as mappable
 import "wdl/subworkflows/get_center_sites.wdl" as center
 import "wdl/subworkflows/get_chrom_info.wdl" as chrom_sizes
 import "wdl/subworkflows/get_chrom_sizes.wdl" as fasta_index
+import "wdl/subworkflows/subtract_blacklists_from_mappable_regions.wdl" as subtract
 import "wdl/structs/sizes.wdl"
 
 
 workflow references {
     input {
+        Array[File]? blacklists
         BowtieIndex? bowtie_index
         BwaIndex? bwa_index
         File? center_sites
@@ -78,6 +80,22 @@ workflow references {
         build_mappable_only_bed.mappable_regions
     ])
 
+    if (defined(blacklists)) {
+        call subtract.subtract_blacklists_from_mappable_regions {
+            input:
+                blacklists=select_first([
+                    blacklists
+                ]),
+                mappable_regions=mappable_regions_output,
+                resources=compute.runtimes[machine_sizes.subtract_blacklists_from_mappable_regions],
+        }
+    }
+
+    File mappable_regions_processed = select_first([
+                                          subtract_blacklists_from_mappable_regions.mappable_regions_subtracted,
+                                          mappable_regions_output
+                                      ])
+
     if (!defined(chrom_sizes)) {
         call fasta_index.get_chrom_sizes {
             input:
@@ -110,7 +128,7 @@ workflow references {
         call center.get_center_sites {
             input:
                 chrom_sizes=chrom_sizes_output,
-                mappable_regions=mappable_regions_output,
+                mappable_regions=mappable_regions_processed,
                 resources=compute.runtimes[machine_sizes.get_center_sites],
         }
     }
@@ -124,12 +142,12 @@ workflow references {
         BwaIndex bwa_index_out = bwa_index_output
         HotSpot1Reference hotspot1_reference = object {
             chrom_info: chrom_info_output,
-            mappable_regions: mappable_regions_output
+            mappable_regions: mappable_regions_processed
         }
         HotSpot2Reference hotspot2_reference = object {
             chrom_sizes: chrom_sizes_output,
             center_sites: center_sites_output,
-            mappable_regions: mappable_regions_output
+            mappable_regions: mappable_regions_processed
         }
         IndexedFasta fasta_index = object {
             fai: fasta_index_output

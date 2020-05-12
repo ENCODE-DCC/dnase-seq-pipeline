@@ -24,4 +24,5 @@ struct ReferenceMachineSizes {
     String build_fasta_index
     String build_bowtie_index
     String build_mappable_only_bed
+    String subtract_blacklists_from_mappable_regions
 }
