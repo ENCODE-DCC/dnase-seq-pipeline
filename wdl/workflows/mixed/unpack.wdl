@@ -2,14 +2,16 @@ version 1.0
 
 
 import "../../../wdl/structs/dnase.wdl"
-import "../../../wdl/tasks/tar.wdl"
+import "../../../wdl/subworkflows/unpack_indexed_fasta_tar_gz_to_struct.wdl" as indexed_fasta
+import "../../../wdl/subworkflows/unpack_bwa_index_tar_gz_to_struct.wdl" as bwa_index
+import "../../../wdl/subworkflows/unpack_hotspot1_tar_gz_to_struct.wdl" as hotspot1
+import "../../../wdl/subworkflows/unpack_hotspot2_tar_gz_to_struct.wdl" as hotspot2
 
 
 workflow unpack {
     input {
         References packed_references
         Int read_length
-        Int neighborhood_size = 100
         String machine_size = "medium"
     }
 
@@ -19,83 +21,68 @@ workflow unpack {
     ])
 
     if (defined(packed_references.indexed_fasta_tar_gz)) {
-        call tar.untar_and_map_files as indexed_fasta_map {
+        call indexed_fasta.unpack_indexed_fasta_tar_gz_to_struct {
             input:
-                tar=select_first([
+                indexed_fasta_tar_gz=select_first([
                     packed_references.indexed_fasta_tar_gz
                 ]),
-                file_map={
-                    "fasta": "~{prefix}.fa",
-                    "fai": "~{prefix}.fa.fai"
-                },
+                prefix=prefix,
                 resources=compute.runtimes[machine_size],
         }
     }
 
     if (defined(packed_references.bwa_index_tar_gz)) {
-        call tar.untar_and_map_files as bwa_index_map {
+        call bwa_index.unpack_bwa_index_tar_gz_to_struct {
             input:
-                tar=select_first([
+                bwa_index_tar_gz=select_first([
                     packed_references.bwa_index_tar_gz
                 ]),
-                file_map={
-                    "fasta": "~{prefix}.fa",
-                    "amb": "~{prefix}.fa.amb",
-                    "ann": "~{prefix}.fa.ann",
-                    "bwt": "~{prefix}.fa.bwt",
-                    "pac": "~{prefix}.fa.pac",
-                    "sa": "~{prefix}.fa.sa"
-                },
+                prefix=prefix,
                 resources=compute.runtimes[machine_size],
         }
     }
 
     if (defined(packed_references.hotspot1_tar_gz)) {
-        call tar.untar_and_map_files as hotspot1_map {
+        call hotspot1.unpack_hotspot1_tar_gz_to_struct {
             input:
-                tar=select_first([
+                hotspot1_tar_gz=select_first([
                     packed_references.hotspot1_tar_gz
                 ]),
-                file_map={
-                    "chrom_info": "~{prefix}.chromInfo.bed",
-                    "mappable_regions": "~{prefix}.K~{read_length}.mappable_only.bed"
-                },
+                prefix=prefix,
+                read_length=read_length,
                 resources=compute.runtimes[machine_size],
         }
     }
 
     if (defined(packed_references.hotspot2_tar_gz)) {
-        call tar.untar_and_map_files as hotspot2_map {
+        call hotspot2.unpack_hotspot2_tar_gz_to_struct {
             input:
-                tar=select_first([
+                hotspot2_tar_gz=select_first([
                     packed_references.hotspot2_tar_gz
                 ]),
-                file_map={
-                    "chrom_sizes": "~{prefix}.chrom_sizes.bed",
-                    "center_sites": "~{prefix}.K~{read_length}.center_sites.n~{neighborhood_size}.starch",
-                    "mappable_regions": "~{prefix}.K~{read_length}.mappable_only.bed"
-                },
-                resources=compute.runtimes[machine_size],                
+                prefix=prefix,
+                read_length=read_length,
+                resources=compute.runtimes[machine_size],
         }
     }
-    
+
     output {
         References references = object {
             genome_name: packed_references.genome_name,
             indexed_fasta: select_first([
-                indexed_fasta_map.out,
+                unpack_indexed_fasta_tar_gz_to_struct.indexed_fasta,
                 packed_references.indexed_fasta
             ]),
             bwa_index: select_first([
-                bwa_index_map.out,
+                unpack_bwa_index_tar_gz_to_struct.bwa_index,
                 packed_references.bwa_index
             ]),
             hotspot1: select_first([
-                hotspot1_map.out,
+                unpack_hotspot1_tar_gz_to_struct.hotspot1,
                 packed_references.hotspot1
             ]),
             hotspot2: select_first([
-                hotspot2_map.out,
+                unpack_hotspot2_tar_gz_to_struct.hotspot2,
                 packed_references.hotspot2
             ]),
             nuclear_chroms: packed_references.nuclear_chroms,
