@@ -14,6 +14,7 @@ struct MachineSizes {
     String? normalize
     String? qc
     String? convert
+    String? unpack
 }
 
 struct ReferenceMachineSizes {
