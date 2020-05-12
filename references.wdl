@@ -83,13 +83,18 @@ workflow references {
     if (defined(blacklists)) {
         call subtract.subtract_blacklists_from_mappable_regions {
             input:
-                blacklists=select_first([blacklists]),
+                blacklists=select_first([
+                    blacklists
+                ]),
                 mappable_regions=mappable_regions_output,
                 resources=compute.runtimes[machine_sizes.subtract_blacklists_from_mappable_regions],
         }
     }
 
-    File mappable_regions_processed = select_first([subtract_blacklists_from_mappable_regions.mappable_regions_subtracted, mappable_regions_output])
+    File mappable_regions_processed = select_first([
+                                          subtract_blacklists_from_mappable_regions.mappable_regions_subtracted,
+                                          mappable_regions_output
+                                      ])
 
     if (!defined(chrom_sizes)) {
         call fasta_index.get_chrom_sizes {

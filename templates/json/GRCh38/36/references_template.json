@@ -9,6 +9,6 @@
         "get_chrom_info": "large",
         "get_chrom_sizes": "large",
         "get_center_sites": "large",
-        "subtract_blacklists_from_mappable_regions": "large:"
+        "subtract_blacklists_from_mappable_regions": "large"
     }
 }
