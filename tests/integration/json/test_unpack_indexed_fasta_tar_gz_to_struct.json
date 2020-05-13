@@ -1,0 +1,9 @@
+{
+    "test_unpack_indexed_fasta_tar_gz_to_struct.unpack_indexed_fasta_tar_gz_to_struct.prefix": "chr22",
+    "test_unpack_indexed_fasta_tar_gz_to_struct.unpack_indexed_fasta_tar_gz_to_struct.indexed_fasta_tar_gz": "tests/data/ref/indexed_fasta.tar.gz",
+    "test_unpack_indexed_fasta_tar_gz_to_struct.unpack_indexed_fasta_tar_gz_to_struct.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

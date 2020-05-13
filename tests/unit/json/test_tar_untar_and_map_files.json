@@ -1,0 +1,11 @@
+{
+    "test_tar_untar_and_map_files.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_tar_untar_and_map_files.file_map": {
+        "dummy_txt": "dummy.txt"
+    },
+    "test_tar_untar_and_map_files.tar": "tests/data/dummy.tar.gz"
+}

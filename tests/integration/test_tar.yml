@@ -1,0 +1,64 @@
+- name: test_unpack_indexed_fasta_tar_gz_to_struct
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_unpack_indexed_fasta_tar_gz_to_struct.wdl \
+    tests/integration/json/test_unpack_indexed_fasta_tar_gz_to_struct.json
+  stdout:
+    contains:
+      - "tar"
+      - "indexed_fasta.tar.gz"
+  files:
+    - path: "test-output/chr22.fa"
+    - path: "test-output/chr22.fa.fai"
+
+- name: test_unpack_bwa_index_tar_gz_to_struct
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_unpack_bwa_index_tar_gz_to_struct.wdl \
+    tests/integration/json/test_unpack_bwa_index_tar_gz_to_struct.json
+  stdout:
+    contains:
+      - "tar"
+      - "bwa_index.tar.gz"
+  files:
+    - path: "test-output/chr22.fa"
+    - path: "test-output/chr22.fa.bwt"
+    - path: "test-output/chr22.fa.pac"
+    - path: "test-output/chr22.fa.ann"
+    - path: "test-output/chr22.fa.amb"
+    - path: "test-output/chr22.fa.sa"
+
+- name: test_unpack_hotspot1_tar_gz_to_struct
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_unpack_hotspot1_tar_gz_to_struct.wdl \
+    tests/integration/json/test_unpack_hotspot1_tar_gz_to_struct.json
+  stdout:
+    contains:
+      - "tar"
+      - "hotspot1.tar.gz"
+  files:
+    - path: "test-output/chr22.chromInfo.bed"
+    - path: "test-output/chr22.K36.mappable_only.bed"
+
+- name: test_unpack_hotspot2_tar_gz_to_struct
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_unpack_hotspot2_tar_gz_to_struct.wdl \
+    tests/integration/json/test_unpack_hotspot2_tar_gz_to_struct.json
+  stdout:
+    contains:
+      - "tar"
+      - "hotspot2.tar.gz"
+  files:
+    - path: "test-output/chr22.chrom_sizes.bed"
+    - path: "test-output/chr22.K36.center_sites.n100.starch"
+    - path: "test-output/chr22.K36.mappable_only.bed"

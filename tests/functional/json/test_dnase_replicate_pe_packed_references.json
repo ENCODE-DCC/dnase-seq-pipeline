@@ -1,0 +1,43 @@
+{
+    "dnase_replicate.replicate": {
+        "accession": "TEST123ABC",
+        "number": "0",
+        "read_length": "36",
+        "pe_fastqs": [
+            {
+                "R1": "tests/data/dnase/alignment/r1.fastq.gz",
+                "R2": "tests/data/dnase/alignment/r2.fastq.gz"
+            }
+        ],
+        "adapters": {
+            "file": "tests/data/dnase/alignment/adapters.txt",
+            "adapter1": "P5",
+            "adapter2": "P7"
+        }
+    },
+    "dnase_replicate.references": {
+        "nuclear_chroms": "tests/data/ref/chr22.fa.nuclear.txt",
+        "bwa_index_tar_gz": "tests/data/ref/bwa_index.tar.gz",
+        "narrow_peak_auto_sql": "tests/data/ref/bigbed/narrowPeak.as",
+        "genome_name": "chr22",
+        "indexed_fasta_tar_gz": "tests/data/ref/indexed_fasta.tar.gz",
+        "bias_model": "tests/data/dnase/footprinting/vierstra_et_al.txt",
+        "hotspot1_tar_gz": "tests/data/dnase/hotspot1/hotspot1.tar.gz",
+        "hotspot2_tar_gz": "tests/data/dnase/hotspot2/hotspot2.tar.gz"
+    },
+    "dnase_replicate.machine_sizes": {
+        "qc": "small",
+        "normalize": "small",
+        "align": "small",
+        "score": "small",
+        "filter": "small",
+        "footprint": "small",
+        "merge": "small",
+        "peaks": "small",
+        "concatenate": "small",
+        "trim": "small",
+        "mark": "small",
+        "convert": "small",
+        "unpack": "small"
+    }
+}
