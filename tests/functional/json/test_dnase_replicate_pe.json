@@ -10,9 +10,8 @@
             }
         ],
         "adapters": {
-            "file": "tests/data/dnase/alignment/adapters.txt",
-            "adapter1": "P5",
-            "adapter2": "P7"
+            "adapter1": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT",
+            "adapter2": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
         }
     },
     "dnase_replicate.references": {

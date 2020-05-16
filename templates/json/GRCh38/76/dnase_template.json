@@ -5,9 +5,8 @@
             "number": "",
             "read_length": "76",
              "adapters": {
-                 "file": "gs://dnase/ref/adapters.txt",
-                 "adapter1": "_P5",
-                 "adapter2": "_P7"
+                 "adapter1": "",
+                 "adapter2": ""
              },
             "pe_fastqs": [
                 {

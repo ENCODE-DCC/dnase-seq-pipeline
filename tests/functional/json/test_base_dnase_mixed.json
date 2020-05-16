@@ -14,9 +14,8 @@
                 "tests/data/dnase/se/ENCFF501IRE_chr22.fastq.gz"
             ],
             "adapters": {
-                "file": "tests/data/dnase/alignment/adapters.txt",
-                "adapter1": "P5",
-                "adapter2": "P7"
+                "adapter1": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT",
+                "adapter2": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
             }
         }
     ],

@@ -9,6 +9,8 @@
     contains:
       - "cat"
       - "awk"
+      - "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
+      - "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
       - "bwa aln"
       - "bwa sampe"
       - "samtools sort"
@@ -80,6 +82,8 @@
     contains:
       - "cat"
       - "awk"
+      - "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
+      - "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
       - "bwa aln"
       - "bwa sampe"
       - "samtools sort"
@@ -217,6 +221,8 @@
     contains:
       - "cat"
       - "awk"
+      - "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
+      - "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
       - "bwa aln"
       - "bwa sampe"
       - "samtools sort"
@@ -339,6 +345,8 @@
     contains:
       - "cat"
       - "awk"
+      - "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
+      - "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
       - "bwa aln"
       - "bwa sampe"
       - "samtools sort"
@@ -395,6 +403,8 @@
     contains:
       - "cat"
       - "awk"
+      - "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
+      - "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
       - "bwa aln"
       - "bwa sampe"
       - "samtools sort"
