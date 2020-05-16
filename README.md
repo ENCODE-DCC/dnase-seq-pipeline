@@ -27,9 +27,8 @@ Assuming the requirements are installed you must create a JSON file specifying t
         "number": "1",
         "read_length": "76",
         "adapters": {
-            "file": "gs://dnase/ref/adapters.txt",
-            "adapter1": "N707_P5",
-            "adapter2": "N707_P7"
+            "adapter1": "AATGATACGGCGACCACCGAGATCTACACCTCTCTACACACTCTTTCCCTACACGACGCTCTTCCGATCT",
+            "adapter2": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACCTCTCTACATCTCGTATGCCGTCTTCTGCTTG"
         },
         "pe_fastqs": [
             {
@@ -44,7 +43,6 @@ Assuming the requirements are installed you must create a JSON file specifying t
     }
 ]
 ```
-Note that the adapter prefix (i.e. `N707`) corresponds to the flowcell barcode of the FASTQs and usually has `_P5` or `_P7` appended.
 
 Here's how to specify the input for a 36bp single-end experiment with one replicate like [ENCSR420RWU](https://www.encodeproject.org/experiments/ENCSR420RWU/):
 ```
@@ -70,9 +68,8 @@ Here's how to specify the input for a 36bp mixed single-end/paired-end experimen
         "number": "1",
         "read_length": "36",
         "adapters": {
-            "file": "gs://dnase/ref/adapters.txt",
-            "adapter1": "L2V9DR-BC16_P5",
-            "adapter2": "L2V9DR-BC16_P7"
+            "adapter1": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT",
+            "adapter2": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACTGTTGCATCTCGTATGCCGTCTTCTGCTTG"
         },
         "pe_fastqs": [
              {
@@ -101,9 +98,8 @@ Here's how to specify the input for a 36bp mixed single-end/paired-end experimen
         "number": "2",
         "read_length": "36",
         "adapters": {
-            "file": "gs://dnase/ref/adapters.txt",
-            "adapter1": "AD027_P5",
-            "adapter2": "AD027_P7"
+            "adapter1": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT",
+            "adapter2": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACATTCCTATCTCGTATGCCGTCTTCTGCTTG"
         },
         "pe_fastqs": [
             {
