@@ -7,6 +7,12 @@
     tests/integration/json/test_trim_adapters_on_fastq_pair.json
   stdout:
     contains:
+      - "echo"
+      - "-e"
+      - "P5"
+      - "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
+      - "P7"
+      - "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
       - "trim-adapters-illumina"
       - "-f"
       - "-1 P5"
