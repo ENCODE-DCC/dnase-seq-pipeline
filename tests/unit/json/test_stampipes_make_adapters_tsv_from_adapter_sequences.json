@@ -1,0 +1,9 @@
+{
+    "test_stampipes_make_adapters_tsv_from_adapter_sequences.resources": {
+        "cpu": 1,
+        "memory_gb": 2,
+        "disks": "local-disk 10 SSD"
+    },
+    "test_stampipes_make_adapters_tsv_from_adapter_sequences.adapter1": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT",
+    "test_stampipes_make_adapters_tsv_from_adapter_sequences.adapter2": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
+}

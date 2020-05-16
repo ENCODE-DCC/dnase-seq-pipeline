@@ -302,3 +302,32 @@ task get_preseq_targets {
         disks: resources.disks
     }
 }
+
+
+task make_adapters_tsv_from_adapter_sequences {
+    input {
+        String adapter1
+        String adapter1_prefix = "P5"
+        String adapter2
+        String adapter2_prefix = "P7"
+        Resources resources
+        String out = "adapters.tsv"
+    }
+
+    command {
+        echo \
+        -e \
+        "~{adapter1_prefix}\t~{adapter1}\n~{adapter2_prefix}\t~{adapter2}" \
+        > ~{out}
+    }
+
+    output {
+        File adapters_tsv = out
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
