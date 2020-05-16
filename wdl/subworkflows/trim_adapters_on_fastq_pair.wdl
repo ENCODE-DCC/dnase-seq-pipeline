@@ -18,8 +18,8 @@ workflow trim_adapters_on_fastq_pair {
 
     call stampipes.make_adapters_tsv_from_adapter_sequences {
         input:
-            adapter1=adapters.adapter1,
-            adapter2=adapters.adapter2,
+            sequence1=adapters.sequence1,
+            sequence2=adapters.sequence2,
             resources=resources,
     }
 

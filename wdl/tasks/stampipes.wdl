@@ -306,10 +306,10 @@ task get_preseq_targets {
 
 task make_adapters_tsv_from_adapter_sequences {
     input {
-        String adapter1
-        String adapter1_prefix = "P5"
-        String adapter2
-        String adapter2_prefix = "P7"
+        String sequence1
+        String sequence1_prefix = "P5"
+        String sequence2
+        String sequence2_prefix = "P7"
         Resources resources
         String out = "adapters.tsv"
     }
@@ -317,7 +317,7 @@ task make_adapters_tsv_from_adapter_sequences {
     command {
         echo \
         -e \
-        "~{adapter1_prefix}\t~{adapter1}\n~{adapter2_prefix}\t~{adapter2}" \
+        "~{sequence1_prefix}\t~{sequence1}\n~{sequence2_prefix}\t~{sequence2}" \
         > ~{out}
     }
 

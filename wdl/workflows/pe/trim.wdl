@@ -20,9 +20,7 @@ workflow trim {
     call concatenated_fastqs.trim_adapters_on_fastq_pair {
         input:
             fastqs=concatenated_fastqs,
-            adapters=adapters.file,
-            adapter1=adapters.adapter1,
-            adapter2=adapters.adapter2,
+            adapters=adapters,
             resources=compute.runtimes[machine_size],
     }
 

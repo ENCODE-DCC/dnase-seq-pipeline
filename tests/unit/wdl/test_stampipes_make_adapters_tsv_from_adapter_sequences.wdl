@@ -6,15 +6,15 @@ import "../../../wdl/tasks/stampipes.wdl"
 
 workflow test_stampipes_make_adapters_tsv_from_adapter_sequences {
     input {
-        String adapter1
-        String adapter2
+        String sequence1
+        String sequence2
         Resources resources
     }
 
     call stampipes.make_adapters_tsv_from_adapter_sequences {
         input:
-            adapter1=adapter1,
-            adapter2=adapter2,
+            sequence1=sequence1,
+            sequence2=sequence2,
             resources=resources,
     }
 }

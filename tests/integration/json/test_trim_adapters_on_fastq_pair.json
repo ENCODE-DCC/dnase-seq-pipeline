@@ -4,8 +4,8 @@
         "R2": "tests/data/dnase/alignment/r2.fastq.gz"
     },
     "test_trim_adapters_on_fastq_pair.trim_adapters_on_fastq_pair.adapters": {
-        "adapter1": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT",
-        "adapter2": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
+        "sequence1": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT",
+        "sequence2": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
     },
     "test_trim_adapters_on_fastq_pair.trim_adapters_on_fastq_pair.resources": {
         "cpu": 1,
