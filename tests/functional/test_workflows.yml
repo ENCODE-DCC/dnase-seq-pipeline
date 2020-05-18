@@ -24,6 +24,8 @@
     tests/functional/json/test_concatenate_trim_and_align_pe_fastqs.json
   stdout:
     contains:
+      - "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
+      - "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
       - "cat"
       - "awk"
       - "bwa aln"
@@ -42,6 +44,8 @@
     tests/functional/json/concatenate_trim_and_align_fastqs.json
   stdout:
     contains:
+      - "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
+      - "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
       - "cat"
       - "awk"
       - "bwa aln"

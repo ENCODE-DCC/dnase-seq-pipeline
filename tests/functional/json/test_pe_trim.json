@@ -6,8 +6,7 @@
     },
     "trim.trim_length": 101,
     "trim.adapters": {
-        "file": "tests/data/dnase/alignment/adapters.txt",
-        "adapter1": "P5",
-        "adapter2": "P7"
+        "sequence1": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT",
+        "sequence2": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
     }
 }

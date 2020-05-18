@@ -1,26 +1,31 @@
 version 1.0
 
 
-import "../tasks/illumina.wdl" 
+import "../tasks/illumina.wdl"
+import "../tasks/stampipes.wdl"
+import "../structs/illumina.wdl"
 
 
 workflow trim_adapters_on_fastq_pair {
     input {
         FastqPair fastqs
-        File adapters
+        Adapters adapters
         Resources resources
-        String? adapter1
-        String? adapter2
         String? read1_out_filename
         String? read2_out_filename
         String? trimstats_out_filename
     }
 
+    call stampipes.make_adapters_tsv_from_adapter_sequences {
+        input:
+            sequence1=adapters.sequence1,
+            sequence2=adapters.sequence2,
+            resources=resources,
+    }
+
     call illumina.trim_adapters {
         input:
-            adapters=adapters,
-            adapter1=adapter1,
-            adapter2=adapter2,
+            adapters=make_adapters_tsv_from_adapter_sequences.adapters_tsv,
             fastqs=fastqs,
             read1_out_filename=read1_out_filename,
             read2_out_filename=read2_out_filename,

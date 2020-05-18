@@ -15,9 +15,8 @@
     },
     "concatenate_trim_and_align_fastqs.replicate": {
         "adapters": {
-            "file": "tests/data/dnase/alignment/adapters.txt",
-            "adapter1": "P5",
-            "adapter2": "P7"
+            "sequence1": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT",
+            "sequence2": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
         },
         "read_length": 36,
         "pe_fastqs": [

@@ -25,6 +25,8 @@
     tests/functional/json/test_pe_trim.json
   stdout:
     contains:
+      - "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
+      - "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
       - "trim-adapters-illumina"
       - "P5"
       - "P7"
