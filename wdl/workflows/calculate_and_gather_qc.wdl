@@ -58,7 +58,10 @@ workflow calculate_and_gather_qc {
             five_percent_allcalls_count: files_to_gather.five_percent_peaks.allcalls_count,
             five_percent_hotspots_count: files_to_gather.five_percent_peaks.hotspots_count,
             five_percent_narrowpeaks_count: files_to_gather.five_percent_peaks.narrowpeaks_count,
-            tenth_of_one_percent_narrowpeaks_count: files_to_gather.tenth_of_one_percent_peaks.narrowpeaks_count,
+            tenth_of_one_percent_narrowpeaks_count: files_to_gather.tenth_of_one_percent_peaks.narrowpeaks_count
+        }
+        FootprintsQC footprints_qc = object {
+            dispersion_model: files_to_gather.dispersion_model,
             one_percent_footprints_count: files_to_gather.one_percent_footprints_count
         }
     }
