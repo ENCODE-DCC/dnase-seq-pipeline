@@ -65,6 +65,7 @@ workflow footprint {
     }
     
     output {
+        File dispersion_model = fit_footprint_model.dispersion_model
         File footprints_bed = threshold_footprints_and_make_bed.footprints_bed
         Int footprints_count = count_lines.out
     }

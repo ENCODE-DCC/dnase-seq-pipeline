@@ -28,6 +28,7 @@ workflow call_footprints {
     }
 
     output {
+        File dispersion_model = footprint.dispersion_model
         File one_percent_footprints_bed = footprint.footprints_bed
         Int one_percent_footprints_count = footprint.footprints_count
     }

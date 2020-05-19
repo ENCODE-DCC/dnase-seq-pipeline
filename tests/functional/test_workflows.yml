@@ -235,6 +235,7 @@
   files:
     - path: "test-output/footprints.fps.0.01.bed"
       md5sum: 09d6b81abb2da696352383a0ad14b2f0
+    - path: "test-output/dispersion_model.json"
 
 - name: test_maybe_unpack_references
   tags:
