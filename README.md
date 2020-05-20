@@ -257,6 +257,10 @@ caper list --hide-subworkflow
 | five percent hotspots count |
 | five percent narrowpeaks count |
 | tenth of one percent narrowpeaks count |
+
+| footprints |
+| ----- |
+| dispersion model |
 | one percent footprints count |
 
 *(Note that insert sizes and trimstats only included for PE data.)*

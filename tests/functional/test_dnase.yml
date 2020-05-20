@@ -70,6 +70,7 @@
     - path: "test-output/footprints.fps.0.01.bed.gz"
     - path: "test-output/footprints.fps.0.01.bb"
       md5sum: 16631a79f6a6c3f66faca1eee7962e41
+    - path: "test-output/dispersion_model.json"
 
 - name: test_dnase_replicate_pe_packed_references
   tags:
@@ -143,6 +144,7 @@
     - path: "test-output/footprints.fps.0.01.bed.gz"
     - path: "test-output/footprints.fps.0.01.bb"
       md5sum: 16631a79f6a6c3f66faca1eee7962e41
+    - path: "test-output/dispersion_model.json"
 
 - name: test_dnase_replicate_se
   tags:
@@ -209,6 +211,7 @@
       md5sum: bf07d3d3662edd7aeb37f9e4f7603920
     - path: "test-output/footprints.fps.0.01.bed.gz"
     - path: "test-output/footprints.fps.0.01.bb"
+    - path: "test-output/dispersion_model.json"
 
 - name: test_dnase_replicate_mixed
   tags:
@@ -272,6 +275,7 @@
     - path: "test-output/nuclear.preseq.txt"
     - path: "test-output/footprints.fps.0.01.bed.gz"
     - path: "test-output/footprints.fps.0.01.bb"
+    - path: "test-output/dispersion_model.json"
 
 - name: test_base_dnase_se
   tags:
@@ -333,6 +337,7 @@
       md5sum: bf07d3d3662edd7aeb37f9e4f7603920
     - path: "test-output/footprints.fps.0.01.bed.gz"
     - path: "test-output/footprints.fps.0.01.bb"
+    - path: "test-output/dispersion_model.json"
 
 - name: test_base_dnase_mixed
   tags:
@@ -391,6 +396,7 @@
     - path: "test-output/nuclear.preseq.txt"
     - path: "test-output/footprints.fps.0.01.bed.gz"
     - path: "test-output/footprints.fps.0.01.bb"
+    - path: "test-output/dispersion_model.json"
 
 - name: test_base_dnase_pe
   tags:
@@ -464,3 +470,4 @@
     - path: "test-output/footprints.fps.0.01.bed.gz"
     - path: "test-output/footprints.fps.0.01.bb"
       md5sum: 16631a79f6a6c3f66faca1eee7962e41
+    - path: "test-output/dispersion_model.json"

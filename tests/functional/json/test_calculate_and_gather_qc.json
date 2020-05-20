@@ -42,6 +42,7 @@
         },
         "trimstats": "tests/data/dnase/trimming/trimstats.txt",
         "duplication_metrics": "tests/data/dnase/aggregation/expected/MarkDuplicates.picard",
+        "dispersion_model": "tests/data/dnase/footprinting/dispersion_model.json",
         "one_percent_footprints_count": 123
     },
     "calculate_and_gather_qc.files_for_calculation": {

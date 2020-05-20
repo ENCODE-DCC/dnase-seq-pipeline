@@ -169,6 +169,7 @@
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
       md5sum: 2787fe8fac4200725fb06f414bde8c84
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
+    - path: "test-output/tests/data/dnase/footprinting/dispersion_model.json"
 
 - name: test_normalize_and_convert_files
   tags:
@@ -235,6 +236,7 @@
   files:
     - path: "test-output/footprints.fps.0.01.bed"
       md5sum: 09d6b81abb2da696352383a0ad14b2f0
+    - path: "test-output/dispersion_model.json"
 
 - name: test_maybe_unpack_references
   tags:

@@ -68,6 +68,7 @@ workflow dnase_replicate {
                 trimstats: concatenate_trim_and_align_fastqs.trimstats,
                 five_percent_peaks: call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks,
                 tenth_of_one_percent_peaks: call_hotspots_and_peaks_and_get_spot_score.tenth_of_one_percent_peaks,
+                dispersion_model: call_footprints.dispersion_model,
                 one_percent_footprints_count: call_footprints.one_percent_footprints_count
             },
             replicate=replicate,
@@ -101,7 +102,8 @@ workflow dnase_replicate {
             qc: object {
                 unfiltered_bam_qc: calculate_and_gather_qc.unfiltered_bam_qc,
                 nuclear_bam_qc: calculate_and_gather_qc.nuclear_bam_qc,
-                peaks_qc: calculate_and_gather_qc.peaks_qc
+                peaks_qc: calculate_and_gather_qc.peaks_qc,
+                footprints_qc: calculate_and_gather_qc.footprints_qc
             }
         }
     }
