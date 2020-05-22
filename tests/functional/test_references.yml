@@ -17,7 +17,7 @@
       - "s/[[:blank:]]*$//"
       - "sort-bed"
       - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
-      - "chr22.fa.chrom_sizes.bed"
+      - "chr22.chrom_sizes.bed"
       - 'BEGIN{OFS="\t"} {print $1, $2, $3, $1}'
       - "extractCenterSites.sh"
       - "-c" 
@@ -42,9 +42,9 @@
       md5sum: d89b1fd70e1fe59b329a8346a59ffc03
     - path: "test-output/chr22.K12.mappable_only.bed"
       md5sum: 834dd1ec4452b8159a8af2802d591c59
-    - path: "test-output/chr22.fa.chrom_sizes.bed"
+    - path: "test-output/chr22.chrom_sizes.bed"
       md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
-    - path: "test-output/chr22.fa.chromInfo.bed"
+    - path: "test-output/chr22.chromInfo.bed"
       md5sum: 59cc5e7f4dc1a611bc75eceb0ca27697
     - path: "test-output/chr22.K12.center_sites.n100.starch"
 
@@ -91,9 +91,9 @@
       md5sum: d89b1fd70e1fe59b329a8346a59ffc03
     - path: "test-output/chr22.K12.mappable_only.bed"
       md5sum: 834dd1ec4452b8159a8af2802d591c59
-    - path: "test-output/chr22.fa.chrom_sizes.bed"
+    - path: "test-output/chr22.chrom_sizes.bed"
       md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
-    - path: "test-output/chr22.fa.chromInfo.bed"
+    - path: "test-output/chr22.chromInfo.bed"
       md5sum: 59cc5e7f4dc1a611bc75eceb0ca27697
     - path: "test-output/chr22.K12.center_sites.n100.starch"
 
@@ -138,9 +138,9 @@
       md5sum: d89b1fd70e1fe59b329a8346a59ffc03
     - path: "test-output/chr22.K12.mappable_only.bed"
       md5sum: 834dd1ec4452b8159a8af2802d591c59
-    - path: "test-output/chr22.fa.chrom_sizes.bed"
+    - path: "test-output/chr22.chrom_sizes.bed"
       md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
-    - path: "test-output/chr22.fa.chromInfo.bed"
+    - path: "test-output/chr22.chromInfo.bed"
       md5sum: 59cc5e7f4dc1a611bc75eceb0ca27697
     - path: "test-output/chr22.K12.center_sites.n100.starch"
 
@@ -183,8 +183,8 @@
       md5sum: d89b1fd70e1fe59b329a8346a59ffc03
     - path: "test-output/chr22.K12.mappable_only.bed"
       md5sum: d8c4912e66f33469148b92abf47a1d52
-    - path: "test-output/chr22.fa.chrom_sizes.bed"
+    - path: "test-output/chr22.chrom_sizes.bed"
       md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b
-    - path: "test-output/chr22.fa.chromInfo.bed"
+    - path: "test-output/chr22.chromInfo.bed"
       md5sum: 59cc5e7f4dc1a611bc75eceb0ca27697
     - path: "test-output/chr22.K12.center_sites.n100.starch"
