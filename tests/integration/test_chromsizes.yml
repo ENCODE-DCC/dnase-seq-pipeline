@@ -10,7 +10,7 @@
       - "awk"
       - 'BEGIN{OFS="\t"} {print $1, 0, $2}'
       - "sort-bed"
-      - "chr22.fa.chrom_sizes.bed"
+      - "chr22.chrom_sizes.bed"
   files:
-    - path: "test-output/chr22.fa.chrom_sizes.bed"
+    - path: "test-output/chr22.chrom_sizes.bed"
       md5sum: b2c2c58c5ed6df17505a2e4e1fafde2b

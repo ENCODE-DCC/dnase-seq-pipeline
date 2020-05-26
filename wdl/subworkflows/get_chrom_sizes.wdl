@@ -12,7 +12,7 @@ workflow get_chrom_sizes {
         Resources resources
     }
 
-    String chrom_sizes_output = basename(fai, ".fai") + ".chrom_sizes.bed"
+    String chrom_sizes_output = basename(fai, ".fa.fai") + ".chrom_sizes.bed"
 
     call awk.convert_fai_to_bed_format {
         input:
