@@ -41,10 +41,16 @@ task mark_duplicates_with_mate_cigar {
         MarkDuplicatesWithMateCigarParams params
         String metrics_path = "MarkDuplicates.picard"
         String out = "marked.bam"
+        Float heap_ratio = 0.9
     }
 
+    String java_heap = "-Xmx~{round(resources.memory_gb * heap_ratio)}G"
+
     command {
-        java -jar $(which picard.jar) MarkDuplicatesWithMateCigar \
+        java \
+            ~{java_heap} \
+            -jar $(which picard.jar) \
+            MarkDuplicatesWithMateCigar \
             ~{"INPUT=" + bam} \
             ~{"OUTPUT=" + out} \
             ~{"METRICS_FILE=" + metrics_path} \
