@@ -49,6 +49,7 @@ task mark_duplicates_with_mate_cigar {
     command {
         java \
             ~{java_heap} \
+            -XX:ParallelGCThreads=1 \
             -jar $(which picard.jar) \
             MarkDuplicatesWithMateCigar \
             ~{"INPUT=" + bam} \
