@@ -137,9 +137,9 @@ ENV STAMPIPES="/software/stampipes"
 
 # Install stampipes requirements
 RUN pip install \
-    cython \
-    numpy \
-    scipy
+    cython==0.29.15 \
+    numpy==1.16.6 \
+    scipy==1.2.3
 
 RUN pip3 install \
     biopython==1.76 \
@@ -149,12 +149,12 @@ RUN pip3 install \
     scikit-learn==0.22.1
 
 RUN pip install \
-    biopython \
-    pysam \
-    scikit-learn \
-    statsmodels \
-    multiprocessing \
-    matplotlib \
+    biopython==1.76 \
+    pysam==0.15.0 \
+    scikit-learn==0.20.4 \
+    statsmodels==0.11.0 \
+    multiprocessing==2.6.2.1 \
+    matplotlib==2.2.5 \
     git+https://github.com/jvierstra/genome-tools@dfa1a35ac7a59da175d521f24e73f8d6fd79e6e3 \
     git+https://github.com/jvierstra/footprint-tools@eb6a172e51ab19cd7c16699bd4755975ae8b72f7
 
