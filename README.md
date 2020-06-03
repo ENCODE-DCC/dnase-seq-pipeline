@@ -204,9 +204,8 @@ The pipelines can be roughly split up into these parts:
 Once the input JSON has been specified and placed somewhere accessible (e.g in a Google Cloud bucket) you can launch the workflow:
 
 ```
-caper submit dnase.wdl --inputs gs://dnase/json/ENCSR426IEA.json --docker $DNASE_DOCKER_IMAGE_TAG
+caper submit dnase.wdl --inputs gs://dnase/json/ENCSR426IEA.json
 ```
-Note that `$DNASE_DOCKER_IMAGE_TAG` is an environment variable specifying a link to our Docker image on Quay.
 
 You can check on the status of the workflow with:
 ```
@@ -355,7 +354,7 @@ Tests dependencies:
 * `conda install bedops` or `brew install bedops` (https://bedops.readthedocs.io/en/latest/content/installation.html)
 
 The script that runs Caper expects some environment variables:
-* DNASE_DOCKER_IMAGE_TAG - docker image to run tests (e.g. https://quay.io/encode-dcc/dnase-seq-pipeline:template)
+* DNASE_DOCKER_IMAGE_TAG - docker image to run tests (e.g. encodedcc/dnase-seq-pipeline:template)
 * CROMWELL - path to cromwell.jar (download from https://github.com/broadinstitute/cromwell/releases)
 * WOMTOOL - path to womtool.jar (download from https://github.com/broadinstitute/cromwell/releases)
         
