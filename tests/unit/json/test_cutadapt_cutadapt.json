@@ -1,0 +1,15 @@
+{
+    "test_cutadapt_cutadapt.fastqs": {
+        "R1": "tests/data/dummy.txt",
+        "R2": "tests/data/dummy.txt"
+    },
+    "test_cutadapt_cutadapt.adapters": {
+        "sequence1": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT",
+        "sequence2": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
+    },
+    "test_cutadapt_cutadapt.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

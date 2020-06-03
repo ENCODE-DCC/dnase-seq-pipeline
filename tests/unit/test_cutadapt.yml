@@ -1,0 +1,17 @@
+- name: test_cutadapt_cutadapt
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_cutadapt_cutadapt.wdl \
+    tests/unit/json/test_cutadapt_cutadapt.json
+  stdout:
+    contains:
+      - "cutadapt"
+      - "-a AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
+      - "-A AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
+      - "--cores=1"
+      - "--output trim.R1.fastq.gz"
+      - "--paired-output trim.R2.fastq.gz"
+      - "dummy.txt"
+      - "&> trimstats.txt"
