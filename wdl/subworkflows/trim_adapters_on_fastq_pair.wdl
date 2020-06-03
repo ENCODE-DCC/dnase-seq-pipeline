@@ -1,8 +1,7 @@
 version 1.0
 
 
-import "../tasks/illumina.wdl"
-import "../tasks/stampipes.wdl"
+import "../tasks/cutadapt.wdl"
 import "../structs/cutadapt.wdl"
 
 
@@ -23,10 +22,10 @@ workflow trim_adapters_on_fastq_pair {
             resources=resources,
     }
 
-    call illumina.trim_adapters {
+    call cutadapt.cutadapt {
         input:
-            adapters=make_adapters_tsv_from_adapter_sequences.adapters_tsv,
             fastqs=fastqs,
+            adapters=adapters,
             read1_out_filename=read1_out_filename,
             read2_out_filename=read2_out_filename,
             resources=resources,
@@ -34,7 +33,7 @@ workflow trim_adapters_on_fastq_pair {
     }
 
     output {
-        FastqPair trimmed_fastqs = trim_adapters.trimmed_fastqs
-        File trimstats = trim_adapters.trimstats
+        FastqPair trimmed_fastqs = cutadapt.trimmed_fastqs
+        File trimstats = cutadapt.trimstats
     }
 }
