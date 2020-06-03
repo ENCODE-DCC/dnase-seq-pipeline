@@ -15,13 +15,6 @@ workflow trim_adapters_on_fastq_pair {
         String? trimstats_out_filename
     }
 
-    call stampipes.make_adapters_tsv_from_adapter_sequences {
-        input:
-            sequence1=adapters.sequence1,
-            sequence2=adapters.sequence2,
-            resources=resources,
-    }
-
     call cutadapt.cutadapt {
         input:
             fastqs=fastqs,
