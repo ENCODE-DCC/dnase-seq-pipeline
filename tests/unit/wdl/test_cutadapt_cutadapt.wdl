@@ -2,7 +2,7 @@ version 1.0
 
 
 import "../../../wdl/tasks/cutadapt.wdl"
-import "../../../wdl/structs/illumina.wdl"
+import "../../../wdl/structs/cutadapt.wdl"
 
 
 workflow test_cutadapt_cutadapt {

@@ -3,7 +3,7 @@ version 1.0
 
 import "../structs/fastq.wdl"
 import "../structs/resources.wdl"
-import "../structs/illumina.wdl"
+import "../structs/cutadapt.wdl"
 
 
 task cutadapt {

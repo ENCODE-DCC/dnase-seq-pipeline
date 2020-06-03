@@ -3,7 +3,7 @@ version 1.0
 
 import "../tasks/illumina.wdl"
 import "../tasks/stampipes.wdl"
-import "../structs/illumina.wdl"
+import "../structs/cutadapt.wdl"
 
 
 workflow trim_adapters_on_fastq_pair {
