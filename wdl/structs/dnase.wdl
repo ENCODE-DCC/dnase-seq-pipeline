@@ -5,7 +5,7 @@ import "bwa.wdl"
 import "fastq.wdl"
 import "hotspot1.wdl"
 import "hotspot2.wdl"
-import "illumina.wdl"
+import "cutadapt.wdl"
 import "samtools.wdl"
 import "qc.wdl"
 
