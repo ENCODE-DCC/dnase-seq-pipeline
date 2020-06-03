@@ -15,9 +15,9 @@
       - "--paired-output trim.R2.fastq.gz"
       - "trim.R1.fastq.gz"
       - "trim.R2.fastq.gz"
-      - "&> trimstats.txt"
+      - "> trimstats.txt"
   files:
     - path: "test-output/trim.R1.fastq.gz"
     - path: "test-output/trim.R2.fastq.gz"
     - path: "test-output/trimstats.txt"
-      md5sum: bec836ed0158792031e4529ca53debdd
+      md5sum: 916bcf27974244e89894732a44774bae

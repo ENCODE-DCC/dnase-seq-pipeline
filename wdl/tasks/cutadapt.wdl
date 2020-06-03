@@ -23,9 +23,9 @@ task cutadapt {
             --cores=~{resources.cpu} \
             ~{"--output " + read1_out_filename} \
             ~{"--paired-output " + read2_out_filename} \
-            fastqs.R1 \
-            fastqs.R2 \
-            &> ~{trimstats_out_filename}
+            ~{fastqs.R1} \
+            ~{fastqs.R2} \
+            > ~{trimstats_out_filename}
     }
 
     output {

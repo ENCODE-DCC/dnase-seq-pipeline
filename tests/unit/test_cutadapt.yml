@@ -14,4 +14,4 @@
       - "--output trim.R1.fastq.gz"
       - "--paired-output trim.R2.fastq.gz"
       - "dummy.txt"
-      - "&> trimstats.txt"
+      - "> trimstats.txt"
