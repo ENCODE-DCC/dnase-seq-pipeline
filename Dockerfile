@@ -146,7 +146,8 @@ RUN pip3 install \
     pysam==0.15.0 \
     numpy==1.18.1 \
     scipy==1.4.1 \
-    scikit-learn==0.22.1
+    scikit-learn==0.22.1 \
+    cutadapt==2.10
 
 RUN pip install \
     biopython==1.76 \
