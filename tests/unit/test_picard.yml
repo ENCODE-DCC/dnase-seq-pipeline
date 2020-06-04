@@ -24,7 +24,11 @@
     tests/unit/json/test_picard_mark_duplicates_with_mate_cigar.json
   stdout:
     contains:
-      - "java -jar $(which picard.jar) MarkDuplicatesWithMateCigar"
+      - "java"
+      - "-Xmx1G"
+      - "-XX:ParallelGCThreads=1"
+      - "-jar $(which picard.jar)"
+      - "MarkDuplicatesWithMateCigar"
       - "INPUT="
       - "dummy.txt"
       - "OUTPUT=marked.bam"
