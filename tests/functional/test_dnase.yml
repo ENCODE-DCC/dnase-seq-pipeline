@@ -252,7 +252,7 @@
       - "659"
       - "383"
       - "0"
-      - "61564"
+      - "60852"
     must_not_contain:
       - "CollectInsertSizeMetrics"
   files:
