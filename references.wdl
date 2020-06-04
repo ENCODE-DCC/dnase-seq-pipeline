@@ -153,4 +153,9 @@ workflow references {
             fai: fasta_index_output
         }
     }
+
+    meta {
+        version: "v3.0.0-alpha.1.5"
+        caper_docker: "encodedcc/dnase-seq-pipeline:v3.0.0-alpha1.5"
+    }
 }
