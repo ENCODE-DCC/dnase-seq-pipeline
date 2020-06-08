@@ -2,6 +2,6 @@ version 1.0
 
 
 struct Adapters {
-    String sequence1
-    String sequence2
+    String sequence_R1
+    String sequence_R2
 }

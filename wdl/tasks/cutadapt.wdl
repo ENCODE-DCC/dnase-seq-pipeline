@@ -18,8 +18,8 @@ task cutadapt {
 
     command {
         cutadapt \
-            ~{"-a " + adapters.sequence1} \
-            ~{"-A " + adapters.sequence2} \
+            ~{"-a " + adapters.sequence_R1} \
+            ~{"-A " + adapters.sequence_R2} \
             --cores=~{resources.cpu} \
             --pair-filter both \
             ~{"--output " + read1_out_filename} \

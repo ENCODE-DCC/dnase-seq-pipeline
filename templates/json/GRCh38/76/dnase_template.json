@@ -5,8 +5,8 @@
             "number": "",
             "read_length": "76",
              "adapters": {
-                 "sequence1": "",
-                 "sequence2": ""
+                 "sequence_R1": "",
+                 "sequence_R2": ""
              },
             "pe_fastqs": [
                 {

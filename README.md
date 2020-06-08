@@ -27,8 +27,8 @@ Assuming the requirements are installed you must create a JSON file specifying t
         "number": "1",
         "read_length": "76",
         "adapters": {
-            "sequence1": "AATGATACGGCGACCACCGAGATCTACACCTCTCTACACACTCTTTCCCTACACGACGCTCTTCCGATCT",
-            "sequence2": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACCTCTCTACATCTCGTATGCCGTCTTCTGCTTG"
+            "sequence_R1": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACCTCTCTACATCTCGTATGCCGTCTTCTGCTTG",
+            "sequence_R2": "AATGATACGGCGACCACCGAGATCTACACCTCTCTACACACTCTTTCCCTACACGACGCTCTTCCGATCT"
         },
         "pe_fastqs": [
             {
@@ -68,8 +68,8 @@ Here's how to specify the input for a 36bp mixed single-end/paired-end experimen
         "number": "1",
         "read_length": "36",
         "adapters": {
-            "sequence1": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT",
-            "sequence2": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACTGTTGCATCTCGTATGCCGTCTTCTGCTTG"
+            "sequence_R1": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACTGTTGCATCTCGTATGCCGTCTTCTGCTTG",
+            "sequence_R2": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT"
         },
         "pe_fastqs": [
              {
@@ -98,8 +98,8 @@ Here's how to specify the input for a 36bp mixed single-end/paired-end experimen
         "number": "2",
         "read_length": "36",
         "adapters": {
-            "sequence1": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT",
-            "sequence2": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACATTCCTATCTCGTATGCCGTCTTCTGCTTG"
+            "sequence_R1": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACATTCCTATCTCGTATGCCGTCTTCTGCTTG",
+            "sequence_R2": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT"
         },
         "pe_fastqs": [
             {
