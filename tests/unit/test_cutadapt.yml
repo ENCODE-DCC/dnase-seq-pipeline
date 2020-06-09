@@ -11,6 +11,7 @@
       - "-a AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
       - "-A AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
       - "--cores=1"
+      - "--pair-adapters"
       - "--pair-filter both"
       - "--output trim.R1.fastq.gz"
       - "--paired-output trim.R2.fastq.gz"

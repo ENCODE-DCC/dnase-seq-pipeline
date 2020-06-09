@@ -21,6 +21,7 @@ task cutadapt {
             ~{"-a " + adapters.sequence_R1} \
             ~{"-A " + adapters.sequence_R2} \
             --cores=~{resources.cpu} \
+            --pair-adapters \
             --pair-filter both \
             ~{"--output " + read1_out_filename} \
             ~{"--paired-output " + read2_out_filename} \
