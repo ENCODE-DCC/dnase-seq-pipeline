@@ -7,6 +7,11 @@
         "sequence_R1": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG",
         "sequence_R2": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
     },
+    "test_cutadapt_cutadapt.params": {
+        "pair_adapters": true,
+        "minimum_length": 1,
+        "error_rate": 0.1
+    },
     "test_cutadapt_cutadapt.resources": {
         "cpu": 1,
         "memory_gb": 1,

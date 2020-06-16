@@ -9,6 +9,7 @@ workflow test_cutadapt_cutadapt {
     input {
         FastqPair fastqs
         Adapters adapters
+        CutadaptParams params
         Resources resources
     }
 
@@ -16,6 +17,7 @@ workflow test_cutadapt_cutadapt {
         input:
             adapters=adapters,
             fastqs=fastqs,
+            params=params,
             resources=resources,
     }
 }

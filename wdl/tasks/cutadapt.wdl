@@ -10,6 +10,7 @@ task cutadapt {
     input {
         FastqPair fastqs
         Adapters adapters
+        CutadaptParams params
         Resources resources
         String read1_out_filename = "trim.R1.fastq.gz"
         String read2_out_filename = "trim.R2.fastq.gz"
@@ -21,9 +22,9 @@ task cutadapt {
             ~{"-a " + adapters.sequence_R1} \
             ~{"-A " + adapters.sequence_R2} \
             --cores=~{resources.cpu} \
-            --pair-adapters \
-            --minimum-length 1 \
-            --error-rate 0.1 \
+            ~{true="--pair-adapters" false="" params.pair_adapters} \
+            ~{"--minimum-length " + params.minimum_length} \
+            ~{"--error-rate " + params.error_rate} \
             ~{"--output " + read1_out_filename} \
             ~{"--paired-output " + read2_out_filename} \
             ~{fastqs.R1} \
