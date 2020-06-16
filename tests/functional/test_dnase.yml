@@ -37,7 +37,7 @@
       - "536"
       - "530"
       - "213"
-      - "34299"
+      - "34350"
       - "186"
   files:
     - path: "test-output/merged.bam"
@@ -53,7 +53,7 @@
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
-      md5sum: 860619b0fdba597e4cceba87b8bac6af
+      md5sum: b6602479d344989a7bd3a4827e6c4fde
     - path: "test-output/nuclear.0.05.SPOT.txt"
       md5sum: 422149b24571450b2948f2d5b6eba655
     - path: "test-output/subsample.spot.out"
@@ -111,7 +111,7 @@
       - "536"
       - "530"
       - "213"
-      - "34299"
+      - "34350"
       - "186"
   files:
     - path: "test-output/merged.bam"
@@ -127,7 +127,7 @@
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
-      md5sum: 860619b0fdba597e4cceba87b8bac6af
+      md5sum: b6602479d344989a7bd3a4827e6c4fde
     - path: "test-output/nuclear.0.05.SPOT.txt"
       md5sum: 422149b24571450b2948f2d5b6eba655
     - path: "test-output/subsample.spot.out"
@@ -248,11 +248,11 @@
       - "--elements"
       - "wc"
       - "-l"
-      - "690"
-      - "667"
+      - "691"
+      - "669"
       - "387"
       - "0"
-      - "61335"
+      - "61419"
     must_not_contain:
       - "CollectInsertSizeMetrics"
   files:
@@ -437,7 +437,7 @@
       - "536"
       - "530"
       - "213"
-      - "34299"
+      - "34350"
       - "186"
   files:
     - path: "test-output/merged.bam"
@@ -453,7 +453,7 @@
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
-      md5sum: 860619b0fdba597e4cceba87b8bac6af
+      md5sum: b6602479d344989a7bd3a4827e6c4fde
     - path: "test-output/nuclear.0.05.SPOT.txt"
       md5sum: 422149b24571450b2948f2d5b6eba655
     - path: "test-output/subsample.spot.out"
