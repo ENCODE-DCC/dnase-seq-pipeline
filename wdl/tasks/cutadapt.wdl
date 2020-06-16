@@ -22,7 +22,8 @@ task cutadapt {
             ~{"-A " + adapters.sequence_R2} \
             --cores=~{resources.cpu} \
             --pair-adapters \
-            --pair-filter both \
+            --minimum-length 1 \
+            --error-rate 0.1 \
             ~{"--output " + read1_out_filename} \
             ~{"--paired-output " + read2_out_filename} \
             ~{fastqs.R1} \

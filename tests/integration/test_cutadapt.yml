@@ -20,3 +20,4 @@
     - path: "test-output/trim.R1.fastq.gz"
     - path: "test-output/trim.R2.fastq.gz"
     - path: "test-output/trimstats.txt"
+      md5sum: d8c4912e66f33469148b92abf47a1d52
