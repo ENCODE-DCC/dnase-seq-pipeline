@@ -53,7 +53,7 @@
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
-      md5sum: b6602479d344989a7bd3a4827e6c4fde
+      md5sum: 860619b0fdba597e4cceba87b8bac6af
     - path: "test-output/nuclear.0.05.SPOT.txt"
       md5sum: 422149b24571450b2948f2d5b6eba655
     - path: "test-output/subsample.spot.out"
@@ -69,7 +69,7 @@
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
     - path: "test-output/footprints.fps.0.01.bed.gz"
     - path: "test-output/footprints.fps.0.01.bb"
-      md5sum: 860619b0fdba597e4cceba87b8bac6af
+      md5sum: b6602479d344989a7bd3a4827e6c4fde
     - path: "test-output/dispersion_model.json"
 
 - name: test_dnase_replicate_pe_packed_references
@@ -127,7 +127,7 @@
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
-      md5sum: b6602479d344989a7bd3a4827e6c4fde
+      md5sum: 860619b0fdba597e4cceba87b8bac6af
     - path: "test-output/nuclear.0.05.SPOT.txt"
       md5sum: 422149b24571450b2948f2d5b6eba655
     - path: "test-output/subsample.spot.out"
@@ -143,7 +143,7 @@
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
     - path: "test-output/footprints.fps.0.01.bed.gz"
     - path: "test-output/footprints.fps.0.01.bb"
-      md5sum: 860619b0fdba597e4cceba87b8bac6af
+      md5sum: b6602479d344989a7bd3a4827e6c4fde
     - path: "test-output/dispersion_model.json"
 
 - name: test_dnase_replicate_se
@@ -453,7 +453,7 @@
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
-      md5sum: b6602479d344989a7bd3a4827e6c4fde
+      md5sum: 860619b0fdba597e4cceba87b8bac6af
     - path: "test-output/nuclear.0.05.SPOT.txt"
       md5sum: 422149b24571450b2948f2d5b6eba655
     - path: "test-output/subsample.spot.out"
@@ -469,5 +469,5 @@
     - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
     - path: "test-output/footprints.fps.0.01.bed.gz"
     - path: "test-output/footprints.fps.0.01.bb"
-      md5sum: 860619b0fdba597e4cceba87b8bac6af
+      md5sum: b6602479d344989a7bd3a4827e6c4fde
     - path: "test-output/dispersion_model.json"
