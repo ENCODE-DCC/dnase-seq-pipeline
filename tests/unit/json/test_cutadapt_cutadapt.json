@@ -1,0 +1,20 @@
+{
+    "test_cutadapt_cutadapt.fastqs": {
+        "R1": "tests/data/dummy.txt",
+        "R2": "tests/data/dummy.txt"
+    },
+    "test_cutadapt_cutadapt.adapters": {
+        "sequence_R1": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG",
+        "sequence_R2": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
+    },
+    "test_cutadapt_cutadapt.params": {
+        "pair_adapters": true,
+        "minimum_length": 1,
+        "error_rate": 0.1
+    },
+    "test_cutadapt_cutadapt.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

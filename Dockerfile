@@ -83,14 +83,6 @@ RUN wget --quiet https://github.com/arq5x/bedtools2/releases/download/v2.25.0/be
 
 ENV PATH="/software/bedtools2/bin/:${PATH}"
 
-# Install trim-adapters-illumina
-RUN git clone https://bitbucket.org/jvierstra/bio-tools.git \
-      && cd bio-tools \
-      && git checkout 6fe54fa5a3 \
-      && make
-
-ENV PATH="/software/bio-tools/apps/trim-adapters-illumina:${PATH}"
-
 # Install Hotspot1
 RUN git clone https://github.com/StamLab/hotspot.git \
     && cd hotspot \
@@ -146,7 +138,8 @@ RUN pip3 install \
     pysam==0.15.0 \
     numpy==1.18.1 \
     scipy==1.4.1 \
-    scikit-learn==0.22.1
+    scikit-learn==0.22.1 \
+    cutadapt==2.10
 
 RUN pip install \
     biopython==1.76 \

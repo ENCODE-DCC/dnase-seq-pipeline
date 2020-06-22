@@ -3,31 +3,33 @@ version 1.0
 
 import "../structs/fastq.wdl"
 import "../structs/resources.wdl"
+import "../structs/cutadapt.wdl"
 
 
-task trim_adapters {
+task cutadapt {
     input {
         FastqPair fastqs
-        File adapters
+        Adapters adapters
+        CutadaptParams params
         Resources resources
-        String adapter1 = "P5"
-        String adapter2 = "P7"
         String read1_out_filename = "trim.R1.fastq.gz"
         String read2_out_filename = "trim.R2.fastq.gz"
         String trimstats_out_filename = "trimstats.txt"
     }
 
     command {
-        trim-adapters-illumina \
-            -f ~{adapters} \
-            -1 ~{adapter1} \
-            -2 ~{adapter2} \
-            --threads=~{resources.cpu} \
+        cutadapt \
+            ~{"-a " + adapters.sequence_R1} \
+            ~{"-A " + adapters.sequence_R2} \
+            --cores=~{resources.cpu} \
+            ~{true="--pair-adapters" false="" params.pair_adapters} \
+            ~{"--minimum-length " + params.minimum_length} \
+            ~{"--error-rate " + params.error_rate} \
+            ~{"--output " + read1_out_filename} \
+            ~{"--paired-output " + read2_out_filename} \
             ~{fastqs.R1} \
             ~{fastqs.R2} \
-            ~{read1_out_filename} \
-            ~{read2_out_filename} \
-            &> ~{trimstats_out_filename}
+            > ~{trimstats_out_filename}
     }
 
     output {
