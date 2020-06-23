@@ -21,7 +21,7 @@ workflow dnase {
     }
 
     meta {
-        version: "v3.0.0-alpha.1.5"
-        caper_docker: "encodedcc/dnase-seq-pipeline:v3.0.0-alpha1.5"
+        version: "v3.0.0-alpha.2"
+        caper_docker: "encodedcc/dnase-seq-pipeline:v3.0.0-alpha.2"
     }
 }
