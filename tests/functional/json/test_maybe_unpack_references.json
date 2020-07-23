@@ -1,8 +1,8 @@
 {
     "maybe_unpack_references.replicate": {
         "accession": "TEST123ABC",
-        "number": "0",
-        "read_length": "36",
+        "number": 0,
+        "read_length": 36,
         "pe_fastqs": [
             {
                 "R1": "tests/data/dnase/alignment/r1.fastq.gz",
