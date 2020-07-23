@@ -2,8 +2,8 @@
     "dnase.replicates": [
         {
             "accession": "",
-            "number": "",
-            "read_length": "36",
+            "number": ,
+            "read_length": 36,
             "se_fastqs": [
             ]
         }

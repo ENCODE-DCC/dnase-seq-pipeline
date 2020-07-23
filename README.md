@@ -24,8 +24,8 @@ Assuming the requirements are installed you must create a JSON file specifying t
 "dnase.replicates": [
     {
         "accession": "ENCSR693UHT",
-        "number": "1",
-        "read_length": "76",
+        "number": 1,
+        "read_length": 76,
         "adapters": {
             "sequence_R1": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACCTCTCTACATCTCGTATGCCGTCTTCTGCTTG",
             "sequence_R2": "AATGATACGGCGACCACCGAGATCTACACCTCTCTACACACTCTTTCCCTACACGACGCTCTTCCGATCT"
@@ -49,8 +49,8 @@ Here's how to specify the input for a 36bp single-end experiment with one replic
 "dnase.replicates": [
     {
         "accession": "ENCSR420RWU",
-        "number": "1",
-        "read_length": "36",
+        "number": 1,
+        "read_length": 36,
         "se_fastqs": [
             "s3://encode-public/2014/07/04/580edf6f-10a4-4b42-b4a2-4f64a9a87901/ENCFF002DYE.fastq.gz",
             "s3://encode-public/2014/07/04/f123c3c1-3542-4eda-b2d0-7d789f95cea0/ENCFF002DYD.fastq.gz"
@@ -65,8 +65,8 @@ Here's how to specify the input for a 36bp mixed single-end/paired-end experimen
 "dnase.replicates": [
     {
         "accession": "ENCSR426IEA",
-        "number": "1",
-        "read_length": "36",
+        "number": 1,
+        "read_length": 36,
         "adapters": {
             "sequence_R1": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACTGTTGCATCTCGTATGCCGTCTTCTGCTTG",
             "sequence_R2": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT"
@@ -95,8 +95,8 @@ Here's how to specify the input for a 36bp mixed single-end/paired-end experimen
     },
     {
         "accession": "ENCSR426IEA",
-        "number": "2",
-        "read_length": "36",
+        "number": 2,
+        "read_length": 36,
         "adapters": {
             "sequence_R1": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACATTCCTATCTCGTATGCCGTCTTCTGCTTG",
             "sequence_R2": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT"
