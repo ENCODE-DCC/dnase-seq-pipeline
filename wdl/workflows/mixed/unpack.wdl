@@ -6,6 +6,7 @@ import "../../../wdl/subworkflows/unpack_indexed_fasta_tar_gz_to_struct.wdl" as 
 import "../../../wdl/subworkflows/unpack_bwa_index_tar_gz_to_struct.wdl" as bwa_index
 import "../../../wdl/subworkflows/unpack_hotspot1_tar_gz_to_struct.wdl" as hotspot1
 import "../../../wdl/subworkflows/unpack_hotspot2_tar_gz_to_struct.wdl" as hotspot2
+import "../../../wdl/tasks/pigz.wdl"
 
 
 workflow unpack {
@@ -65,6 +66,30 @@ workflow unpack {
                 resources=compute.runtimes[machine_size],
         }
     }
+    
+    if (defined(packed_references.bias_model_gz)) {
+        call pigz.pigz as unpack_bias_model_gz_to_file {
+            input:
+                input_file=select_first([
+                    packed_references.bias_model_gz
+                ]),
+                output_filename="bias_model.txt",
+                params={"decompress": true},
+                resources=compute.runtimes[machine_size],
+        }
+    }
+
+    if (defined(packed_references.nuclear_chroms_gz)) {
+        call pigz.pigz as unpack_nuclear_chroms_gz_to_file {
+            input:
+                input_file=select_first([
+                    packed_references.nuclear_chroms_gz
+                ]),
+                output_filename="nuclear_chroms.txt",
+                params={"decompress": true},
+                resources=compute.runtimes[machine_size],
+        }
+    }
 
     output {
         References references = object {
@@ -85,9 +110,15 @@ workflow unpack {
                 unpack_hotspot2_tar_gz_to_struct.hotspot2,
                 packed_references.hotspot2
             ]),
-            nuclear_chroms: packed_references.nuclear_chroms,
+            nuclear_chroms: select_first([
+                unpack_nuclear_chroms_gz_to_file.out,
+                packed_references.nuclear_chroms
+            ]),
             narrow_peak_auto_sql: packed_references.narrow_peak_auto_sql,
-            bias_model: packed_references.bias_model
+            bias_model: select_first([
+                unpack_bias_model_gz_to_file.out,
+                packed_references.bias_model
+            ])
         }
     }
 }
