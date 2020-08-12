@@ -150,11 +150,11 @@ In most cases references should already exist for a given assembly/read length, 
     "genome_name": "GRCh38",
     "indexed_fasta_tar_gz": "gs://dnase/ref/tarballs/GRCh38/indexed_fasta.tar.gz",
     "bwa_index_tar_gz": "gs://dnase/ref/tarballs/GRCh38/bwa_index.tar.gz",
-    "nuclear_chroms": "gs://dnase/ref/nuclear_chroms.txt",
+    "nuclear_chroms_gz": "gs://dnase/ref/nuclear_chroms.txt.gz",
     "narrow_peak_auto_sql": "gs://dnase/ref/bigbed/narrowPeak.as",
     "hotspot1_tar_gz": "gs://dnase/ref/tarballs/GRCh38/76/hotspot1.tar.gz",
     "hotspot2_tar_gz": "gs://dnase/ref/tarballs/GRCh38/76/hotspot2.tar.gz",
-    "bias_model": "gs://dnase/ref/vierstra_et_al.txt"
+    "bias_model_gz": "gs://dnase/ref/vierstra_et_al.txt.gz"
 }
 ```
 
