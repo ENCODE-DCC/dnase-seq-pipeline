@@ -144,7 +144,7 @@ Here's how to specify the input for a 36bp mixed single-end/paired-end experimen
     "bias_model": "gs://dnase/ref/vierstra_et_al.txt"
 }
 ```
-In most cases references should already exist for a given assembly/read length, though the `references.wdl` workflow can be used to generate most of these for a new assembly/read length. Note that it is important for the `genome_name` to correspond to the prefix of your references/indices. You can also specify a tar.gz archive for references with multiple files and nuclear chromosomes and bias model files compressed with gzip.:
+In most cases references should already exist for a given assembly/read length, though the `references.wdl` workflow can be used to generate most of these for a new assembly/read length. Note that it is important for the `genome_name` to correspond to the prefix of your references/indices. You can also specify a txt.gz file for references that are text files, and a tar.gz archive for references with multiple files:
 ```
 "dnase.references": {
     "genome_name": "GRCh38",
