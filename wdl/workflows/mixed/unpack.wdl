@@ -66,22 +66,22 @@ workflow unpack {
                 resources=compute.runtimes[machine_size],
         }
     }
-    
-    if (defined(packed_references.bias_model_gz)) {
-        call decompress.make_txt_from_txt_gz as unpack_bias_model_gz_to_file {
+
+    if (defined(packed_references.nuclear_chroms_gz)) {
+        call decompress.make_txt_from_txt_gz as unzip_nuclear_chroms {
             input:
                 txt_gz=select_first([
-                    packed_references.bias_model_gz
+                    packed_references.nuclear_chroms_gz
                 ]),
                 resources=compute.runtimes[machine_size],
         }
     }
 
-    if (defined(packed_references.nuclear_chroms_gz)) {
-        call decompress.make_txt_from_txt_gz as unpack_nuclear_chroms_gz_to_file {
+    if (defined(packed_references.bias_model_gz)) {
+        call decompress.make_txt_from_txt_gz as unzip_bias_model {
             input:
                 txt_gz=select_first([
-                    packed_references.nuclear_chroms_gz
+                    packed_references.bias_model_gz
                 ]),
                 resources=compute.runtimes[machine_size],
         }
@@ -107,12 +107,12 @@ workflow unpack {
                 packed_references.hotspot2
             ]),
             nuclear_chroms: select_first([
-                unpack_nuclear_chroms_gz_to_file.txt,
+                unzip_nuclear_chroms.txt,
                 packed_references.nuclear_chroms
             ]),
             narrow_peak_auto_sql: packed_references.narrow_peak_auto_sql,
             bias_model: select_first([
-                unpack_bias_model_gz_to_file.txt,
+                unzip_bias_model.txt,
                 packed_references.bias_model
             ])
         }
