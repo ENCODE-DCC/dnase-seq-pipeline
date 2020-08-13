@@ -31,10 +31,8 @@ struct References {
     HotSpot2Reference? hotspot2
     File? hotspot2_tar_gz
     File? nuclear_chroms
-    File? nuclear_chroms_gz
     File? narrow_peak_auto_sql
     File? bias_model
-    File? bias_model_gz
 }
 
 

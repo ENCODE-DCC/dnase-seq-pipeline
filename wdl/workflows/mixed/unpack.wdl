@@ -2,7 +2,6 @@ version 1.0
 
 
 import "../../../wdl/structs/dnase.wdl"
-import "../../../wdl/subworkflows/make_txt_from_txt_gz.wdl" as decompress
 import "../../../wdl/subworkflows/unpack_indexed_fasta_tar_gz_to_struct.wdl" as indexed_fasta
 import "../../../wdl/subworkflows/unpack_bwa_index_tar_gz_to_struct.wdl" as bwa_index
 import "../../../wdl/subworkflows/unpack_hotspot1_tar_gz_to_struct.wdl" as hotspot1
@@ -67,26 +66,6 @@ workflow unpack {
         }
     }
 
-    if (defined(packed_references.nuclear_chroms_gz)) {
-        call decompress.make_txt_from_txt_gz as unzip_nuclear_chroms {
-            input:
-                txt_gz=select_first([
-                    packed_references.nuclear_chroms_gz
-                ]),
-                resources=compute.runtimes[machine_size],
-        }
-    }
-
-    if (defined(packed_references.bias_model_gz)) {
-        call decompress.make_txt_from_txt_gz as unzip_bias_model {
-            input:
-                txt_gz=select_first([
-                    packed_references.bias_model_gz
-                ]),
-                resources=compute.runtimes[machine_size],
-        }
-    }
-
     output {
         References references = object {
             genome_name: packed_references.genome_name,
@@ -106,15 +85,9 @@ workflow unpack {
                 unpack_hotspot2_tar_gz_to_struct.hotspot2,
                 packed_references.hotspot2
             ]),
-            nuclear_chroms: select_first([
-                unzip_nuclear_chroms.txt,
-                packed_references.nuclear_chroms
-            ]),
+            nuclear_chroms: packed_references.nuclear_chroms,
             narrow_peak_auto_sql: packed_references.narrow_peak_auto_sql,
-            bias_model: select_first([
-                unzip_bias_model.txt,
-                packed_references.bias_model
-            ])
+            bias_model: packed_references.bias_model
         }
     }
 }
