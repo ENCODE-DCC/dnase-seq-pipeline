@@ -218,3 +218,8 @@
       - "hotspot1.tar.gz"
       - "hotspot2.tar.gz"
       - "-C ."
+      - "pigz"
+      - "-c"
+      - "-d"
+      - "chr22.fa.nuclear.txt.gz"
+      - "vierstra_et_al.txt.gz"

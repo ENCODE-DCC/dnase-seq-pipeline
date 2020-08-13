@@ -1,12 +1,12 @@
 {
     "unpack.machine_size": "small",
     "unpack.packed_references": {
-        "nuclear_chroms": "tests/data/ref/chr22.fa.nuclear.txt",
+        "nuclear_chroms_gz": "tests/data/ref/chr22.fa.nuclear.txt.gz",
         "bwa_index_tar_gz": "tests/data/ref/bwa_index.tar.gz",
         "narrow_peak_auto_sql": "tests/data/ref/bigbed/narrowPeak.as",
         "genome_name": "chr22",
         "indexed_fasta_tar_gz": "tests/data/ref/indexed_fasta.tar.gz",
-        "bias_model": "tests/data/dnase/footprinting/vierstra_et_al.txt",
+        "bias_model_gz": "tests/data/dnase/footprinting/vierstra_et_al.txt.gz",
         "hotspot1_tar_gz": "tests/data/dnase/hotspot1/hotspot1.tar.gz",
         "hotspot2_tar_gz": "tests/data/dnase/hotspot2/hotspot2.tar.gz"
     },

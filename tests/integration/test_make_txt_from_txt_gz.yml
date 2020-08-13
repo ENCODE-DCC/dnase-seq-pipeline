@@ -1,0 +1,14 @@
+- name: test_make_txt_from_txt_gz
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_make_txt_from_txt_gz.wdl \
+    tests/integration/json/test_make_txt_from_txt_gz.json
+  stdout:
+    contains:
+      - "pigz"
+      - "-c"
+  files:
+    - path: "test-output/chr22.fa.nuclear.txt"
+      md5sum: 5ae68a67b70976ee95342a7451cb5af1

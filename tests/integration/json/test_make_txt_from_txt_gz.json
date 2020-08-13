@@ -1,0 +1,8 @@
+{
+    "test_make_txt_from_txt_gz.make_txt_from_txt_gz.txt_gz": "tests/data/ref/chr22.fa.nuclear.txt.gz",
+    "test_make_txt_from_txt_gz.make_txt_from_txt_gz.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}
