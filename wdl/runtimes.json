@@ -12,7 +12,7 @@
         },
         "small-high-mem": {
             "cpu": 1,
-            "memory_gb": 6.5,
+            "memory_gb": 6,
             "disks": "local-disk 10 SSD"
         },
         "medium": {
