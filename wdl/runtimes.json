@@ -50,7 +50,17 @@
             "memory_gb": 26,
             "disks": "local-disk 300 SSD"
         },
-         "xlarge": {
+        "large2x-alt": {
+            "cpu": 12,
+            "memory_gb": 78,
+            "disks": "local-disk 350 SSD"
+        },
+        "large2x-alt-low-cpu": {
+            "cpu": 10,
+            "memory_gb": 65,
+            "disks": "local-disk 350 SSD"
+        },
+        "xlarge": {
             "cpu": 24,
             "memory_gb": 48,
             "disks": "local-disk 400 SSD"
