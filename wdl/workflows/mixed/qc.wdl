@@ -15,6 +15,7 @@ workflow qc {
     }
 
     Machines compute = read_json("wdl/runtimes.json")
+    String machine_size_high_mem = machine_size + "-high-mem"
 
     call samtools.get_stats_and_flagstats_from_bam as unfiltered_samtools {
         input:
@@ -37,7 +38,7 @@ workflow qc {
     call preseq.get_preseq_metrics as nuclear_preseq {
         input:
             nuclear_bam=nuclear_bam,
-            resources=compute.runtimes[machine_size],
+            resources=compute.runtimes[machine_size_high_mem],
     }
 
     output {

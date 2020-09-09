@@ -41,8 +41,8 @@
             "disks": "local-disk 250 SSD"
         },
         "medium2x-high-mem": {
-            "cpu": 6,
-            "memory_gb": 39,
+            "cpu": 10,
+            "memory_gb": 65,
             "disks": "local-disk 300 SSD"
         },
         "large": {
