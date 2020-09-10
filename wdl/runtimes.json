@@ -69,6 +69,16 @@
             "cpu": 6,
             "memory_gb": 39,
             "disks": "local-disk 400 SSD"
+        },
+        "xlarge-alt": {
+            "cpu": 20,
+            "memory_gb": 130,
+            "disks": "local-disk 500 SSD"
+        },
+        "xlarge-alt-low-cpu": {
+            "cpu": 18,
+            "memory_gb": 117,
+            "disks": "local-disk 500 SSD"
         }
     }
 }
