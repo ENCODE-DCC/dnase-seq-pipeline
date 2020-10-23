@@ -95,6 +95,7 @@ workflow dnase_replicate {
             five_percent_allcalls_bigbed: normalize_and_convert_files.five_percent_allcalls_bigbed,
             tenth_of_one_percent_narrowpeaks_bed_gz: normalize_and_convert_files.tenth_of_one_percent_narrowpeaks_bed_gz,
             tenth_of_one_percent_narrowpeaks_bigbed: normalize_and_convert_files.tenth_of_one_percent_narrowpeaks_bigbed,
+            tenth_of_one_percent_peaks_starch: call_hotspots_and_peaks_and_get_spot_score.tenth_of_one_percent_peaks.peaks,
             five_percent_narrowpeaks_bed_gz: normalize_and_convert_files.five_percent_narrowpeaks_bed_gz,
             five_percent_narrowpeaks_bigbed: normalize_and_convert_files.five_percent_narrowpeaks_bigbed,
             one_percent_footprints_bed_gz: normalize_and_convert_files.one_percent_footprints_bed_gz,

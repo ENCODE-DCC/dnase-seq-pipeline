@@ -51,6 +51,7 @@
     - path: "test-output/nuclear.0.05.allcalls.bb"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
+    - path: "test-output/nuclear.0.001.peaks.starch"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
       md5sum: 860619b0fdba597e4cceba87b8bac6af
@@ -125,6 +126,7 @@
     - path: "test-output/nuclear.0.05.allcalls.bb"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
+    - path: "test-output/nuclear.0.001.peaks.starch"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
       md5sum: 860619b0fdba597e4cceba87b8bac6af
@@ -198,6 +200,7 @@
     - path: "test-output/nuclear.0.05.allcalls.bb"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
+    - path: "test-output/nuclear.0.001.peaks.starch"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
       md5sum: d27be50ab3ca7228d3b325c76a682f49
@@ -267,6 +270,7 @@
     - path: "test-output/nuclear.0.05.allcalls.bb"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
+    - path: "test-output/nuclear.0.001.peaks.starch"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
     - path: "test-output/nuclear.0.05.SPOT.txt"
@@ -324,6 +328,7 @@
     - path: "test-output/nuclear.0.05.allcalls.bb"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
+    - path: "test-output/nuclear.0.001.peaks.starch"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
       md5sum: d27be50ab3ca7228d3b325c76a682f49
@@ -388,6 +393,7 @@
     - path: "test-output/nuclear.0.05.allcalls.bb"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
+    - path: "test-output/nuclear.0.001.peaks.starch"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
     - path: "test-output/nuclear.0.05.SPOT.txt"
@@ -451,6 +457,7 @@
     - path: "test-output/nuclear.0.05.allcalls.bb"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
+    - path: "test-output/nuclear.0.001.peaks.starch"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
     - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
       md5sum: 860619b0fdba597e4cceba87b8bac6af
