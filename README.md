@@ -226,6 +226,7 @@ caper list --hide-subworkflow
 | five percent narrowpeaks bigbed | 
 | tenth of one percent narrowpeaks bed gz |
 | tenth of one percent narrowpeaks bigbed |
+| tenth of one percent peaks starch (summit information)|
 | one percent footprints bed gz |
 | one percent footprints bigbed |
 
