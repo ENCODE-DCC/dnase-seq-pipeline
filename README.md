@@ -165,12 +165,12 @@ In most cases references should already exist for a given assembly/read length, 
     "concatenate": "medium",
     "convert": "medium",
     "filter": "large",
-    "footprint": "large",
+    "footprint": "medium2x",
     "mark": "large",
     "merge": "large",
     "normalize": "medium2x",
-    "peaks": "medium",
-    "qc": "medium",
+    "peaks": "medium2x",
+    "qc": "medium2x",
     "score": "medium",
     "trim": "large2x",
     "unpack": "medium"
@@ -226,6 +226,7 @@ caper list --hide-subworkflow
 | five percent narrowpeaks bigbed | 
 | tenth of one percent narrowpeaks bed gz |
 | tenth of one percent narrowpeaks bigbed |
+| tenth of one percent peaks starch (summit information)|
 | one percent footprints bed gz |
 | one percent footprints bigbed |
 

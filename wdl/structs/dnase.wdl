@@ -47,6 +47,7 @@ struct Analysis {
     File five_percent_allcalls_bigbed
     File tenth_of_one_percent_narrowpeaks_bed_gz
     File tenth_of_one_percent_narrowpeaks_bigbed
+    File tenth_of_one_percent_peaks_starch
     File five_percent_narrowpeaks_bed_gz
     File five_percent_narrowpeaks_bigbed
     File one_percent_footprints_bed_gz
