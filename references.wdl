@@ -155,7 +155,7 @@ workflow references {
     }
 
     meta {
-        version: "v3.0.0-alpha.2"
-        caper_docker: "encodedcc/dnase-seq-pipeline:v3.0.0-beta"
+        version: "v3.0.0"
+        caper_docker: "encodedcc/dnase-seq-pipeline:v3.0.0"
     }
 }
