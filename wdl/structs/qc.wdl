@@ -59,5 +59,5 @@ struct QC {
     UnfilteredBamQC unfiltered_bam_qc
     NuclearBamQC nuclear_bam_qc
     PeaksQC peaks_qc
-    FootprintsQC footprints_qc
+    FootprintsQC? footprints_qc
 }
