@@ -193,4 +193,5 @@ workflows:
             - wdl_unit_tests
             - wdl_integration_tests
             - wdl_functional_tests
+            - wdl_functional_partial_tests
             - wdl_full_tests
