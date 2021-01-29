@@ -185,6 +185,9 @@ workflows:
       - wdl_functional_tests:
           requires:
             - build
+      - wdl_functional_partial_tests:
+          requires:
+            - build
       - wdl_full_tests:
           requires:
             - build
