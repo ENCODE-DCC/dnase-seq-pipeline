@@ -2,7 +2,7 @@ version 1.0
 
 
 import "wdl/workflows/dnase_replicate.wdl" as process
-import "wdl/workflows/dnase_replicate_no_footprints.wdl" as process_no_footprints
+import "wdl/workflows_partial/dnase_replicate_no_footprints.wdl" as process_no_footprints
 
 
 workflow dnase {
@@ -26,7 +26,7 @@ workflow dnase {
 
     if (omit_footprints) {
         scatter (replicate in replicates) {
-            call process_no_footprints.dnase_replicate {
+            call process_no_footprints.dnase_replicate_no_footprints {
                 input:
                     replicate=replicate,
                     references=references,

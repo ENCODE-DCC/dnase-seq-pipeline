@@ -171,6 +171,16 @@ jobs:
           tag: "full"
           wt: "4"
 
+  wdl_full_optional_tests:
+    <<: *machine_defaults
+    steps:
+      - checkout
+      - prepare_pytest_environment
+      - install_git_lfs_and_get_data
+      - run_test_tag:
+          tag: "full_optional"
+          wt: "4"
+
 # Workflow
 workflows:
   build_workflow:
@@ -191,6 +201,9 @@ workflows:
       - wdl_full_tests:
           requires:
             - build
+      - wdl_full_optional_tests:
+          requires:
+            - build
       - push_template:
           requires:
             - wdl_unit_tests
@@ -198,3 +211,4 @@ workflows:
             - wdl_functional_tests
             - wdl_functional_partial_tests
             - wdl_full_tests
+            - wdl_full_optional_tests

@@ -3,16 +3,15 @@ version 1.0
 
 import "../../wdl/structs/dnase.wdl"
 import "../../wdl/structs/sizes.wdl"
-import "maybe_unpack_references.wdl" as references
-import "concatenate_trim_and_align_fastqs.wdl" as raw_fastqs
-import "merge_mark_and_filter_bams.wdl" as name_sorted_bams
-import "call_hotspots_and_peaks_and_get_spot_score.wdl" as nuclear_bam
-#import "call_footprints.wdl" as hotspots
+import "maybe_unpack_references_no_footprints.wdl" as references
+import "../workflows/concatenate_trim_and_align_fastqs.wdl" as raw_fastqs
+import "../workflows/merge_mark_and_filter_bams.wdl" as name_sorted_bams
+import "../workflows/call_hotspots_and_peaks_and_get_spot_score.wdl" as nuclear_bam
 import "calculate_and_gather_qc_no_footprints.wdl" as qc_files 
 import "normalize_and_convert_files_no_footprints.wdl" as bams_and_peaks
 
 
-workflow dnase_replicate {
+workflow dnase_replicate_no_footprints {
     input {
         Replicate replicate
         References references
@@ -48,14 +47,6 @@ workflow dnase_replicate {
             machine_sizes=machine_sizes,
     }
 
-#    call hotspots.call_footprints {
-#        input:
-#            five_percent_hotspots_starch=call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks.hotspots,
-#            nuclear_bam=merge_mark_and_filter_bams.nuclear_bam,
-#            references=unpacked.references,
-#            machine_sizes=machine_sizes,
-#    }
-
     call qc_files.calculate_and_gather_qc {
         input:
             files_for_calculation=object {
@@ -68,8 +59,6 @@ workflow dnase_replicate {
                 trimstats: concatenate_trim_and_align_fastqs.trimstats,
                 five_percent_peaks: call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks,
                 tenth_of_one_percent_peaks: call_hotspots_and_peaks_and_get_spot_score.tenth_of_one_percent_peaks
-                #dispersion_model: call_footprints.dispersion_model,
-                #one_percent_footprints_count: call_footprints.one_percent_footprints_count
             },
             replicate=replicate,
             machine_sizes=machine_sizes,
@@ -78,7 +67,6 @@ workflow dnase_replicate {
     call bams_and_peaks.normalize_and_convert_files {
         input:
             nuclear_bam=merge_mark_and_filter_bams.nuclear_bam,
-           # one_percent_footprints_bed=call_footprints.one_percent_footprints_bed,
             tenth_of_one_percent_peaks=call_hotspots_and_peaks_and_get_spot_score.tenth_of_one_percent_peaks,
             five_percent_peaks=call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks,
             references=unpacked.references,
@@ -98,13 +86,10 @@ workflow dnase_replicate {
             tenth_of_one_percent_peaks_starch: call_hotspots_and_peaks_and_get_spot_score.tenth_of_one_percent_peaks.peaks,
             five_percent_narrowpeaks_bed_gz: normalize_and_convert_files.five_percent_narrowpeaks_bed_gz,
             five_percent_narrowpeaks_bigbed: normalize_and_convert_files.five_percent_narrowpeaks_bigbed,
-            #one_percent_footprints_bed_gz: normalize_and_convert_files.one_percent_footprints_bed_gz,
-            #one_percent_footprints_bigbed: normalize_and_convert_files.one_percent_footprints_bigbed,
             qc: object {
                 unfiltered_bam_qc: calculate_and_gather_qc.unfiltered_bam_qc,
                 nuclear_bam_qc: calculate_and_gather_qc.nuclear_bam_qc,
                 peaks_qc: calculate_and_gather_qc.peaks_qc
-#                footprints_qc: calculate_and_gather_qc.footprints_qc
             }
         }
     }

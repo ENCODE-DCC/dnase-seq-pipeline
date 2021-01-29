@@ -1,0 +1,57 @@
+{
+    "dnase_replicate_no_footprints.replicate": {
+        "accession": "TEST123ABC",
+        "number": 0,
+        "read_length": 36,
+        "pe_fastqs": [
+            {
+                "R1": "tests/data/dnase/alignment/r1.fastq.gz",
+                "R2": "tests/data/dnase/alignment/r2.fastq.gz"
+            }
+        ],
+        "adapters": {
+            "sequence_R1": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG",
+            "sequence_R2": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
+        }
+    },
+    "dnase_replicate_no_footprints.references": {
+        "genome_name": "chr22",
+        "indexed_fasta": {
+            "fasta": "tests/data/ref/chr22.fa",
+            "fai": "tests/data/ref/chr22.fa.fai"
+        },
+        "bwa_index": {
+            "bwt": "tests/data/ref/chr22.fa.bwt",
+            "fasta": "tests/data/ref/chr22.fa",
+            "pac": "tests/data/ref/chr22.fa.pac",
+            "ann": "tests/data/ref/chr22.fa.ann",
+            "amb": "tests/data/ref/chr22.fa.amb",
+            "sa": "tests/data/ref/chr22.fa.sa"
+        },
+        "nuclear_chroms": "tests/data/ref/chr22.fa.nuclear.txt",
+        "hotspot1": {
+            "chrom_info": "tests/data/dnase/hotspot1/chr22.chromInfo.bed",
+            "mappable_regions": "tests/data/dnase/hotspot1/chr22.K36.mappable_only.bed"
+        },
+        "hotspot2": {
+            "chrom_sizes": "tests/data/dnase/hotspot2/chr22.chrom_sizes.bed",
+            "center_sites": "tests/data/dnase/hotspot2/chr22.K36.center_sites.n100.starch",
+            "mappable_regions": "tests/data/dnase/hotspot2/chr22.K36.mappable_only.bed"
+        },
+        "narrow_peak_auto_sql": "tests/data/ref/bigbed/narrowPeak.as"
+    },
+    "dnase_replicate_no_footprints.machine_sizes": {
+        "qc": "small",
+        "normalize": "small",
+        "align": "small",
+        "score": "small",
+        "filter": "small",
+        "merge": "small",
+        "peaks": "small",
+        "concatenate": "small",
+        "trim": "small",
+        "mark": "small",
+        "convert": "small",
+        "unpack": "small"
+    }
+}
