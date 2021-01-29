@@ -51,8 +51,8 @@ struct QCFilesGather {
     File? trimstats
     HotSpot2Peaks five_percent_peaks
     HotSpot2Peaks tenth_of_one_percent_peaks
-    File dispersion_model
-    Int one_percent_footprints_count
+    File? dispersion_model
+    Int? one_percent_footprints_count
 }
 
 struct QC {
