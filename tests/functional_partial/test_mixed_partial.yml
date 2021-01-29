@@ -1,0 +1,22 @@
+- name: test_mixed_convert_no_footprints
+  tags:
+    - functional_partial
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows_partial/mixed/convert_no_footprints.wdl \
+    tests/functional_partial/json/test_mixed_convert_no_footprints.json
+  stdout:
+    contains:
+      - "unstarch"
+      - "pigz"
+      - "bedToBigBed"
+  files:
+    - path: "test-output/nuclear.allcalls.bed.gz"
+    - path: "test-output/nuclear.allcalls.bb"
+      md5sum: ce7c4af2b1bc2f143549727f18f27a03
+    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bed.gz"
+    - path: "test-output/nuclear.peaks.narrowpeaks.fdr0.05.bb"
+      md5sum: 5b6209d28a8afa848b69c2b18cc69ab6
+    - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bed.gz"
+    - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
+      md5sum: 5c8f635ceed83ed049851e118f1221ad

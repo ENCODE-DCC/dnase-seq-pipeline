@@ -1,0 +1,8 @@
+{
+    "convert.chrom_sizes": "tests/data/ref/chr22.fa.fai",
+    "convert.machine_size": "small",
+    "convert.five_percent_allcalls_starch": "tests/data/dnase/aggregation/expected/peaks/nuclear.allcalls.starch",
+    "convert.narrow_peak_auto_sql": "tests/data/ref/bigbed/narrowPeak.as",
+    "convert.five_percent_narrow_peaks_starch": "tests/data/dnase/aggregation/expected/peaks/nuclear.peaks.narrowpeaks.fdr0.05.starch",
+    "convert.tenth_of_one_percent_narrow_peaks_starch": "tests/data/dnase/aggregation/expected/peaks/nuclear.0.001.peaks.narrowpeaks.starch"
+}
