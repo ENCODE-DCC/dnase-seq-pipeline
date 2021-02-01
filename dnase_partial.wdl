@@ -8,7 +8,7 @@ import "wdl/workflows_partial/dnase_replicate_no_footprints.wdl" as process_no_f
 workflow dnase {
     input {
         Array[Replicate] replicates
-        Boolean omit_footprints
+        Boolean omit_footprints = false
         Boolean preseq_defects_mode = false
         References references
         MachineSizes? machine_sizes

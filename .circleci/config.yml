@@ -171,16 +171,25 @@ jobs:
           tag: "full"
           wt: "4"
 
-  wdl_full_optional_tests:
+  wdl_full_no_footprints_tests:
     <<: *machine_defaults
     steps:
       - checkout
       - prepare_pytest_environment
       - install_git_lfs_and_get_data
       - run_test_tag:
-          tag: "full_optional"
+          tag: "full_no_footprints"
           wt: "4"
 
+  wdl_full_no_footprints_defects_tests:
+    <<: *machine_defaults
+    steps:
+      - checkout
+      - prepare_pytest_environment
+      - install_git_lfs_and_get_data
+      - run_test_tag:
+          tag: "full_no_footprints_defects"
+          wt: "4"
 # Workflow
 workflows:
   build_workflow:
@@ -201,7 +210,10 @@ workflows:
       - wdl_full_tests:
           requires:
             - build
-      - wdl_full_optional_tests:
+      - wdl_full_no_footprints_tests:
+          requires:
+            - build
+      - wdl_full_no_footprints_defects_tests:
           requires:
             - build
       - push_template:
@@ -211,4 +223,5 @@ workflows:
             - wdl_functional_tests
             - wdl_functional_partial_tests
             - wdl_full_tests
-            - wdl_full_optional_tests
+            - wdl_full_no_footprints_tests
+            - wdl_full_no_footprints_defects_tests
