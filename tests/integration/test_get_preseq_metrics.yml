@@ -16,3 +16,21 @@
       md5sum: 1c2f55280daae80307bfda6e2d726712
     - path: "test-output/nuclear.preseq.txt"
       md5sum: 4bbc21653c28e21c1b09be846a57e5de
+
+- name: test_get_preseq_metrics_defects
+  tags:
+    - integration
+  command: >-
+    tests/caper_run.sh \
+    tests/integration/wdl/test_get_preseq_metrics.wdl \
+    tests/integration/json/test_get_preseq_metrics_defects.json
+  stdout:
+    contains:
+      - "python3 $(which mark_dups.py)"
+      - "preseq lc_extrap"
+      - "-defects"
+  files:
+    - path: "test-output/nuclear.preseq_targets.txt"
+      md5sum: 2c7566371fafef6467832c7f6c0ca505
+    - path: "test-output/nuclear.preseq.txt"
+      md5sum: aa14141b8156e39226a1f055d1df7afb

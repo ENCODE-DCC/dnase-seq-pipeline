@@ -9,6 +9,7 @@ workflow dnase {
     input {
         Array[Replicate] replicates
         Boolean omit_footprints
+        Boolean preseq_defects_mode = false
         References references
         MachineSizes? machine_sizes
     }
@@ -17,6 +18,7 @@ workflow dnase {
         scatter (replicate in replicates) {
             call process.dnase_replicate {
                 input:
+                    preseq_defects_mode=preseq_defects_mode,
                     replicate=replicate,
                     references=references,
                     machine_sizes=machine_sizes,
@@ -28,6 +30,7 @@ workflow dnase {
         scatter (replicate in replicates) {
             call process_no_footprints.dnase_replicate_no_footprints {
                 input:
+                    preseq_defects_mode=preseq_defects_mode,
                     replicate=replicate,
                     references=references,
                     machine_sizes=machine_sizes,

@@ -5,7 +5,6 @@ import "../../wdl/structs/dnase.wdl"
 import "../../wdl/structs/sizes.wdl"
 import "../../wdl/structs/hotspot2.wdl"
 import "../../wdl/workflows/mixed/normalize.wdl" as density_starch
-import "../../wdl/workflows/mixed/qc.wdl" as bams_and_peaks
 import "../../wdl/workflows_partial/mixed/convert_no_footprints.wdl" as starches
 
 

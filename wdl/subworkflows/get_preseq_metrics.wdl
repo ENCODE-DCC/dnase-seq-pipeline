@@ -7,15 +7,16 @@ import "../tasks/preseq.wdl"
 
 workflow get_preseq_metrics {
     input {
+        Boolean preseq_defects_mode = false
         File nuclear_bam
-        PreseqLcExtrapParams params = object {
-            defects: false,
-            extrap: "1.001e9",
-            step_size: "1e6"
-            }
         Resources resources
     }
 
+    PreseqLcExtrapParams params = object {
+        defects: preseq_defects_mode,
+        extrap: "1.001e9",
+        step_size: "1e6"
+        }
     String output_prefix = basename(nuclear_bam, ".bam")
 
     call stampipes.mark_dups {

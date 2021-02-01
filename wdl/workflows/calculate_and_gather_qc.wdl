@@ -11,6 +11,7 @@ workflow calculate_and_gather_qc {
     input {
         QCFilesCalculate files_for_calculation
         QCFilesGather files_to_gather
+        Boolean preseq_defects_mode
         Replicate replicate
         MachineSizes machine_sizes
     }
@@ -24,7 +25,8 @@ workflow calculate_and_gather_qc {
         input:
             unfiltered_bam=files_for_calculation.unfiltered_bam,
             nuclear_bam=files_for_calculation.nuclear_bam,
-            machine_size=machine_sizes.qc
+            machine_size=machine_sizes.qc,
+            preseq_defects_mode=preseq_defects_mode,
     }
 
     if (paired_only) {

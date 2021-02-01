@@ -13,6 +13,7 @@ import "normalize_and_convert_files_no_footprints.wdl" as bams_and_peaks
 
 workflow dnase_replicate_no_footprints {
     input {
+        Boolean preseq_defects_mode = false
         Replicate replicate
         References references
         MachineSizes machine_sizes = read_json("wdl/default_machine_sizes.json")
@@ -60,6 +61,7 @@ workflow dnase_replicate_no_footprints {
                 five_percent_peaks: call_hotspots_and_peaks_and_get_spot_score.five_percent_peaks,
                 tenth_of_one_percent_peaks: call_hotspots_and_peaks_and_get_spot_score.tenth_of_one_percent_peaks
             },
+            preseq_defects_mode=preseq_defects_mode,
             replicate=replicate,
             machine_sizes=machine_sizes,
     }
