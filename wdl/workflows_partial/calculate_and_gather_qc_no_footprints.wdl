@@ -11,7 +11,7 @@ workflow calculate_and_gather_qc {
     input {
         QCFilesCalculate files_for_calculation
         QCFilesGather files_to_gather
-        Boolean preseq_defects_mode
+        Boolean preseq_defects_mode = false
         Replicate replicate
         MachineSizes machine_sizes
     }
