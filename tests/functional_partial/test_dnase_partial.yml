@@ -168,7 +168,6 @@
       - "530"
       - "213"
       - "34350"
-      - "186"
   files:
     - path: "test-output/merged.bam"
     - path: "test-output/merged.stats.txt"
@@ -236,7 +235,6 @@
       - "530"
       - "213"
       - "34350"
-      - "186"
   files:
     - path: "test-output/merged.bam"
     - path: "test-output/merged.stats.txt"
@@ -830,7 +828,6 @@
       - "530"
       - "213"
       - "34350"
-      - "186"
   files:
     - path: "test-output/merged.bam"
     - path: "test-output/merged.stats.txt"
