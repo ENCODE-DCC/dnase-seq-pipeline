@@ -8,7 +8,6 @@ import "../../wdl/workflows/mixed/normalize.wdl" as density_starch
 import "../../wdl/workflows_partial/mixed/convert_no_footprints.wdl" as starches
 
 
-
 workflow normalize_and_convert_files {
     input {
         File nuclear_bam

@@ -14,6 +14,7 @@ struct Replicate {
     Array[FastqPair]? pe_fastqs
     Array[File]? se_fastqs
     Adapters? adapters
+    Boolean? preseq_defects_mode
     Int read_length
     Int? number
     String? accession

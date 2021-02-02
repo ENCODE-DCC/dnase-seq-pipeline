@@ -1,6 +1,6 @@
 {
-    "dnase_replicate_no_footprints.preseq_defects_mode": true,
     "dnase_replicate_no_footprints.replicate": {
+        "preseq_defects_mode": true,
         "accession": "TEST123ABC",
         "number": 0,
         "read_length": 36,

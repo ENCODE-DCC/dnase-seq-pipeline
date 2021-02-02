@@ -16,7 +16,8 @@ workflow get_preseq_metrics {
         defects: preseq_defects_mode,
         extrap: "1.001e9",
         step_size: "1e6"
-        }
+    }
+
     String output_prefix = basename(nuclear_bam, ".bam")
 
     call stampipes.mark_dups {

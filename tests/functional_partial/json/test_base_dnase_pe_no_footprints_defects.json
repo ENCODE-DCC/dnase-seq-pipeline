@@ -1,9 +1,9 @@
 {
-    "dnase.preseq_defects_mode": true,
     "dnase.omit_footprints": true,
     "dnase.replicates": [
         {
             "accession": "TEST123ABC",
+            "preseq_defects_mode": true,
             "number": 0,
             "read_length": 36,
             "pe_fastqs": [

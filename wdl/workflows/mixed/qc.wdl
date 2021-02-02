@@ -9,7 +9,7 @@ import "../../../wdl/subworkflows/get_preseq_metrics.wdl" as preseq
 
 workflow qc {
     input {
-        Boolean preseq_defects_mode = false
+        Boolean? preseq_defects_mode
         File unfiltered_bam
         File nuclear_bam
         String machine_size = "medium"
@@ -38,7 +38,7 @@ workflow qc {
     call preseq.get_preseq_metrics as nuclear_preseq {
         input:
             nuclear_bam=nuclear_bam,
-            preseq_defects_mode=preseq_defects_mode,
+            preseq_defects_mode=select_first([preseq_defects_mode,false]),
             resources=compute.runtimes[machine_size],
     }
 

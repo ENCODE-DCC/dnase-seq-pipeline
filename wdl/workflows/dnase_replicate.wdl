@@ -72,7 +72,6 @@ workflow dnase_replicate {
                 dispersion_model: call_footprints.dispersion_model,
                 one_percent_footprints_count: call_footprints.one_percent_footprints_count
             },
-            preseq_defects_mode=preseq_defects_mode,
             replicate=replicate,
             machine_sizes=machine_sizes,
     }
