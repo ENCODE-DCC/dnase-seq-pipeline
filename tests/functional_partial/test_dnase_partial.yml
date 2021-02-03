@@ -510,7 +510,7 @@
     - full_no_footprints
   command: >-
     tests/caper_run.sh \
-    dnase_partial.wdl \
+    dnase_no_footprints.wdl \
     tests/functional_partial/json/test_base_dnase_se_no_footprints.json
   stdout:
     contains:
@@ -566,7 +566,7 @@
     - full_no_footprints_defects
   command: >-
     tests/caper_run.sh \
-    dnase_partial.wdl \
+    dnase_no_footprints.wdl \
     tests/functional_partial/json/test_base_dnase_se_no_footprints_defects.json
   stdout:
     contains:
@@ -623,7 +623,7 @@
     - full_no_footprints
   command: >-
     tests/caper_run.sh \
-    dnase_partial.wdl \
+    dnase_no_footprints.wdl \
     tests/functional_partial/json/test_base_dnase_mixed_no_footprints.json
   stdout:
     contains:
@@ -676,7 +676,7 @@
     - full_no_footprints_defects
   command: >-
     tests/caper_run.sh \
-    dnase_partial.wdl \
+    dnase_no_footprints.wdl \
     tests/functional_partial/json/test_base_dnase_mixed_no_footprints_defects.json
   stdout:
     contains:
@@ -730,7 +730,7 @@
     - full_no_footprints
   command: >-
     tests/caper_run.sh \
-    dnase_partial.wdl \
+    dnase_no_footprints.wdl \
     tests/functional_partial/json/test_base_dnase_pe_no_footprints.json
   stdout:
     contains:
@@ -796,7 +796,7 @@
     - full_no_footprints_defects
   command: >-
     tests/caper_run.sh \
-    dnase_partial.wdl \
+    dnase_no_footprints.wdl \
     tests/functional_partial/json/test_base_dnase_pe_no_footprints_defects.json
   stdout:
     contains:

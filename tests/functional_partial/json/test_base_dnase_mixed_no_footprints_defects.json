@@ -1,5 +1,4 @@
 {
-    "dnase.omit_footprints": true,
     "dnase.replicates": [
         {
             "preseq_defects_mode": true,

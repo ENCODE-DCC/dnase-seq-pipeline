@@ -1,5 +1,4 @@
 {
-    "dnase.omit_footprints": true,
     "dnase.replicates": [
         {
             "accession": "TEST123ABC",
