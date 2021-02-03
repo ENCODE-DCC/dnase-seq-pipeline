@@ -478,3 +478,78 @@
     - path: "test-output/footprints.fps.0.01.bb"
       md5sum: b6602479d344989a7bd3a4827e6c4fde
     - path: "test-output/dispersion_model.json"
+
+- name: test_base_dnase_pe_defects
+  tags:
+    - full
+  command: >-
+    tests/caper_run.sh \
+    dnase.wdl \
+    tests/functional/json/test_base_dnase_pe_defects.json
+  stdout:
+    contains:
+      - "cat"
+      - "awk"
+      - "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTTAATCTTAGTGTAGATCTCGGTGGTCGCCGTATCATT"
+      - "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAATTCGTATCTCGTATGCCGTCTTCTGCTTG"
+      - "bwa aln"
+      - "bwa sampe"
+      - "samtools sort"
+      - "filter_reads.py"
+      - "RevertOriginalBaseQualitiesAndAddMateCigar"
+      - "MarkDuplicatesWithMateCigar"
+      - "hotspot2.sh"
+      - "random_sample_read1.sh"
+      - "runhotspot.bash"
+      - "starch_to_bigwig.bash"
+      - "bamcounts.py"
+      - "samtools stats"
+      - "samtools flagstats"
+      - "CollectInsertSizeMetrics"
+      - "preseq lc_extrap"
+      - "pigz"
+      - "bedToBigBed"
+      - "ftd-learn-dispersion-model"
+      - "ftd-compute-deviation"
+      - "unstarch"
+      - "--elements"
+      - "wc"
+      - "-l"
+      - "536"
+      - "530"
+      - "213"
+      - "34350"
+      - "186"
+  files:
+    - path: "test-output/merged.bam"
+    - path: "test-output/merged.stats.txt"
+    - path: "test-output/merged.flagstats.txt"
+    - path: "test-output/nuclear.bam"
+    - path: "test-output/nuclear.stats.txt"
+    - path: "test-output/nuclear.flagstats.txt"
+    - path: "test-output/normalized.nuclear.0.05.density.bw"
+    - path: "test-output/nuclear.0.05.allcalls.bed.gz"
+    - path: "test-output/nuclear.0.05.allcalls.bb"
+    - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bed.gz"
+    - path: "test-output/nuclear.0.001.peaks.narrowpeaks.bb"
+    - path: "test-output/nuclear.0.001.peaks.starch"
+    - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bed.gz"
+    - path: "test-output/nuclear.0.05.peaks.narrowpeaks.bb"
+      md5sum: 860619b0fdba597e4cceba87b8bac6af
+    - path: "test-output/nuclear.0.05.SPOT.txt"
+      md5sum: 422149b24571450b2948f2d5b6eba655
+    - path: "test-output/subsample.spot.out"
+      md5sum: 7091396d4c8755f68131eb6b2e6c3bf7
+    - path: "test-output/trimstats.txt"
+    - path: "test-output/nuclear.preseq_targets.txt"
+      md5sum: 12fa5b197614c03a2cb0e2d724047151 
+    - path: "test-output/nuclear.preseq.txt"
+      md5sum: a8fbb3efac99ff67b6f365d29e1120f3
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard"
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.info"
+      md5sum: 0e0fff9f3f4edb22511b89db4eebad66
+    - path: "test-output/nuclear.CollectInsertSizeMetrics.picard.pdf"
+    - path: "test-output/footprints.fps.0.01.bed.gz"
+    - path: "test-output/footprints.fps.0.01.bb"
+      md5sum: b6602479d344989a7bd3a4827e6c4fde
+    - path: "test-output/dispersion_model.json"
