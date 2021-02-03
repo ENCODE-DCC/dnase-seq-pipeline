@@ -38,6 +38,28 @@
       - "READ_NAME_REGEX='[a-zA-Z0-9]+:[0-9]+:[a-zA-Z0-9]+:[0-9]+:([0-9]+):([0-9]+):([0-9]+).*'"
       - "VALIDATION_STRINGENCY=SILENT"
 
+- name: test_picard_mark_duplicates
+  tags:
+    - unit
+  command: >-
+    tests/caper_run.sh \
+    tests/unit/wdl/test_picard_mark_duplicates.wdl \
+    tests/unit/json/test_picard_mark_duplicates.json
+  stdout:
+    contains:
+      - "java"
+      - "-Xmx1G"
+      - "-XX:ParallelGCThreads=1"
+      - "-jar $(which picard.jar)"
+      - "MarkDuplicates"
+      - "INPUT="
+      - "dummy.txt"
+      - "OUTPUT=marked.bam"
+      - "METRICS_FILE=MarkDuplicates.picard"
+      - "ASSUME_SORTED=true"
+      - "READ_NAME_REGEX='[a-zA-Z0-9]+:[0-9]+:[a-zA-Z0-9]+:[0-9]+:([0-9]+):([0-9]+):([0-9]+).*'"
+      - "VALIDATION_STRINGENCY=SILENT"
+
 - name: test_picard_collect_insert_size_metrics 
   tags:
     - unit

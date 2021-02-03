@@ -17,6 +17,13 @@ struct MarkDuplicatesWithMateCigarParams {
 }
 
 
+struct MarkDuplicatesParams {
+    String? assume_sorted
+    String? read_name_regex
+    String? validation_stringency
+}
+
+
 struct CollectInsertSizeMetricsParams {
     String? assume_sorted
     String? validation_stringency
