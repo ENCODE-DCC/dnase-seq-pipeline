@@ -53,6 +53,7 @@
         "filter": "small",
         "merge": "small",
         "peaks": "small",
+        "footprints": "small",
         "concatenate": "small",
         "trim": "small",
         "mark": "small",
