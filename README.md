@@ -129,7 +129,7 @@ Here's how to specify the input for a 36bp single-end experiment with one replic
         ]
     }
 ]
-
+```
 The `dnase_no_footprints.wdl` can be used to skip the `footprinting` part of the workflow. This uses the same input as the `dnase.wdl` workflow and otherwise produces identical outputs.
 
 `dnase.references` takes read-length specialized reference files for Hotspot1/Hotspot2 steps, as well as standard genomic indices required by the pipeline:
