@@ -38,7 +38,7 @@ workflow qc {
     call preseq.get_preseq_metrics as nuclear_preseq {
         input:
             nuclear_bam=nuclear_bam,
-            preseq_defects_mode=select_first([preseq_defects_mode,false]),
+            preseq_defects_mode=preseq_defects_mode,
             resources=compute.runtimes[machine_size],
     }
 

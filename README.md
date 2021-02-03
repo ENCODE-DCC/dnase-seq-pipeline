@@ -114,7 +114,7 @@ Here's how to specify the input for a 36bp mixed single-end/paired-end experimen
 ]
 ```
 
-There is an option to run preseq metrics calculation step in `defects` mode (Necessary in rare cases, where this step fails. This defaults to `false`, and most users never need to set this.) Note that this option is defined separately for each replicate.
+In some cases it is necessary to run [preseq lc_extrap](http://smithlabresearch.org/wp-content/uploads/manual.pdf) in `defects` mode. The option is `false` by default and can be defined separately for each replicate.
 Here's how to specify the input for a 36bp single-end experiment with one replicate like [ENCSR420RWU](https://www.encodeproject.org/experiments/ENCSR420RWU/) with defects mode:
 ```
 "dnase.replicates": [
@@ -130,7 +130,7 @@ Here's how to specify the input for a 36bp single-end experiment with one replic
     }
 ]
 
-In some rare cases the footprints cannot be calculated. In case of a failure in footprinting step workflow `dnase_no_footprints.wdl` can be used. Using this workflow is identical to the usual `dnase.wdl` workflow. No changes to inputs are needed. All the other steps are run, and only difference is that footprint related [outputs](#-outputs) will be missing.
+The `dnase_no_footprints.wdl` can be used to skip the `footprinting` part of the workflow. This uses the same input as the `dnase.wdl` workflow and otherwise produces identical outputs.
 
 `dnase.references` takes read-length specialized reference files for Hotspot1/Hotspot2 steps, as well as standard genomic indices required by the pipeline:
 ```

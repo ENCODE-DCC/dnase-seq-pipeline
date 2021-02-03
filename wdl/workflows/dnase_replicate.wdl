@@ -14,7 +14,6 @@ import "normalize_and_convert_files.wdl" as bams_and_peaks
 
 workflow dnase_replicate {
     input {
-        Boolean preseq_defects_mode = false
         Replicate replicate
         References references
         MachineSizes machine_sizes = read_json("wdl/default_machine_sizes.json")

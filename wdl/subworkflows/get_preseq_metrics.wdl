@@ -7,13 +7,13 @@ import "../tasks/preseq.wdl"
 
 workflow get_preseq_metrics {
     input {
-        Boolean preseq_defects_mode = false
+        Boolean? preseq_defects_mode
         File nuclear_bam
         Resources resources
     }
 
     PreseqLcExtrapParams params = object {
-        defects: preseq_defects_mode,
+        defects: select_first([preseq_defects_mode,false]),
         extrap: "1.001e9",
         step_size: "1e6"
     }

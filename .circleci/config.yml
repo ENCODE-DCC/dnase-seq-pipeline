@@ -190,6 +190,7 @@ jobs:
       - run_test_tag:
           tag: "full_no_footprints_defects"
           wt: "4"
+
 # Workflow
 workflows:
   build_workflow:
