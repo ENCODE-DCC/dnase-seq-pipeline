@@ -13,7 +13,7 @@ workflow get_preseq_metrics {
     }
 
     PreseqLcExtrapParams params = object {
-        defects: select_first([preseq_defects_mode,false]),
+        defects: select_first([preseq_defects_mode, false]),
         extrap: "1.001e9",
         step_size: "1e6"
     }
