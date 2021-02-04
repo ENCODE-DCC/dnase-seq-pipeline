@@ -191,6 +191,16 @@ jobs:
           tag: "full_no_footprints_defects"
           wt: "4"
 
+  wdl_functional_old_mark_duplicates_tests:
+    <<: *machine_defaults
+    steps:
+      - checkout
+      - prepare_pytest_environment
+      - install_git_lfs_and_get_data
+      - run_test_tag:
+          tag: "functional_old_mark_duplicates"
+          wt: "4"
+
 # Workflow
 workflows:
   build_workflow:
@@ -208,6 +218,9 @@ workflows:
       - wdl_functional_partial_tests:
           requires:
             - build
+      - wdl_functional_old_mark_duplicates_tests:
+          requires:
+            - build
       - wdl_full_tests:
           requires:
             - build
@@ -223,6 +236,7 @@ workflows:
             - wdl_integration_tests
             - wdl_functional_tests
             - wdl_functional_partial_tests
+            - wdl_functional_old_mark_duplicates_tests
             - wdl_full_tests
             - wdl_full_no_footprints_tests
             - wdl_full_no_footprints_defects_tests
