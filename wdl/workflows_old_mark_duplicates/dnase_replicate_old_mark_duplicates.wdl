@@ -3,13 +3,13 @@ version 1.0
 
 import "../../wdl/structs/dnase.wdl"
 import "../../wdl/structs/sizes.wdl"
-import "../../workflows/maybe_unpack_references.wdl" as references
-import "../../workflows/concatenate_trim_and_align_fastqs.wdl" as raw_fastqs
+import "../../wdl/workflows/maybe_unpack_references.wdl" as references
+import "../../wdl/workflows/concatenate_trim_and_align_fastqs.wdl" as raw_fastqs
 import "merge_mark_and_filter_bams_old_mark_duplicates.wdl" as name_sorted_bams
-import "../../workflows/call_hotspots_and_peaks_and_get_spot_score.wdl" as nuclear_bam
-import "../../workflows/call_footprints.wdl" as hotspots
-import "../../workflows/calculate_and_gather_qc.wdl" as qc_files 
-import "../../workflows/normalize_and_convert_files.wdl" as bams_and_peaks
+import "../../wdl/workflows/call_hotspots_and_peaks_and_get_spot_score.wdl" as nuclear_bam
+import "../../wdl/workflows/call_footprints.wdl" as hotspots
+import "../../wdl/workflows/calculate_and_gather_qc.wdl" as qc_files 
+import "../../wdl/workflows/normalize_and_convert_files.wdl" as bams_and_peaks
 
 
 workflow dnase_replicate {
