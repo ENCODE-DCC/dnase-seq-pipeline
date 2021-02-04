@@ -14,6 +14,7 @@ struct Replicate {
     Array[FastqPair]? pe_fastqs
     Array[File]? se_fastqs
     Adapters? adapters
+    Boolean? preseq_defects_mode
     Int read_length
     Int? number
     String? accession
@@ -50,7 +51,7 @@ struct Analysis {
     File tenth_of_one_percent_peaks_starch
     File five_percent_narrowpeaks_bed_gz
     File five_percent_narrowpeaks_bigbed
-    File one_percent_footprints_bed_gz
-    File one_percent_footprints_bigbed
+    File? one_percent_footprints_bed_gz
+    File? one_percent_footprints_bigbed
     QC qc
 }

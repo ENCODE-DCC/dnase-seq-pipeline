@@ -5,14 +5,12 @@ import "../../wdl/structs/dnase.wdl"
 import "../../wdl/structs/sizes.wdl"
 import "../../wdl/structs/hotspot2.wdl"
 import "../../wdl/workflows/mixed/normalize.wdl" as density_starch
-import "../../wdl/workflows/mixed/convert.wdl" as starches
-
+import "../../wdl/workflows_partial/mixed/convert_no_footprints.wdl" as starches
 
 
 workflow normalize_and_convert_files {
     input {
         File nuclear_bam
-        File one_percent_footprints_bed
         HotSpot2Peaks tenth_of_one_percent_peaks
         HotSpot2Peaks five_percent_peaks
         References references
@@ -33,7 +31,6 @@ workflow normalize_and_convert_files {
 
     call starches.convert {
         input:
-            one_percent_footprints_bed=one_percent_footprints_bed,
             five_percent_allcalls_starch=five_percent_peaks.allcalls,
             tenth_of_one_percent_narrow_peaks_starch=tenth_of_one_percent_peaks.narrowpeaks,
             five_percent_narrow_peaks_starch=five_percent_peaks.narrowpeaks,
@@ -52,7 +49,5 @@ workflow normalize_and_convert_files {
         File tenth_of_one_percent_narrowpeaks_bigbed = convert.tenth_of_one_percent_narrowpeaks_bigbed
         File five_percent_narrowpeaks_bed_gz = convert.five_percent_narrowpeaks_bed_gz
         File five_percent_narrowpeaks_bigbed = convert.five_percent_narrowpeaks_bigbed
-        File one_percent_footprints_bed_gz = convert.one_percent_footprints_bed_gz
-        File one_percent_footprints_bigbed = convert.one_percent_footprints_bigbed
     }
 }

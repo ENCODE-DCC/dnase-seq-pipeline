@@ -114,6 +114,24 @@ Here's how to specify the input for a 36bp mixed single-end/paired-end experimen
 ]
 ```
 
+In some cases it is necessary to run [preseq lc_extrap](http://smithlabresearch.org/wp-content/uploads/manual.pdf) in `defects` mode. The option is `false` by default and can be defined separately for each replicate.
+Here's how to specify the input for a 36bp single-end experiment with one replicate like [ENCSR420RWU](https://www.encodeproject.org/experiments/ENCSR420RWU/) with defects mode:
+```
+"dnase.replicates": [
+    {
+        "preseq_defects_mode": true,
+        "accession": "ENCSR420RWU",
+        "number": 1,
+        "read_length": 36,
+        "se_fastqs": [
+            "s3://encode-public/2014/07/04/580edf6f-10a4-4b42-b4a2-4f64a9a87901/ENCFF002DYE.fastq.gz",
+            "s3://encode-public/2014/07/04/f123c3c1-3542-4eda-b2d0-7d789f95cea0/ENCFF002DYD.fastq.gz"
+        ]
+    }
+]
+```
+The `dnase_no_footprints.wdl` can be used to skip the `footprinting` part of the workflow. This uses the same input as the `dnase.wdl` workflow and otherwise produces identical outputs.
+
 `dnase.references` takes read-length specialized reference files for Hotspot1/Hotspot2 steps, as well as standard genomic indices required by the pipeline:
 ```
 "dnase.references": {
