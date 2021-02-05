@@ -1,0 +1,13 @@
+{
+    "test_picard_mark_duplicates.bam": "tests/data/dummy.txt",
+    "test_picard_mark_duplicates.params": {
+        "assume_sorted": "true",
+        "read_name_regex": "'[a-zA-Z0-9]+:[0-9]+:[a-zA-Z0-9]+:[0-9]+:([0-9]+):([0-9]+):([0-9]+).*'",
+        "validation_stringency": "SILENT"
+    },
+    "test_picard_mark_duplicates.resources": {
+        "cpu": 1,
+        "memory_gb": 1,
+        "disks": "local-disk 10 SSD"
+    }
+}

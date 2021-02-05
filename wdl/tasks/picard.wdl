@@ -74,6 +74,45 @@ task mark_duplicates_with_mate_cigar {
 }
 
 
+task mark_duplicates {
+    input {
+        File bam
+        Resources resources
+        MarkDuplicatesParams params
+        String metrics_path = "MarkDuplicates.picard"
+        String out = "marked.bam"
+        Float heap_ratio = 0.9
+    }
+
+    String java_heap = "-Xmx~{round(resources.memory_gb * heap_ratio)}G"
+
+    command {
+        java \
+            ~{java_heap} \
+            -XX:ParallelGCThreads=1 \
+            -jar $(which picard.jar) \
+            MarkDuplicates \
+            ~{"INPUT=" + bam} \
+            ~{"OUTPUT=" + out} \
+            ~{"METRICS_FILE=" + metrics_path} \
+            ~{"ASSUME_SORTED=" + params.assume_sorted} \
+            ~{"READ_NAME_REGEX=" + params.read_name_regex} \
+            ~{"VALIDATION_STRINGENCY=" + params.validation_stringency}
+    }
+
+    output {
+        File marked = out
+        File metrics = metrics_path
+    }
+
+    runtime {
+        cpu: resources.cpu
+        memory: "~{resources.memory_gb} GB"
+        disks: resources.disks
+    }
+}
+
+
 task collect_insert_size_metrics {
     input {
         File bam

@@ -1,0 +1,19 @@
+- name: test_mixed_mark_old_mark_duplicates
+  tags:
+    - functional_old_mark_duplicates
+  command: >-
+    tests/caper_run.sh \
+    wdl/workflows_old_mark_duplicates/mixed/mark_old_mark_duplicates.wdl \
+    tests/functional_old_mark_duplicates/json/test_mixed_mark_old_mark_duplicates.json
+  stdout:
+    contains:
+      - "filter_reads.py"
+      - "samtools sort"
+      - "RevertOriginalBaseQualitiesAndAddMateCigar"
+      - "MarkDuplicates"
+    must_not_contain:
+      - "MarkDuplicatesWithMateCigar"
+  files:
+    - path: "test-output/marked.bam"
+    - path: "test-output/MarkDuplicates.picard"
+
