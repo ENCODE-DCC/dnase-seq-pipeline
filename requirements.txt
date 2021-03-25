@@ -20,7 +20,7 @@ pysam==0.15.4
 pyrsistent==0.15.7
 pytest==5.4.0
 git+https://github.com/LUMC/pytest-workflow.git@4cbc3bb6b9840daf#egg=pytest_workflow
-PyYAML==5.3
+PyYAML==5.4
 requests==2.22.0
 six==1.14.0
 urllib3==1.25.7
