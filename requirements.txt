@@ -23,6 +23,6 @@ git+https://github.com/LUMC/pytest-workflow.git@4cbc3bb6b9840daf#egg=pytest_work
 PyYAML==5.3
 requests==2.22.0
 six==1.14.0
-urllib3==1.25.7
+urllib3==1.25.8
 wcwidth==0.1.8
 zipp==1.0.0
